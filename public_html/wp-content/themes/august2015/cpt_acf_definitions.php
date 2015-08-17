@@ -34,7 +34,7 @@ function cptui_register_my_cpts() {
         "query_var" => true,
         "menu_position" => 26,
         "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h1.png',
-        "supports" => array("title", "editor", "excerpt"),
+        "supports" => array("title"),
     );
     register_post_type("service", $args);
 
@@ -182,11 +182,22 @@ if (function_exists("register_field_group")) {
         'title' => 'Service',
         'fields' => array(
             array(
+                'key' => 'field_55d14add95e69',
+                'label' => 'Short Description',
+                'name' => 'short_description',
+                'type' => 'textarea',
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'formatting' => 'br',
+            ),
+            array(
                 'key' => 'field_55cb01740b031',
                 'label' => 'image',
                 'name' => 'image',
                 'type' => 'image',
-                'save_format' => 'object',
+                'save_format' => 'url',
                 'preview_size' => 'thumbnail',
                 'library' => 'all',
             ),
