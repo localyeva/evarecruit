@@ -70,6 +70,14 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', true);
 
+define('FS_METHOD', 'direct');
+
+// Disable Plugin and Theme Update and Installation
+//define( 'DISALLOW_FILE_MODS', true );
+
+// Disable all automatic updates:
+// define( 'AUTOMATIC_UPDATER_DISABLED', true );
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
