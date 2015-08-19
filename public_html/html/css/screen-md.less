@@ -1,5 +1,22 @@
 @media (min-width: 992px){
-
+	.header-our-thoughts {
+		.item {
+			display: table;
+			[class*="col-md"] {
+			    float: none;
+			    display: table-cell;
+			    vertical-align: top;
+			}
+			.content {
+				.photo {
+					position: absolute;
+					bottom: 20px;
+					width: 100%;
+					padding-right: 70px;
+				}
+			}
+		}
+	}
 }
 
 @media (min-width:992px) and (max-width:1199px){

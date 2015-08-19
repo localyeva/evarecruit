@@ -8,7 +8,7 @@
                 <ul class="nav nav-pills nav-justified">
                   <li role="presentation" data-tab=1><a href="#">All</a></li>
                   <li role="presentation" data-tab=2><a href="#">Event</a></li>
-                  <li role="presentation" class="active" data-tab=3><a href="#">Benifit</a></li>
+                  <li role="presentation" data-tab=3><a href="#">Benifit</a></li>
                   <li role="presentation" data-tab=4><a href="#">Work space</a></li>
                 </ul>
             </div>
@@ -19,11 +19,15 @@
 </div>
 <script type="text/javascript">
     $(function (e) {
+        $('.gallery').fadeOut();
         $('.header-environment ul.nav-pills li').click(function (e) {
             var tab = $(this).data('tab');
-            $('.gallery').addClass('hidden');
-            $('.gallery[data-tab="' + tab + '"]').removeClass('hidden');
+            $('.header-environment ul.nav-pills li').removeClass('active');
+            $(this).addClass('active');
+            $('.gallery').fadeOut();
+            $('.gallery[data-tab="' + tab + '"]').fadeIn();
             e.preventDefault();
         });
+        $('.header-environment ul.nav-pills li:first-child').trigger('click');
     });
 </script>
