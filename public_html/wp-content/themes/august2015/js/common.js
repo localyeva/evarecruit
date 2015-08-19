@@ -1,3 +1,15 @@
+jQuery.fn.extend(
+        {
+            scrollTo: function (speed, easing)
+            {
+                return this.each(function ()
+                {
+                    var targetOffset = $(this).offset().top;
+                    $('html,body').animate({scrollTop: targetOffset}, speed, easing);
+                });
+            }
+        });
+
 $(function () {
     $(".nano").nanoScroller();
 });
@@ -20,16 +32,14 @@ $(function () {
     var map_data = $.parseJSON(vars.map_data);
     var markers = [];
     var map;
-    var infowindow = new google.maps.InfoWindow(
-            {
-                size: new google.maps.Size(150, 50)
-            });
+    var infowindow = new google.maps.InfoWindow({size: new google.maps.Size(150, 50)});
+    var center = new google.maps.LatLng(16.0755818, 108.22209129999999);
     //
     function initMap() {
 
         var myOptions = {
             zoom: 5,
-            center: new google.maps.LatLng(16.0755818, 108.22209129999999),
+            center: center,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -40,6 +50,19 @@ $(function () {
         });
 
         drop();
+
+        $('.map-marker').on('click', function(){
+            map.setCenter(center);
+            map.setZoom(5);
+        });
+
+        $('.map-focus').on('click', function () {
+            $("#map").scrollTo('slow');
+            var lat = $(this).data('lat');
+            var lng = $(this).data('lng');
+            map.setCenter(new google.maps.LatLng(lat, lng));
+            map.setZoom(17);
+        });
     }
 
     function drop() {

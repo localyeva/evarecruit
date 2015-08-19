@@ -569,10 +569,10 @@ get_header();
                             <?php while ($loop->have_posts()): $loop->the_post(); ?>
                                 <div class="row">
                                     <div class="col-xs-1">
-                                        <img class="img-responsive" src="<?php echo get_template_directory_uri() ?>/img/32.png" alt="">
+                                        <img class="img-responsive map-marker" src="<?php echo get_template_directory_uri() ?>/img/32.png" alt="">
                                     </div>
                                     <div class="col-xs-11">
-                                        <h3><?php echo mb_convert_case(get_the_title(), MB_CASE_UPPER) ?></h3>
+                                        <h3><a href="javascript:void(0)" class="map-focus" data-lat="<?php echo get_field('z_lat') ?>" data-lng="<?php echo get_field('z_lng') ?>"><?php echo mb_convert_case(get_the_title(), MB_CASE_UPPER) ?></a></h3>
                                         <?php if (have_rows('main_locations')): ?>
                                             <?php while (have_rows('main_locations')): the_row(); ?>
                                                 <?php if (!empty(get_sub_field('main_location'))): ?>
