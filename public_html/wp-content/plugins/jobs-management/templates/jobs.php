@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-//get_header();
+get_header();
 ?>
 
 <!--//Search Bar-->
@@ -227,4 +227,4 @@ if (!defined('ABSPATH')) {
 </div>
 <!--//Paging End-->
 
-<?php // get_footer(); ?>
+<?php get_footer(); ?>
