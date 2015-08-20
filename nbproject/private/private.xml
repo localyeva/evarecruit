@@ -5,9 +5,11 @@
         <group>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/index.php</file>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/footer.php</file>
+            <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/plugins/jobs-widget/jobs_widget.php</file>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/functions.php</file>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/header.php</file>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/cpt_acf_definitions.php</file>
+            <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/plugins/jobs/jobs.php</file>
             <file>file:/var/www/html/evarecruit.localhost/public_html/wp-content/themes/august2015/js/common.js</file>
         </group>
     </open-files>

@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
   Plugin Name: Jobs Management
   Plugin URI:
   Description: Jobs Management
@@ -12,6 +12,9 @@
   Domain Path:
   Text Domain:
  */
+if (!defined('ABSPATH')) {
+    die('No script kiddies please!');
+}
 
 class jobs {
 
@@ -74,7 +77,6 @@ class jobs {
             "show_admin_column" => false,
         );
         register_taxonomy("job-location", array("job"), $args);
-
 
         $labels = array(
             "name" => "Job Positions",
