@@ -4,6 +4,7 @@
 /*--------------------------------------------------------------------- import*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500&subset=latin,vietnamese);
 // LESS variables
+@body-font-size: 14px;
 @banner-height: 400px;
 @header-text-color: #e2e2e2;
 @header-text-height: 150px;
@@ -12,6 +13,7 @@
 @row-gap-small-large: 50px;
 @navbar-height: 150px;
 @orange: #FF530D;
+@bold: 700;
 // Helper function
 .border-radius(@radius) {
 	-webkit-border-radius: @radius;
@@ -32,6 +34,9 @@
 	height: @row-gap-small-large;
 	display: block;
 }
+.text-bold {
+	font-weight: @bold;
+}
 .text-center {
 	text-align: center;
 }
@@ -51,6 +56,7 @@
 // begin styling
 body, html {
 	font-family: 'Roboto', sans-serif;
+	font-size: @body-font-size;
 }
 h1, h2, h3, h4, h5, h6 {
 	.text-semi-bold;
@@ -65,6 +71,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar-default {
 	margin-bottom: 0;
+	li.active {
+		a {
+			background: #f8f8f8 !important;
+			&:after {
+				background: #0090B0;
+				width: 100%;
+				height: 2px;
+				display: block;
+				content: '';
+				position: relative;
+			}
+		}
+	}
 }
 .header-banner {
 	height: @banner-height;
@@ -336,6 +355,74 @@ h1, h2, h3, h4, h5, h6 {
 					}
 				}
 			}
+		}
+	}
+}
+#new-jobs {
+	background: #F2F2F2;
+	.header-search-bar {
+		padding: 30px 0;
+		background: url('../img/new_job/1.png') no-repeat;
+		color: #fff;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		.stat {
+			.text-bold;
+		}
+		.vertical-bar {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+	}
+	.header-job-list {
+		color: #333;
+		background: #fff;
+		.item {
+			padding: 30px 20px;
+			border-bottom: 1px dotted #000;
+			.title {
+				color: #FF3232;
+				.text-bold;
+				font-size: @body-font-size*1.2;
+			}
+			.text-blue {
+				color: #0A93B2;
+				font-style: italic;
+			}
+			img.date, img.view {
+				margin-right: 3px;
+				&.view {
+					margin-left: -3px;
+				}
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+	.pagination {
+		li {
+			a {
+				.border-radius(4px);
+				margin: 5px 10px;
+				padding: 10px 15px;
+				border-color: #0090B0;
+				color: #0090B0;
+				&.active {
+					background: #0090B0;
+					color: #fff;
+				}
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	nav.navbar {
+		li:last-child {
+			display: none;
 		}
 	}
 }

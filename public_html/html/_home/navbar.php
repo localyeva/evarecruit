@@ -44,16 +44,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="#getstarted">Get started</a></li>
-                    <li><a href="#usage">Demos &amp; Usage</a></li>
-                    <li><a href="#documentation">Documentation</a></li>
-                    <li><a href="#themes">Themes</a></li>
+                    <li class="active"><a href="#download">Home</a></li>
+                    <li><a href="#getstarted">Services</a></li>
+                    <li><a href="#usage">About</a></li>
+                    <li><a href="#documentation">Team</a></li>
+                    <li><a href="#themes">Contact</a></li>
                     <li class="navbar-bars">
                         <a href="#"><span class="fa fa-bars fa-lg"></span></a>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-orange navbar-btn">Sign in</button>
+                        <button type="button" class="btn btn-orange navbar-btn">Join now</button>
                     </li>
                 </ul>
             </div>
