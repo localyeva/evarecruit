@@ -22,10 +22,10 @@
 				<div class="row-gap-medium"></div>
 				<div class="row-gap-small"></div>
 				<div class="row">
-					<div class="col-xs-12 col-md-9">
+					<div class="col-xs-12 col-md-10">
 						<p class="stat">BPO (2) <span class="vertical-bar">|</span> Communicator (2) <span class="vertical-bar">|</span> BSE (1) <span class="vertical-bar">|</span> Developer (11)</p>
 					</div>
-					<div class="col-xs-12 col-md-3 pull-right">
+					<div class="col-xs-12 col-md-2 pull-right">
 						<button class="btn btn-block btn-search btn-orange"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i> Tìm kiếm</button>
 					</div>
 				</div>
