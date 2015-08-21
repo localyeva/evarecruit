@@ -56,6 +56,20 @@
 	.no-padding-l;
 	.no-padding-r;
 }
+.btn-blue {
+	background: #0090B0;
+	color: #fff;
+	border: none;
+	&:hover, &:focus, &:active, &:focus:active {
+		color: #fff;
+	}
+	&.large {
+		padding: 20px 50px;
+		font-size: @body-font-size*1.5;
+		.text-bold;
+		text-transform: uppercase;
+	}
+}
 a.black-link {
 	color: black;
 	&:hover, &:focus, &:active, &:focus:active {
@@ -486,15 +500,35 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		border: 1px solid #C4C4C4;
 	}
+}
+.header-top-apply {
+	background: url('../img/new_job/1.png') no-repeat;
+	background-size: cover;
+	color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+#apply {
+	.box {
+		padding: 20px 25px;
+		color: #0090B0;
+		background: #fff;
+		border: 1px solid #ECECEC;
+	}
+	label {
+		text-align: left;
+	}
 	.btn-blue {
-		background: #0090B0;
-		color: #fff;
-		border: none;
-		&.large {
-			padding: 20px 50px;
-			font-size: @body-font-size*1.5;
-			.text-bold;
-			text-transform: uppercase;
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+	.nano {
+		height: 150px;
+		> .nano-pane {
+			background : #0090B0;
+		}
+		.nano-content {
+			padding: 0 0;
 		}
 	}
 }
