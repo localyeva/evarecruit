@@ -572,7 +572,7 @@ get_header();
                                         <img class="img-responsive map-marker" src="<?php echo get_template_directory_uri() ?>/img/32.png" alt="">
                                     </div>
                                     <div class="col-xs-11">
-                                        <h3><a href="javascript:void(0)" class="map-focus" data-lat="<?php echo get_field('z_lat') ?>" data-lng="<?php echo get_field('z_lng') ?>"><?php echo mb_convert_case(get_the_title(), MB_CASE_UPPER) ?></a></h3>
+                                        <h3><a href="javascript:void(0)" class="map-focus black-link" data-lat="<?php echo get_field('z_lat') ?>" data-lng="<?php echo get_field('z_lng') ?>"><?php echo mb_convert_case(get_the_title(), MB_CASE_UPPER) ?></a></h3>
                                         <?php if (have_rows('main_locations')): ?>
                                             <?php while (have_rows('main_locations')): the_row(); ?>
                                                 <?php if (!empty(get_sub_field('main_location'))): ?>
