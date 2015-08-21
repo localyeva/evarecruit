@@ -108,5 +108,49 @@ function add_custom_script() {
         $script .= $theme_options['ct_custom_script'];
     }
 
-    printf($script);
+    echo $script;
 }
+
+/* --------------------------------------------------------------------------- */
+
+function button_shortcode($type) {
+    extract(shortcode_atts(array(
+        'type' => 'type'
+                    ), $type));
+
+    // check what type user entered
+    switch ($type) {
+        case 'twitter':
+            return '<a href="http://twitter.com/filipstefansson" class="twitter-button">Follw me on Twitter!</a>';
+            break;
+        case 'rss':
+            return '<a href="http://example.com/rss" class="rss-button">Subscribe to the feed!</a>';
+            break;
+    }
+}
+
+add_shortcode('button', 'button_shortcode');
+
+function code_shortcode($attr, $content = null) {
+    $content = clean_pre($content); // Clean pre-tags
+    return '<pre"><code>' .
+            str_replace('<', '<', $content) . // Escape < chars
+            '</code></pre>';
+}
+
+add_shortcode('code', 'code_shortcode');
+
+function youtube($atts) {
+    extract(shortcode_atts(array(
+        "value" => 'http://',
+        "width" => '475',
+        "height" => '350',
+        "name" => 'movie',
+        "allowFullScreen" => 'true',
+        "allowScriptAccess" => 'always',
+        "controls" => '1',
+                    ), $atts));
+    return '<object style="height: ' . $height . 'px; width: ' . $width . 'px"><param name="' . $name . '" value="' . $value . '"><param name="allowFullScreen" value="' . $allowFullScreen . '"><param name="allowScriptAccess" value="' . $allowScriptAccess . '"><embed src="' . $value . '" type="application/x-shockwave-flash" allowfullscreen="' . $allowFullScreen . '" allowScriptAccess="' . $allowScriptAccess . '" width="' . $width . '" height="' . $height . '"></object>';
+}
+
+add_shortcode("youtube", "youtube");

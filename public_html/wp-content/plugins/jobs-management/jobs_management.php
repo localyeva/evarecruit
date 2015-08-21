@@ -3,7 +3,7 @@
 /**
   Plugin Name: Jobs Management
   Plugin URI:
-  Description: Jobs Management
+  Description: This plugin allows you mangage jobs through (cpt acf template)
   Version:     1.0
   Author:      Khang LD
   Author URI:
@@ -12,19 +12,27 @@
   Domain Path:
   Text Domain:
  */
+/**
+ * This plugin allows you add cpt acf for jobs management (Exported from CPT UI & Advanced Custom Field)
+ * 
+ * This plugin allows you to include templates with your plugin so that they can
+ * be added with any theme.
+ */
 if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
+require_once 'lib/Twig/Autoloader.php';
+
 class jobs_management {
 
-    protected $pluginPath;
-    protected $pluginUrl;
+    protected $plugin_path;
+    protected $plugin_url;
 
     /**
      * A Unique Identifier
      */
-    protected $plugin_slug = 'jobs-management-plugin';
+    protected $plugin_slug = 'jobs-management';
 
     /**
      * A reference to an instance of this class.
@@ -35,6 +43,7 @@ class jobs_management {
      * The array of templates that this plugin tracks.
      */
     protected $templates;
+    protected $part_templates;
 
     /**
      *
@@ -67,72 +76,55 @@ class jobs_management {
             'templates/jobs.php' => 'Jobs',
         );
 
+        add_shortcode('jobs-part', array($this, 'get_part_of_template'));
 
-//        register_activation_hook(__FILE__, array($this, ''));
+        $this->part_templates = array(
+            'form-list' => 'jobs-form-list.php'
+        );
+
+        add_filter('template_include', array($this, 'register_part_template'));
+
+        // adding support for theme templates to be merged and shown in dropdown
+        $templates = wp_get_theme()->get_page_templates();
+        $templates = array_merge($templates, $this->templates);
+
+        /* === cpt & acf === */
         add_action('init', array($this, 'cptui_register_my_cpts'));
         add_action('init', array($this, 'cptui_register_my_taxes'));
-        add_action('init', array($this, 'getAdminOptions'));
-
-
-        // --------------- test
-        add_action('init', array($this, 'test_template'));
-
         add_action('init', array($this, 'my_register_field_group'));
-
-        add_filter('get_sub_field', array($this, 'test_uppercase'));
     }
 
-    public function test_uppercase($text = '') {
-        if (get_field('main_locations')) {
-            while (has_sub_field('repeater')) {
-//                $text = apply_filters('address', strtoupper($text));
-                $text = '11111111111111111111111' . get_sub_field('address');
-                echo $text . '<br>';
-            }
-        }
-
-        return $text;
-    }
-
-    var $adminOptionsName = "DevloungePluginSeriesAdminOptions";
-
-    function getAdminOptions() {
-        $devloungeAdminOptions = array('show_header' => 'true',
-            'add_content' => 'true',
-            'comment_author' => 'true',
-            'content' => '');
-        $devOptions = get_option($this->adminOptionsName);
-        if (!empty($devOptions)) {
-            foreach ($devOptions as $key => $option)
-                $devloungeAdminOptions[$key] = $option;
-        }
-        update_option($this->adminOptionsName, $devloungeAdminOptions);
-        return $devloungeAdminOptions;
-    }
-
-    function test_template() {
-        return get_template_part('/templates/jobs-form-list', 'page');
-    }
-
+    /**
+     * Retrieves and returns the slug of this plugin. This function should be called on an instance
+     * of the plugin outside of this class.
+     *
+     * @return  string    The plugin's slug used in the locale.
+     * @version	1.0.0
+     * @since	1.0.0
+     */
     public function get_plugin_slug() {
         return $this->plugin_slug;
     }
 
     public function get_plugin_path() {
         // set Plugin Path
-        $this->pluginPath = plugin_dir_path(__FILE__);
-        return $this->pluginPath;
+        $this->plugin_path = plugin_dir_path(__FILE__);
+        return $this->plugin_path;
     }
 
     public function get_plugin_url() {
         // Set plugin Url
-        $this->pluginUrl = WP_PLUGIN_URL . '/' . $this->get_plugin_slug();
-        return $this->pluginUrl;
+        $this->plugin_url = WP_PLUGIN_URL . '/' . $this->get_plugin_slug();
+        return $this->plugin_url;
     }
 
     public function get_widget_slug() {
         return $this->widget_slug;
     }
+
+    /* ---------------------------------------------------------------------------- */
+    /* post type definitions */
+    /* ---------------------------------------------------------------------------- */
 
     public function cptui_register_my_cpts() {
         $labels = array(
@@ -160,6 +152,10 @@ class jobs_management {
         register_post_type("job", $args);
     }
 
+    /* ---------------------------------------------------------------------------- */
+    /* taxonomy definitions */
+    /* ---------------------------------------------------------------------------- */
+
     public function cptui_register_my_taxes() {
         $labels = array(
             "name" => "Job Locations",
@@ -168,7 +164,7 @@ class jobs_management {
 
         $args = array(
             "labels" => $labels,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "label" => "Job Locations",
             "show_ui" => true,
             "query_var" => true,
@@ -184,7 +180,7 @@ class jobs_management {
 
         $args = array(
             "labels" => $labels,
-            "hierarchical" => false,
+            "hierarchical" => true,
             "label" => "Job Positions",
             "show_ui" => true,
             "query_var" => true,
@@ -194,24 +190,28 @@ class jobs_management {
         register_taxonomy("job-position", array("job"), $args);
     }
 
+    /* ---------------------------------------------------------------------------- */
+    /* custom fields definitions */
+    /* ---------------------------------------------------------------------------- */
+
     public function my_register_field_group() {
         if (function_exists("register_field_group")) {
             register_field_group(array(
                 'id' => 'acf_job',
                 'title' => 'Job',
                 'fields' => array(
-                    array(
-                        'key' => 'field_55cb0d1a13787',
-                        'label' => 'Position',
-                        'name' => 'position',
-                        'type' => 'taxonomy',
-                        'taxonomy' => 'job-position',
-                        'field_type' => 'select',
-                        'allow_null' => 0,
-                        'load_save_terms' => 0,
-                        'return_format' => 'id',
-                        'multiple' => 0,
-                    ),
+//                    array(
+//                        'key' => 'field_55cb0d1a13787',
+//                        'label' => 'Position',
+//                        'name' => 'position',
+//                        'type' => 'taxonomy',
+//                        'taxonomy' => 'job-position',
+//                        'field_type' => 'select',
+//                        'allow_null' => 0,
+//                        'load_save_terms' => 0,
+//                        'return_format' => 'id',
+//                        'multiple' => 0,
+//                    ),
                     array(
                         'key' => 'field_55cb0d7913788',
                         'label' => 'Work Level',
@@ -221,6 +221,7 @@ class jobs_management {
                             'Member' => 'Member',
                             'Leader' => 'Leader',
                             'Designer' => 'Designer',
+                            'Supervisor' => 'Supervisor',
                         ),
                         'default_value' => '',
                         'allow_null' => 0,
@@ -238,18 +239,18 @@ class jobs_management {
                         'formatting' => 'html',
                         'maxlength' => '',
                     ),
-                    array(
-                        'key' => 'field_55cb0e611378a',
-                        'label' => 'Location',
-                        'name' => 'location',
-                        'type' => 'taxonomy',
-                        'taxonomy' => 'job-location',
-                        'field_type' => 'select',
-                        'allow_null' => 0,
-                        'load_save_terms' => 0,
-                        'return_format' => 'id',
-                        'multiple' => 0,
-                    ),
+//                    array(
+//                        'key' => 'field_55cb0e611378a',
+//                        'label' => 'Location',
+//                        'name' => 'location',
+//                        'type' => 'taxonomy',
+//                        'taxonomy' => 'job-location',
+//                        'field_type' => 'select',
+//                        'allow_null' => 0,
+//                        'load_save_terms' => 0,
+//                        'return_format' => 'id',
+//                        'multiple' => 0,
+//                    ),
                     array(
                         'key' => 'field_55cb0e7e1378b',
                         'label' => 'Expire Date',
@@ -300,13 +301,23 @@ class jobs_management {
         }
     }
 
+    /**
+     * Adds our template to the pages cache in order to trick WordPress
+     * into thinking the template file exists where it doens't really exist.
+     *
+     * @param   array    $atts    The attributes for the page attributes dropdown
+     * @return  array    $atts    The attributes for the page attributes dropdown
+     * @verison	1.0.0
+     * @since	1.0.0
+     */
     public function register_project_templates($atts) {
         // Create the key used for the themes cache
         $cache_key = 'page_templates-' . md5(get_theme_root() . '/' . get_stylesheet());
 
         // Retrieve the cache list. 
         // If it doesn't exist, or it's empty prepare an array
-        $templates = wp_get_theme()->get_page_templates();
+        // $templates = wp_get_theme()->get_page_templates();
+        $templates = wp_cache_get($cache_key, 'themes');
         if (empty($templates)) {
             $templates = array();
         }
@@ -327,10 +338,18 @@ class jobs_management {
 
     /**
      * Checks if the template is assigned to the page
+     *
+     * @version	1.0.0
+     * @since	1.0.0
      */
     public function view_project_template($template) {
 
         global $post;
+
+        // If no posts found, return to
+        // avoid "Trying to get property of non-object" error
+        if (!isset($post))
+            return $template;
 
         if (!isset($this->templates[get_post_meta($post->ID, '_wp_page_template', true)])) {
 
@@ -344,6 +363,73 @@ class jobs_management {
             return $file;
         } else {
             echo $file;
+        }
+
+        return $template;
+    }
+
+    public function register_part_template($template) {
+        // Post ID
+        $post_id = get_the_ID();
+
+        // For all other CPT
+        if (get_post_type($post_id) != 'job') {
+            return $template;
+        }
+
+        // Else use custom template
+        if (is_single()) {
+            return $this->view_part_template_hierachy('single');
+        } else {
+            return $this->view_part_template($template);
+        }
+    }
+
+    public function view_part_template_hierachy($template) {
+        // Get the tempate slug
+        $template_slug = rtrim($template, '.php');
+        $template = $template_slug . '.php';
+        
+        // Check if a custom template exists in the theme folder, if not, load the plugin template file
+        if ($theme_file = locate_template(array('template/' . $template))){
+            $file = $theme_file;
+        } else {
+//            $file = 
+        }
+    }
+
+    public function view_part_template($template) {
+        
+    }
+
+    public function get_part_of_template($type) {
+        extract(shortcode_atts(array(
+            'type' => 'type'
+                        ), $type));
+        //
+        Twig_Autoloader::register();
+
+        $loader = new Twig_Loader_Filesystem($this->get_plugin_path() . 'templates');
+
+        $twig = new Twig_Environment($loader);
+
+        $template = '';
+
+        switch ($type) {
+            case 'form-list':
+                $load = $twig->loadTemplate($this->part_templates['form-list']);
+
+                // get Terms
+                $args = array(
+                    'orderby' => 'count',
+                    'hide_empty' => 0
+                );
+                $terms = get_terms('job-position', $args);
+
+                print_r($terms);
+
+                $template = $load->render(array());
+                break;
         }
 
         return $template;
