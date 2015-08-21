@@ -18,13 +18,15 @@ function assetSrc($file)
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.1/isotope.pkgd.js"></script>
     </head>
-    <body id="detail-staff">
+    <body>
     	<?php include('./_common/navbar.php'); ?>
-    	<?php include('./_home/banner.php'); ?>
-        <?php include('./_detail_staff/our_thoughts.php'); ?>
-    	<?php include('./_detail_staff/featured_photos.php'); ?>
-        <?php include('./_home/map.php'); ?>
-        <?php include('./_home/info.php'); ?>
+        <div id="detail-staff">
+        	<?php include('./_home/banner.php'); ?>
+            <?php include('./_detail_staff/our_thoughts.php'); ?>
+        	<?php include('./_detail_staff/featured_photos.php'); ?>
+            <?php include('./_home/map.php'); ?>
+            <?php include('./_home/info.php'); ?>
+        </div>
         <?php include('./_home/footer.php'); ?>
         <script>
             $('#responsive-menu-button').sidr({

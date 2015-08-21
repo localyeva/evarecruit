@@ -383,9 +383,13 @@ h1, h2, h3, h4, h5, h6 {
 			padding: 30px 20px;
 			border-bottom: 1px dotted #000;
 			.title {
-				color: #FF3232;
 				.text-bold;
 				font-size: @body-font-size*1.2;
+			}
+			&.hot {
+				.title {
+					color: #FF3232;
+				}
 			}
 			.text-blue {
 				color: #0A93B2;
@@ -427,6 +431,9 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	.glyphicon-menu-right:first-child {
 		margin-right: -7px;
+	}
+	.nano {
+		height: 1000px;
 	}
 }
 @import 'screen-xs.less';

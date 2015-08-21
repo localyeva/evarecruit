@@ -17,16 +17,23 @@ function assetSrc($file)
         <link rel="stylesheet" href="<?php assetSrc('css/style.css'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
-    <body id="new-jobs">
+    <body>
         <?php include('./_home/navbar.php'); ?>
-        <?php include('./_new_jobs/search_bar.php'); ?>
-    	<?php include('./_new_jobs/job_list.php'); ?>
-        <?php include('./_new_jobs/pagination.php'); ?>
+        <div id="new-jobs">
+            <?php include('./_new_jobs/search_bar.php'); ?>
+        	<?php include('./_new_jobs/job_list.php'); ?>
+            <?php include('./_new_jobs/pagination.php'); ?>
+        </div>
         <script>
             $('#responsive-menu-button').sidr({
                 name: 'sidr-main',
                 source: '#navigation'
             });
         </script>
+        <style type="text/css">
+            .navbar li:last-child {
+                display: none;
+            }
+        </style>
     </body>
 </html>
