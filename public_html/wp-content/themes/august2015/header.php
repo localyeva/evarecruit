@@ -53,16 +53,16 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Team</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li class="navbar-bars">
+                            <li><a href="<?php echo bloginfo('url') ?>">Home</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/services">Services</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/about">About</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/contact">Contact</a></li>
+<!--                            <li class="navbar-bars">
                                 <a href="javascript:void(0)"><span class="fa fa-bars fa-lg"></span></a>
-                            </li>
+                            </li>-->
                             <li>
-                                <button type="button" class="btn btn-orange navbar-btn">Sign in</button>
+                                <a href="<?php echo bloginfo('url') ?>/jobs"><button type="button" class="btn btn-orange navbar-btn">Join Us Now</button></a>
                             </li>
                         </ul>
                     </div>

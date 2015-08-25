@@ -58,6 +58,10 @@ function scripts() {
     if (is_page('contact')) {
         wp_enqueue_script('js-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', array(), '1.14.0', TRUE);
     }
+    
+    if (is_home()){
+        wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
+    }
 
     //
     global $map_data;
