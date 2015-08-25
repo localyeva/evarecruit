@@ -41,7 +41,7 @@ function theme_customize_register_global_service($wp_customize) {
 add_action('customize_register', 'theme_customize_register_global_service');
 
 //css generate
-function generate_css() {
+function generate_global_service_css() {
     ?>
     <style>
         .keyvisual.index{
@@ -51,7 +51,7 @@ function generate_css() {
     <?php
 }
 
-add_action('wp_head', 'generate_css');
+add_action('wp_head', 'generate_global_service_css');
 
 /* TOP */
 
