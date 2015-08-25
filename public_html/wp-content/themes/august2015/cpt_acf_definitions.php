@@ -64,28 +64,50 @@ function cptui_register_my_cpts() {
     register_post_type("work-environment", $args);
 
 //    $labels = array(
-//        "name" => "Jobs",
-//        "singular_name" => "Job",
+//        "name" => "Our Mission",
+//        "singular_name" => "Our Mission",
 //    );
-//
 //    $args = array(
 //        "labels" => $labels,
 //        "description" => "",
 //        "public" => true,
 //        "show_ui" => true,
-//        "has_archive" => true,
+//        "has_archive" => false,
 //        "show_in_menu" => true,
 //        "exclude_from_search" => false,
 //        "capability_type" => "post",
 //        "map_meta_cap" => true,
 //        "hierarchical" => false,
-//        "rewrite" => array("slug" => "job", "with_front" => true),
+//        "rewrite" => array("slug" => "our-mission", "with_front" => true),
 //        "query_var" => true,
-//        "menu_position" => 28,
-//        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h3.png',
 //        "supports" => array("title"),
 //    );
-//    register_post_type("job", $args);
+//    register_post_type("our-mission", $args);
+
+
+    $labels = array(
+        "name" => "Global Service",
+        "singular_name" => "Global Service",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "global-service", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 28,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h3.png',
+        "supports" => array("title"),
+    );
+    register_post_type("global-service", $args);
 
     $labels = array(
         "name" => "Stay Connected",
@@ -106,10 +128,82 @@ function cptui_register_my_cpts() {
         "rewrite" => array("slug" => "stay-connected", "with_front" => true),
         "query_var" => true,
         "menu_position" => 29,
-        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h3.png',
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h4.png',
         "supports" => array("title"),
     );
     register_post_type("stay-connected", $args);
+
+    $labels = array(
+        "name" => "Staffs",
+        "singular_name" => "Staff",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "staff", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 30,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h5.png',
+        "supports" => array("title"),
+    );
+    register_post_type("staff", $args);
+
+    $labels = array(
+        "name" => "Slider Environment",
+        "singular_name" => "Slider Environment",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "slider-evnironment", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 31,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h6.png',
+        "supports" => array("title"),
+    );
+    register_post_type("slider-evnironment", $args);
+
+    $labels = array(
+        "name" => "About Us",
+        "singular_name" => "About Us",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "about-us", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 32,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h7.png',
+        "supports" => array("title"),
+    );
+    register_post_type("about-us", $args);
 
 // End of cptui_register_my_cpts()
 }
@@ -136,39 +230,6 @@ function cptui_register_my_taxes() {
         "show_admin_column" => false,
     );
     register_taxonomy("cat-work-environment", array("work-environment"), $args);
-
-//    $labels = array(
-//        "name" => "Job Locations",
-//        "label" => "Job Locations",
-//    );
-//
-//    $args = array(
-//        "labels" => $labels,
-//        "hierarchical" => false,
-//        "label" => "Job Locations",
-//        "show_ui" => true,
-//        "query_var" => true,
-//        "rewrite" => array('slug' => 'job-location', 'with_front' => true),
-//        "show_admin_column" => false,
-//    );
-//    register_taxonomy("job-location", array("job"), $args);
-//
-//
-//    $labels = array(
-//        "name" => "Job Positions",
-//        "label" => "Job Positions",
-//    );
-//
-//    $args = array(
-//        "labels" => $labels,
-//        "hierarchical" => false,
-//        "label" => "Job Positions",
-//        "show_ui" => true,
-//        "query_var" => true,
-//        "rewrite" => array('slug' => 'job-position', 'with_front' => true),
-//        "show_admin_column" => false,
-//    );
-//    register_taxonomy("job-position", array("job"), $args);
 
 // End cptui_register_my_taxes
 }
@@ -280,81 +341,33 @@ if (function_exists("register_field_group")) {
     ));
 
 //    register_field_group(array(
-//        'id' => 'acf_job',
-//        'title' => 'Job',
+//        'id' => 'acf_our-mission',
+//        'title' => 'Our Mission',
 //        'fields' => array(
 //            array(
-//                'key' => 'field_55cb0d1a13787',
-//                'label' => 'Position',
-//                'name' => 'position',
-//                'type' => 'taxonomy',
-//                'taxonomy' => 'job-position',
-//                'field_type' => 'select',
-//                'allow_null' => 0,
-//                'load_save_terms' => 0,
-//                'return_format' => 'id',
-//                'multiple' => 0,
+//                'key' => 'field_55dc24a111aed',
+//                'label' => 'Image',
+//                'name' => 'image',
+//                'type' => 'image',
+//                'save_format' => 'url',
+//                'preview_size' => 'thumbnail',
+//                'library' => 'all',
 //            ),
 //            array(
-//                'key' => 'field_55cb0d7913788',
-//                'label' => 'Work Level',
-//                'name' => 'work_level',
-//                'type' => 'select',
-//                'choices' => array(
-//                    'Member' => 'Member',
-//                    'Leader' => 'Leader',
-//                    'Designer' => 'Designer',
-//                ),
-//                'default_value' => '',
-//                'allow_null' => 0,
-//                'multiple' => 0,
-//            ),
-//            array(
-//                'key' => 'field_55cb0e2713789',
-//                'label' => 'Salary',
-//                'name' => 'salary',
-//                'type' => 'text',
+//                'key' => 'field_55dc24eb11aee',
+//                'label' => 'Short Description',
+//                'name' => 'short_description',
+//                'type' => 'textarea',
 //                'default_value' => '',
 //                'placeholder' => '',
-//                'prepend' => '',
-//                'append' => '',
-//                'formatting' => 'html',
 //                'maxlength' => '',
+//                'rows' => '',
+//                'formatting' => 'br',
 //            ),
 //            array(
-//                'key' => 'field_55cb0e611378a',
-//                'label' => 'Location',
-//                'name' => 'location',
-//                'type' => 'taxonomy',
-//                'taxonomy' => 'job-location',
-//                'field_type' => 'select',
-//                'allow_null' => 0,
-//                'load_save_terms' => 0,
-//                'return_format' => 'id',
-//                'multiple' => 0,
-//            ),
-//            array(
-//                'key' => 'field_55cb0e7e1378b',
-//                'label' => 'Expire Date',
-//                'name' => 'expire_date',
-//                'type' => 'date_picker',
-//                'date_format' => 'yyyy-mm-dd',
-//                'display_format' => 'dd/mm/yy',
-//                'first_day' => 1,
-//            ),
-//            array(
-//                'key' => 'field_55cb0ed21378c',
-//                'label' => 'Job Description',
-//                'name' => 'job_description',
-//                'type' => 'wysiwyg',
-//                'default_value' => '',
-//                'toolbar' => 'full',
-//                'media_upload' => 'yes',
-//            ),
-//            array(
-//                'key' => 'field_55cb0ee71378d',
-//                'label' => 'Job Requirement',
-//                'name' => 'job_requirement',
+//                'key' => 'field_55dc250a11aef',
+//                'label' => 'Content',
+//                'name' => 'content',
 //                'type' => 'wysiwyg',
 //                'default_value' => '',
 //                'toolbar' => 'full',
@@ -366,7 +379,7 @@ if (function_exists("register_field_group")) {
 //                array(
 //                    'param' => 'post_type',
 //                    'operator' => '==',
-//                    'value' => 'job',
+//                    'value' => 'our-mission',
 //                    'order_no' => 0,
 //                    'group_no' => 0,
 //                ),
@@ -380,6 +393,60 @@ if (function_exists("register_field_group")) {
 //        ),
 //        'menu_order' => 0,
 //    ));
+
+    register_field_group(array(
+        'id' => 'acf_global-service',
+        'title' => 'Global Service',
+        'fields' => array(
+            array(
+                'key' => 'field_55dc24a111aed',
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'image',
+                'save_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_55dc24eb11aee',
+                'label' => 'Short Description',
+                'name' => 'short_description',
+                'type' => 'textarea',
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'formatting' => 'br',
+            ),
+            array(
+                'key' => 'field_55dc250a11aef',
+                'label' => 'Content',
+                'name' => 'content',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'global-service',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
 
     register_field_group(array(
         'id' => 'acf_stay-connected',
@@ -480,6 +547,246 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'stay-connected',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_staff',
+        'title' => 'Staff',
+        'fields' => array(
+            array(
+                'key' => 'field_55dc25b87a38d',
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'image',
+                'save_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_55dc25cf7a38e',
+                'label' => 'Position',
+                'name' => 'position',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_55dc27feb2d9a',
+                'label' => 'Job Description',
+                'name' => 'job_description',
+                'type' => 'textarea',
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'formatting' => 'br',
+            ),
+            array(
+                'key' => 'field_55dc25e97a38f',
+                'label' => 'Staff Thoughts',
+                'name' => 'staff_thoughts',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array(
+                'key' => 'field_55dc26967a390',
+                'label' => 'Activity',
+                'name' => 'activity',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_55dc27277a391',
+                'label' => 'Activity Images',
+                'name' => 'activity_images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_55dc27547a392',
+                        'label' => 'Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'column_width' => '',
+                        'save_format' => 'url',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ),
+                    array(
+                        'key' => 'field_55dc27717a393',
+                        'label' => 'Caption',
+                        'name' => 'caption',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'none',
+                        'maxlength' => '',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'staff',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_slider-environment',
+        'title' => 'Slider Environment',
+        'fields' => array(
+            array(
+                'key' => 'field_55dc2963451c0',
+                'label' => 'Images',
+                'name' => 'images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_55dc2980451c1',
+                        'label' => 'Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'column_width' => '',
+                        'save_format' => 'url',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'slider-evnironment',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_about-us',
+        'title' => 'About Us',
+        'fields' => array(
+            array(
+                'key' => 'field_55dc2d7d819bd',
+                'label' => 'Image Chart',
+                'name' => 'image_chart',
+                'type' => 'image',
+                'save_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_55dc2d90819be',
+                'label' => 'Content',
+                'name' => 'content',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array(
+                'key' => 'field_55dc2eff819bf',
+                'label' => 'Process',
+                'name' => 'process',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_55dc2f24819c0',
+                        'label' => 'Stage',
+                        'name' => 'stage',
+                        'type' => 'text',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'prepend' => '',
+                        'append' => '',
+                        'formatting' => 'none',
+                        'maxlength' => '',
+                    ),
+                    array(
+                        'key' => 'field_55dc2f43819c1',
+                        'label' => 'Description',
+                        'name' => 'description',
+                        'type' => 'textarea',
+                        'column_width' => '',
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                        'rows' => '',
+                        'formatting' => 'br',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'about-us',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
