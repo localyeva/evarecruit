@@ -7,7 +7,7 @@
  */
 
 include_once (dirname(__FILE__) . '/MyThemeOptions.php');
-//include_once (dirname(__FILE__) . '/MyFunctions.php');
+include_once (dirname(__FILE__) . '/MyFunctions.php');
 include_once (dirname(__FILE__) . '/MyTheme_Customize.php');
 include_once(dirname(__FILE__) . '/cpt_acf_definitions.php');
 
@@ -154,3 +154,18 @@ function youtube($atts) {
 }
 
 add_shortcode("youtube", "youtube");
+
+
+//add_filter( 'template_include', 'test_page_template', 99 );
+//
+//function test_page_template( $template ) {
+//
+//	if ( is_page( 'jobs' )  ) {
+//		$new_template = locate_template( array( 'test-template.php' ) );
+//		if ( '' != $new_template ) {
+//			return $new_template ;
+//		}
+//	}
+//
+//	return $template;
+//}

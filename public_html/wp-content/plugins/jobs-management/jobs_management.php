@@ -22,9 +22,47 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-require_once 'lib/Twig/Autoloader.php';
 
-class jobs_management {
+require_once 'lib/includes/jobs_cpt_acf_settings.php';
+require_once 'lib/class-gamajo-template-loader.php';
+
+/**
+ * Template loader for Plugin.
+ *
+ * Only need to specify class properties here.
+ *
+ */
+define('PW_SAMPLE_PLUGIN_DIR', plugin_dir_path(__FILE__));
+
+class PW_Template_Loader extends Gamajo_Template_Loader {
+
+    /**
+     * Prefix for filter names.
+     *
+     * @since 1.0.0
+     * @type string
+     */
+    protected $filter_prefix = 'pw';
+
+    /**
+     * Directory name where custom templates for this plugin should be found in the theme.
+     *
+     * @since 1.0.0
+     * @type string
+     */
+    protected $theme_template_directory = 'templates';
+
+    /**
+     * Reference to the root directory path of this plugin.
+     *
+     * @since 1.0.0
+     * @type string
+     */
+    protected $plugin_directory = PW_SAMPLE_PLUGIN_DIR;
+
+}
+
+class jobs_management extends PW_Template_Loader {
 
     protected $plugin_path;
     protected $plugin_url;
@@ -76,22 +114,8 @@ class jobs_management {
             'templates/jobs.php' => 'Jobs',
         );
 
+        // Add short code
         add_shortcode('jobs-part', array($this, 'get_part_of_template'));
-
-        $this->part_templates = array(
-            'form-list' => 'jobs-form-list.php'
-        );
-
-        add_filter('template_include', array($this, 'register_part_template'));
-
-        // adding support for theme templates to be merged and shown in dropdown
-        $templates = wp_get_theme()->get_page_templates();
-        $templates = array_merge($templates, $this->templates);
-
-        /* === cpt & acf === */
-        add_action('init', array($this, 'cptui_register_my_cpts'));
-        add_action('init', array($this, 'cptui_register_my_taxes'));
-        add_action('init', array($this, 'my_register_field_group'));
     }
 
     /**
@@ -120,185 +144,6 @@ class jobs_management {
 
     public function get_widget_slug() {
         return $this->widget_slug;
-    }
-
-    /* ---------------------------------------------------------------------------- */
-    /* post type definitions */
-    /* ---------------------------------------------------------------------------- */
-
-    public function cptui_register_my_cpts() {
-        $labels = array(
-            "name" => "Jobs",
-            "singular_name" => "Job",
-        );
-
-        $args = array(
-            "labels" => $labels,
-            "description" => "",
-            "public" => true,
-            "show_ui" => true,
-            "has_archive" => true,
-            "show_in_menu" => true,
-            "exclude_from_search" => false,
-            "capability_type" => "post",
-            "map_meta_cap" => true,
-            "hierarchical" => false,
-            "rewrite" => array("slug" => "job", "with_front" => true),
-            "query_var" => true,
-            "menu_position" => 28,
-            "menu_icon" => plugins_url('images/ad-ico/h3.png', __FILE__),
-            "supports" => array("title"),
-        );
-        register_post_type("job", $args);
-    }
-
-    /* ---------------------------------------------------------------------------- */
-    /* taxonomy definitions */
-    /* ---------------------------------------------------------------------------- */
-
-    public function cptui_register_my_taxes() {
-        $labels = array(
-            "name" => "Job Locations",
-            "label" => "Job Locations",
-        );
-
-        $args = array(
-            "labels" => $labels,
-            "hierarchical" => true,
-            "label" => "Job Locations",
-            "show_ui" => true,
-            "query_var" => true,
-            "rewrite" => array('slug' => 'job-location', 'with_front' => true),
-            "show_admin_column" => false,
-        );
-        register_taxonomy("job-location", array("job"), $args);
-
-        $labels = array(
-            "name" => "Job Positions",
-            "label" => "Job Positions",
-        );
-
-        $args = array(
-            "labels" => $labels,
-            "hierarchical" => true,
-            "label" => "Job Positions",
-            "show_ui" => true,
-            "query_var" => true,
-            "rewrite" => array('slug' => 'job-position', 'with_front' => true),
-            "show_admin_column" => false,
-        );
-        register_taxonomy("job-position", array("job"), $args);
-    }
-
-    /* ---------------------------------------------------------------------------- */
-    /* custom fields definitions */
-    /* ---------------------------------------------------------------------------- */
-
-    public function my_register_field_group() {
-        if (function_exists("register_field_group")) {
-            register_field_group(array(
-                'id' => 'acf_job',
-                'title' => 'Job',
-                'fields' => array(
-//                    array(
-//                        'key' => 'field_55cb0d1a13787',
-//                        'label' => 'Position',
-//                        'name' => 'position',
-//                        'type' => 'taxonomy',
-//                        'taxonomy' => 'job-position',
-//                        'field_type' => 'select',
-//                        'allow_null' => 0,
-//                        'load_save_terms' => 0,
-//                        'return_format' => 'id',
-//                        'multiple' => 0,
-//                    ),
-                    array(
-                        'key' => 'field_55cb0d7913788',
-                        'label' => 'Work Level',
-                        'name' => 'work_level',
-                        'type' => 'select',
-                        'choices' => array(
-                            'Member' => 'Member',
-                            'Leader' => 'Leader',
-                            'Designer' => 'Designer',
-                            'Supervisor' => 'Supervisor',
-                        ),
-                        'default_value' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                    ),
-                    array(
-                        'key' => 'field_55cb0e2713789',
-                        'label' => 'Salary',
-                        'name' => 'salary',
-                        'type' => 'text',
-                        'default_value' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'formatting' => 'html',
-                        'maxlength' => '',
-                    ),
-//                    array(
-//                        'key' => 'field_55cb0e611378a',
-//                        'label' => 'Location',
-//                        'name' => 'location',
-//                        'type' => 'taxonomy',
-//                        'taxonomy' => 'job-location',
-//                        'field_type' => 'select',
-//                        'allow_null' => 0,
-//                        'load_save_terms' => 0,
-//                        'return_format' => 'id',
-//                        'multiple' => 0,
-//                    ),
-                    array(
-                        'key' => 'field_55cb0e7e1378b',
-                        'label' => 'Expire Date',
-                        'name' => 'expire_date',
-                        'type' => 'date_picker',
-                        'date_format' => 'yyyy-mm-dd',
-                        'display_format' => 'dd/mm/yy',
-                        'first_day' => 1,
-                    ),
-                    array(
-                        'key' => 'field_55cb0ed21378c',
-                        'label' => 'Job Description',
-                        'name' => 'job_description',
-                        'type' => 'wysiwyg',
-                        'default_value' => '',
-                        'toolbar' => 'full',
-                        'media_upload' => 'yes',
-                    ),
-                    array(
-                        'key' => 'field_55cb0ee71378d',
-                        'label' => 'Job Requirement',
-                        'name' => 'job_requirement',
-                        'type' => 'wysiwyg',
-                        'default_value' => '',
-                        'toolbar' => 'full',
-                        'media_upload' => 'yes',
-                    ),
-                ),
-                'location' => array(
-                    array(
-                        array(
-                            'param' => 'post_type',
-                            'operator' => '==',
-                            'value' => 'job',
-                            'order_no' => 0,
-                            'group_no' => 0,
-                        ),
-                    ),
-                ),
-                'options' => array(
-                    'position' => 'normal',
-                    'layout' => 'no_box',
-                    'hide_on_screen' => array(
-                    ),
-                ),
-                'menu_order' => 0,
-            ));
-        }
     }
 
     /**
@@ -368,71 +213,27 @@ class jobs_management {
         return $template;
     }
 
-    public function register_part_template($template) {
-        // Post ID
-        $post_id = get_the_ID();
-
-        // For all other CPT
-        if (get_post_type($post_id) != 'job') {
-            return $template;
-        }
-
-        // Else use custom template
-        if (is_single()) {
-            return $this->view_part_template_hierachy('single');
-        } else {
-            return $this->view_part_template($template);
-        }
-    }
-
-    public function view_part_template_hierachy($template) {
-        // Get the tempate slug
-        $template_slug = rtrim($template, '.php');
-        $template = $template_slug . '.php';
-        
-        // Check if a custom template exists in the theme folder, if not, load the plugin template file
-        if ($theme_file = locate_template(array('template/' . $template))){
-            $file = $theme_file;
-        } else {
-//            $file = 
-        }
-    }
-
-    public function view_part_template($template) {
-        
-    }
-
+    /**
+     * Add Short Code
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
     public function get_part_of_template($type) {
         extract(shortcode_atts(array(
             'type' => 'type'
                         ), $type));
         //
-        Twig_Autoloader::register();
-
-        $loader = new Twig_Loader_Filesystem($this->get_plugin_path() . 'templates');
-
-        $twig = new Twig_Environment($loader);
-
-        $template = '';
+        ob_start();
+        $template = new PW_Template_Loader();
 
         switch ($type) {
             case 'form-list':
-                $load = $twig->loadTemplate($this->part_templates['form-list']);
-
-                // get Terms
-                $args = array(
-                    'orderby' => 'count',
-                    'hide_empty' => 0
-                );
-                $terms = get_terms('job-position', $args);
-
-                print_r($terms);
-
-                $template = $load->render(array());
+                $template->get_template_part('jobs-form-list');
                 break;
         }
 
-        return $template;
+        return ob_get_clean();
     }
 
 }

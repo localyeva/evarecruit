@@ -385,10 +385,11 @@ get_header();
     </div>
 </div>
 <!--//CEO Message End-->
+
 <!--//Job List-->
 <?php echo do_shortcode('[jobs-part type="form-list"]') ?>
-
 <!--//Job List End-->
+
 <!--//Map-->
 <div class="header-map">
     <div class="container-fluid">

@@ -27,13 +27,34 @@ if (!defined('ABSPATH')) {
                     </div>
                     <div class="form-group">
                         <div class="col-xs-3">
-                            <select name="position" class="form-control">
-                                <option value="">Vị trí</option>
+                            <?php
+                            $args = array(
+                                'orderby' => 'count',
+                                'hide_empty' => 0
+                            );
+                            $positions = get_terms('job-position', $args);
+                            ?>
+                            <select name = "position" class = "form-control">
+                                <option value="">-- Select Position --</option>
+                                <?php foreach ($positions as $position): ?>
+                                    <option value="<?php echo $position->term_id ?>"><?php echo $position->name ?></option>
+                                <?php endforeach; ?>
                             </select>
+
                         </div>
                         <div class="col-xs-3">
-                            <select name="position" class="form-control">
-                                <option value="">Địa điểm</option>
+                            <?php
+                            $args = array(
+                                'orderby' => 'count',
+                                'hide_empty' => 0
+                            );
+                            $locations = get_terms('job-location', $args);
+                            ?>
+                            <select name="location" class="form-control">
+                                <option value="">-- Select Location --</option>
+                                <?php foreach ($locations as $location): ?>
+                                <option value="<?php echo $location->term_id ?>"><?php echo $location->name ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -49,6 +70,17 @@ if (!defined('ABSPATH')) {
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="item-list nano">
+                            <!--                            <div class="nano-content">
+                                                            {% for post in posts %}
+                                                            <div class="row item" data-postid="{{ post.ID }}">
+                                                                <div class="col-xs-1 status {{ post.status }} "></div>
+                                                                <div class="col-xs-6">
+                                                                    <div class="title">{{ post.title }}</div>
+                                                                    <div class="text-muted"></div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>-->
                             <div class="nano-content">
                                 <div class="row item">
                                     <div class="col-xs-1 status">NEW</div>
