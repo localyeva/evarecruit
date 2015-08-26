@@ -53,10 +53,17 @@
                         <a href="#"><span class="fa fa-bars fa-lg"></span></a>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-orange navbar-btn">Sign in</button>
+                        <button data-url="/login.php" type="button" class="btn btn-orange navbar-btn">Join Us Now</button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#navigation li button.navbar-btn').click(function () {
+            location.href = $(this).data('url');
+        });
+    })
+</script>

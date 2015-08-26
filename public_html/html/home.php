@@ -18,7 +18,7 @@ function assetSrc($file)
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body>
-    	<?php include('./_home/navbar.php'); ?>
+    	<?php include('./_common/navbar.php'); ?>
         <div id="home">
         	<?php include('./_home/banner.php'); ?>
             <?php include('./_home/join.php'); ?>
