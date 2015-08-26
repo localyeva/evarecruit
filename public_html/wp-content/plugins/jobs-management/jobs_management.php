@@ -173,7 +173,6 @@ class jobs_management extends PW_Template_Loader {
         // Retrieve the cache list. 
         // If it doesn't exist, or it's empty prepare an array
         $templates = wp_get_theme()->get_page_templates();
-//        $templates = wp_cache_get($cache_key, 'themes');
         if (empty($templates)) {
             $templates = array();
         }
@@ -314,9 +313,10 @@ class jobs_management extends PW_Template_Loader {
             'post_title' => 'Jobs',
             'post_status' => 'publish',
             'post_type' => 'page',
+            'post_parent' => 0,
             'page_template' => 'templates/jobs.php',
         );
-        $this->create_page_if_null($post_job);
+        $page_id = $this->create_page_if_null($post_job);
 
         // Search Page
         // jobs/search
@@ -325,7 +325,8 @@ class jobs_management extends PW_Template_Loader {
             'post_title' => 'Search',
             'post_status' => 'publish',
             'post_type' => 'page',
-            'post_category' => 'jobs',
+            'post_parent' => 1,
+            'post_category' => array($page_id),
             'page_template' => 'templates/jobs-search.php',
         );
         $this->create_page_if_null($post_job_search);
