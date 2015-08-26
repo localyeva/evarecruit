@@ -41,7 +41,6 @@ class jobs_cpt_acf_settings {
             "rewrite" => array("slug" => "job", "with_front" => true),
             "query_var" => true,
             "menu_position" => 26,
-//            "menu_icon" => plugins_url('images/ad-ico/h3.png', dirname(__FILE__)),
             "menu_icon" => WP_PLUGIN_URL . '/jobs-management/images/ad-ico/h16.png',
             "supports" => array("title"),
         );

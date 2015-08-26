@@ -71,6 +71,7 @@ class jobs_management extends PW_Template_Loader {
      * A Unique Identifier
      */
     protected $plugin_slug = 'jobs-management';
+    protected $plugin_template = 'templates';
 
     /**
      * A reference to an instance of this class.
@@ -116,6 +117,9 @@ class jobs_management extends PW_Template_Loader {
 
         // Add short code
         add_shortcode('jobs-part', array($this, 'get_part_of_template'));
+
+        add_filter('archive_template', array($this, 'get_custom_post_type_archive_template'));
+        add_filter('single_template', array($this, 'get_custom_post_type_single_template'));
     }
 
     /**
@@ -134,6 +138,10 @@ class jobs_management extends PW_Template_Loader {
         // set Plugin Path
         $this->plugin_path = plugin_dir_path(__FILE__);
         return $this->plugin_path;
+    }
+    
+    public function get_plugin_template_path(){
+        return $this->get_plugin_path() . '/' . $this->plugin_template . '/';
     }
 
     public function get_plugin_url() {
@@ -234,6 +242,36 @@ class jobs_management extends PW_Template_Loader {
         }
 
         return ob_get_clean();
+    }
+
+    /**
+     * Register archive template
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
+    function get_custom_post_type_archive_template($archive_template) {
+        global $wp_query, $post;
+
+        if (is_post_type_archive('job')) {
+            $archive_template = $this->get_plugin_path() . 'archive-job.php';
+        }
+        return $archive_template;
+    }
+
+    /**
+     * Register archive template
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
+    function get_custom_post_type_single_template($single_template) {
+        global $wp_query, $post;
+
+        if ($post->post_type == 'job') {
+            $single_template = $this->get_plugin_template_path() . 'single-job.php';
+        }
+        return $single_template;
     }
 
 }

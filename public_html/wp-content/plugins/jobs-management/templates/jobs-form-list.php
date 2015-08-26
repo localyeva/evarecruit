@@ -101,7 +101,8 @@ if (!defined('ABSPATH')) {
                                                         <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                                                     </div>
                                                     <div class="info">
-                                                        <span class="localtion">Ho Chi Minh</span> | <span class="level"><?php echo get_field('work_level') ?></span>
+                                                        <?php $term = get_the_terms($post->ID, 'job-location'); ?>
+                                                        <span class="localtion"><?php echo $term[0]->name ?></span> | <span class="level"><?php echo get_field('work_level') ?></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3">
