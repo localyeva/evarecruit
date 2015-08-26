@@ -1,3 +1,4 @@
+/*------------------------------------------------------------------ Scroll To*/
 jQuery.fn.extend(
         {
             scrollTo: function (speed, easing)
@@ -10,10 +11,19 @@ jQuery.fn.extend(
             }
         });
 
+/*---------------------------------------------------------------- Nano Scroll*/
 $(function () {
     $(".nano").nanoScroller();
 });
 
+/*------------------------------------------------------------- Top Nav Button*/
+$(function () {
+    $('#navigation li button.navbar-btn').click(function () {
+        location.href = $(this).data('url');
+    });
+});
+
+/*-------------------------------------------------------------------- Gallery*/
 $(function (e) {
     $('.gallery').fadeOut();
     $('.header-environment ul.nav-pills li').click(function (e) {
@@ -27,6 +37,7 @@ $(function (e) {
     $('.header-environment ul.nav-pills li:first-child').trigger('click');
 });
 
+/*----------------------------------------------------------------- Google Map*/
 $(function () {
     //
     var map_data = $.parseJSON(vars.map_data);
@@ -51,7 +62,7 @@ $(function () {
 
         drop();
 
-        $('.map-marker').on('click', function(){
+        $('.map-marker').on('click', function () {
             map.setCenter(center);
             map.setZoom(5);
         });

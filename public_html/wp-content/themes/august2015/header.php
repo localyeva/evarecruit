@@ -62,7 +62,7 @@
                                 <a href="javascript:void(0)"><span class="fa fa-bars fa-lg"></span></a>
                             </li>-->
                             <li>
-                                <a href="<?php echo bloginfo('url') ?>/jobs"><button type="button" class="btn btn-orange navbar-btn">Join Us Now</button></a>
+                                <button data-url="<?php echo bloginfo('url') ?>/jobs" type="button" class="btn btn-orange navbar-btn">Join Us Now</button>
                             </li>
                         </ul>
                     </div>
