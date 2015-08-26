@@ -49,7 +49,7 @@ function cptui_register_my_cpts() {
         "description" => "",
         "public" => true,
         "show_ui" => true,
-        "has_archive" => false,
+        "has_archive" => true,
         "show_in_menu" => true,
         "exclude_from_search" => false,
         "capability_type" => "post",
