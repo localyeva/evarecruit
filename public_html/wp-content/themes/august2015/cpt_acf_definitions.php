@@ -63,28 +63,6 @@ function cptui_register_my_cpts() {
     );
     register_post_type("work-environment", $args);
 
-//    $labels = array(
-//        "name" => "Our Mission",
-//        "singular_name" => "Our Mission",
-//    );
-//    $args = array(
-//        "labels" => $labels,
-//        "description" => "",
-//        "public" => true,
-//        "show_ui" => true,
-//        "has_archive" => false,
-//        "show_in_menu" => true,
-//        "exclude_from_search" => false,
-//        "capability_type" => "post",
-//        "map_meta_cap" => true,
-//        "hierarchical" => false,
-//        "rewrite" => array("slug" => "our-mission", "with_front" => true),
-//        "query_var" => true,
-//        "supports" => array("title"),
-//    );
-//    register_post_type("our-mission", $args);
-
-
     $labels = array(
         "name" => "Global Service",
         "singular_name" => "Global Service",
@@ -339,60 +317,6 @@ if (function_exists("register_field_group")) {
         ),
         'menu_order' => 0,
     ));
-
-//    register_field_group(array(
-//        'id' => 'acf_our-mission',
-//        'title' => 'Our Mission',
-//        'fields' => array(
-//            array(
-//                'key' => 'field_55dc24a111aed',
-//                'label' => 'Image',
-//                'name' => 'image',
-//                'type' => 'image',
-//                'save_format' => 'url',
-//                'preview_size' => 'thumbnail',
-//                'library' => 'all',
-//            ),
-//            array(
-//                'key' => 'field_55dc24eb11aee',
-//                'label' => 'Short Description',
-//                'name' => 'short_description',
-//                'type' => 'textarea',
-//                'default_value' => '',
-//                'placeholder' => '',
-//                'maxlength' => '',
-//                'rows' => '',
-//                'formatting' => 'br',
-//            ),
-//            array(
-//                'key' => 'field_55dc250a11aef',
-//                'label' => 'Content',
-//                'name' => 'content',
-//                'type' => 'wysiwyg',
-//                'default_value' => '',
-//                'toolbar' => 'full',
-//                'media_upload' => 'yes',
-//            ),
-//        ),
-//        'location' => array(
-//            array(
-//                array(
-//                    'param' => 'post_type',
-//                    'operator' => '==',
-//                    'value' => 'our-mission',
-//                    'order_no' => 0,
-//                    'group_no' => 0,
-//                ),
-//            ),
-//        ),
-//        'options' => array(
-//            'position' => 'normal',
-//            'layout' => 'no_box',
-//            'hide_on_screen' => array(
-//            ),
-//        ),
-//        'menu_order' => 0,
-//    ));
 
     register_field_group(array(
         'id' => 'acf_global-service',
@@ -801,4 +725,3 @@ if (function_exists("register_field_group")) {
         'menu_order' => 0,
     ));
 }
-
