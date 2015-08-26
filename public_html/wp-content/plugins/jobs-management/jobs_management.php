@@ -100,6 +100,8 @@ class jobs_management extends PW_Template_Loader {
 
         $this->templates = array();
 
+        add_action('init', array($this, 'register_pages'));
+
         // Add a filter to the attributes metabox to inject template into the cache.
         add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'));
 
@@ -113,6 +115,7 @@ class jobs_management extends PW_Template_Loader {
         // Add your templates to this array.
         $this->templates = array(
             'templates/jobs.php' => 'Jobs',
+            'templates/jobs-search.php' => 'Jobs Search',
         );
 
         // Add short code
@@ -139,8 +142,8 @@ class jobs_management extends PW_Template_Loader {
         $this->plugin_path = plugin_dir_path(__FILE__);
         return $this->plugin_path;
     }
-    
-    public function get_plugin_template_path(){
+
+    public function get_plugin_template_path() {
         return $this->get_plugin_path() . '/' . $this->plugin_template . '/';
     }
 
@@ -169,8 +172,8 @@ class jobs_management extends PW_Template_Loader {
 
         // Retrieve the cache list. 
         // If it doesn't exist, or it's empty prepare an array
-        // $templates = wp_get_theme()->get_page_templates();
-        $templates = wp_cache_get($cache_key, 'themes');
+        $templates = wp_get_theme()->get_page_templates();
+//        $templates = wp_cache_get($cache_key, 'themes');
         if (empty($templates)) {
             $templates = array();
         }
@@ -272,6 +275,60 @@ class jobs_management extends PW_Template_Loader {
             $single_template = $this->get_plugin_template_path() . 'single-job.php';
         }
         return $single_template;
+    }
+
+    /**
+     * Create Page if return NULL
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
+    function create_page_if_null($post = NULL) {
+        if (get_page_by_title($post['post_name']) == NULL) {
+            // create_pages_fly($target);
+            // insert page and save the id
+            $post_id = wp_insert_post($post, false);
+
+            // save the id in the database
+            update_option($post['post_name'], $post_id);
+
+            // set the template
+            update_post_meta($post_id, '_wp_page_template', $post['page_template']);
+
+            return $post_id;
+        }
+    }
+
+    /**
+     * Register Pages
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
+    function register_pages() {
+
+        // Jobs Page
+        // jobs
+        $post_job = array(
+            'post_name' => 'jobs',
+            'post_title' => 'Jobs',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => 'templates/jobs.php',
+        );
+        $this->create_page_if_null($post_job);
+
+        // Search Page
+        // jobs/search
+        $post_job_search = array(
+            'post_name' => 'search',
+            'post_title' => 'Search',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'post_category' => 'jobs',
+            'page_template' => 'templates/jobs-search.php',
+        );
+        $this->create_page_if_null($post_job_search);
     }
 
 }
