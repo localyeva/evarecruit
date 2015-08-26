@@ -1,9 +1,9 @@
 <div class="header-map">
     <div class="container-fluid">
         <div class="row-gap-small"></div>
-        <h2 class="text-center">Stay Connected</h2>
+        <h2 class="text-center"><?php echo get_part_connected_title() ?></h2>
         <p class="text-center">
-            Join us on our social networks for all the latest updates, product/service announcements and more.
+            <?php echo get_part_connected_content() ?>            
         </p>
         <div class="row-gap-large"></div>
         <div class="row">
