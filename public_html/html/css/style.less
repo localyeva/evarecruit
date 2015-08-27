@@ -56,6 +56,13 @@
 	.no-padding-l;
 	.no-padding-r;
 }
+.transition (@value) {
+	-webkit-transition: @value;
+	-moz-transition: @value;
+	-o-transition: @value;
+	-ms-transition: @value;
+	transition: @value;
+}
 .btn-blue {
 	background: #0090B0;
 	color: #fff;
@@ -548,6 +555,95 @@ h1, h2, h3, h4, h5, h6 {
 			padding: 0 0;
 		}
 	}
+}
+#global-service {
+	.header-banner {
+		background: url('../img/global_service/1.png') no-repeat;
+		background-size: cover;
+		height: 800px;
+		h2:first-child {
+			margin-top: 300px;
+			font-size: @body-font-size*3.5;
+		}
+	}
+	.image-wrapper {
+	    position: relative;
+	    cursor: pointer;
+	    overflow: hidden;
+		img {
+		    .transition(all 300ms ease-out);
+		}
+		.text-wrapper {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 15px;
+		    right: 15px;
+		    padding: 15px 15px;
+		    background-color: #E4887D;
+		    color: #fff;
+		    z-index: 100;
+		    .transition(all 300ms ease-out);
+		    opacity: 0;
+		    width: 100%
+		    height: 100%
+		    padding: 130px 20px;
+		}
+		&:hover {
+			.text-wrapper {
+		    	opacity: .9;
+		    }
+		}
+		.overtext {
+		    .transition(all 300ms ease-out);
+		    transform: translateY(40px);
+		    -webkit-transform: translateY(40px);
+		}
+		.tagline {
+		    font-size: 0.8em;
+		    opacity: 0;
+		    transition-delay: 0.2s;
+		    transition-duration: 0.2s;
+		}
+		.title {
+			margin-top: 70px;
+			margin-bottom: 10px;
+		    font-size: @body-font-size*1.5;
+		    text-transform: uppercase;
+		    opacity: 0;
+		    transition-delay: 0.1s;
+		    transition-duration: 0.2s;
+		}
+		&:hover, &:focus {
+			.title {
+			    opacity: 1;
+			    transform: translateY(0px);
+			    -webkit-transform: translateY(0px);
+			}
+			.tagline {
+			    opacity: 1;
+			    transform: translateX(0px);
+			    -webkit-transform: translateX(0px);
+			}
+		}
+	}
+	.icon-circles {
+		color: #0090B0;
+		.icon {
+			position: relative;
+			font-size: 20px;
+			&.large {
+				font-size: 30px;
+				top: 3px;
+			}
+		}
+	}
+}
+.headline-blue {
+	background: #0090B0;
+	color: #fff;
+	padding: 15px 15px;
+	font-size: @body-font-size*1.2;
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';
