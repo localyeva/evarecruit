@@ -65,23 +65,24 @@ get_header();
 </div>
 <!--/About End-->
 <!--//Service-->
-<?php
-$args = array(
-    'post_type' => 'service',
-    'posts_per_page' => -1,
-    'orderby' => array('date' => 'ASC'),
-);
-$loop = new WP_Query($args);
-?>
-<?php
-if ($loop->have_posts()): $xid = 1;
-    $num_posts = count($loop->posts);
-    ?>
-    <div class="header-service">
-        <div class="container">
-            <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
-            <div class="row-gap-medium"></div>
-            <div class="row">
+
+<div class="header-service">
+    <div class="container">
+        <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
+        <div class="row-gap-medium"></div>
+        <div class="row">
+            <?php
+            $args = array(
+                'post_type' => 'service',
+                'posts_per_page' => -1,
+                'orderby' => array('date' => 'ASC'),
+            );
+            $loop = new WP_Query($args);
+            ?>
+            <?php
+            if ($loop->have_posts()):
+                $num_posts = count($loop->posts);
+                ?>
                 <?php while ($loop->have_posts()): $loop->the_post(); ?>
                     <div class="col-xs-12 col-md-4">
                         <div class="row">
@@ -95,12 +96,12 @@ if ($loop->have_posts()): $xid = 1;
                         </div>
                     </div>                    
                 <?php endwhile; ?>
-            </div>
-            <div class="row-gap-large"></div>
+            <?php endif; ?>
+            <?php wp_reset_postdata() ?>
         </div>
+        <div class="row-gap-large"></div>
     </div>
-<?php endif; ?>
-<?php wp_reset_postdata() ?>
+</div>
 
 <!--//Service End-->
 <!--//Environment-->
