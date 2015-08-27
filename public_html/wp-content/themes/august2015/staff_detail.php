@@ -95,55 +95,7 @@ get_header();
     </div>
 
 
-    <?php
-    $args = array(
-        'post_type' => 'staff',
-        'posts_per_page' => -1,
-        'orderby' => array('date' => 'ASC'),
-    );
-    $loop = new WP_Query($args);
-    if ($loop->have_posts()):
-        $num_posts = count($loop->posts);
-        ?>
-        <div class="header-featured-photos">
-            <div class="container">
-                <div class="row-gap-large"></div>
-                <div class="text-center">
-                    <div class="block-center">
-                        <img src="<?php echo get_template_directory_uri() ?>/img/down_arrow.png" alt="">
-                    </div>
-                    <div class="text-muted">Drag to see more</div>
-                </div>
-                <div class="row-gap-large"></div>
-                <?php
-                $num_parts = $num_posts % 6 == 0 ? $num_posts / 6 : intval($num_posts / 6) + 1;
-                for ($i = 0; $i < $num_parts; $i++) {
-                    $j = 0;
-                    ?>                    
-                    <div class="row-gap-medium"></div>
-                    <div class="row">
-                        <?php
-                        while ($loop->have_posts()) {
-                            if ($j == 6)
-                                break;
-                            $loop->the_post();
-                            ?>
-                            <div class="col-xs-4 block-center col-md-2">
-                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
-                            </div>
-                            <?php
-                            $j++;
-                        }
-                        ?>
-                    </div> 
-
-                <?php }?>
-                <div class="row-gap-large"></div>
-            </div>
-        </div>
-
-    <?php endif; ?>
-    <?php wp_reset_postdata() ?>   
+    <?php get_template_part('part_template_staff_list') ?>  
     <!--//Map-->
     <?php get_template_part('google-map') ?>
     <!--//Map End-->
