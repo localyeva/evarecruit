@@ -10,6 +10,7 @@ include_once (dirname(__FILE__) . '/MyThemeOptions.php');
 include_once (dirname(__FILE__) . '/MyFunctions.php');
 include_once (dirname(__FILE__) . '/MyTheme_Customize.php');
 include_once (dirname(__FILE__) . '/MyTheme_Global_Service.php');
+include_once (dirname(__FILE__) . '/MyTheme_Customize_Staff_Detail.php');
 include_once(dirname(__FILE__) . '/cpt_acf_definitions.php');
 
 /* -------------------------------------------------------------------------- */
@@ -60,7 +61,7 @@ function scripts() {
         wp_enqueue_script('js-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', array(), '1.14.0', TRUE);
     }
     
-    if (is_home()){
+    if (is_home() || is_page('staff-detail')){
         wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
     }
 

@@ -127,14 +127,14 @@ if ($loop->have_posts()): $xid = 1;
         </div>
         <div class="row-gap-large"></div>
         <!-- //Image gallery -->
-            <?php
-            $args = array(
-                'post_type' => 'work-environment',
-                'posts_per_page' => -1,
-                'orderby' => array('date' => 'ASC'),
-            );
-            $loop = new WP_Query($args);
-            ?>
+        <?php
+        $args = array(
+            'post_type' => 'work-environment',
+            'posts_per_page' => -1,
+            'orderby' => array('date' => 'ASC'),
+        );
+        $loop = new WP_Query($args);
+        ?>
         <div class="row gallery" data-tab="all">
             <div class="col-xs-3">
                 <div class="row">
@@ -156,7 +156,7 @@ if ($loop->have_posts()): $xid = 1;
                 </div>
             </div>
         </div>
-        
+
         <?php foreach ($categories as $category): ?>
             <?php
             $args = array(
