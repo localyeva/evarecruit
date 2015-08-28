@@ -40,9 +40,11 @@
 							<div class="nano">
 								<div class="nano-content">
 									<!-- hot -->
-									<div class="row item hot">
+									<div class="row item">
 										<div class="col-xs-6">
-											<div class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+											<div class="title">
+												<a class="new urgent" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+											</div>
 											<div class="info">
 												<span class="localtion">Ho Chi Minh</span> | <span class="level">Team Leader/Supervisor</span>
 											</div>
@@ -58,9 +60,11 @@
 										</div>
 									</div>
 
-									<div class="row item hot">
+									<div class="row item">
 										<div class="col-xs-6">
-											<div class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+											<div class="title">
+												<a class="new urgent" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+											</div>
 											<div class="info">
 												<span class="localtion">Ho Chi Minh</span> | <span class="level">Team Leader/Supervisor</span>
 											</div>
@@ -76,9 +80,11 @@
 										</div>
 									</div>
 
-									<div class="row item hot">
+									<div class="row item">
 										<div class="col-xs-6">
-											<div class="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+											<div class="title">
+												<a class="new urgent" href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+											</div>
 											<div class="info">
 												<span class="localtion">Ho Chi Minh</span> | <span class="level">Team Leader/Supervisor</span>
 											</div>
