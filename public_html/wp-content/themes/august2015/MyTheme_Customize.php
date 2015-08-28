@@ -213,16 +213,6 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
     )));
 
-    $wp_customize->add_setting('part_dream_jobs_search_text_color', array(
-        'default' => '',
-    ));
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'part_dream_jobs_search_text_color_c', array(
-        'label' => __('Part Dream Jobs Search Button Text Color'),
-        'section' => 'home',
-        'settings' => 'part_dream_jobs_search_text_color',
-        'priority' => 1,
-    )));
-
     $wp_customize->add_setting('part_connected_title', array(
         'default' => '',
     ));
