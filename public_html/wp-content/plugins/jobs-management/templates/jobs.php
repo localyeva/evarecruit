@@ -9,6 +9,8 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
+global $job_status;
+
 get_header();
 ?>
 
@@ -24,15 +26,16 @@ get_header();
         <?php
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => 10,
+            'posts_per_page' => 5,
             'meta_key' => 'status',
             'orderby' => array('status' => 'DESC'),
+            'paged' => $paged,
         );
-        $loop = new WP_Query($args);
+        $wp_query = new WP_Query($args);
         ?>
-        <?php if ($loop->have_posts()): ?>
-            <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                <div class="row item hot">
+        <?php if ($wp_query->have_posts()): ?>
+            <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
+                <div class="row item <?php echo $job_status[get_field('status')] ?>">
                     <div class="col-xs-6">
                         <div class="title">
                             <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
@@ -54,7 +57,6 @@ get_header();
                 </div>
             <?php endwhile; ?>
         <?php endif; ?>
-        <?php wp_reset_postdata(); ?>
     </div>
     <!--//Jobs List End-->
 
@@ -62,29 +64,18 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-xs-12 no-padding-l">
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">Prev</span>
-                            </a>
-                        </li>
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <!--<nav>-->
+                <?php wpbeginner_numeric_posts_nav(); ?>
+                <!--</nav>-->
             </div>
         </div>
     </div>
+    <!--//Paging End-->
+    <?php wp_reset_postdata(); ?>
 </div>
-<!--//Paging End-->
+
+<!--//Map-->
+<?php get_template_part('google-map') ?>
+<!--//Map End-->
 
 <?php get_footer(); ?>

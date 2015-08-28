@@ -7,6 +7,8 @@
 if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
+
+global $job_status;
 ?>
 
 <div class="header-job-list home-page">
@@ -16,7 +18,7 @@ if (!defined('ABSPATH')) {
         <div class="row-gap-large"></div>
         <div class="row">
             <div class="col-xs-12 block-center">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="POST" >
                     <div class="form-group">
                         <div class="col-xs-12 col-md-6">
                             <input type="email" class="form-control" id="inputEmail3" placeholder="Nhập chức danh, ngành nghề, từ khóa">
@@ -52,30 +54,30 @@ if (!defined('ABSPATH')) {
                             </select>
                         </div>
                     </div>
-                </form>
-                <div class="row-gap-medium"></div>
-                <div class="row-gap-small"></div>
-                <div class="row">
-                    <div class="col-xs-12 col-md-10">
-                        <p class="stat">
-                            <?php
-                            $i = 0;
-                            foreach ($positions as $position):
-                                ?>
-                                <a href="#" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
-                                <?php if ($i < count($positions) - 1): ?>
-                                    <span class="vertical-bar">|</span> 
-                                <?php endif; ?>
+                    <div class="row-gap-medium"></div>
+                    <div class="row-gap-small"></div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-10">
+                            <p class="stat">
                                 <?php
-                                $i++;
-                            endforeach;
-                            ?>
-                        </p>
+                                $i = 0;
+                                foreach ($positions as $position):
+                                    ?>
+                                    <a href="#" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
+                                    <?php if ($i < count($positions) - 1): ?>
+                                        <span class="vertical-bar">|</span> 
+                                    <?php endif; ?>
+                                    <?php
+                                    $i++;
+                                endforeach;
+                                ?>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-md-2 pull-right">
+                            <button class="btn btn-block btn-search btn-orange" type="submit"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i> Tìm kiếm</button>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-md-2 pull-right">
-                        <button class="btn btn-block btn-search btn-orange"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i> Tìm kiếm</button>
-                    </div>
-                </div>
+                </form>
                 <div class="row-gap-small"></div>
                 <!-- list of jobs -->
                 <div class="list">
@@ -95,7 +97,7 @@ if (!defined('ABSPATH')) {
                                     ?>
                                     <?php if ($loop->have_posts()): ?>
                                         <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                                            <div class="row item hot">
+                                            <div class="row item <?php echo $job_status[get_field('status')] ?>">
                                                 <div class="col-xs-6">
                                                     <div class="title">
                                                         <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
@@ -111,8 +113,8 @@ if (!defined('ABSPATH')) {
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-3">
-                                                    <div><img class="date" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/4.png" alt=""> Posted: <?php the_date()  ?></div>
-                                                    <div><img class="view" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/5.png" alt=""> Views: 92</div>
+                                                    <div><img class="date" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/4.png" alt=""> Posted: <?php echo get_the_date() ?></div>
+                                                    <div><img class="view" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/5.png" alt=""> Views: <?php echo getPostViews(get_the_ID(), 'job_views') ?></div>
                                                 </div>
                                             </div>
                                         <?php endwhile; ?>
