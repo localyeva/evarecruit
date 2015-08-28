@@ -18,10 +18,10 @@ global $job_status;
         <div class="row-gap-large"></div>
         <div class="row">
             <div class="col-xs-12 block-center">
-                <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="POST" >
+                <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="GET" >
                     <div class="form-group">
                         <div class="col-xs-12 col-md-6">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Nhập chức danh, ngành nghề, từ khóa">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Nhập chức danh, ngành nghề, từ khóa">
                         </div>
                         <div class="col-xs-12 col-xs-3">
                             <?php
@@ -31,10 +31,10 @@ global $job_status;
                             );
                             $positions = get_terms('job-position', $args);
                             ?>
-                            <select name = "position" class = "form-control">
+                            <select name="position" class="form-control">
                                 <option value="">-- Select Position --</option>
                                 <?php foreach ($positions as $position): ?>
-                                    <option value="<?php echo $position->term_id ?>"><?php echo $position->name ?></option>
+                                    <option value="<?php echo $position->slug ?>"><?php echo $position->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -49,7 +49,7 @@ global $job_status;
                             <select name="location" class="form-control">
                                 <option value="">-- Select Location --</option>
                                 <?php foreach ($locations as $location): ?>
-                                    <option value="<?php echo $location->term_id ?>"><?php echo $location->name ?></option>
+                                    <option value="<?php echo $location->slug ?>"><?php echo $location->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -75,6 +75,7 @@ global $job_status;
                         </div>
                         <div class="col-xs-12 col-md-2 pull-right">
                             <button class="btn btn-block btn-search btn-orange" type="submit"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i> Tìm kiếm</button>
+                            <input type="hidden" name="search" value="job" />
                         </div>
                     </div>
                 </form>
