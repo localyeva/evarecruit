@@ -16,6 +16,8 @@ function assetSrc($file)
         <link rel="stylesheet" type="text/css" href="css/jquery.sidr.dark.css">
         <link rel="stylesheet" href="<?php assetSrc('css/style.css'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+        <link rel="stylesheet" href="css/jquery.fancybox.css">
     </head>
     <body>
     	<?php include('./_common/navbar.php'); ?>

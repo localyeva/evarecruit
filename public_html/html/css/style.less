@@ -417,9 +417,12 @@ h1, h2, h3, h4, h5, h6 {
 			.text-bold;
 			font-size: @body-font-size*1.2;
 		}
-		&.hot {
-			.title {
-				color: #FF3232;
+		.title {
+			a {
+				&.urgent, &.new {
+					color: #FF3232;
+					text-decoration: none;
+				}
 			}
 		}
 		.text-blue {
@@ -644,6 +647,9 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 	padding: 15px 15px;
 	font-size: @body-font-size*1.2;
+}
+.carousel-control {
+    	background-image: none !important;
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';
