@@ -8,6 +8,13 @@
 if (!defined('ABSPATH'))
     exit;
 
+global $job_status;
+$job_status = array(
+    0 => 'normal',
+    1 => 'new',
+    2 => 'urgent',
+);
+
 class jobs_cpt_acf_settings {
 
     public function __construct() {

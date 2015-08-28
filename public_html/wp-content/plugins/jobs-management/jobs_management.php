@@ -100,17 +100,28 @@ class jobs_management extends PW_Template_Loader {
 
         $this->templates = array();
 
+        // Register pages jobs & search
         add_action('init', array($this, 'register_pages'));
 
+        // Hooks a function to a specific filter action.
+        // applied to the list of columns to print on the manage posts screen.
+//        add_filter('manage_posts_columns', array($this, 'add_post_column'));
+
+        // Hooks a function to a specific action. 
+        // allows you to add custom columns to the list post/custom post type pages.
+        // '10' default: specify the function's priority.
+        // and '2' is the number of the functions' arguments.
+//        add_action('manage_posts_custom_column', array($this, 'post_custom_column'), 10, 2);
+
         // Add a filter to the attributes metabox to inject template into the cache.
-        add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'));
+        add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'), 10, 1);
 
         // Add a filter to the save post to inject out template into the page cache
-        add_filter('wp_insert_post_data', array($this, 'register_project_templates'));
+        add_filter('wp_insert_post_data', array($this, 'register_project_templates'), 10, 1);
 
         // Add a filter to the template include to determine if the page has our 
         // template assigned and return it's path
-        add_filter('template_include', array($this, 'view_project_template'));
+        add_filter('template_include', array($this, 'view_project_template'), 10, 1);
 
         // Add your templates to this array.
         $this->templates = array(
@@ -119,10 +130,10 @@ class jobs_management extends PW_Template_Loader {
         );
 
         // Add short code
-        add_shortcode('jobs-part', array($this, 'get_part_of_template'));
+        add_shortcode('jobs-part', array($this, 'get_part_of_template'), 10, 1);
 
-        add_filter('archive_template', array($this, 'get_custom_post_type_archive_template'));
-        add_filter('single_template', array($this, 'get_custom_post_type_single_template'));
+        add_filter('archive_template', array($this, 'get_custom_post_type_archive_template'), 10, 1);
+        add_filter('single_template', array($this, 'get_custom_post_type_single_template'), 10, 1);
     }
 
     /**
@@ -231,7 +242,7 @@ class jobs_management extends PW_Template_Loader {
      */
     public function get_part_of_template($type) {
         extract(shortcode_atts(array(
-            'type' => 'type'
+            'type' => 'type',
                         ), $type));
         //
         ob_start();
@@ -252,7 +263,7 @@ class jobs_management extends PW_Template_Loader {
      * @version	1.0.0
      * @since	1.0.0
      */
-    function get_custom_post_type_archive_template($archive_template) {
+    public function get_custom_post_type_archive_template($archive_template) {
         global $wp_query, $post;
 
         if (is_post_type_archive('job')) {
@@ -267,7 +278,7 @@ class jobs_management extends PW_Template_Loader {
      * @version	1.0.0
      * @since	1.0.0
      */
-    function get_custom_post_type_single_template($single_template) {
+    public function get_custom_post_type_single_template($single_template) {
         global $wp_query, $post;
 
         if ($post->post_type == 'job') {
@@ -282,7 +293,7 @@ class jobs_management extends PW_Template_Loader {
      * @version	1.0.0
      * @since	1.0.0
      */
-    function create_page_if_null($post = NULL) {
+    public function create_page_if_null($post = NULL) {
         if (get_page_by_title($post['post_name']) == NULL) {
             // create_pages_fly($target);
             // insert page and save the id
@@ -304,7 +315,7 @@ class jobs_management extends PW_Template_Loader {
      * @version	1.0.0
      * @since	1.0.0
      */
-    function register_pages() {
+    public function register_pages() {
 
         // Jobs Page
         // jobs
@@ -313,7 +324,6 @@ class jobs_management extends PW_Template_Loader {
             'post_title' => 'Jobs',
             'post_status' => 'publish',
             'post_type' => 'page',
-            'post_parent' => 0,
             'page_template' => 'templates/jobs.php',
         );
         $page_id = $this->create_page_if_null($post_job);
@@ -325,11 +335,46 @@ class jobs_management extends PW_Template_Loader {
             'post_title' => 'Search',
             'post_status' => 'publish',
             'post_type' => 'page',
-            'post_parent' => 1,
-            'post_category' => array($page_id),
+            'post_parent' => $page_id,
             'page_template' => 'templates/jobs-search.php',
         );
         $this->create_page_if_null($post_job_search);
+    }
+
+    /**
+     * 
+     * @param type $post_id
+     * @return type
+     */
+    public function get_job_views($post_id) {
+        $count_key = 'job_views';
+        // returns values of the custom field with specified key
+        $count = get_post_meta($post_id, $count_key, true);
+        return $count;
+    }
+
+    /**
+     * 
+     * Add new columns
+     * 
+     * @param array $columns
+     * @return type
+     */
+    public function add_post_column($columns) {
+        return array_merge($columns, array('post_views' => __('Views')));
+    }
+
+    /**
+     * 
+     * @param type $column
+     * @param type $id
+     */
+    public function post_custom_column($column, $post_id) {
+        switch ($column) {
+            case 'post_views':
+                echo $this->get_job_views(get_the_ID());
+                break;
+        }
     }
 
 }
