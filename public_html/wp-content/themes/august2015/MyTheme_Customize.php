@@ -12,7 +12,7 @@ function theme_customize_register($wp_customize) {
         'title' => __('GENERAL'),
         'priority' => 20,
     ));
-    
+
     $wp_customize->add_setting('site_logo', array(
         'default' => ''
     ));
@@ -22,7 +22,7 @@ function theme_customize_register($wp_customize) {
         'settings' => 'site_logo',
         'priority' => 1,
     )));
-    
+
     $wp_customize->add_setting('home_top_image', array(
         'default' => ''
     ));
@@ -32,7 +32,7 @@ function theme_customize_register($wp_customize) {
         'settings' => 'home_top_image',
         'priority' => 1,
     )));
-    
+
     $wp_customize->add_setting('top_image', array(
         'default' => ''
     ));
@@ -53,7 +53,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('intro_2_text', array(
         'default' => '',
     ));
@@ -64,7 +64,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('intro_3_text', array(
         'default' => '',
     ));
@@ -75,13 +75,13 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
-     /* HOME PAGE SECTION */
+
+    /* HOME PAGE SECTION */
     $wp_customize->add_section('home', array(
         'title' => __('HOME PAGE'),
         'priority' => 20,
     ));
-    
+
     $wp_customize->add_setting('home_top_text', array(
         'default' => '',
     ));
@@ -92,8 +92,8 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
-    /* ABOUT US */    
+
+    /* ABOUT US */
     $wp_customize->add_setting('part_about_us_title_text', array(
         'default' => '',
     ));
@@ -104,8 +104,8 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
-    /* OUR SERVICE */    
+
+    /* OUR SERVICE */
     $wp_customize->add_setting('part_our_service_title_text', array(
         'default' => '',
     ));
@@ -116,8 +116,8 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
-    /* WORK ENVIROMENT */    
+
+    /* WORK ENVIROMENT */
     $wp_customize->add_setting('part_work_environment_title_text', array(
         'default' => '',
     ));
@@ -127,8 +127,8 @@ function theme_customize_register($wp_customize) {
         'settings' => 'part_work_environment_title_text',
         'priority' => 1,
         'type' => 'text',
-    ));  
-    
+    ));
+
     $wp_customize->add_setting('part_work_environment_movie_title_text', array(
         'default' => '',
     ));
@@ -139,7 +139,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('part_work_environment_movie_desc_text', array(
         'default' => '',
     ));
@@ -150,7 +150,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('part_work_environment_movie_link', array(
         'default' => '',
     ));
@@ -161,7 +161,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('part_ceo_message_title', array(
         'default' => '',
     ));
@@ -172,7 +172,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('part_ceo_message_image', array(
         'default' => '',
     ));
@@ -182,7 +182,47 @@ function theme_customize_register($wp_customize) {
         'settings' => 'part_ceo_message_image',
         'priority' => 1,
     )));
-    
+
+    $wp_customize->add_setting('part_dream_jobs_background_color', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'part_dream_jobs_background_color_c', array(
+        'label' => __('Part Dream Jobs Background Color'),
+        'section' => 'home',
+        'settings' => 'part_dream_jobs_background_color',
+        'priority' => 1,
+    )));
+
+    $wp_customize->add_setting('part_dream_jobs_search_background_color', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'part_dream_jobs_search_background_color_c', array(
+        'label' => __('Part Dream Jobs Search Button Background Color'),
+        'section' => 'home',
+        'settings' => 'part_dream_jobs_search_background_color',
+        'priority' => 1,
+    )));
+
+    $wp_customize->add_setting('part_dream_jobs_search_text_and_border_color', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'part_dream_jobs_search_text_and_border_color_c', array(
+        'label' => __('Part Dream Jobs Search Button Text And Border Color'),
+        'section' => 'home',
+        'settings' => 'part_dream_jobs_search_text_and_border_color',
+        'priority' => 1,
+    )));
+
+    $wp_customize->add_setting('part_dream_jobs_search_text_color', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'part_dream_jobs_search_text_color_c', array(
+        'label' => __('Part Dream Jobs Search Button Text Color'),
+        'section' => 'home',
+        'settings' => 'part_dream_jobs_search_text_color',
+        'priority' => 1,
+    )));
+
     $wp_customize->add_setting('part_connected_title', array(
         'default' => '',
     ));
@@ -193,7 +233,7 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
+
     $wp_customize->add_setting('part_connected_content', array(
         'default' => '',
     ));
@@ -204,7 +244,6 @@ function theme_customize_register($wp_customize) {
         'priority' => 1,
         'type' => 'text',
     ));
-    
 }
 
 add_action('customize_register', 'theme_customize_register');
@@ -216,6 +255,15 @@ function generate_css() {
         .header-banner{
             background: url("<?php echo get_home_top_image() ?>");
         }
+        .header-job-list.home-page {
+            background: <?php echo get_part_dream_jobs_background_color() ?>;//#ff530d;
+            //color: #fff;
+        }
+        .header-job-list .btn-search {
+            background: <?php echo get_part_dream_jobs_search_background_color() ?>;//#ff530d;
+            border: 3px solid <?php echo get_part_dream_jobs_search_text_and_border_color() ?>;
+            color: <?php echo get_part_dream_jobs_search_text_and_border_color() ?>;
+        }
     </style>
     <?php
 }
@@ -223,6 +271,7 @@ function generate_css() {
 add_action('wp_head', 'generate_css');
 
 /* GENERAL */
+
 function get_site_logo() {
     return esc_url(get_theme_mod('site_logo'));
 }
@@ -238,42 +287,67 @@ function get_top_image() {
 function get_intro_1_text() {
     return get_theme_mod('intro_1_text');
 }
+
 function get_intro_2_text() {
     return get_theme_mod('intro_2_text');
 }
+
 function get_intro_3_text() {
     return get_theme_mod('intro_3_text');
 }
+
 function get_home_top_text() {
     return get_theme_mod('home_top_text');
 }
+
 function get_part_about_us_title_text() {
     return get_theme_mod('part_about_us_title_text');
 }
+
 function get_part_our_service_title_text() {
     return get_theme_mod('part_our_service_title_text');
 }
+
 function get_part_work_environment_title_text() {
     return get_theme_mod('part_work_environment_title_text');
 }
+
 function get_part_work_environment_movie_title_text() {
     return get_theme_mod('part_work_environment_movie_title_text');
 }
+
 function get_part_work_environment_movie_desc_text() {
     return get_theme_mod('part_work_environment_movie_desc_text');
 }
+
 function get_part_work_environment_movie_link() {
     return get_theme_mod('part_work_environment_movie_link');
 }
+
 function get_part_ceo_message_title() {
     return get_theme_mod('part_ceo_message_title');
 }
+
 function get_part_ceo_message_image() {
     return get_theme_mod('part_ceo_message_image');
 }
+
+function get_part_dream_jobs_background_color() {
+    return get_theme_mod('part_dream_jobs_background_color');
+}
+
+function get_part_dream_jobs_search_background_color() {
+    return get_theme_mod('part_dream_jobs_search_background_color');
+}
+
+function get_part_dream_jobs_search_text_and_border_color() {
+    return get_theme_mod('part_dream_jobs_search_text_and_border_color');
+}
+
 function get_part_connected_title() {
     return get_theme_mod('part_connected_title');
 }
+
 function get_part_connected_content() {
     return get_theme_mod('part_connected_content');
 }
