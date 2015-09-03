@@ -47,7 +47,7 @@
             <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="<?php echo bloginfo('url') ?>">
                             <img alt="Brand" src="<?php echo get_site_logo() ?>">
                         </a>
                     </div>

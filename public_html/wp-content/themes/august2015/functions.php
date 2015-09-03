@@ -61,9 +61,7 @@ function scripts() {
         wp_enqueue_script('js-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', array(), '1.14.0', TRUE);
     }
     
-    if (is_home() || is_page('staff-detail')){
-        wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
-    }
+//    wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
 
     //
     global $map_data;
@@ -114,7 +112,7 @@ function add_custom_script() {
         $script .= $theme_options['ct_custom_script'];
     }
 
-    echo $script;
+    echo stripslashes($script);
 }
 
 /* --------------------------------------------------------------------------- */

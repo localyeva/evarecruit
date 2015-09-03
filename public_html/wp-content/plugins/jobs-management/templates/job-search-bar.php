@@ -9,53 +9,157 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
+define('POSTS_PER_PAGE', 10);
 
 global $job_status;
 
-var_dump($_GET);
 
-if (!isset($_GET) || !isset($_GET['search'])) {
+if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_GET['position'] == '' && $_GET['location'] == '' )) {
     $args = array(
         'post_type' => 'job',
-        'posts_per_page' => 5,
+        'posts_per_page' => POSTS_PER_PAGE,
         'meta_key' => 'status',
-        'orderby' => array('status' => 'DESC'),
+        'orderby' => array('meta_value_num' => 'DESC'),
         'paged' => $paged,
     );
     $wp_query = new WP_Query($args);
-}
+} elseif (isset($_GET['search']) || $_GET['search'] == 'job') {
 
-if (isset($_GET['search']) && $_GET['search'] == 'job') {
-
-    if(isset($_GET['position'])){
+    if ((isset($_GET['keyword']) && $_GET['keyword'] != '' && strlen($_GET['keyword']) > 3) &&
+            (isset($_GET['position']) && $_GET['position'] != '') &&
+            (isset($_GET['location']) && $_GET['location'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => 5,
+            'posts_per_page' => POSTS_PER_PAGE,
             'meta_key' => 'status',
-            'orderby' => array('status' => 'DESC'),
-            'paged' => $paged,
+            'orderby' => array('meta_value_num' => 'DESC'),
+            's' => $_GET['keyword'],
             'tax_query' => array(
-                'relation' => 'AND',
                 array(
                     'taxonomy' => 'job-position',
                     'field' => 'slug',
-                    'terms' => array()
+                    'terms' => $_GET['position'],
                 ),
+                array(
+                    'taxonomy' => 'job-location',
+                    'field' => 'slug',
+                    'terms' => $_GET['location'],
+                ),
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['keyword']) && $_GET['keyword'] != '' && strlen($_GET['keyword']) > 3) &&
+            (isset($_GET['position']) && $_GET['position'] != '')) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            's' => $_GET['keyword'],
+            'tax_query' => array(
                 array(
                     'taxonomy' => 'job-position',
                     'field' => 'slug',
-                    'terms' => array('ho-chi-minh')
+                    'terms' => $_GET['position'],
                 ),
-            )
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['keyword']) && $_GET['keyword'] != '' && strlen($_GET['keyword']) > 3) &&
+            (isset($_GET['location']) && $_GET['location'] != '')) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            's' => $_GET['keyword'],
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'job-location',
+                    'field' => 'slug',
+                    'terms' => $_GET['location'],
+                ),
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['position']) && $_GET['position'] != '') &&
+            (isset($_GET['location']) && $_GET['location'] != '')) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'job-position',
+                    'field' => 'slug',
+                    'terms' => $_GET['position'],
+                ),
+                array(
+                    'taxonomy' => 'job-location',
+                    'field' => 'slug',
+                    'terms' => $_GET['location'],
+                ),
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['keyword']) && $_GET['keyword'] != '' && strlen($_GET['keyword']) > 3)) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            's' => $_GET['keyword'],
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['position']) && $_GET['position'] != '')) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'job-position',
+                    'field' => 'slug',
+                    'terms' => $_GET['position'],
+                ),
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } elseif ((isset($_GET['location']) && $_GET['location'] != '')) {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'job-location',
+                    'field' => 'slug',
+                    'terms' => $_GET['location'],
+                ),
+            ),
+            'paged' => $paged,
+        );
+        $wp_query = new WP_Query($args);
+    } else {
+        $args = array(
+            'post_type' => 'job',
+            'posts_per_page' => POSTS_PER_PAGE,
+            'meta_key' => 'status',
+            'orderby' => array('meta_value_num' => 'DESC'),
+            'paged' => $paged,
         );
         $wp_query = new WP_Query($args);
     }
-
 }
-
-//global $wp_query;
-//var_dump($wp_query);
-// check select position location
 ?>
 
 <div class="header-search-bar">
@@ -65,7 +169,7 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                 <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="GET">
                     <div class="form-group">
                         <div class="col-xs-12 col-md-6">
-                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Nhập chức danh, ngành nghề, từ khóa">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Nhập chức danh, ngành nghề, từ khóa" value="<?php echo isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>"/>
                         </div>
                         <div class="col-xs-12 col-xs-3">
                             <?php
@@ -78,7 +182,7 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                             <select name="position" class = "form-control">
                                 <option value="">-- Select Position --</option>
                                 <?php foreach ($positions as $position): ?>
-                                    <option value="<?php echo $position->slug ?>"><?php echo $position->name ?></option>
+                                    <option value="<?php echo $position->slug ?>" <?php echo (isset($_GET['position']) && $_GET['position'] == $position->slug) ? 'selected' : '' ?>><?php echo $position->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -93,7 +197,7 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                             <select name="location" class="form-control">
                                 <option value="">-- Select Location --</option>
                                 <?php foreach ($locations as $location): ?>
-                                    <option value="<?php echo $location->slug ?>"><?php echo $location->name ?></option>
+                                    <option value="<?php echo $location->slug ?>" <?php echo (isset($_GET['location']) && $_GET['location'] == $location->slug) ? 'selected' : '' ?>><?php echo $location->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -106,7 +210,7 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                             $i = 0;
                             foreach ($positions as $position):
                                 ?>
-                                <a href="#" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
+                            <a href="<?php echo bloginfo('url') ?>/jobs/search/?position=<?php echo $position->slug ?>&search=job" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
                                 <?php if ($i < count($positions) - 1): ?>
                                     <span class="vertical-bar">|</span> 
                                 <?php endif; ?>

@@ -148,7 +148,7 @@ function theme_customize_register($wp_customize) {
         'section' => 'home',
         'settings' => 'part_work_environment_movie_desc_text',
         'priority' => 1,
-        'type' => 'text',
+        'type' => 'textarea',
     ));
 
     $wp_customize->add_setting('part_work_environment_movie_link', array(

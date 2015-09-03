@@ -63,7 +63,7 @@ global $job_status;
                                 $i = 0;
                                 foreach ($positions as $position):
                                     ?>
-                                    <a href="#" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
+                                    <a href="<?php echo bloginfo('url') ?>/jobs/search/?position=<?php echo $position->slug ?>&search=job" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
                                     <?php if ($i < count($positions) - 1): ?>
                                         <span class="vertical-bar">|</span> 
                                     <?php endif; ?>
@@ -92,34 +92,13 @@ global $job_status;
                                         'post_type' => 'job',
                                         'posts_per_page' => 10,
                                         'meta_key' => 'status',
-                                        'orderby' => array('status' => 'DESC'),
+                                        'orderby' => array('meta_value_num' => 'DESC'),
+                                        'paged' => $paged,
                                     );
-                                    $loop = new WP_Query($args);
+                                    $wp_query = new WP_Query($args);
                                     ?>
-                                    <?php if ($loop->have_posts()): ?>
-                                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                                            <div class="row item <?php echo $job_status[get_field('status')] ?>">
-                                                <div class="col-xs-6">
-                                                    <div class="title">
-                                                        <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-                                                    </div>
-                                                    <div class="info">
-                                                        <?php $term = get_the_terms($post->ID, 'job-location'); ?>
-                                                        <span class="localtion"><?php echo $term[0]->name ?></span> | <span class="level"><?php echo get_field('work_level') ?></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <div class="text-blue">
-                                                        <?php echo wp_trim_words(get_field('job_requirement'), 10, '...') ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <div><img class="date" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/4.png" alt=""> Posted: <?php echo get_the_date() ?></div>
-                                                    <div><img class="view" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/5.png" alt=""> Views: <?php echo getPostViews(get_the_ID(), 'job_views') ?></div>
-                                                </div>
-                                            </div>
-                                        <?php endwhile; ?>
-                                    <?php endif; ?>
+                                    <!-- hot -->
+                                    <?php require_once(dirname(__FILE__) . '/jobs-row.php') ?>
                                     <?php wp_reset_postdata(); ?>
                                 </div>
                             </div>
