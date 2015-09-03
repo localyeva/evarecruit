@@ -1,0 +1,33 @@
+@orange: #FF530D;
+.btn-orange {
+	background-color: @orange;
+	color: #fff;
+	&:hover, &:focus, &:active, &:focus:active {
+		color: #fff;
+	}
+}
+#mobile-header {
+    display: none;
+}
+#sidr-main {
+	.sidr-class-navbar-brand {
+		img {
+			padding: 10px 10px;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	button {
+		.btn-orange;
+		width: 100%;
+		border: none;
+	}
+	.sidr-class-navbar-bars {
+		display: none;
+	}
+}
+.header-banner {
+	height: 560px;
+	background: url('../img/1.png') no-repeat;
+	background-size: cover;
+}

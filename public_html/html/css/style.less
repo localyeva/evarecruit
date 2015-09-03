@@ -419,9 +419,11 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		.title {
 			a {
+				&, &:hover, &:active, &:focus {
+					text-decoration: none;
+				}
 				&.urgent, &.new {
 					color: #FF3232;
-					text-decoration: none;
 				}
 			}
 		}
