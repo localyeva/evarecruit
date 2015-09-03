@@ -22,7 +22,31 @@ get_header();
 
     <!--//Jobs List-->
     <div class="container header-job-list">
-
+        <!-- hot -->
+        <?php if ($wp_query->have_posts()): ?>
+            <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
+                <div class="row item <?php echo $job_status[get_field('status')] ?>">
+                    <div class="col-xs-6">
+                        <div class="title">
+                            <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                        </div>
+                        <div class="info">
+                            <?php $term = get_the_terms($post->ID, 'job-location'); ?>
+                            <span class="localtion"><?php echo $term[0]->name ?></span> | <span class="level"><?php echo get_field('work_level') ?></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="text-blue">
+                            <?php echo wp_trim_words(get_field('job_requirement'), 10, '...') ?>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div><img class="date" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/4.png" alt=""> Posted: <?php the_date() ?></div>
+                        <div><img class="view" src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job/5.png" alt=""> Views: 92</div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php endif; ?>
     </div>
     <!--//Jobs List End-->
 
@@ -30,29 +54,14 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-xs-12 no-padding-l">
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">Prev</span>
-                            </a>
-                        </li>
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <!--<nav>-->
+                <?php wpbeginner_numeric_posts_nav(); ?>
+                <!--</nav>-->
             </div>
         </div>
     </div>
+    <!--//Paging End-->
+    <?php wp_reset_postdata(); ?>
 </div>
-<!--//Paging End-->
 
 <?php get_footer(); ?>

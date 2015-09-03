@@ -9,8 +9,6 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-global $job_status;
-
 get_header();
 ?>
 
@@ -23,16 +21,6 @@ get_header();
     <!--//Jobs List-->
     <div class="container header-job-list">
         <!-- hot -->
-        <?php
-        $args = array(
-            'post_type' => 'job',
-            'posts_per_page' => 5,
-            'meta_key' => 'status',
-            'orderby' => array('status' => 'DESC'),
-            'paged' => $paged,
-        );
-        $wp_query = new WP_Query($args);
-        ?>
         <?php if ($wp_query->have_posts()): ?>
             <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                 <div class="row item <?php echo $job_status[get_field('status')] ?>">

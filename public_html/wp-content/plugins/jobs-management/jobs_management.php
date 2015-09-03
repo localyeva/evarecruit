@@ -106,13 +106,11 @@ class jobs_management extends PW_Template_Loader {
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
 //        add_filter('manage_posts_columns', array($this, 'add_post_column'));
-
         // Hooks a function to a specific action. 
         // allows you to add custom columns to the list post/custom post type pages.
         // '10' default: specify the function's priority.
         // and '2' is the number of the functions' arguments.
 //        add_action('manage_posts_custom_column', array($this, 'post_custom_column'), 10, 2);
-
         // Add a filter to the attributes metabox to inject template into the cache.
         add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'), 10, 1);
 
@@ -375,6 +373,10 @@ class jobs_management extends PW_Template_Loader {
                 echo $this->get_job_views(get_the_ID());
                 break;
         }
+    }
+
+    public function register_search_form($form) {
+        
     }
 
 }

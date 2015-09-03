@@ -10,49 +10,6 @@ if (!defined('ABSPATH')) {
 }
 
 
-global $job_status;
-
-var_dump($_GET);
-
-if (!isset($_GET) || !isset($_GET['search'])) {
-    $args = array(
-        'post_type' => 'job',
-        'posts_per_page' => 5,
-        'meta_key' => 'status',
-        'orderby' => array('status' => 'DESC'),
-        'paged' => $paged,
-    );
-    $wp_query = new WP_Query($args);
-}
-
-if (isset($_GET['search']) && $_GET['search'] == 'job') {
-
-    if(isset($_GET['position'])){
-        $args = array(
-            'post_type' => 'job',
-            'posts_per_page' => 5,
-            'meta_key' => 'status',
-            'orderby' => array('status' => 'DESC'),
-            'paged' => $paged,
-            'tax_query' => array(
-                'relation' => 'AND',
-                array(
-                    'taxonomy' => 'job-position',
-                    'field' => 'slug',
-                    'terms' => array()
-                ),
-                array(
-                    'taxonomy' => 'job-position',
-                    'field' => 'slug',
-                    'terms' => array('ho-chi-minh')
-                ),
-            )
-        );
-        $wp_query = new WP_Query($args);
-    }
-
-}
-
 //global $wp_query;
 //var_dump($wp_query);
 // check select position location
@@ -62,10 +19,10 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="GET">
+                <form class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs/search" method="POST">
                     <div class="form-group">
                         <div class="col-xs-12 col-md-6">
-                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Nhập chức danh, ngành nghề, từ khóa">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Nhập chức danh, ngành nghề, từ khóa">
                         </div>
                         <div class="col-xs-12 col-xs-3">
                             <?php
@@ -75,10 +32,10 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                             );
                             $positions = get_terms('job-position', $args);
                             ?>
-                            <select name="position" class = "form-control">
+                            <select name = "position" class = "form-control">
                                 <option value="">-- Select Position --</option>
                                 <?php foreach ($positions as $position): ?>
-                                    <option value="<?php echo $position->slug ?>"><?php echo $position->name ?></option>
+                                    <option value="<?php echo $position->term_id ?>"><?php echo $position->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -93,7 +50,7 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                             <select name="location" class="form-control">
                                 <option value="">-- Select Location --</option>
                                 <?php foreach ($locations as $location): ?>
-                                    <option value="<?php echo $location->slug ?>"><?php echo $location->name ?></option>
+                                    <option value="<?php echo $location->term_id ?>"><?php echo $location->name ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -117,7 +74,6 @@ if (isset($_GET['search']) && $_GET['search'] == 'job') {
                         </div>
                         <div class="col-xs-12 col-md-2 pull-right">
                             <button class="btn btn-block btn-search btn-orange" type="submit"><i class="glyphicon glyphicon-menu-right"></i><i class="glyphicon glyphicon-menu-right"></i> Tìm kiếm</button>
-                            <input type="hidden" name="search" value="job" />
                         </div>
                     </div>
                 </form>
