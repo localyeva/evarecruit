@@ -85,7 +85,7 @@ function theme_customize_register($wp_customize) {
     $wp_customize->add_setting('home_top_text', array(
         'default' => '',
     ));
-    $wp_customize->add_control('intro_2_text_c', array(
+    $wp_customize->add_control('home_top_text_c', array(
         'label' => __('Top Text'),
         'section' => 'home',
         'settings' => 'home_top_text',
