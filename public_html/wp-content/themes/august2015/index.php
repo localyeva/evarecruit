@@ -18,12 +18,12 @@ get_header();
     <div class="container text-center">
         <h2 class="text-bold"><?php echo get_home_top_text() ?></h2>
         <div class="row-gap-medium"></div>
-        <button class="btn btn-orange">Check for new opportunities</button>
+        <a href="<?php echo bloginfo('url') ?>/#new-opportunities" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
     </div>
 </div>
 <!--//About-->
 
-<div class="header-about">
+<div id="about-us" class="header-about">
     <div class="container">
         <h2 class="text-center"><?php echo get_part_about_us_title_text() ?></h2>
         <div class="row-gap-large"></div>
@@ -64,9 +64,9 @@ get_header();
     </div>
 </div>
 <!--/About End-->
-<!--//Service-->
 
-<div class="header-service">
+<!--//Service-->
+<div id="services" class="header-service">
     <div class="container">
         <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
         <div class="row-gap-medium"></div>
@@ -234,7 +234,9 @@ get_header();
 <!--//CEO Message End-->
 
 <!--//Job List-->
+<div id="new-opportunities">
 <?php echo do_shortcode('[jobs-part type="form-list"]') ?>
+</div>
 <!--//Job List End-->
 
 <!--//Map-->

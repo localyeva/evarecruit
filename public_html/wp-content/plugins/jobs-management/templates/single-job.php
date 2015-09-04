@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Count number of views
-if (function_exists('setPostViews')){
+if (function_exists('setPostViews')) {
     setPostViews(get_the_ID(), 'job_views');
 }
 
@@ -75,25 +75,31 @@ get_header();
 
                 <div class="actions">
                     <div class="row">
+                        <!--
                         <div class="col-xs-12 col-md-2">
                             <div class="item">
                                 <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/4.png" alt="">
                                 <span class="item-name">Save job</span>
                             </div>
                         </div>
+                        -->
                         <div class="col-xs-12 col-md-2">
                             <div class="item">
                                 <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
                                 <span class="item-name">Print this job</span>
                             </div>
                         </div>
+                        <!--
                         <div class="col-xs-12 col-md-2">
                             <div class="item">
                                 <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/6.png" alt="">
                                 <span class="item-name">Report this job</span>
                             </div>
                         </div>
+                        -->
+                        <!--
                         <div class="col-xs-12 col-md-6 text-right item">[Edit]</div>
+                        -->
                     </div>
                 </div>
 
@@ -101,7 +107,7 @@ get_header();
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="large pull-right btn btn-blue">Submit request</button>
+                        <a href="#apply-form" class="openform"><button class="large pull-right btn btn-blue">Submit request</button></a>
                     </div>
                 </div>
 
@@ -110,5 +116,120 @@ get_header();
         </div>
     </div>
 </div>
+
+<!-- // Apply Form Start -->
+<div id="apply-form" class="apply-form" style="display: none;">
+    <div class="header-top-apply">
+        <div class="container text-center">
+            <h2 class="text-bold">Apply Your Resume</h2>
+        </div>
+    </div>
+    <div class="row-gap-large"></div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <form class="form-horizontal" target="iapply">
+                <div class="form-group">
+                    <label for="re_email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="re_email" name="re_email" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="re_fullname" class="col-sm-2 control-label">Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="re_fullname" name="re_fullname" placeholder="Full Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="re_tel" class="col-sm-2 control-label">Phone Number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="re_tel" name="re_tel">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="re_gender" class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="re_gender[]" id="re_gender_m" value="1">Male
+                            </label>
+                            <label>
+                                <input type="radio" name="re_gender[]" id="re_gender_f" value="0">Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="re_attach" class="col-sm-2 control-label">Attach CV</label>
+                    <div class="col-sm-10">
+                        <input type="file" id="re_attach" name="re_attach" />
+                    </div>
+                </div>
+                
+                <div class="row-gap-medium"></div>
+                <div class="form-group">
+                    <label for="re_attach" class="col-sm-2 control-label">Terms - Privacy</label>
+                </div>
+                <div class="box">
+                    <div class="row">
+                        <div class="col-xs-10 nano">
+                            <p class="nano-content content">
+                                EVOLABLE ASIA Co., Ltd (sau đây gọi là [Công ty chúng tôi]) qui định chính sách bên dưới nhằm mục đích bảo mật thông tin và quản lý việc sử dụng thông tin cá nhân một cách hợp lý để người sử dụng yên tâm sử dụng website của công ty(sau đây gọi là [Website]).<br/><br/>
+                                <strong>Định nghĩa thông tin cá nhân</strong>
+                                <br/><br/>
+                                [Thông tin cá nhân] ở phần chính sách riêng tư là những thông tin được nhận dạng là cá nhân như: họ tên, ngày tháng năm sinh, địa chỉ, số điện thoại, địa chỉ mail ... (bao gồm cả những thông tin không được nhận định là thông tin cá nhân nhưng có thể dễ dàng đối chiếu với những thông tin khác, để nhận dạng ra cá nhân đó)<br/><br/>
+                                <strong>Tuân thủ luật liên quan</strong>
+                                <br/><br/>
+                                Công ty chúng tôi luôn nỗ lực bảo vệ thông tin cá nhân, tuân thủ nghiêm ngặt chính sách riêng tư, chủ trương của cơ quan có thẩm quyền và các luật liên quan đến việc bảo vệ thông tin cá nhân, đặc biệt là [Luật bảo vệ thông tin cá nhân]<br/><br/>
+                                <strong>Về việc thu thập thông tin cá nhân</strong>
+                                <br/><br/>
+                                Công ty chúng tôi sẽ thu thập thông tin cá nhân có trên đơn đăng ký dự thi trên website trong phạm vi mục đích sử dụng.<br/><br/>
+                                <strong>Mục đích sử dụng</strong>
+                                <br/><br/>
+                                Những thông tin cá nhân lấy từ form đăng ký chỉ sử dụng cho mục đích tuyển dụng, ngoài ra không sử dụng vào mục đích khác.<br/><br/>
+                                <strong>Cung cấp cho bên thứ 3</strong>
+                                <br/><br/>
+                                Công ty chúng tôi không cung cấp thông tin cá nhân của người sử dụng trên website cho bên thứ 3, trừ những trường hợp sau đây. Được sự đồng ý của người sử dụng. Khi cơ quan pháp luật có yêu cầu Khi người sử dụng gây tổn hại hoặc có nguy cơ gây tổn hại đến công ty chúng tôi hay người sử dụng khác. Khi dữ liệu thống kê chuyển sang trạng thái không thể nhận dạng cá nhân<br/><br/>
+                                <strong>Quản lý an toàn</strong>
+                                <br/><br/>
+                                Công ty chúng tôi thực hiện mọi biện pháp an toàn để quản lý nghiêm ngặt thông tin cá nhân, ngăn chặn việc thông tin bị rò rỉ, lưu chuyển, sửa đổi trái phép bởi sự xâm nhập bất chính của bên thứ 3.<br/><br/>
+                                <strong>Thủ tục yêu cầu hiển thị - Chỉnh sửa - Ngưng sử dụng thông tin cá nhân</strong>
+                                <br/><br/>
+                                Công ty chúng tôi sẽ cố gắng xác nhận thông tin người dùng để hồi đáp một cách thích hợp và nhanh nhất trong phạm vi cần thiết khi có yêu cầu từ người sử dụng về việc hiển thị, chỉnh sửa, thêm mới, xóa, ngưng sử dụng dữ liệu cá nhân có được liên quan đến người sử dụng.<br/><br/>
+                                <strong>Liên tục cải tiến</strong>
+                                <br/><br/>
+                                Nhằm hướng tới việc sử dụng thông tin cá nhân một cách thích hợp, công ty chúng tôi sẽ liên tục cải tiến và đánh giá lại chính sách bảo mật này.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-gap-small"></div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="re_check" name="re_check" value="" checked>
+                                I agree to the Evolable Asia Terms and Privacy.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-gap-medium"></div>
+                <div class="row">
+                    <div class="col-xs-3 col-xs-offset-9">
+                        <button class="btn btn-block btn-orange" type="submit" name="apply">Apply</button>
+                    </div>
+                </div>
+                <div class="row-gap-large"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<iframe name="iapply"></iframe>
+<!-- // Apply Form End -->
 
 <?php get_footer(); ?>

@@ -103,6 +103,12 @@ class jobs_management extends PW_Template_Loader {
         // Register pages jobs & search
         add_action('init', array($this, 'register_pages'));
 
+
+        // Load frontend JS & CSS
+        add_action('wp_enqueue_scripts', array($this, 'register_scripts'), 10);
+        
+        // Load admin JS & CSS
+
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
         add_filter('manage_posts_columns', array($this, 'add_post_column'));
@@ -339,6 +345,11 @@ class jobs_management extends PW_Template_Loader {
         $this->create_page_if_null($post_job_search);
     }
 
+    public function register_scripts() {
+        wp_register_script('js-jobs-frontend', $this->get_plugin_url() . '/js/job.js', array('jquery'), '1.0', TRUE);
+        wp_enqueue_script('js-jobs-frontend');
+    }
+
     /**
      * 
      * @param type $post_id
@@ -362,7 +373,7 @@ class jobs_management extends PW_Template_Loader {
         return array_merge($columns, array(
             'post_views' => __('Views'),
             'status' => __('Status'),
-            ));
+        ));
     }
 
     /**

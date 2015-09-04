@@ -25,6 +25,7 @@
         <link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.dark.css" rel="stylesheet">
+        <link href="<?php echo get_template_directory_uri() ?>/css/jquery.fancybox.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/style.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -52,10 +53,10 @@
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right menu-link">
                             <li><a href="<?php echo bloginfo('url') ?>">Home</a></li>
-                            <li><a href="<?php echo bloginfo('url') ?>/services">Services</a></li>
-                            <li><a href="<?php echo bloginfo('url') ?>/about">About</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/#services" data-goto="services">Services</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/#about-us" data-goto="about-us">About</a></li>
                             <li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>
                             <li><a href="<?php echo bloginfo('url') ?>/contact">Contact</a></li>
 <!--                            <li class="navbar-bars">
