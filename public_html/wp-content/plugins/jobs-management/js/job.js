@@ -19,7 +19,7 @@ $().ready(function () {
             },
             're_attach': {
                 required: true,
-                accept: 'audio/*'
+                extension: 'pdf|doc|docx|xls|xlsx'
             }
         },
         messages: {
@@ -28,7 +28,7 @@ $().ready(function () {
             're_tel': 'Vui lòng nhập điện thoại',
             're_attach': {
                 required: 'Vui lòng Upload CV của bạn',
-                accept: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx'
+                extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx'
             }
         },
         submitHandler: function (form) {
