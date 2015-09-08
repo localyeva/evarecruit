@@ -105,9 +105,12 @@ class jobs_management extends PW_Template_Loader {
 
 
         // Load frontend JS & CSS
+        add_action('wp_enqueue_scripts', array($this, 'register_styles'), 10);
         add_action('wp_enqueue_scripts', array($this, 'register_scripts'), 10);
-        
+
         // Load admin JS & CSS
+//        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'), 10, 1);
+//        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_styles'), 10, 1);
 
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
@@ -131,6 +134,7 @@ class jobs_management extends PW_Template_Loader {
         $this->templates = array(
             'templates/jobs.php' => 'Jobs',
             'templates/jobs-search.php' => 'Jobs Search',
+            'templates/jobs-apply.php' => 'Jobs Apply',
         );
 
         // Add short code
@@ -321,6 +325,16 @@ class jobs_management extends PW_Template_Loader {
      */
     public function register_pages() {
 
+        // Apply Job
+        $apply_job = array(
+            'post_name' => 'jobs-apply',
+            'post_title' => 'Jobs-Apply',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => 'templates/jobs-apply.php',
+        );
+        $apply_job_id = $this->create_page_if_null($apply_job);
+
         // Jobs Page
         // jobs
         $post_job = array(
@@ -345,9 +359,66 @@ class jobs_management extends PW_Template_Loader {
         $this->create_page_if_null($post_job_search);
     }
 
+    /**
+     * Load frontend CSS.
+     * @access  public
+     * @since   1.0.0
+     * @return void
+     */
+    public function register_styles() {
+        wp_register_style('css-jobs-frontend', $this->get_plugin_url() . '/css/job.css', array(), '1.0');
+        wp_enqueue_style('css-jobs-frontend');
+        //
+//        wp_register_style('css-exvalidation-frontend', $this->get_plugin_url() . '/css/exvalidation.css', array(), '1.0');
+//        wp_enqueue_style('css-exvalidation-frontend');
+    }
+
+    /**
+     * Load frontend Javascript.
+     * @access  public
+     * @since   1.0.0
+     * @return  void
+     */
     public function register_scripts() {
+        //
+        wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
+        wp_enqueue_script('js-validate-frontend');
+        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
+        wp_enqueue_script('js-additional-frontend');
+        //
+//        wp_register_script('js-easing-frontend', $this->get_plugin_url() . '/js/jquery.easing.js', array('jquery'), '1.3', TRUE);
+//        wp_enqueue_script('js-easing-frontend');
+//        wp_register_script('js-jQselectable-frontend', $this->get_plugin_url() . '/js/jQselectable.js', array('jquery'), '1.3.2', TRUE);
+//        wp_enqueue_script('js-jQselectable-frontend');
+//        wp_register_script('js-exvalidation-frontend', $this->get_plugin_url() . '/js/exvalidation.min.js', array('jquery'), '1.3.3', TRUE);
+//        wp_enqueue_script('js-exvalidation-frontend');
+//        wp_register_script('js-exchecker-frontend', $this->get_plugin_url() . '/js/exchecker-ja.min.js', array('jquery'), '1.1', TRUE);
+//        wp_enqueue_script('js-exchecker-frontend');
+        //
         wp_register_script('js-jobs-frontend', $this->get_plugin_url() . '/js/job.js', array('jquery'), '1.0', TRUE);
         wp_enqueue_script('js-jobs-frontend');
+    }
+
+    /**
+     * Load admin CSS.
+     * @access  public
+     * @since   1.0.0
+     * @return  void
+     */
+    public function admin_enqueue_styles($hook = '') {
+//        wp_register_style($this->_token . '-admin', esc_url($this->assets_url) . 'css/admin.css', array(), $this->_version);
+//        wp_enqueue_style($this->_token . '-admin');
+    }
+
+    /**
+     * Load admin Javascript.
+     * @access  public
+     * @since   1.0.0
+     * @return  void
+     */
+    public function admin_enqueue_scripts($hook = '') {
+//        wp_register_script($this->_token . '-admin', esc_url($this->assets_url) . 'js/admin' . $this->script_suffix . '.js', array('jquery'), $this->_version);
+//        wp_enqueue_script($this->_token . '-admin');
     }
 
     /**

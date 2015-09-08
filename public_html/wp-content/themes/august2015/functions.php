@@ -61,10 +61,6 @@ function scripts() {
         wp_enqueue_script('js-validate', get_template_directory_uri() . '/js/jquery.validate.min.js', array(), '1.14.0', TRUE);
     }
     
-    var_dump(is_single('job'));
-    var_dump(is_page('job'));
-    var_dump(is_archive('job'));
-    
     if(is_home() || is_front_page()){
         wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
     }

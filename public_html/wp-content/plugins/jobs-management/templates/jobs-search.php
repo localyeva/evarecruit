@@ -39,8 +39,4 @@ get_header();
     <?php wp_reset_postdata(); ?>
 </div>
 
-<!--//Map-->
-<?php get_template_part('google-map') ?>
-<!--//Map End-->
-
 <?php get_footer(); ?>

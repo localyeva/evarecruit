@@ -1,0 +1,15 @@
+/* 
+    Created on : Sep 7, 2015, 3:29:09 PM
+    Author     : khangld
+*/
+
+@error-color: #B10016;
+
+.error{
+    color: @error-color;
+}
+input[type=text], input[type=email]{
+    &.error{
+        border: 1px solid @error-color;
+    }
+}
