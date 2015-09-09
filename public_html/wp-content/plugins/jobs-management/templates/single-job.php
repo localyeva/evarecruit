@@ -53,7 +53,7 @@ get_header();
                                 <p>Salary: <?php echo get_field('salary') ?></p>
                                 <?php $location = get_the_terms($post->ID, 'job-location'); ?>
                                 <p>Location: <?php echo $location[0]->name ?></p>
-                                <p>Expire date: <?php echo get_field('expire_date') ?></p>
+                                <p>Expire date: <?php echo format_date(get_field('expire_date')) ?></p>
                             </div>
                         </div>
                     </div>
@@ -228,11 +228,19 @@ get_header();
                     </div>
                 </div>
                 <div class="row-gap-large"></div>
+                <input type="hidden" name="job_id" value="<?php the_ID() ?>"/>
+                <input type="hidden" name="job_slug" value="<?php echo $post->post_name ?>"/>
+                <input type="hidden" name="job_title" value="<?php the_title() ?>"/>
+                <input type="hidden" name="job_position" value="<?php echo $position[0]->name ?>"/>
+                <input type="hidden" name="job_location" value="<?php echo $location[0]->name ?>"/>
+                <input type="hidden" name="job_level" value="<?php echo get_field('work_level') ?>"/>
+                <input type="hidden" name="job_salary" value="<?php echo get_field('salary') ?>"/>
+                <input type="hidden" name="job_expired" value="<?php echo format_date(get_field('expire_date')) ?>"/>
             </form>
         </div>
     </div>
 </div>
-<iframe name="iapply"></iframe>
+<iframe id="iapply" name="iapply"></iframe>
 <!-- // Apply Form End -->
 
 <?php get_footer(); ?>

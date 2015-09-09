@@ -102,7 +102,7 @@ class jobs_management extends PW_Template_Loader {
 
         // Register pages jobs & search
         add_action('init', array($this, 'register_pages'));
-
+        add_action('init', array($this, 'register_table'));
 
         // Load frontend JS & CSS
         add_action('wp_enqueue_scripts', array($this, 'register_styles'), 10);
@@ -111,7 +111,6 @@ class jobs_management extends PW_Template_Loader {
         // Load admin JS & CSS
 //        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'), 10, 1);
 //        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_styles'), 10, 1);
-
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
         add_filter('manage_posts_columns', array($this, 'add_post_column'));
@@ -463,8 +462,33 @@ class jobs_management extends PW_Template_Loader {
         }
     }
 
-    public function register_search_form($form) {
-        
+    public function register_table() {
+        global $wpdb;
+
+        $charset_collate = $wpdb->get_charset_collate();
+        $table_name = $wpdb->prefix . 'jobs_management';
+
+        $sql = "CREATE TABLE $table_name (
+            id int(12) NOT NULL AUTO_INCREMENT,
+            apply_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+            fullname varchar(60) DEFAULT '' NOT NULL,
+            email varchar(255) DEFAULT '' NOT NULL,
+            phone_number varchar(15) DEFAULT '' NOT NULL,
+            gender varchar(1) DEFAULT '-',
+            attach_file varchar(255) NOT NULL,
+            job_id int(12) NULL,
+            job_title varchar(255) NULL,
+            job_slug varchar(255) NULL,
+            job_position varchar(32) NULL,
+            job_level varchar(32) NULL,
+            job_salary varchar(32) NULL,
+            job_location varchar(32) NULL,
+            job_expired varchar(32) NULL,
+            UNIQUE KEY id (id)
+            ) $charset_collate;";
+
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+        dbDelta($sql);
     }
 
 }

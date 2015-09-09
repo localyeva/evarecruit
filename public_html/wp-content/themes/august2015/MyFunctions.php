@@ -224,3 +224,23 @@ function setPostViews($post_ID, $count_key = '') {
 
 // Remove issues with prefetching adding extra views
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+function format_date($date = 'yyyymmdd', $format = '1') {
+    // extract Y, M, D
+    $y = substr($date, 0, 4);
+    $m = substr($date, 4, 2);
+    $d = substr($date, 6, 2);
+    //
+    switch ($format) {
+        case 1:
+            $date = "{$d}-{$m}-{$y}";
+            break;
+        case 2:
+            $date = "{$y}-{$m}-{$d}";
+            break;
+        default:
+            $date = "{$d}-{$m}-{$y}";
+            break;
+    }
+    return $date;
+}

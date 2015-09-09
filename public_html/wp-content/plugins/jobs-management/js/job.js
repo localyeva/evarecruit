@@ -50,3 +50,11 @@ $().ready(function () {
     });
 
 });
+
+
+function get_iframe_result(data) {
+    var rs = jQuery.parseJSON(data);
+    console.log(data);
+    console.log(rs);
+    console.log(rs.code);
+}

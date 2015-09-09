@@ -149,7 +149,7 @@ class jobs_cpt_acf_settings {
                         'label' => 'Expire Date',
                         'name' => 'expire_date',
                         'type' => 'date_picker',
-                        'date_format' => 'yyyy-mm-dd',
+                        'date_format' => 'yymmdd',
                         'display_format' => 'dd/mm/yy',
                         'first_day' => 1,
                     ),
