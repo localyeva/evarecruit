@@ -115,51 +115,12 @@ get_header();
             'hide_empty' => 0
         );
         $categories = get_terms('cat-work-environment', $args);
-        ?>
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <ul class="nav nav-pills nav-justified">
-                    <li role="presentation" data-tab="all"><a href="#">All</a></li>
-                    <?php foreach ($categories as $category): ?>
-                        <li role="presentation" data-tab=<?php echo $category->name ?>><a href="#"><?php echo $category->name ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-        <div class="row-gap-large"></div>
-        <!-- //Image gallery -->
-        <?php
-        $args = array(
-            'post_type' => 'work-environment',
-            'posts_per_page' => -1,
-            'orderby' => array('date' => 'ASC'),
-        );
-        $loop = new WP_Query($args);
-        ?>
-        <div class="row gallery" data-tab="all">
-            <div class="col-xs-3">
-                <div class="row">
-                    <?php if ($loop->have_posts()): ?>
-                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-12">
-                                <img src="<?php echo get_field('main_image') ?>" alt="<?php the_title() ?>" class="img-responsive" />
-                            </div>
-                            <?php if (have_rows('images')): ?>
-                                <?php while (have_rows('images')): the_row(); ?>
-                                    <div class="col-xs-12">
-                                        <img src="<?php echo get_sub_field('image') ?>" alt="<?php the_title() ?>" class="img-responsive" />
-                                    </div>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                    <?php wp_reset_postdata(); ?>
-                </div>
-            </div>
-        </div>
-
-        <?php foreach ($categories as $category): ?>
-            <?php
+        $images = array();
+        $all_images = array();
+        $num_imgs = 0;
+        foreach ($categories as $category) {
+            $cat_name = $category->name;
+            $images[$cat_name] = array();
             $args = array(
                 'post_type' => 'work-environment',
                 'posts_per_page' => -1,
@@ -172,32 +133,159 @@ get_header();
                 'orderby' => array('date' => 'ASC'),
             );
             $loop = new WP_Query($args);
-            ?>
-            <div class="row gallery" data-tab="<?php echo $category->name ?>">
-                <div class="col-xs-3">
-                    <div class="row">
-                        <?php if ($loop->have_posts()): ?>
-                            <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                                <div class="col-xs-12">
-                                    <img src="<?php echo get_field('main_image') ?>" alt="<?php the_title() ?>" class="img-responsive" />
-                                </div>
-                                <?php if (have_rows('images')): ?>
-                                    <?php while (have_rows('images')): the_row(); ?>
-                                        <div class="col-xs-12">
-                                            <img src="<?php echo get_sub_field('image') ?>" alt="<?php the_title() ?>" class="img-responsive" />
-                                        </div>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                        <?php wp_reset_postdata(); ?>
-                    </div>
+            if ($loop->have_posts()) {
+                while ($loop->have_posts()) {
+                    $loop->the_post();
+                    $img = array(the_title(),get_field('main_image'));
+                    $images[$cat_name][] = $img;
+                    $all_images[] = $img;
+                    $num_imgs++;
+                    if (have_rows('images')) {
+                        while (have_rows('images')) {
+                            the_row();
+                            $img = array(the_title(), get_sub_field('image'));
+                            $images[$cat_name][] = $img;
+                            $all_images[] = $img;
+                            $num_imgs++;                            
+                        }
+                    }
+                }
+            }
+        }
+
+        wp_reset_postdata();
+        ?>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <ul class="nav nav-pills nav-justified">
+                    <li role="presentation" data-tab="all"><a href="#">All</a></li>
+                    <?php foreach ($categories as $category): ?>
+                    <li role="presentation" data-tab="<?php echo $category->name ?>"><a href="#"><?php echo $category->name ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+        <div class="row-gap-large"></div>
+        <!-- //Image gallery -->
+        <div class="row gallery" data-tab="all">
+            <?php if($num_imgs <=4 ){
+                for ($i = 0; $i <= 4; $i++){
+                    if(isset($images[$i])){                
+             ?>
+            <div class="col-xs-3">
+                <div class="row">
+                            <div class="col-xs-12">
+                                <img src="<?php echo $images[$i][1] ?>" alt="<?php echo $images[$i][0] ?>" class="img-responsive" />
+                            </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+            <?php }}}else{
+                $mod = $num_imgs%4;
+                $num = intval($num_imgs/4);
+                if($mod == 0){
+                    $parts = array_chunk($all_images, $num);
+                }else if($mod == 1){
+                    $parts[0] = array_slice($all_images, 0, $num + 1);
+                    $parts[1] = array_slice($all_images, $num + 1, $num);
+                    $parts[2] = array_slice($all_images, ($num + 1) + $num, $num);
+                    $parts[3] = array_slice($all_images, ($num + 1) + 2*$num, $num);
+                }else if($mod == 2){
+                    $parts[0] = array_slice($all_images, 0, $num + 1);
+                    $parts[1] = array_slice($all_images, $num + 1, $num+1);
+                    $parts[2] = array_slice($all_images, ($num + 1)*2, $num);
+                    $parts[3] = array_slice($all_images, ($num + 1)*2 + $num, $num);
+                }else{
+                    $parts[0] = array_slice($all_images, 0, $num + 1);
+                    $parts[1] = array_slice($all_images, $num + 1, $num+1);
+                    $parts[2] = array_slice($all_images, ($num + 1)*2, $num+1);
+                    $parts[3] = array_slice($all_images, ($num + 1)*3, $num);
+                }
+                for ($i = 0; $i < 4; $i++){
+                    $tparts = $parts[$i];
+            ?>
+            <div class="col-xs-3">
+                <div class="row">
+                    <?php foreach ($tparts as $part) {
+                    ?>
+                    <div class="col-xs-12">
+                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php }}?>
+        </div>
+
+            <?php foreach ($images as $cat_name=>$pimages){            
+            ?>
+            <div class="row gallery" data-tab="<?php echo $cat_name ?>">
+            <?php $num_imgs = count($pimages);
+            if($num_imgs <=4 ){
+            for ($i = 0; $i <= 4; $i++){
+                if(isset($pimages[$i])){                
+             ?>
+            <div class="col-xs-3">
+                <div class="row">
+                            <div class="col-xs-12">
+                                <img src="<?php echo $pimages[$i][1] ?>" alt="<?php echo $pimages[$i][0] ?>" class="img-responsive" />
+                            </div>
+                </div>
+            </div>
+            <?php }}}else{
+                $mod = $num_imgs%4;
+                $num = intval($num_imgs/4);
+                if($mod == 0){
+                    $parts = array_chunk($pimages, $num);
+                }else if($mod == 1){
+                    $parts[0] = array_slice($pimages, 0, $num);
+                    $parts[1] = array_slice($pimages, $num + 1, $num);
+                    $parts[2] = array_slice($pimages, ($num + 1) + $num, $num);
+                    $parts[3] = array_slice($pimages, ($num + 1) + 2*$num, $num);
+                }else if($mod == 2){
+                    $parts[0] = array_slice($pimages, 0, $num + 1);
+                    $parts[1] = array_slice($pimages, $num + 1, $num+1);
+                    $parts[2] = array_slice($pimages, ($num + 1)*2, $num);
+                    $parts[3] = array_slice($pimages, ($num + 1)*2 + $num, $num);
+                }else{
+                    $parts[0] = array_slice($pimages, 0, $num + 1);
+                    $parts[1] = array_slice($pimages, $num + 1, $num+1);
+                    $parts[2] = array_slice($pimages, ($num + 1)*2, $num+1);
+                    $parts[3] = array_slice($pimages, ($num + 1)*3, $num);
+                }
+                for ($i = 0; $i < 4; $i++){
+                    $tparts = $parts[$i];
+            ?>
+            <div class="col-xs-3">
+                <div class="row">
+                    <?php foreach ($tparts as $part) {
+                    ?>
+                    <div class="col-xs-12">
+                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php }}?>
+                
+            </div>
+        <?php } ?>
         <!-- //Image gallery End -->
     </div>
 </div>
+<script type="text/javascript">
+    $(function (e) {
+        $('.gallery').fadeOut();
+        $('.header-environment ul.nav-pills li').click(function (e) {
+            var tab = $(this).data('tab');
+            $('.header-environment ul.nav-pills li').removeClass('active');
+            $(this).addClass('active');
+            $('.gallery').fadeOut();
+            $('.gallery[data-tab="' + tab + '"]').fadeIn();
+            e.preventDefault();
+        });
+        $('.header-environment ul.nav-pills li:first-child').trigger('click');
+    });
+</script>
 <!--//Environment End-->
 <!--//Intro Movie-->
 <div class="row-gap-large"></div>
@@ -209,10 +297,10 @@ get_header();
             </div>
             <div class="col-md-4 col-xs-8">
                 <h2><?php echo get_part_work_environment_movie_title_text() ?></h2>
-                <?php echo get_part_work_environment_movie_desc_text() ?>                
+<?php echo get_part_work_environment_movie_desc_text() ?>                
             </div>
             <div class="col-md-6 col-md-offset-1 col-xs-12">
-                <?php echo get_part_work_environment_movie_link() ?>                
+<?php echo get_part_work_environment_movie_link() ?>                
             </div>
         </div>
     </div>
