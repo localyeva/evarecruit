@@ -25,6 +25,39 @@ function theme_customize_register_global_service($wp_customize) {
         'settings' => 'top_image',
         'priority' => 1,
     )));
+
+    $wp_customize->add_setting('intro_4_text', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control('intro_4_text_c', array(
+        'label' => __('Intro 4 Text'),
+        'section' => 'general',
+        'settings' => 'intro_4_text',
+        'priority' => 1,
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('intro_5_text', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control('intro_5_text_c', array(
+        'label' => __('Intro 5 Text'),
+        'section' => 'general',
+        'settings' => 'intro_5_text',
+        'priority' => 1,
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('intro_6_text', array(
+        'default' => '',
+    ));
+    $wp_customize->add_control('intro_6_text_c', array(
+        'label' => __('Intro 6 Text'),
+        'section' => 'general',
+        'settings' => 'intro_6_text',
+        'priority' => 1,
+        'type' => 'text',
+    ));
 }
 
 add_action('customize_register', 'theme_customize_register_global_service');
@@ -46,4 +79,16 @@ add_action('wp_head', 'generate_global_service_css');
 
 function get_global_top_image() {
     return esc_url(get_theme_mod('global_top_image'));
+}
+
+function get_intro_4_text() {
+    return get_theme_mod('intro_4_text');
+}
+
+function get_intro_5_text() {
+    return get_theme_mod('intro_5_text');
+}
+
+function get_intro_6_text() {
+    return get_theme_mod('intro_6_text');
 }
