@@ -120,12 +120,13 @@ $(function () {
             }, timeout);
         }
 
-    google.maps.event.addDomListener(window, 'load', initMap);
+        google.maps.event.addDomListener(window, 'load', initMap);
+    }
 });
 
 /*----------------------------------------------------------- Global Services*/
 $('#navigation li button.navbar-btn').click(function () {
-        location.href = $(this).data('url');
+    location.href = $(this).data('url');
 });
 
 $("a.photo").fancybox({
@@ -143,7 +144,7 @@ $('.image-wrapper').mouseover(function (e) {
 }).mouseout(function (e) {
     $(this).find('.text-wrapper').css({backgroundColor: '#fff'});
     e.stopPropagation();
-})
+});
 
 $('#responsive-menu-button').sidr({
     name: 'sidr-main',
