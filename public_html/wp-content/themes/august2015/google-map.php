@@ -36,10 +36,10 @@
                                         <h3><a href="javascript:void(0)" class="map-focus black-link" data-lat="<?php echo get_field('z_lat') ?>" data-lng="<?php echo get_field('z_lng') ?>"><?php echo mb_convert_case(get_the_title(), MB_CASE_UPPER) ?></a></h3>
                                         <?php if (have_rows('main_locations')): ?>
                                             <?php while (have_rows('main_locations')): the_row(); ?>
-                                                <?php if (!empty(get_sub_field('main_location'))): ?>
+                                                <?php if (get_sub_field('main_location') != ''): ?>
                                                     <p>* <?php echo get_sub_field('main_location') ?></p>
                                                 <?php endif; ?>
-                                                <?php if (!empty(get_sub_field('address'))): ?>
+                                                <?php if (get_sub_field('address') != ''): ?>
                                                     <p><?php echo get_sub_field('address') ?></p>
                                                 <?php endif; ?>
                                             <?php endwhile; ?>

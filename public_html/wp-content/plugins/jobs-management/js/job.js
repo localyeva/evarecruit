@@ -15,7 +15,8 @@ $().ready(function () {
                 required: true
             },
             're_tel': {
-                required: true
+                required: true,
+                number: true
             },
             're_attach': {
                 required: true,
@@ -54,7 +55,27 @@ $().ready(function () {
 
 function get_iframe_result(data) {
     var rs = jQuery.parseJSON(data);
-    console.log(data);
-    console.log(rs);
-    console.log(rs.code);
+    //
+    if (rs.code == 'ERR') {
+        $.each(rs.message, function (key, value) {
+            $('#' + key).after('<label id="' + key + '-error" class="error" for="' + key + '">' + value + '</label>');
+        });
+    } else {
+        alert(rs.message);
+        $('#apply-form')[0].reset();
+        $('.fancybox-close').fancybox().trigger('click');
+    }
 }
+
+$(function () {
+    $('#print-job').on('click', function () {
+        var prtContent = $('new-job-detail');
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+//        WinPrint.document.write(cssLinkTag);
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close();
+    });
+});

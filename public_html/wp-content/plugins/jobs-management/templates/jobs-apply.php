@@ -10,13 +10,15 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-function wp_jobs_upload_dir( $dirs ) {
+require_once plugin_dir_path(__FILE__) . '../lib/includes/gump.class.php';
+
+function wp_jobs_upload_dir($dirs) {
     $y = date('Y');
     $m = date('m');
-    
+
     $dirs['subdir'] = "/cv/{$y}/{$m}";
-    $dirs['path'] = $dirs['basedir'] . "/cv/{$y}/{$m}";;
-    $dirs['url'] = $dirs['baseurl'] . "/cv/{$y}/{$m}";;
+    $dirs['path'] = $dirs['basedir'] . "/cv/{$y}/{$m}";
+    $dirs['url'] = $dirs['baseurl'] . "/cv/{$y}/{$m}";
 
     return $dirs;
 }
@@ -29,7 +31,55 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     global $wpdb;
 
-    add_filter( 'upload_dir', 'wp_jobs_upload_dir' );
+    // validate input data
+    $gump = new GUMP;
+
+    $_POST = $gump->sanitize($_POST);
+
+    $validators = array(
+        're_email' => 'required|valid_email',
+        're_fullname' => 'required',
+        're_tel' => 'required',
+    );
+
+    $gump->validation_rules($validators);
+
+    $rules = array(
+        're_email' => 'trim|sanitize_email',
+        're_fullname' => 'trim',
+        're_tel' => 'trim',
+        're_gender' => 'trim',
+    );
+    $gump->filter_rules($rules);
+
+    $validated_data = $gump->run($_POST);
+
+    if ($validated_data === FALSE) {
+
+        $message = array();
+        foreach ($gump->get_errors_array() as $k => $v) {
+            switch (str_replace(' ', '_', strtolower($k))) {
+                case 're_email':
+                    $message['re_email'] = 'Email không hợp lệ';
+                    break;
+                case 're_fullname':
+                    $message['re_fullname'] = 'Vui lòng nhập tên';
+                    break;
+                case 're_tel':
+                    $message['re_tel'] = 'Vui long nhập số điện thoại';
+                    break;
+            }
+        }
+
+        $result = array(
+            'code' => 'ERR',
+            'message' => $message,
+        );
+        echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
+        exit;
+    }
+
+    add_filter('upload_dir', 'wp_jobs_upload_dir');
 
     // upload file
     $uploadedfile = $_FILES['re_attach'];
@@ -44,14 +94,14 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
     } else {
         $result = array(
             'code' => 'ERR',
-            'message' => $movefile['error']
+            'message' => $movefile['error'],
         );
+        exit;
     }
 
     $table_name = $wpdb->prefix . 'jobs_management';
 
-    $wpdb->insert(
-            $table_name, array(
+    $data = array(
         'apply_date' => current_time('mysql'),
         'fullname' => $_POST['re_fullname'],
         'email' => $_POST['re_email'],
@@ -66,17 +116,49 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'job_location' => $_POST['job_location'],
         'job_expired' => $_POST['job_expired'],
         'job_slug' => $_POST['job_slug'],
-            )
     );
-    
-    remove_filter( 'upload_dir', 'wp_jobs_upload_dir' );
+
+    $wpdb->insert($table_name, $data);
+
+    remove_filter('upload_dir', 'wp_jobs_upload_dir');
     //
     $result = array(
         'code' => 'OK',
-        'message' => ''
+        'message' => 'Cảm ơn bạn đã ứng tuyển',
     );
+
+    echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
+    /* -------------------------------------------------------------- send mail */
+    require_once plugin_dir_path(__FILE__) . '../lib/includes/Twig/Autoloader.php';
+    require_once plugin_dir_path(__FILE__) . '../lib/includes/Mail.php';
+    Twig_Autoloader::register();
+
+    $loader = new Twig_Loader_Filesystem(__DIR__ . '/mail');
+
+    $twig = new Twig_Environment($loader);
+
+    //Admin用メッセージ
+    $template_admin = $twig->loadTemplate('to_hr.tpl');
+
+    $subject_admin = 'Ứng tuyển - ' . $_POST['job_position'] . '-' . $_POST['re_fullname'];
+    $body_admin = $template_admin->render(
+            array_merge(
+                    $data, array(
+        'entry_time' => gmdate("Y/m/d H:i:s", time() + 9 * 3600),
+        'entry_host' => gethostbyaddr(getenv("REMOTE_ADDR")),
+        'entry_ua' => getenv("HTTP_USER_AGENT"),
+    )));
     
-    echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "')</script>";
+    $fromname = '';
+    $mail = new Mail();
+    $mail->from = 'khangld@evolable.asia';
+    $mail->fromName = $fromname;
+    $mail->to = array(
+        'khangld@evolable.asia',
+    );
+    $mail->title = $subject_admin;
+    $mail->body = nl2br($body_admin);
+    $mail->send();
     
 } else {
     wp_redirect(home_url());
