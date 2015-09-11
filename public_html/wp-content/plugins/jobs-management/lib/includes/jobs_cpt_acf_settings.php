@@ -17,7 +17,12 @@ $job_status = array(
 
 class jobs_cpt_acf_settings {
 
+    private $assets_url;
+
     public function __construct() {
+
+        $this->assets_url = esc_url(trailingslashit(plugins_url('/assets/', __FILE__)));
+
         /* === cpt & acf === */
         add_action('init', array($this, 'cptui_register_my_cpts'));
         add_action('init', array($this, 'cptui_register_my_taxes'));
@@ -48,7 +53,7 @@ class jobs_cpt_acf_settings {
             "rewrite" => array("slug" => "job", "with_front" => true),
             "query_var" => true,
             "menu_position" => 26,
-            "menu_icon" => WP_PLUGIN_URL . '/jobs-management/images/ad-ico/h16.png',
+            "menu_icon" => $this->assets_url . 'images/ad-ico/h16.png',
             "supports" => array("title"),
         );
         register_post_type("job", $args);

@@ -65,15 +65,17 @@ function scripts() {
         wp_enqueue_script('js-google-map-api', '//maps.google.com/maps/api/js?sensor=false', array('js-common'), '3.0', TRUE);
     }
 
-    //
-    global $map_data;
-    //
-    wp_enqueue_script('js-common', get_template_directory_uri() . '/js/common.js', array(), '1.0', TRUE);
-    $dataToBePassed = array(
-        'home' => get_template_directory_uri(),
-        'map_data' => $map_data,
-    );
-    wp_localize_script('js-common', 'vars', $dataToBePassed);
+    if (is_front_page()){
+        //
+        global $map_data;
+        //
+        wp_enqueue_script('js-common', get_template_directory_uri() . '/js/common.js', array(), '1.0', TRUE);
+        $dataToBePassed = array(
+            'home' => get_template_directory_uri(),
+            'map_data' => $map_data,
+        );
+        wp_localize_script('js-common', 'vars', $dataToBePassed);
+    }
 }
 
 /* ------------------------------------------------------------ theme support */

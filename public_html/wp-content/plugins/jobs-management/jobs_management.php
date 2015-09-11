@@ -22,8 +22,8 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-
 require_once 'lib/includes/jobs_cpt_acf_settings.php';
+require_once 'lib/includes/jobs-plugin-admin.php';
 require_once 'lib/class-gamajo-template-loader.php';
 
 /**
@@ -365,10 +365,10 @@ class jobs_management extends PW_Template_Loader {
      * @return void
      */
     public function register_styles() {
-        wp_register_style('css-jobs-frontend', $this->get_plugin_url() . '/css/job.css', array(), '1.0');
+        wp_register_style('css-jobs-frontend', $this->get_plugin_url() . '/assets/css/job.css', array(), '1.0');
         wp_enqueue_style('css-jobs-frontend');
         //
-//        wp_register_style('css-exvalidation-frontend', $this->get_plugin_url() . '/css/exvalidation.css', array(), '1.0');
+//        wp_register_style('css-exvalidation-frontend', $this->get_plugin_url() . '/assets/css/exvalidation.css', array(), '1.0');
 //        wp_enqueue_style('css-exvalidation-frontend');
     }
 
@@ -380,49 +380,27 @@ class jobs_management extends PW_Template_Loader {
      */
     public function register_scripts() {
         //
-        wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
+        wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
         wp_enqueue_script('js-validate-frontend');
-        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
+        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/assets/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
         wp_enqueue_script('js-additional-frontend');
         //
-//        wp_register_script('js-easing-frontend', $this->get_plugin_url() . '/js/jquery.easing.js', array('jquery'), '1.3', TRUE);
+//        wp_register_script('js-easing-frontend', $this->get_plugin_url() . '/assets/js/jquery.easing.js', array('jquery'), '1.3', TRUE);
 //        wp_enqueue_script('js-easing-frontend');
-//        wp_register_script('js-jQselectable-frontend', $this->get_plugin_url() . '/js/jQselectable.js', array('jquery'), '1.3.2', TRUE);
+//        wp_register_script('js-jQselectable-frontend', $this->get_plugin_url() . '/assets/js/jQselectable.js', array('jquery'), '1.3.2', TRUE);
 //        wp_enqueue_script('js-jQselectable-frontend');
-//        wp_register_script('js-exvalidation-frontend', $this->get_plugin_url() . '/js/exvalidation.min.js', array('jquery'), '1.3.3', TRUE);
+//        wp_register_script('js-exvalidation-frontend', $this->get_plugin_url() . '/assets/js/exvalidation.min.js', array('jquery'), '1.3.3', TRUE);
 //        wp_enqueue_script('js-exvalidation-frontend');
-//        wp_register_script('js-exchecker-frontend', $this->get_plugin_url() . '/js/exchecker-ja.min.js', array('jquery'), '1.1', TRUE);
+//        wp_register_script('js-exchecker-frontend', $this->get_plugin_url() . '/assets/js/exchecker-ja.min.js', array('jquery'), '1.1', TRUE);
 //        wp_enqueue_script('js-exchecker-frontend');
         //
-        wp_register_script('js-jobs-frontend', $this->get_plugin_url() . '/js/job.js', array('jquery'), '1.0', TRUE);
+        wp_register_script('js-jobs-frontend', $this->get_plugin_url() . '/assets/js/job.js', array('jquery'), '1.0', TRUE);
         wp_enqueue_script('js-jobs-frontend');
 
         $dataToBePassed = array(
             'plugin_url' => $this->get_plugin_url(),
         );
         wp_localize_script('js-jobs-frontend', 'jobvars', $dataToBePassed);
-    }
-
-    /**
-     * Load admin CSS.
-     * @access  public
-     * @since   1.0.0
-     * @return  void
-     */
-    public function admin_enqueue_styles($hook = '') {
-//        wp_register_style($this->_token . '-admin', esc_url($this->assets_url) . 'css/admin.css', array(), $this->_version);
-//        wp_enqueue_style($this->_token . '-admin');
-    }
-
-    /**
-     * Load admin Javascript.
-     * @access  public
-     * @since   1.0.0
-     * @return  void
-     */
-    public function admin_enqueue_scripts($hook = '') {
-//        wp_register_script($this->_token . '-admin', esc_url($this->assets_url) . 'js/admin' . $this->script_suffix . '.js', array('jquery'), $this->_version);
-//        wp_enqueue_script($this->_token . '-admin');
     }
 
     /**
@@ -467,6 +445,10 @@ class jobs_management extends PW_Template_Loader {
         }
     }
 
+    /**
+     * 
+     * @global type $wpdb
+     */
     public function register_table() {
         global $wpdb;
 
