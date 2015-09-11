@@ -77,10 +77,12 @@ get_header();
 		            <?php while ($loop->have_posts()): $loop->the_post(); ?>
 		                <div class="col-xs-3 image-wrapper" data-bg-color="<?php if($color==1){echo "#A3D8C7";}else if($color==2){echo "#229EBA";}else if($color==3){echo "#EBD14E";}else{echo "#E4887D";}?>">
 							<img src="<?php echo get_field('image');?>" alt="" class="img-responsive">
-							<div class="text-wrapper" data-bg-color="#304562">
-							    <div class="title overtext"><?php echo get_field('position'); echo $post->ID.'  '.$post->ID%2;?></div>
-							    <div class="tagline overtext"><?php echo get_field('job_description');?></div>
-							</div>
+							<a href="<?php the_permalink();?>">
+								<div class="text-wrapper" data-bg-color="#304562">
+								    <div class="title overtext"><?php echo get_field('position'); echo $post->ID.'  '.$post->ID%2;?></div>
+								    <div class="tagline overtext"><?php echo get_field('job_description');?></div>
+								</div>
+							</a>
 						</div>
 					<?php $color++; ?>
 		            <?php endwhile; ?>
@@ -108,10 +110,12 @@ get_header();
 		            <?php while ($loop->have_posts()): $loop->the_post(); ?>
 		                <div class="col-xs-3 image-wrapper" data-bg-color="<?php if($color==1){echo "#A3D8C7";}else if($color==2){echo "#229EBA";}else if($color==3){echo "#EBD14E";}else{echo "#E4887D";}?>">
 							<img src="<?php echo get_field('image');?>" alt="<?php the_title();?>" class="img-responsive">
-							<div class="text-wrapper" data-bg-color="#304562">
-							    <div class="title overtext"><?php echo get_field('position');?></div>
-							    <div class="tagline overtext"><?php echo get_field('job_description');?></div>
-							</div>
+							<a href="<?php the_permalink();?>">
+								<div class="text-wrapper" data-bg-color="#304562">
+								    <div class="title overtext"><?php echo get_field('position');?></div>
+								    <div class="tagline overtext"><?php echo get_field('job_description');?></div>
+								</div>
+							</a>
 						</div>
 					<?php $color++; ?>
 		            <?php endwhile; ?>
@@ -146,69 +150,95 @@ get_header();
 			    <div class="item active">
 	    			<?php
                     $args = array(
-                        'post_type' => 'work-environment',
-                        'posts_per_page' => 3,
-                        'orderby' => array('date' => 'ASC'),
+                        'post_type' => 'slider-evnironment',
+                        'posts_per_page' => 1,
+                        'orderby' => array('date' => 'DESC'),
+                    );
+                    $loop = new WP_Query($args);
+                    $a = 0
+                    ?>
+                    <?php
+                    if ($loop->have_posts()):
+                        $num_posts = count($loop->posts);
+                        ?>
+                        <?php while ($loop->have_posts()): $loop->the_post(); 
+                        	foreach (get_field('images') as $key => $val) {
+                        		if($a<3){
+                        ?>
+                        	<div class="col-xs-4">
+                                <img src="<?php echo $val['image'];?>" alt="<?php the_title();?>" class="img-responsive">
+                            </div>
+                        <?php
+                        		}
+                        	$a++;
+                        	}
+                        ?>
+                        <?php endwhile; ?>
+                    <?php endif;?>
+                    <?php wp_reset_postdata() ?>
+			    </div>
+			    <div class="item">
+	    			<?php
+                    $args = array(
+                        'post_type' => 'slider-evnironment',
+                        'posts_per_page' => 1,
+                        'orderby' => array('date' => 'DESC'),
                         'offset' => 1,
                     );
                     $loop = new WP_Query($args);
+                    $b = 0;
                     ?>
                     <?php
                     if ($loop->have_posts()):
                         $num_posts = count($loop->posts);
                         ?>
-                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-4">
-                                <img src="<?php echo get_field('main_image');?>" alt="<?php the_title();?>" class="img-responsive">
+                        <?php while ($loop->have_posts()): $loop->the_post(); 
+                        	foreach (get_field('images') as $key => $val) {
+                        		if($b<3){
+                        ?>
+                        	<div class="col-xs-4">
+                                <img src="<?php echo $val['image'];?>" alt="<?php the_title();?>" class="img-responsive">
                             </div>
+                        <?php
+                    			}
+                        	$b++;
+                        	}
+                        ?>
                         <?php endwhile; ?>
-                    <?php endif; ?>
+                    <?php endif;?>
                     <?php wp_reset_postdata() ?>
 			    </div>
-    		    <div class="item">
-        			<?php
+			    <div class="item">
+	    			<?php
                     $args = array(
-                        'post_type' => 'work-environment',
-                        'posts_per_page' => 3,
-                        'orderby' => array('date' => 'ASC'),
-                        'offset' => 4,
+                        'post_type' => 'slider-evnironment',
+                        'posts_per_page' => 1,
+                        'orderby' => array('date' => 'DESC'),
+                        'offset' => 2,
                     );
                     $loop = new WP_Query($args);
+                    $c = 0;
                     ?>
                     <?php
                     if ($loop->have_posts()):
                         $num_posts = count($loop->posts);
                         ?>
-                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-4">
-                                <img src="<?php echo get_field('main_image');?>" alt="<?php the_title();?>" class="img-responsive">
-                            </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                    <?php wp_reset_postdata() ?>
-    		    </div>
-    		    <div class="item">
-        			<?php
-                    $args = array(
-                        'post_type' => 'work-environment',
-                        'posts_per_page' => 3,
-                        'orderby' => array('date' => 'ASC'),
-                        'offset' => 6,
-                    );
-                    $loop = new WP_Query($args);
-                    ?>
-                    <?php
-                    if ($loop->have_posts()):
-                        $num_posts = count($loop->posts);
+                        <?php while ($loop->have_posts()): $loop->the_post(); 
+                        	foreach (get_field('images') as $key => $val) {
+                        		if($c<3){
                         ?>
-                        <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-4">
-                                <img src="<?php echo get_field('main_image');?>" alt="<?php the_title();?>" class="img-responsive">
+                        	<div class="col-xs-4">
+                                <img src="<?php echo $val['image'];?>" alt="<?php the_title();?>" class="img-responsive">
                             </div>
+                        <?php
+                        		}
+                        	$c++;
+                        	}
+                        ?>
                         <?php endwhile; ?>
-                    <?php endif; ?>
+                    <?php endif;?>
                     <?php wp_reset_postdata() ?>
-    		    </div>
+			    </div>
 			</div>
 			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 			  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
