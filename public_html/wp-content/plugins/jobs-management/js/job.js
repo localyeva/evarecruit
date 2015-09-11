@@ -69,10 +69,10 @@ function get_iframe_result(data) {
 
 $(function () {
     $('#print-job').on('click', function () {
-        var prtContent = $('new-job-detail');
-        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-//        WinPrint.document.write(cssLinkTag);
-        WinPrint.document.write(prtContent.innerHTML);
+        var prtContent = $('#print-job-part');
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=1,status=0');
+        WinPrint.document.write('<link rel="stylesheet" type="text/css" href="' + jobvars.plugin_url + '/css/job-print.css">');
+        WinPrint.document.write(prtContent.html());
         WinPrint.document.close();
         WinPrint.focus();
         WinPrint.print();
