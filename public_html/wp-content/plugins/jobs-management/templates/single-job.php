@@ -24,7 +24,7 @@ get_header();
     <?php require_once(dirname(__FILE__) . '/job-search-bar.php') ?>
     <!--//Search Bar End-->
 
-    <div class="container">
+    <div id="print-job-part" class="container">
         <div class="row">
             <div class="col-xs-12">
 
@@ -73,7 +73,7 @@ get_header();
                     </div>
                 </div>
 
-                <div class="actions">
+                <div class="actions noprint">
                     <div class="row">
                         <!--
                         <div class="col-xs-12 col-md-2">
@@ -105,7 +105,7 @@ get_header();
 
                 <div class="row-gap-medium"></div>
 
-                <div class="row">
+                <div class="row noprint">
                     <div class="col-xs-12">
                         <a href="#apply-form-modal" class="openform"><button class="large pull-right btn btn-blue">Submit request</button></a>
                     </div>

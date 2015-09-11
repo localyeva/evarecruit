@@ -1,0 +1,45 @@
+.text-bold {
+  font-weight: 700;
+}
+.standout {
+  background: url('../img/new_job_detail/7.png');
+  line-height: 28px;
+  padding: 30px 30px;
+}
+.standout .title {
+  color: #ff530d;
+  font-size: 25.2px;
+  font-weight: 700;
+}
+.detail {
+  background: #fff;
+  padding: 30px 30px;
+}
+.detail .title {
+  color: #0090B0;
+  font-size: 25.2px;
+  margin-bottom: 10px;
+}
+.detail .content {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+ul {
+  padding-left: 15px;
+}
+.actions {
+  background: url('../img/new_job_detail/7.png');
+  padding: 15px 30px;
+  border: 1px solid #C4C4C4;
+}
+.actions .item {
+  line-height: 33px;
+  height: 33px;
+  color: #676767;
+}
+.actions .item .item-name {
+  margin-left: 8px;
+}
+.noprint {
+  display: none;
+}
