@@ -56,6 +56,38 @@ function convert_newline($text = '', $open_tag = '<p>', $close_tag = '</p>') {
 
 /**
  * 
+ * @param type $unixTime
+ * @return type
+ */
+function get_time_duration($unixTime) {
+    $period = '';
+    $secsago = time() - strtotime($unixTime);
+    if ($secsago < 60) {
+        $period = $secsago == 1 ? '1 second' : $secsago . ' seconds';
+    } else if ($secsago < 3600) {
+        $period = round($secsago / 60);
+        $period = $period == 1 ? '1 minute' : $period . ' minutes';
+    } else if ($secsago < 86400) {
+        $period = round($secsago / 3600);
+        $period = $period == 1 ? '1 hour' : $period . ' hours';
+    } else if ($secsago < 604800) {
+        $period = round($secsago / 86400);
+        $period = $period == 1 ? '1 day' : $period . ' days';
+    } else if ($secsago < 2419200) {
+        $period = round($secsago / 604800);
+        $period = $period == 1 ? '1 week' : $period . ' weeks';
+    } else if ($secsago < 29030400) {
+        $period = round($secsago / 2419200);
+        $period = $period == 1 ? '1 month' : $period . ' months';
+    } else {
+        $period = round($secsago / 29030400);
+        $period = $period == 1 ? '1 year' : $period . ' years';
+    }
+    return $period . ' ago';
+}
+
+/**
+ * 
  * @param type $datetime
  * @param type $full
  * @return type

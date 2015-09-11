@@ -36,7 +36,7 @@ get_header();
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3">
-                            posted on <span class="time"><?php echo pretty_relative_time(the_date('', '', '', false)) ?></span>
+                            posted on <span class="time"><?php echo get_time_duration(get_the_date('Y-m-d H:i:s')) ?></span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ get_header();
                             </div>
                         </div>
                         -->
-                        <div class="col-xs-12 col-md-2">
+                        <div id="print-job" class="col-xs-12 col-md-2">
                             <div class="item">
                                 <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
                                 <span class="item-name">Print this job</span>
@@ -132,7 +132,7 @@ get_header();
                 <div class="form-group">
                     <label for="re_email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="re_email" name="re_email" placeholder="Email">
+                        <input type="text" class="form-control" id="re_email" name="re_email" placeholder="Email">
                     </div>
                 </div>
 
@@ -240,7 +240,7 @@ get_header();
         </div>
     </div>
 </div>
-<iframe id="iapply" name="iapply"></iframe>
+<iframe id="iapply" name="iapply" width="0" height="0" border="0" style="display: none;"></iframe>
 <!-- // Apply Form End -->
 
 <?php get_footer(); ?>
