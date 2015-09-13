@@ -365,6 +365,27 @@ h1, h2, h3, h4, h5, h6 {
 		background: url('../img/detail_staff/1.png');
 	}
 	.header-our-thoughts {
+		.caption {
+			position: absolute;
+		    bottom: 0;
+		    background-color: #ccc;
+		    padding-left: 15px;
+		    padding-bottom: 20px;
+		    color: #fff;
+		    background-color: rgba(50, 50, 50, .35);
+		    &.left {
+			    left: 0;
+			    margin-right: 15px;
+		    }
+		    &.right {
+		    	right: 0;
+		    	margin-left: 15px;
+		    }
+		    h3 {
+		    	display: inline-block;
+		    	border-bottom: 1px solid #fff;
+		    }
+		}
 		.item {
 			background: #fff;
 			.content {
