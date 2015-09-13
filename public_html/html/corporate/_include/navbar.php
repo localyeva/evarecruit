@@ -38,15 +38,22 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#">Evolable Asia</a></li>
-                    <li><a href="#usage">Demos &amp; Usage</a></li>
-                    <li><a href="#documentation">Documentation</a></li>
-                    <li><a href="#themes">Themes</a></li>
-                    <li><a href="#themes">Themes</a></li>
-                    <li><a href="#themes">Recruit</a></li>
-                    <li><a href="#themes">Themes</a></li>
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About EvolableAsia</a></li>
+                    <li><a href="#">開発ならエボ</a></li>
+                    <li><a href="#">
+                        <img class="img-responsives" src="img/29.png">
+                    </a></li>
+                    <li><a href="#">サービス</a></li>
+                    <li><a href="#">ニュース</a></li>
+                    <li><a href="#">Recruit</a></li>
+                    <li>
+                        <a href="#" class="active">お問い合わせ</a>
+                    </li>
+                    <!-- <li class="navbar-bars">
+                        <a href="#"><span class="fa fa-bars fa-lg"></span></a>
+                    </li> -->
                 </ul>
             </div>
         </div>

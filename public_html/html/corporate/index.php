@@ -20,7 +20,7 @@ function assetSrc($file)
     <body>
         <?php include('./_include/navbar.php'); ?>
         <?php include('./_include/banner.php'); ?>
-        <?php include('./_include/explain.php'); ?>
+        <?php include('./_include/why.php'); ?>
         <script>
             $('#responsive-menu-button').sidr({
                 name: 'sidr-main',
