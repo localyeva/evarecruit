@@ -90,8 +90,10 @@ get_header();
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
                             </div>
                             <div class="col-xs-9">
-                                <div class="h4"><?php the_title() ?></div>
-                                <p><?php echo get_field('short_description') ?></p>
+                                <a href="<?php echo get_field('redirect_url') ?>">
+                                    <div class="h4"><?php the_title() ?></div>
+                                    <p><?php echo get_field('short_description') ?></p>
+                                </a>
                             </div>
                         </div>
                     </div>                    

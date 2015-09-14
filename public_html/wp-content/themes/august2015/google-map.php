@@ -58,3 +58,4 @@
         </div>
     </div>
 </div>
+<script src="//maps.google.com/maps/api/js?sensor=false"></script>

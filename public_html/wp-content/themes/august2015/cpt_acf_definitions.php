@@ -240,6 +240,18 @@ if (function_exists("register_field_group")) {
                 'preview_size' => 'thumbnail',
                 'library' => 'all',
             ),
+            array(
+                'key' => 'field_55d6e3373ea6f',
+                'label' => 'Redirect Url',
+                'name' => 'redirect_url',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
         ),
         'location' => array(
             array(
