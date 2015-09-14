@@ -1,4 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,500,500italic,700,700italic&subset=latin,vietnamese);
 @orange: #FF530D;
+@navbar-height: 100px;
+.text-center {
+	text-align: center;
+}
 .btn-orange {
 	background-color: @orange;
 	color: #fff;
@@ -6,6 +11,54 @@
 		color: #fff;
 	}
 }
+body, html {
+	font-family: 'Roboto', sans-serif;
+}
+// reset heading padding
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.row-gap-small {
+	height: 10px;
+}
+.row-gap-medium {
+	height: 20px;
+}
+.row-gap-big {
+	height: 50px;
+}
+.row-gap-huge {
+	height: 100px;
+}
+// navigation bar
+.navbar-default {
+	margin-bottom: 0;
+	height: @navbar-height;
+	background: #fff;
+	.navbar-nav {
+		display: inline-block;
+		float: none;
+		vertical-align: top;
+		> li {
+			height: @navbar-height;
+			a {
+				color: #000;
+				height: @navbar-height;
+				line-height: @navbar-height;
+				padding-top: 0;
+				padding-bottom: 0;
+				&.active {
+					color: #D82670;
+				}
+			}
+		}
+	}
+	.navbar-collapse {
+	  text-align: center;
+	}
+}
+
 #mobile-header {
     display: none;
 }
@@ -30,4 +83,8 @@
 	height: 560px;
 	background: url('../img/1.png') no-repeat;
 	background-size: cover;
+}
+.header-why {
+	background: #6EC2EE;
+	color: #fff;
 }

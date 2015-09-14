@@ -5,6 +5,10 @@
 		<div class="row item">
 			<div class="col-md-4 col-xs-12 no-padding-l">
 				<img src="img/detail_staff/2.png" alt="" class="img-responsive">
+				<div class="caption left">
+					<h3>Đào Thiên Tú</h3>
+					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
+				</div>
 			</div>
 			<div class="col-md-8 col-xs-12 content icon-right">
 				<div class="row">
@@ -57,6 +61,10 @@
 			</div>
 			<div class="col-md-4 col-xs-12 no-padding-r">
 				<img src="img/detail_staff/5.png" alt="" class="img-responsive">
+				<div class="caption right">
+					<h3>Nguyễn Tiến Lộc</h3>
+					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
+				</div>
 			</div>
 		</div>
 
@@ -66,6 +74,10 @@
 		<div class="row item">
 			<div class="col-md-4 col-xs-12 no-padding-l">
 				<img src="img/detail_staff/8.png" alt="" class="img-responsive">
+				<div class="caption left">
+					<h3>Đặng Thị Tú Anh</h3>
+					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
+				</div>
 			</div>
 			<div class="col-md-8 col-xs-12 content icon-right">
 				<div class="row">
