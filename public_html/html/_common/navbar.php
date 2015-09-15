@@ -38,7 +38,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand hidden" href="#">
                     <img alt="Brand" src="img/logo.png">
                 </a>
             </div>
