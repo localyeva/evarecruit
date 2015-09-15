@@ -3,11 +3,11 @@
 		<h2 class="text-bold text-center">Suy nghĩ của chúng tôi</h2>
 		<div class="row-gap-medium"></div>
 		<div class="row item">
-			<div class="col-md-4 col-xs-12 no-padding-l">
-				<img src="img/detail_staff/2.png" alt="" class="img-responsive">
-				<div class="caption left">
+			<div class="col-md-4 col-xs-12 no-padding-lr">
+				<img src="img/detail_staff/2.png" alt="" class="img-responsive full-width">
+				<div class="caption full-width left">
 					<h3>Đào Thiên Tú</h3>
-					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
+					<div class="intro">Lorem ipsum Sint aute minim.</div>
 				</div>
 			</div>
 			<div class="col-md-8 col-xs-12 content icon-right">
@@ -59,9 +59,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 col-xs-12 no-padding-r">
-				<img src="img/detail_staff/5.png" alt="" class="img-responsive">
-				<div class="caption right">
+			<div class="col-md-4 col-xs-12 no-padding-lr">
+				<img src="img/detail_staff/5.png" alt="" class="img-responsive full-width">
+				<div class="caption full-width right">
 					<h3>Nguyễn Tiến Lộc</h3>
 					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
 				</div>
@@ -72,9 +72,9 @@
 		<!-- item #3 -->
 		<div class="row-gap-medium"></div>
 		<div class="row item">
-			<div class="col-md-4 col-xs-12 no-padding-l">
-				<img src="img/detail_staff/8.png" alt="" class="img-responsive">
-				<div class="caption left">
+			<div class="col-md-4 col-xs-12 no-padding-lr">
+				<img src="img/detail_staff/8.png" alt="" class="img-responsive full-width">
+				<div class="caption full-width left">
 					<h3>Đặng Thị Tú Anh</h3>
 					<div class="intro">Lorem ipsum Sint aute minim dolor non Ut et aliquip in pariatur in non in aliquip enim do et dolore.</div>
 				</div>
