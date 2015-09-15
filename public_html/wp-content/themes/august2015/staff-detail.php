@@ -42,6 +42,10 @@ get_header();
                         <?php if ($i % 2 == 0): ?>
                             <div class="col-md-4 col-xs-12 no-padding-l">
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
+                                <div class="caption left">
+                                    <h3><?php the_title();?></h3>
+                                    <div class="intro"><?php echo get_field('job_description'); ?></div>
+                                </div>
                             </div>
                             <div class="col-md-8 col-xs-12 content icon-right">
                                 <div class="row">
@@ -54,7 +58,9 @@ get_header();
                                     <div class="row photo">
                                         <?php while (have_rows('activity_images')) : the_row(); ?>                                
                                             <div class="col-xs-3 pull-right">
-                                                <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
+                                                <a href="<?php echo get_sub_field('image');?>" class="photo1" rel="gal<?php echo $i;?>" title="EVOLABLE ASIA">
+                                                    <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
+                                                </a>
                                             </div>
                                         <?php endwhile; ?>
                                     </div>
@@ -74,7 +80,9 @@ get_header();
                                     <div class="row photo">
                                         <?php while (have_rows('activity_images')) : the_row(); ?>                                
                                             <div class="col-xs-3 pull-right">
-                                                <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
+                                                <a href="<?php echo get_sub_field('image');?>" class="photo1" rel="gallery2" title="EVOLABLE ASIA">
+                                                    <img src="<?php echo get_sub_field('image'); ?>" alt="" class="img-responsive">
+                                                </a>
                                             </div>
                                         <?php endwhile; ?>
                                     </div>
@@ -82,6 +90,10 @@ get_header();
                             </div>
                             <div class="col-md-4 col-xs-12 no-padding-r">
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
+                                <div class="caption right">
+                                    <h3><?php the_title();?></h3>
+                                    <div class="intro"><?php echo get_field('job_description'); ?></div>
+                                </div>
                             </div>
                         <?php endif; ?>
                     </div>

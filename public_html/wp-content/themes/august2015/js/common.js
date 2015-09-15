@@ -137,6 +137,16 @@ $("a.photo").fancybox({
     }
 });
 
+$("a.photo1").fancybox({
+    helpers: {
+        title: {
+            type: 'inside'
+        }
+    },
+    openEffect  : 'none',
+    closeEffect : 'none'
+});
+
 $('.image-wrapper').mouseover(function (e) {
     var that = this;
     $(this).find('.text-wrapper').css({backgroundColor: $(that).data('bg-color')});

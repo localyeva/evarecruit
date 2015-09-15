@@ -15,6 +15,9 @@ if (function_exists('setPostViews')) {
 }
 
 
+$list_email = get_option('wpt_job_text_list_email');
+$list_email = preg_split('/\r\n|\n|\r/', $list_email['wpt_job_text_list_email']);
+
 get_header();
 ?>
 

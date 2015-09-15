@@ -149,16 +149,19 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'entry_ua' => getenv("HTTP_USER_AGENT"),
     )));
     
-    $fromname = '';
-    $mail = new Mail();
-    $mail->from = 'khangld@evolable.asia';
-    $mail->fromName = $fromname;
-    $mail->to = array(
-        'khangld@evolable.asia',
-    );
-    $mail->title = $subject_admin;
-    $mail->body = nl2br($body_admin);
-    $mail->send();
+    $list_email = get_option('wpt_job_text_list_email');
+    if (isset($list_email)){
+        $list_email = preg_split('/\r\n|\n|\r/', $list_email['wpt_job_text_list_email']);
+        
+        $fromname = '';
+        $mail = new Mail();
+        $mail->from = 'khangld@evolable.asia';
+        $mail->fromName = $fromname;
+        $mail->to = $list_email;
+        $mail->title = $subject_admin;
+        $mail->body = nl2br($body_admin);
+        $mail->send();
+    }
     
 } else {
     wp_redirect(home_url());

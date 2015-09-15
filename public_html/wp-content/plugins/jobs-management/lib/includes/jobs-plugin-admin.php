@@ -19,7 +19,7 @@ class jobs_plugin_admin {
         $this->dir = dirname($this->file);
         $this->assets_dir = trailingslashit($this->dir) . 'assets';
         $this->assets_url = esc_url(trailingslashit(plugins_url('/assets/', $this->file)));
-        $this->settings_base = 'wpt_';
+        $this->settings_base = 'wpt_job_';
         // Initialise settings
         add_action('admin_init', array($this, 'init'));
         // Register plugin settings
@@ -48,11 +48,12 @@ class jobs_plugin_admin {
         $query_string = $_SERVER['QUERY_STRING'];
         parse_str($query_string, $get_uri);
 
+        $tab = '';
         if ($pagenow == 'edit.php' && $get_uri['post_type'] == 'job' && $get_uri['page'] == 'plugin_settings') {
             if (isset($get_uri['tab']))
                 $tab = $get_uri['tab'];
             else
-                $tab = 'list';
+                $tab = 'list-cadidate';
         }
 
         return $tab;
@@ -65,6 +66,7 @@ class jobs_plugin_admin {
     public function add_menu_item() {
         $page = add_submenu_page('edit.php?post_type=job', __('Job Settings', 'plugin_textdomain'), __('Job Settings', 'plugin_textdomain'), 'manage_options', 'plugin_settings', array($this, 'settings_page'));
         add_action('admin_print_styles-' . $page, array($this, 'settings_assets'));
+        add_action('load-' . $page, array($this, 'load_settings_plugin'));
     }
 
     /**
@@ -72,6 +74,10 @@ class jobs_plugin_admin {
      * @return void
      */
     public function settings_assets() {
+
+        wp_register_style('job-style', $this->assets_url . 'css/job-style.css');
+        wp_enqueue_style('job-style');
+
 // We're including the farbtastic script & styles here because they're needed for the colour picker
 // If you're not including a colour picker field then you can leave these calls out as well as the farbtastic dependency for the wpt-admin-js script below
         wp_enqueue_style('farbtastic');
@@ -83,13 +89,48 @@ class jobs_plugin_admin {
         wp_enqueue_script('wpt-admin-js');
     }
 
+    public function load_settings_plugin() {
+        if (isset($_POST['job-settings-submit']) && $_POST['job-settings-submit'] == 'Y') {
+            $this->save_settings_plugin();
+            $tab = $this->get_tab();
+            $url_parameters = isset($tab) ? 'updated=true&tab=' . $tab : 'updated=true';
+            wp_redirect(admin_url('edit.php?post_type=job&page=plugin_settings&' . $url_parameters));
+        }
+    }
+
+    public function save_settings_plugin() {
+        if (is_array($this->settings)) {
+            foreach ($this->settings as $section => $data) {
+                // Add section to page
+                $tab = $this->get_tab();
+
+                if ($tab == $section) {
+                    if (isset($data['fields'])) {
+                        foreach ($data['fields'] as $field) {
+                            $option_name = $this->settings_base . $field['id'];
+                            $setting = get_option($option_name);
+                            $tab = $this->get_tab();
+                            switch ($tab) {
+                                case 'mail-to':
+                                    $setting[$option_name] = $_POST[$option_name];
+                                    break;
+                            }
+                            $updated = update_option($option_name, $setting);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /**
      * Add settings link to plugin list table
      * @param  array $links Existing links
      * @return array 		Modified links
      */
     public function add_settings_link($links) {
-        $settings_link = '<a href="options-general.php?page=plugin_settings">' . __('Settings', 'plugin_textdomain') . '</a>';
+        $settings_link = '<a href="edit.php?post_type=job&page=plugin_settings">' . __('Settings', 'plugin_textdomain') . '</a>';
+//        $settings_link = '<a href="options-general.php?page=plugin_settings">' . __('Settings', 'plugin_textdomain') . '</a>';
         array_push($links, $settings_link);
         return $links;
     }
@@ -109,11 +150,11 @@ class jobs_plugin_admin {
             'description' => __('List "email-to" after candidates applied CV', 'plugin_textdomain'),
             'fields' => array(
                 array(
-                    'id' => 'text_block',
+                    'id' => 'text_list_email',
                     'label' => __('List email', 'plugin_textdomain'),
                     'description' => __('Each email 1 line', 'plugin_textdomain'),
                     'type' => 'textarea',
-                    'default' => 'ito@evolableasia.vn',
+                    'default' => '',
                     'placeholder' => __('', 'plugin_textdomain')
                 ),
             )
@@ -185,22 +226,67 @@ class jobs_plugin_admin {
 
             case 'list-cadidate':
 
+                global $wpdb;
+
                 $html .= '<h3>List of Candidates</h3>';
                 $html .= '<p></p>';
-                
-                $args = array(
-                    'orderby' => 'count',
-                    'hide_empty' => 0
+
+                $table_name = $wpdb->prefix . 'jobs_management';
+                $total = $wpdb->get_var("SELECT COUNT(*) FROM  $table_name");
+                $items_per_page = 20;
+                $page = isset($_GET['cpage']) ? abs((int) $_GET['cpage']) : 1;
+                $offset = ( $page * $items_per_page ) - $items_per_page;
+                $list_candidates = $wpdb->get_results(
+                        ""
+                        . " SELECT * "
+                        . " FROM  $table_name "
+                        . " ORDER BY job_expired, apply_date DESC "
+                        . " LIMIT ${offset}, ${items_per_page} "
                 );
-                $positions = get_terms('job-position', $args);
-                $option = '';
-                foreach ($positions as $position){
-                    $option .= '<option value="' . $position->term_id . '">' . $position->name . '</option>';
+
+                $html .= '<div class="job-table">';
+                $html .= '<table>';
+                $html .= '<tr>';
+                $html .= '<td width="3%">id</td>';
+                $html .= '<td width="135">Applied Date</td>';
+                $html .= '<td width="75">Expired</td>';
+                $html .= '<td width="200">Candidate Name</td>';
+                $html .= '<td width="250">Email</td>';
+                $html .= '<td width="100">Telephone</td>';
+                $html .= '<td width="40">Gender</td>';
+                $html .= '<td width="80">CV</td>';
+                $html .= '</tr>';
+                if ($list_candidates) {
+                    foreach ($list_candidates as $post) {
+
+                        $ext = substr(strrchr($post->attach_file, '.'), 1);
+                        $download = sanitize_title($post->fullname . '-cv') . '.' . $ext;
+
+                        $html .= '<tr>';
+                        $html .= '<td>' . $post->id . '</td>';
+                        $html .= '<td>' . date_format(new DateTime($post->apply_date), 'd-m-Y H:i:s') . '</td>';
+                        $html .= '<td>' . $post->job_expired . '</td>';
+                        $html .= '<td>' . $post->fullname . '</td>';
+                        $html .= '<td>' . $post->email . '</td>';
+                        $html .= '<td>' . $post->phone_number . '</td>';
+                        $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
+                        $html .= '<td><a target="_blank" href="' . $post->attach_file . '" download="' . $download . '"><button>Download CV</button></a></td>';
+                        $html .= '</tr>';
+                    }
                 }
-                
-                $html .= '<select name = "position" class = "form-control">
-                                <option value="">-- Select Position --</option>
-                                ' . $option . '</select>';
+                $html .= '</table>';
+                $html .= '</div>';
+
+                $html .= '<div class="pagination">';
+                $html .= paginate_links(array(
+                    'base' => add_query_arg('cpage', '%#%'),
+                    'format' => '',
+                    'prev_text' => __('&laquo;'),
+                    'next_text' => __('&raquo;'),
+                    'total' => ceil($total / $items_per_page),
+                    'current' => $page
+                ));
+                $html .= '</div>';
 
                 break;
 
@@ -208,7 +294,8 @@ class jobs_plugin_admin {
 
                 switch ($field['type']) {
                     case 'textarea':
-                        $html .= '<textarea id="' . esc_attr($field['id']) . '" rows="5" cols="50" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '">' . $data . '</textarea><br/>' . "\n";
+                        $_data = isset($data[$option_name]) ? $data[$option_name] : '';
+                        $html .= '<textarea id="' . esc_attr($field['id']) . '" rows="5" cols="50" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '">' . $_data . '</textarea><br/>' . "\n";
                         $html .= '<br/><span class="description">' . $field['description'] . '</span>';
                         break;
                 }
@@ -235,25 +322,31 @@ class jobs_plugin_admin {
      * @return void
      */
     public function settings_page() {
-// Build page HTML
+        $tab = $this->get_tab();
+
+        // Build page HTML
         $html = '<div class="wrap" id="plugin_settings">' . "\n";
         $html .= '<h2>' . __('Plugin Settings', 'plugin_textdomain') . '</h2>' . "\n";
-        $html .= '<form method="post" action="options.php" enctype="multipart/form-data">' . "\n";
         // Setup navigation
-        $html .= '<ul id="settings-sections" class="subsubsub hide-if-no-js">' . "\n";
+        $html .= '<div class="cssmenu">' . "\n";
+        $html .= '<ul id="settings-sections" class="hide-if-no-js">' . "\n";
         foreach ($this->settings as $section => $data) {
-            $html .= '<li><a class="tab" href="edit.php?post_type=job&page=plugin_settings&tab=' . $section . '">' . $data['title'] . '</a></li>' . "\n";
+            $active = '';
+            if ($tab == $section) {
+                $active = 'active';
+            }
+            $html .= '<li class=" ' . $active . '"><a class="tab" href="edit.php?post_type=job&page=plugin_settings&tab=' . $section . '">' . $data['title'] . '</a></li>' . "\n";
         }
         $html .= '</ul>' . "\n";
+        $html .= '</div>' . "\n";
         $html .= '<div class="clear"></div>' . "\n";
 
-
-        $tab = $this->get_tab();
         if ($tab == 'list-cadidate') {
             ob_start();
             $html .= $this->display_field(array('field' => array('id' => 'list-candidate', 'type' => 'list-candidate')));
             $html .= ob_get_clean();
         } else {
+            $html .= '<form method="post" action="' . admin_url('edit.php?post_type=job&page=plugin_settings&tab=' . $tab) . '" enctype="multipart/form-data">' . "\n";
             // Get settings fields
             ob_start();
             settings_fields('plugin_settings');
@@ -261,9 +354,10 @@ class jobs_plugin_admin {
             $html .= ob_get_clean();
             $html .= '<p class="submit">' . "\n";
             $html .= '<input name="Submit" type="submit" class="button-primary" value="' . esc_attr(__('Save Settings', 'plugin_textdomain')) . '" />' . "\n";
+            $html .= '<input type="hidden" name="job-settings-submit" value="Y" />' . "\n";
             $html .= '</p>' . "\n";
+            $html .= '</form>' . "\n";
         }
-        $html .= '</form>' . "\n";
         $html .= '</div>' . "\n";
         echo $html;
     }
