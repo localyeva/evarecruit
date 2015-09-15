@@ -149,9 +149,9 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'entry_ua' => getenv("HTTP_USER_AGENT"),
     )));
     
-    $list_email = get_option('wpt_job_text_list_email');
+    $list_email = job_get_option('wpt_job_text_list_email');
     if (isset($list_email)){
-        $list_email = preg_split('/\r\n|\n|\r/', $list_email['wpt_job_text_list_email']);
+        $list_email = preg_split('/\r\n|\n|\r/', $list_email);
         
         $fromname = '';
         $mail = new Mail();

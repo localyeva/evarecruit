@@ -22,6 +22,7 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
+require_once 'lib/includes/my-functions.php';
 require_once 'lib/includes/jobs_cpt_acf_settings.php';
 require_once 'lib/includes/jobs-plugin-admin.php';
 require_once 'lib/class-gamajo-template-loader.php';

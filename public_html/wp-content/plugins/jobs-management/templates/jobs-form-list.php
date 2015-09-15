@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-global $job_status;
+global $job_status; /* define array from class */
 ?>
 
 <div class="header-job-list home-page">
@@ -90,7 +90,7 @@ global $job_status;
                                     <?php
                                     $args = array(
                                         'post_type' => 'job',
-                                        'posts_per_page' => 10,
+                                        'posts_per_page' => job_get_option('wpt_job_text_item_per_page'),
                                         'meta_key' => 'status',
                                         'orderby' => array('meta_value_num' => 'DESC'),
                                         'paged' => $paged,
