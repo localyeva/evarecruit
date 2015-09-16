@@ -40,9 +40,9 @@ get_header();
                     <div class="row-gap-medium"></div>
                     <div class="row item">
                         <?php if ($i % 2 == 0): ?>
-                            <div class="col-md-4 col-xs-12 no-padding-l">
-                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
-                                <div class="caption left">
+                            <div class="col-md-4 col-xs-12 no-padding-lr">
+                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
+                                <div class="caption full-width left">
                                     <h3><?php the_title();?></h3>
                                     <div class="intro"><?php echo get_field('job_description'); ?></div>
                                 </div>
@@ -88,9 +88,9 @@ get_header();
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <div class="col-md-4 col-xs-12 no-padding-r">
-                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
-                                <div class="caption right">
+                            <div class="col-md-4 col-xs-12 no-padding-lr">
+                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
+                                <div class="caption full-width right">
                                     <h3><?php the_title();?></h3>
                                     <div class="intro"><?php echo get_field('job_description'); ?></div>
                                 </div>

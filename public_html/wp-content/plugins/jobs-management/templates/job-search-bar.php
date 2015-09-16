@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 
-define('POSTS_PER_PAGE', 10);
+$post_per_page = job_get_option('wpt_job_text_item_per_page_job');
 
 global $job_status;
 
@@ -17,7 +17,7 @@ global $job_status;
 if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_GET['position'] == '' && $_GET['location'] == '' )) {
     $args = array(
         'post_type' => 'job',
-        'posts_per_page' => POSTS_PER_PAGE,
+        'posts_per_page' => $post_per_page,
         'meta_key' => 'status',
         'orderby' => array('meta_value_num' => 'DESC'),
         'paged' => $paged,
@@ -30,7 +30,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
             (isset($_GET['location']) && $_GET['location'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             's' => $_GET['keyword'],
@@ -53,7 +53,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
             (isset($_GET['position']) && $_GET['position'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             's' => $_GET['keyword'],
@@ -71,7 +71,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
             (isset($_GET['location']) && $_GET['location'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             's' => $_GET['keyword'],
@@ -89,7 +89,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
             (isset($_GET['location']) && $_GET['location'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             'tax_query' => array(
@@ -110,7 +110,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
     } elseif ((isset($_GET['keyword']) && $_GET['keyword'] != '' && strlen($_GET['keyword']) > 3)) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             's' => $_GET['keyword'],
@@ -120,7 +120,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
     } elseif ((isset($_GET['position']) && $_GET['position'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             'tax_query' => array(
@@ -136,7 +136,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
     } elseif ((isset($_GET['location']) && $_GET['location'] != '')) {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             'tax_query' => array(
@@ -152,7 +152,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
     } else {
         $args = array(
             'post_type' => 'job',
-            'posts_per_page' => POSTS_PER_PAGE,
+            'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
             'paged' => $paged,
@@ -210,7 +210,7 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
                             $i = 0;
                             foreach ($positions as $position):
                                 ?>
-                            <a href="<?php echo bloginfo('url') ?>/jobs/search/?position=<?php echo $position->slug ?>&search=job" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
+                                <a href="<?php echo bloginfo('url') ?>/jobs/search/?position=<?php echo $position->slug ?>&search=job" class="white-link text-bold"><?php echo $position->name ?> (<?php echo $position->count ?>)</a> 
                                 <?php if ($i < count($positions) - 1): ?>
                                     <span class="vertical-bar">|</span> 
                                 <?php endif; ?>

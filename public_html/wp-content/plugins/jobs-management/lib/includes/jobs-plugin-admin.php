@@ -114,6 +114,9 @@ class jobs_plugin_admin {
                                 case 'mail-to':
                                     $setting[$option_name] = $_POST[$option_name];
                                     break;
+                                case 'top-define':
+                                    $setting[$option_name] = $_POST[$option_name];
+                                    break;
                             }
                             $updated = update_option($option_name, $setting);
                         }
@@ -155,6 +158,29 @@ class jobs_plugin_admin {
                     'description' => __('Each email 1 line', 'plugin_textdomain'),
                     'type' => 'textarea',
                     'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+            )
+        );
+
+        $settings['top-define'] = array(
+            'title' => __('Top Definition', 'plugin_textdomain'),
+            'description' => __('', 'plugin_textdomain'),
+            'fields' => array(
+                array(
+                    'id' => 'text_item_per_page',
+                    'label' => __('Item Per Page (Top)', 'plugin_textdomain'),
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '10',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
+                    'id' => 'text_item_per_page_job',
+                    'label' => __('Item Per Page (Job)', 'plugin_textdomain'),
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '10',
                     'placeholder' => __('', 'plugin_textdomain')
                 ),
             )
@@ -299,6 +325,18 @@ class jobs_plugin_admin {
                         $html .= '<br/><span class="description">' . $field['description'] . '</span>';
                         break;
                 }
+                
+                break;
+
+            case 'top-define':
+
+                switch ($field['type']) {
+                    case 'text':
+                        $_data = isset($data[$option_name]) ? $data[$option_name] : '';
+                        $html .= '<input id="' . esc_attr($field['id']) . '" type="text" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '" value="' . $_data . '"/>' . "\n";
+                        break;
+                }
+
                 break;
         }
 
