@@ -75,20 +75,24 @@ get_header();
                         $color = 1;
                         ?>
                         <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-3 image-wrapper" data-bg-color="<?php if ($color == 1) {
-                        echo "#A3D8C7";
-                    } else if ($color == 2) {
-                        echo "#229EBA";
-                    } else if ($color == 3) {
-                        echo "#EBD14E";
-                    } else {
-                        echo "#E4887D";
-                    } ?>">
+                            <div class="col-xs-3 image-wrapper" data-bg-color="<?php
+                            if ($color == 1) {
+                                echo "#A3D8C7";
+                            } else if ($color == 2) {
+                                echo "#229EBA";
+                            } else if ($color == 3) {
+                                echo "#EBD14E";
+                            } else {
+                                echo "#E4887D";
+                            }
+                            ?>">
                                 <img src="<?php echo get_field('image'); ?>" alt="" class="img-responsive">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="text-wrapper" data-bg-color="#304562">
-                                        <div class="title overtext"><?php echo get_field('position');
-                    echo $post->ID . '  ' . $post->ID % 2; ?></div>
+                                        <div class="title overtext"><?php
+                                            echo get_field('position');
+                                            echo $post->ID . '  ' . $post->ID % 2;
+                                            ?></div>
                                         <div class="tagline overtext"><?php echo get_field('job_description'); ?></div>
                                     </div>
                                 </a>
@@ -110,13 +114,14 @@ get_header();
                     );
                     $loop = new WP_Query($args);
                     ?>
-<?php
-if ($loop->have_posts()):
-    $num_posts = count($loop->posts);
-    $color = 1;
-    ?>
+                    <?php
+                    if ($loop->have_posts()):
+                        $num_posts = count($loop->posts);
+                        $color = 1;
+                        ?>
                         <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                            <div class="col-xs-3 image-wrapper" data-bg-color="<?php if ($color == 1) {
+                            <div class="col-xs-3 image-wrapper" data-bg-color="<?php
+                            if ($color == 1) {
                                 echo "#A3D8C7";
                             } else if ($color == 2) {
                                 echo "#229EBA";
@@ -124,7 +129,8 @@ if ($loop->have_posts()):
                                 echo "#EBD14E";
                             } else {
                                 echo "#E4887D";
-                            } ?>">
+                            }
+                            ?>">
                                 <img src="<?php echo get_field('image'); ?>" alt="<?php the_title(); ?>" class="img-responsive">
                                 <a href="<?php the_permalink(); ?>">
                                     <div class="text-wrapper" data-bg-color="#304562">
@@ -133,10 +139,10 @@ if ($loop->have_posts()):
                                     </div>
                                 </a>
                             </div>
-        <?php $color++; ?>
-    <?php endwhile; ?>
-<?php endif; ?>
-<?php wp_reset_postdata() ?>
+                            <?php $color++; ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata() ?>
                 </div>
             </div>
         </div>
@@ -163,15 +169,15 @@ if ($loop->have_posts()):
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-<?php
-$args = array(
-    'post_type' => 'slider-evnironment',
-    'posts_per_page' => 1,
-    'orderby' => array('date' => 'DESC'),
-);
-$loop = new WP_Query($args);
-$a = 0
-?>
+                        <?php
+                        $args = array(
+                            'post_type' => 'slider-evnironment',
+                            'posts_per_page' => 1,
+                            'orderby' => array('date' => 'DESC'),
+                        );
+                        $loop = new WP_Query($args);
+                        $a = 0
+                        ?>
                         <?php
                         if ($loop->have_posts()):
                             $num_posts = count($loop->posts);
@@ -194,16 +200,16 @@ $a = 0
                         <?php wp_reset_postdata() ?>
                     </div>
                     <div class="item">
-<?php
-$args = array(
-    'post_type' => 'slider-evnironment',
-    'posts_per_page' => 1,
-    'orderby' => array('date' => 'DESC'),
-    'offset' => 1,
-);
-$loop = new WP_Query($args);
-$b = 0;
-?>
+                        <?php
+                        $args = array(
+                            'post_type' => 'slider-evnironment',
+                            'posts_per_page' => 1,
+                            'orderby' => array('date' => 'DESC'),
+                            'offset' => 1,
+                        );
+                        $loop = new WP_Query($args);
+                        $b = 0;
+                        ?>
                         <?php
                         if ($loop->have_posts()):
                             $num_posts = count($loop->posts);
@@ -226,36 +232,36 @@ $b = 0;
                         <?php wp_reset_postdata() ?>
                     </div>
                     <div class="item">
-<?php
-$args = array(
-    'post_type' => 'slider-evnironment',
-    'posts_per_page' => 1,
-    'orderby' => array('date' => 'DESC'),
-    'offset' => 2,
-);
-$loop = new WP_Query($args);
-$c = 0;
-?>
-<?php
-if ($loop->have_posts()):
-    $num_posts = count($loop->posts);
-    ?>
-    <?php
-    while ($loop->have_posts()): $loop->the_post();
-        foreach (get_field('images') as $key => $val) {
-            if ($c < 3) {
-                ?>
+                        <?php
+                        $args = array(
+                            'post_type' => 'slider-evnironment',
+                            'posts_per_page' => 1,
+                            'orderby' => array('date' => 'DESC'),
+                            'offset' => 2,
+                        );
+                        $loop = new WP_Query($args);
+                        $c = 0;
+                        ?>
+                        <?php
+                        if ($loop->have_posts()):
+                            $num_posts = count($loop->posts);
+                            ?>
+                            <?php
+                            while ($loop->have_posts()): $loop->the_post();
+                                foreach (get_field('images') as $key => $val) {
+                                    if ($c < 3) {
+                                        ?>
                                         <div class="col-xs-4">
                                             <img src="<?php echo $val['image']; ?>" alt="<?php the_title(); ?>" class="img-responsive">
                                         </div>
-                <?php
-            }
-            $c++;
-        }
-        ?>
-    <?php endwhile; ?>
-<?php endif; ?>
-<?php wp_reset_postdata() ?>
+                                        <?php
+                                    }
+                                    $c++;
+                                }
+                                ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                        <?php wp_reset_postdata() ?>
                     </div>
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

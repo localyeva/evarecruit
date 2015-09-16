@@ -49,7 +49,9 @@ class jobs_plugin_admin {
         parse_str($query_string, $get_uri);
 
         $tab = '';
-        if ($pagenow == 'edit.php' && $get_uri['post_type'] == 'job' && $get_uri['page'] == 'plugin_settings') {
+        if ($pagenow == 'edit.php' &&
+                isset($get_uri['post_type']) && $get_uri['post_type'] == 'job' &&
+                isset($get_uri['page']) && $get_uri['page'] == 'plugin_settings') {
             if (isset($get_uri['tab']))
                 $tab = $get_uri['tab'];
             else
@@ -197,7 +199,7 @@ class jobs_plugin_admin {
                     'default' => '',
                     'placeholder' => __('', 'plugin_textdomain')
                 ),
-                 array(
+                array(
                     'id' => 'text_subject_admin',
                     'label' => __('Mail Subject (To Admin)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_subject_admin )</h5>",
                     'description' => __('', 'plugin_textdomain'),
@@ -309,7 +311,7 @@ class jobs_plugin_admin {
 
                 $html .= '<h3>List of Candidates</h3>';
                 $html .= '<p></p>';
-                
+
                 $table_name = $wpdb->prefix . 'jobs_management';
                 $total = $wpdb->get_var("SELECT COUNT(*) FROM  $table_name");
                 $items_per_page = 20;
@@ -333,7 +335,7 @@ class jobs_plugin_admin {
                     'current' => $page
                 ));
                 $html .= '</div>';
-                        
+
                 $html .= '<div class="job-table">';
                 $html .= '<table>';
                 $html .= '<tr>';
@@ -362,7 +364,7 @@ class jobs_plugin_admin {
                         $html .= '<td>' . $post->phone_number . '</td>';
                         $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
                         $html .= '<td><a target="_blank" href="' . $post->attach_file . '" download="' . $download . '"><button>Download CV</button></a></td>';
-                        $html .= '<td>';  
+                        $html .= '<td>';
                         $html .= '<a class="pop-job" href="#job_' . $post->id . '">' . $post->job_title . '</a>';
                         $html .= '<div id="job_' . $post->id . '" class="table" style="display:none;">'
                                 . '<h3><a href="' . $post->job_slug . '">' . $post->job_title . '</a></h3>'

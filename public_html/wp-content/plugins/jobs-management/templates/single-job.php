@@ -15,6 +15,7 @@ if (function_exists('setPostViews')) {
 }
 
 get_header();
+
 ?>
 
 <div id="new-job-detail">

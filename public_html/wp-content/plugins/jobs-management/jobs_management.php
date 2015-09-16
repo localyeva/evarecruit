@@ -289,10 +289,36 @@ class jobs_management extends PW_Template_Loader {
     public function get_custom_post_type_single_template($single_template) {
         global $wp_query, $post;
 
-        if ($post->post_type == 'job') {
-            $single_template = $this->get_plugin_template_path() . 'single-job.php';
+        $taxonomy = get_the_terms($post->ID, 'lab');
+
+        if (isset($taxonomy)) {
+            $single_template = $this->get_plugin_template_path() . 'taxonomy-lab.php';
+        } else {
+            if ($post->post_type == 'job') {
+                $single_template = $this->get_plugin_template_path() . 'single-job.php';
+            }
         }
+        
         return $single_template;
+    }
+
+    /**
+     * Register archive template
+     *
+     * @version	1.0.0
+     * @since	1.0.0
+     */
+    public function get_custom_post_type_taxonomy_template($taxonomy_template) {
+        global $wp_query, $post;
+
+        $taxonomy = get_query_var('taxonomy');
+
+        var_dump($taxonomy);
+        var_dump($post);
+
+//        if ($post->post_type == 'job') {
+//        }
+        return $taxonomy_template;
     }
 
     /**

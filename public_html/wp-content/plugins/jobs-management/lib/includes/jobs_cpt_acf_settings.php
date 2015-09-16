@@ -95,6 +95,22 @@ class jobs_cpt_acf_settings {
             "show_admin_column" => false,
         );
         register_taxonomy("job-position", array("job"), $args);
+
+        $labels = array(
+            "name" => "Labs",
+            "label" => "Labs",
+        );
+
+        $args = array(
+            "labels" => $labels,
+            "hierarchical" => true,
+            "label" => "Labs",
+            "show_ui" => true,
+            "query_var" => true,
+            "rewrite" => array('slug' => 'lab', 'with_front' => true),
+            "show_admin_column" => false,
+        );
+        register_taxonomy("lab", array("job"), $args);
     }
 
     /* ---------------------------------------------------------------------------- */
