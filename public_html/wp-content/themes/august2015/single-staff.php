@@ -23,7 +23,7 @@ get_header();
                 <div class="col-md-4 col-xs-12 no-padding-lr">
                     <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
                     <div class="caption full-width left">
-                        <h3><?php the_title();?></h3>
+                        <h3><?php the_title(); ?></h3>
                         <div class="intro"><?php echo get_field('job_description'); ?></div>
                     </div>
                 </div>
@@ -38,7 +38,9 @@ get_header();
                         <div class="row photo">
                             <?php while (have_rows('activity_images')) : the_row(); ?>                                
                                 <div class="col-xs-3 pull-right">
-                                    <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
+                                    <a href="<?php echo get_sub_field('image'); ?>" class="photo1" rel="gallery2" title="EVOLABLE ASIA">
+                                        <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
+                                    </a>
                                 </div>
                             <?php endwhile; ?>
                         </div>
