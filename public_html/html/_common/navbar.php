@@ -29,7 +29,13 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a id="responsive-menu-button" class="btn btn-orange navbar-btn" href="#">Menu</a>
+                <a href="#" class="navbar-brand">
+                    <img alt="Brand" src="img/logo_h.png">
+                </a>
+                <a id="responsive-menu-button" class="btn btn-toggle navbar-btn pull-right" href="#">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars fa-lg"></span>
+                </a>
             </div>
         </div>
     </nav>
@@ -38,7 +44,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand hidden" href="#">
+                <a class="navbar-brand horizontal hidden" href="#">
                     <img alt="Brand" src="img/logo.png">
                 </a>
             </div>

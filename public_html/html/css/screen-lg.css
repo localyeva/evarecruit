@@ -1,1 +1,1 @@
-@media (min-width:1200px){a.navbar-brand{display:block!important}}
+@media (min-width:1200px){.navbar-brand.horizontal{display:block!important}.navbar-brand.vertical{display:none}}
