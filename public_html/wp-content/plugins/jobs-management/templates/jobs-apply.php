@@ -133,36 +133,55 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
     require_once plugin_dir_path(__FILE__) . '../lib/includes/Mail.php';
     Twig_Autoloader::register();
 
-    $loader = new Twig_Loader_Filesystem(__DIR__ . '/mail');
+    $loader = new Twig_Loader_String;
 
     $twig = new Twig_Environment($loader);
 
-    //Admin用メッセージ
-    $template_admin = $twig->loadTemplate('to_hr.tpl');
+    $from = job_get_option('wpt_job_text_from_email');
+    $fromname = job_get_option('wpt_job_text_from_name');
 
-    $subject_admin = 'Ứng tuyển - ' . $_POST['job_position'] . '-' . $_POST['re_fullname'];
-    $body_admin = $template_admin->render(
-            array_merge(
-                    $data, array(
-        'entry_time' => gmdate("Y/m/d H:i:s", time() + 9 * 3600),
-        'entry_host' => gethostbyaddr(getenv("REMOTE_ADDR")),
-        'entry_ua' => getenv("HTTP_USER_AGENT"),
-    )));
-    
-    $list_email = job_get_option('wpt_job_text_list_email');
-    if (isset($list_email)){
-        $list_email = preg_split('/\r\n|\n|\r/', $list_email);
-        
-        $fromname = '';
+    // Mail to Candidate
+    $body_candidate = job_get_option('wpt_job_text_block_cadidate');
+    if (isset($body_candidate) && $body_candidate != '') {
+        $body_candidate = $twig->render($body_candidate, $data);
+        //
+        $subject_candidate = $twig->render(job_get_option('wpt_job_text_subject_candidate'), $data);
+        //
         $mail = new Mail();
-        $mail->from = 'khangld@evolable.asia';
+        $mail->from = $from;
         $mail->fromName = $fromname;
-        $mail->to = $list_email;
-        $mail->title = $subject_admin;
-        $mail->body = nl2br($body_admin);
+        $mail->to = $data['email'];
+        $mail->title = $subject_candidate;
+        $mail->body = $body_candidate;
         $mail->send();
     }
-    
+
+
+
+    //Admin用メッセージ
+    $body_admin = job_get_option('wpt_job_text_block_admin');
+    if (isset($body_admin) && $body_admin != '') {
+        $body_admin = $twig->render($body_admin, array_merge(
+                        $data, array(
+            'entry_time' => gmdate("Y/m/d H:i:s", time() + 9 * 3600),
+            'entry_host' => gethostbyaddr(getenv("REMOTE_ADDR")),
+            'entry_ua' => getenv("HTTP_USER_AGENT"),
+        )));
+        //
+        $subject_admin = job_get_option('wpt_job_text_subject_admin');
+        $list_email = job_get_option('wpt_job_text_list_email');
+        if (isset($list_email) && $list_email != '') {
+            $list_email = preg_split('/\r\n|\n|\r/', $list_email);
+            //
+            $mail = new Mail();
+            $mail->from = $from;
+            $mail->fromName = $fromname;
+            $mail->to = $list_email;
+            $mail->title = $subject_admin;
+            $mail->body = $body_admin;
+            $mail->send();
+        }
+    }
 } else {
     wp_redirect(home_url());
 }

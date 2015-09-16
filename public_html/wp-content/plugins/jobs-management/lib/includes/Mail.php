@@ -36,28 +36,28 @@ Class Mail {
         }
 
         // 宛先
-        if (empty($this->to)) {
+        if ($this->to == '') {
             $ret['status'] = 2;
             array_push($ret['messages'], '宛先が指定されていません。');
             return $ret;
         }
 
         // タイトル
-        if (empty($this->title)) {
+        if ($this->title == '') {
             $ret['status'] = 2;
             array_push($ret['messages'], '件名が設定されていません。');
             return $ret;
         }
 
         // 本文
-        if (empty($this->body)) {
+        if ($this->body == '') {
             $ret['status'] = 2;
             array_push($ret['messages'], '本文が設定されていません。');
             return $ret;
         }
 
         // From
-        if (empty($this->from)) {
+        if ($this->from == '') {
             $ret['status'] = 2;
             array_push($ret['messages'], '送信元が設定されていません。');
             return $ret;
@@ -80,7 +80,7 @@ Class Mail {
         $to = $this->createMailToString($this->to);
 
         // FROM作成
-        if (empty($this->fromName)) {
+        if ($this->fromName == '') {
             $this->header .= "From: {$this->from}\n";
         } else {
             $from_name = mb_encode_mimeheader(mb_convert_encoding($this->fromName, "JIS", "UTF-8"));

@@ -77,6 +77,8 @@ class jobs_plugin_admin {
 
         wp_register_style('job-style', $this->assets_url . 'css/job-style.css');
         wp_enqueue_style('job-style');
+        wp_register_style('fancybox-style', $this->assets_url . 'fancybox/jquery.fancybox.css');
+        wp_enqueue_style('fancybox-style');
 
 // We're including the farbtastic script & styles here because they're needed for the colour picker
 // If you're not including a colour picker field then you can leave these calls out as well as the farbtastic dependency for the wpt-admin-js script below
@@ -87,6 +89,9 @@ class jobs_plugin_admin {
         wp_enqueue_media();
         wp_register_script('wpt-admin-js', $this->assets_url . 'js/settings.js', array('farbtastic', 'jquery'), '1.0.0');
         wp_enqueue_script('wpt-admin-js');
+        //
+        wp_register_script('fancybox-admin-js', $this->assets_url . 'fancybox/jquery.fancybox.pack.js', array('farbtastic', 'jquery'), '2.1.5');
+        wp_enqueue_script('fancybox-admin-js');
     }
 
     public function load_settings_plugin() {
@@ -153,10 +158,58 @@ class jobs_plugin_admin {
             'description' => __('List "email-to" after candidates applied CV', 'plugin_textdomain'),
             'fields' => array(
                 array(
+                    'id' => 'text_from_email',
+                    'label' => __('From Email', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_from_email )</h5>",
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
+                    'id' => 'text_from_name',
+                    'label' => __('From Name', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_from_name )</h5>",
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
+                    'id' => 'text_subject_candidate',
+                    'label' => __('Mail Subject (To Candidate)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_subject_candidate )</h5>",
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
+                    'id' => 'text_block_candidate',
+                    'label' => __('Mail Template (To Candidate)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_block_cadidate )</h5>",
+                    'description' => __('{{apply_date}} {{fullname}} {{email}} {{phone_number}} {{gender}} {{attach_file}} {{job_id}} {{job_title}} {{job_position}} {{job_level}} {{job_salary}} {{job_location}} {{job_expired}} {{job_slug}}', 'plugin_textdomain'),
+                    'type' => 'wysiwyg',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
                     'id' => 'text_list_email',
-                    'label' => __('List email', 'plugin_textdomain'),
+                    'label' => __('Email List (To Admin)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_list_email )</h5>",
                     'description' => __('Each email 1 line', 'plugin_textdomain'),
                     'type' => 'textarea',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                 array(
+                    'id' => 'text_subject_admin',
+                    'label' => __('Mail Subject (To Admin)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_subject_admin )</h5>",
+                    'description' => __('', 'plugin_textdomain'),
+                    'type' => 'text',
+                    'default' => '',
+                    'placeholder' => __('', 'plugin_textdomain')
+                ),
+                array(
+                    'id' => 'text_block_admin',
+                    'label' => __('Mail Template (To Admin)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_block_admin )</h5>",
+                    'description' => __('{{apply_date}} {{fullname}} {{email}} {{phone_number}} {{gender}} {{attach_file}} {{job_id}} {{job_title}} {{job_position}} {{job_level}} {{job_salary}} {{job_location}} {{job_expired}} {{job_slug}} {{entry_time}} {{entry_host}} {{entry_ua}}', 'plugin_textdomain'),
+                    'type' => 'wysiwyg',
                     'default' => '',
                     'placeholder' => __('', 'plugin_textdomain')
                 ),
@@ -256,7 +309,7 @@ class jobs_plugin_admin {
 
                 $html .= '<h3>List of Candidates</h3>';
                 $html .= '<p></p>';
-
+                
                 $table_name = $wpdb->prefix . 'jobs_management';
                 $total = $wpdb->get_var("SELECT COUNT(*) FROM  $table_name");
                 $items_per_page = 20;
@@ -270,6 +323,17 @@ class jobs_plugin_admin {
                         . " LIMIT ${offset}, ${items_per_page} "
                 );
 
+                $html .= '<div class="pagination">';
+                $html .= paginate_links(array(
+                    'base' => add_query_arg('cpage', '%#%'),
+                    'format' => '',
+                    'prev_text' => __('&laquo;'),
+                    'next_text' => __('&raquo;'),
+                    'total' => ceil($total / $items_per_page),
+                    'current' => $page
+                ));
+                $html .= '</div>';
+                        
                 $html .= '<div class="job-table">';
                 $html .= '<table>';
                 $html .= '<tr>';
@@ -280,7 +344,8 @@ class jobs_plugin_admin {
                 $html .= '<td width="250">Email</td>';
                 $html .= '<td width="100">Telephone</td>';
                 $html .= '<td width="40">Gender</td>';
-                $html .= '<td width="80">CV</td>';
+                $html .= '<td width="105">CV</td>';
+                $html .= '<td width="">Job Title</td>';
                 $html .= '</tr>';
                 if ($list_candidates) {
                     foreach ($list_candidates as $post) {
@@ -297,6 +362,18 @@ class jobs_plugin_admin {
                         $html .= '<td>' . $post->phone_number . '</td>';
                         $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
                         $html .= '<td><a target="_blank" href="' . $post->attach_file . '" download="' . $download . '"><button>Download CV</button></a></td>';
+                        $html .= '<td>';  
+                        $html .= '<a class="pop-job" href="#job_' . $post->id . '">' . $post->job_title . '</a>';
+                        $html .= '<div id="job_' . $post->id . '" class="table" style="display:none;">'
+                                . '<h3><a href="' . $post->job_slug . '">' . $post->job_title . '</a></h3>'
+                                . '<p>Salary: ' . $post->job_salary . '</p>'
+                                . '<p>Expired: ' . $post->job_expired . '</p>'
+                                . '<p>Location: ' . $post->job_location . '</p>'
+                                . '<p>Position: ' . $post->job_position . '</p>'
+                                . '<p>Work Level: ' . $post->job_level . '</p>'
+                                . '<p>' . '</p>'
+                                . '</div>';
+                        $html .= '</td>';
                         $html .= '</tr>';
                     }
                 }
@@ -319,13 +396,23 @@ class jobs_plugin_admin {
             case 'mail-to':
 
                 switch ($field['type']) {
+                    case 'text':
+                        $_data = isset($data[$option_name]) ? $data[$option_name] : '';
+                        $html .= '<input id="' . esc_attr($field['id']) . '" type="text" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '" value="' . $_data . '" size="100%"/>' . "\n";
+                        break;
                     case 'textarea':
                         $_data = isset($data[$option_name]) ? $data[$option_name] : '';
                         $html .= '<textarea id="' . esc_attr($field['id']) . '" rows="5" cols="50" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '">' . $_data . '</textarea><br/>' . "\n";
                         $html .= '<br/><span class="description">' . $field['description'] . '</span>';
                         break;
+                    case 'wysiwyg':
+                        $_data = isset($data[$option_name]) ? $data[$option_name] : '';
+                        $html .= wp_editor_resize(NULL, 200);
+                        $html .= wp_editor($_data, esc_attr($option_name), array('wpautop' => false, 'tinymce' => true));
+                        $html .= $field['description'];
+                        break;
                 }
-                
+
                 break;
 
             case 'top-define':

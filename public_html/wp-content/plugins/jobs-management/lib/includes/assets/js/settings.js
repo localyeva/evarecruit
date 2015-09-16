@@ -101,3 +101,8 @@ jQuery(document).ready(function ($) {
         return false;
     });
 });
+
+/*----------------------------------------------------------------------------*/
+jQuery(function(){
+   jQuery('a.pop-job').fancybox();
+});

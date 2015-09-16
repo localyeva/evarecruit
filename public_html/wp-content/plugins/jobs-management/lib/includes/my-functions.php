@@ -9,23 +9,45 @@ function job_get_option($option_name) {
     $data = get_option($option_name);
     if (isset($data[$option_name])) {
         //
-        if (is_numeric($data[$option_name])) {
-            return $data[$option_name];
-        } else {
-            return 0;
-        }
-        //
-        if (is_string($data[$option_name])) {
-            return $data[$option_name];
-        } else {
-            return '';
-        }
-        //
-        if (is_array($data[$option_name])) {
-            return $data[$option_name];
-        } else {
-            return NULL;
-        }
+        return $data[$option_name];
     }
     return NULL;
+}
+
+/* Filter Tiny MCE Default Settings */
+//add_filter('tiny_mce_before_init', 'my_switch_tinymce_p_br');
+
+/**
+ * Switch Default Behaviour in TinyMCE to use "<br>"
+ * On Enter instead of "<p>"
+ * 
+ * @link https://shellcreeper.com/?p=1041
+ * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/tiny_mce_before_init
+ * @link http://www.tinymce.com/wiki.php/Configuration:forced_root_block
+ */
+function my_switch_tinymce_p_br($settings) {
+    $settings['forced_root_block'] = false;
+    return $settings;
+}
+
+/**
+ * Returns a inline CSS passage that resizes
+ * wp_editor()'s width and height.
+ *
+ * @param int $width
+ * @param int $height
+ * 
+ * usage: Call the function  wp_editor_resize($width, $height); before wp_editor()  is being called.
+ * 
+ */
+function wp_editor_resize($width = 0, $height = 0) {
+    $style = '<style type="text/css">';
+    if ($width) {
+        $style .= '.wp-editor-container { width:' . $width . 'px !important; }';
+    }
+    if ($height) {
+        $style .= '.wp-editor-area { height:' . $height . 'px !important; }';
+    }
+    $style .= "</style>";
+    echo $style;
 }

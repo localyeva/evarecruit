@@ -169,7 +169,7 @@ get_header();
                         <input type="file" id="re_attach" name="re_attach" />
                     </div>
                 </div>
-                
+
                 <div class="row-gap-medium"></div>
                 <div class="form-group">
                     <label for="content" class="col-sm-2 control-label">Terms - Privacy</label>
