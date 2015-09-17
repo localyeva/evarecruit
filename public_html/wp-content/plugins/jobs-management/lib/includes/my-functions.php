@@ -51,3 +51,18 @@ function wp_editor_resize($width = 0, $height = 0) {
     $style .= "</style>";
     echo $style;
 }
+
+/**
+ * 
+ */
+add_action('admin_head', 'my_admin_custom_styles');
+
+function my_admin_custom_styles() {
+    $output_css = '<style type="text/css">
+        .column-post_views{ width: 70px; }
+        .column-status{ width: 100px; }
+        .column-location{ width: 150px; }
+        .column-position{ width: 150px; }
+    </style>';
+    echo $output_css;
+}

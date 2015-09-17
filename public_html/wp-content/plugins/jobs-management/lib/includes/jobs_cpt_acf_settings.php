@@ -49,7 +49,7 @@ class jobs_cpt_acf_settings {
             "exclude_from_search" => false,
             "capability_type" => "post",
             "map_meta_cap" => true,
-            "hierarchical" => true,
+            "hierarchical" => false,
             "rewrite" => array("slug" => "job", "with_front" => true),
             "query_var" => true,
             "menu_position" => 26,

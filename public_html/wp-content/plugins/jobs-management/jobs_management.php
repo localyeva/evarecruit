@@ -114,12 +114,14 @@ class jobs_management extends PW_Template_Loader {
 //        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_styles'), 10, 1);
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
-        add_filter('manage_posts_columns', array($this, 'add_post_column'));
+        add_filter('manage_job_posts_columns', array($this, 'add_post_column'));
         // Hooks a function to a specific action. 
         // allows you to add custom columns to the list post/custom post type pages.
         // '10' default: specify the function's priority.
         // and '2' is the number of the functions' arguments.
         add_action('manage_posts_custom_column', array($this, 'post_custom_column'), 10, 2);
+
+
         // Add a filter to the attributes metabox to inject template into the cache.
         add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'), 10, 1);
 
@@ -289,16 +291,16 @@ class jobs_management extends PW_Template_Loader {
     public function get_custom_post_type_single_template($single_template) {
         global $wp_query, $post;
 
-        $taxonomy = get_the_terms($post->ID, 'lab');
+        $term = get_the_terms($post->ID, 'lab');
 
-        if (isset($taxonomy)) {
-            $single_template = $this->get_plugin_template_path() . 'taxonomy-lab.php';
+        if (isset($term) && $term != FALSE) {
+            $single_template = $this->get_plugin_template_path() . 'taxonomy-lab-job.php';
         } else {
             if ($post->post_type == 'job') {
                 $single_template = $this->get_plugin_template_path() . 'single-job.php';
             }
         }
-        
+
         return $single_template;
     }
 
@@ -450,9 +452,13 @@ class jobs_management extends PW_Template_Loader {
      * @return type
      */
     public function add_post_column($columns) {
+
         return array_merge($columns, array(
             'post_views' => __('Views'),
             'status' => __('Status'),
+            'location' => __('Location'),
+            'position' => __('Position'),
+            'lab' => __('Lab'),
         ));
     }
 
@@ -462,12 +468,33 @@ class jobs_management extends PW_Template_Loader {
      * @param type $id
      */
     public function post_custom_column($column, $post_id) {
+
         switch ($column) {
             case 'post_views':
                 echo $this->get_job_views(get_the_ID());
                 break;
             case 'status':
-                echo get_field('status', get_the_ID());
+                global $job_status;
+                $status = get_field('status', get_the_ID());
+                echo ucwords($job_status[$status]);
+                break;
+            case 'location':
+                $term = get_the_terms(get_the_ID(), 'job-location');
+                if (isset($term) && $term != FALSE) {
+                    echo $term[0]->name;
+                }
+                break;
+            case 'position':
+                $term = get_the_terms(get_the_ID(), 'job-position');
+                if (isset($term) && $term != FALSE) {
+                    echo $term[0]->name;
+                }
+                break;
+            case 'lab':
+                $term = get_the_terms(get_the_ID(), 'lab');
+                if (isset($term) && $term != FALSE) {
+                    echo $term[0]->name;
+                }
                 break;
         }
     }
