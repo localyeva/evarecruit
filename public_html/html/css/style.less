@@ -95,6 +95,15 @@ a.white-link {
 		text-decoration: none;
 	}
 }
+.pagination {
+	> li {
+		> a.white-link, span {
+			&, &:hover, &:focus, &:active, &:focus:active {
+				color: white;
+			}
+		}
+	}
+}
 // begin styling
 body, html {
 	font-family: 'Roboto', sans-serif;

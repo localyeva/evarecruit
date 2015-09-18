@@ -75,10 +75,16 @@
             e.stopPropagation();
         });
         // hide mobile right sidebar menu on tab body
-        $('body').click(function (e) {
+        var hideMobilemenu = function () {
             if ($('#sidr-main').is(':visible')) {
                 $('#responsive-menu-button').trigger('click');
             }
+        }
+        $('body').click(function (e) {
+            hideMobilemenu();
+        });
+        $(window).resize(function (e) {
+            hideMobilemenu();
         });
     })
 </script>
