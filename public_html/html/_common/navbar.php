@@ -71,5 +71,14 @@
         $('#navigation li button.navbar-btn').click(function () {
             location.href = $(this).data('url');
         });
+        $('#responsive-menu-button').click(function (e) {
+            e.stopPropagation();
+        });
+        // hide mobile right sidebar menu on tab body
+        $('body').click(function (e) {
+            if ($('#sidr-main').is(':visible')) {
+                $('#responsive-menu-button').trigger('click');
+            }
+        });
     })
 </script>
