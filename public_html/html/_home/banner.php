@@ -15,7 +15,7 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img data-src="holder.js/900x500/auto/#777:#777" alt="900x500" src="img/1.png" data-holder-rendered="true">
+				<img alt="900x500" src="img/1.png">
 				<div class="carousel-caption">
 					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
 					<h2 class="mission">Our mission</h2>
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img data-src="holder.js/900x500/auto/#666:#666" alt="900x500" src="img/1.png" data-holder-rendered="true">
+				<img alt="900x500" src="img/1.png">
 				<div class="carousel-caption">
 					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
 					<h2 class="mission">Our mission</h2>
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="item">
-				<img data-src="holder.js/900x500/auto/#555:#555" alt="900x500" src="img/1.png" data-holder-rendered="true">
+				<img alt="900x500" src="img/1.png">
 				<div class="carousel-caption">
 					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
 					<h2 class="mission">Our mission</h2>
