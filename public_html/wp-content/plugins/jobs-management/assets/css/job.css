@@ -9,3 +9,9 @@ input[type=text].error,
 input[type=email].error {
   border: 1px solid #b10016;
 }
+.apply-form-modal .nano {
+  height: 250px;
+}
+.fancybox-inner {
+  overflow-x: hidden !important;
+}

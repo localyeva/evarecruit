@@ -14,6 +14,24 @@ function job_get_option($option_name) {
     return NULL;
 }
 
+function get_lab_images() {
+    $term = get_the_terms(get_the_ID(), 'lab');
+    if (function_exists('get_all_wp_terms_meta')) {
+        $arrayMetaList = get_all_wp_terms_meta($term[0]->term_id);
+    }
+
+    $images = array();
+    foreach ($arrayMetaList as $key => $value) {
+        $images[$key] = $value[0];
+        // get extension
+        $ext = substr(strrchr($images[$key], '.'), 1);
+        $images['thumbnail-' . $key] = str_replace('.' . $ext, '-150x150.' . $ext, $value[0]);
+        $images['medium-' . $key] = str_replace('.' . $ext, '-225x300.' . $ext, $value[0]);
+    }
+
+    return $images;
+}
+
 /* Filter Tiny MCE Default Settings */
 //add_filter('tiny_mce_before_init', 'my_switch_tinymce_p_br');
 

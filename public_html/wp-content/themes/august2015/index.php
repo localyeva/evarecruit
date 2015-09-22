@@ -274,20 +274,7 @@ get_header();
         <!-- //Image gallery End -->
     </div>
 </div>
-<script type="text/javascript">
-    $(function (e) {
-        $('.gallery').fadeOut();
-        $('.header-environment ul.nav-pills li').click(function (e) {
-            var tab = $(this).data('tab');
-            $('.header-environment ul.nav-pills li').removeClass('active');
-            $(this).addClass('active');
-            $('.gallery').fadeOut();
-            $('.gallery[data-tab="' + tab + '"]').fadeIn();
-            e.preventDefault();
-        });
-        $('.header-environment ul.nav-pills li:first-child').trigger('click');
-    });
-</script>
+
 <!--//Environment End-->
 <!--//Intro Movie-->
 <div class="row-gap-large"></div>
