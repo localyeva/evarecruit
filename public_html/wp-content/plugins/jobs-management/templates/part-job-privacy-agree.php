@@ -1,4 +1,4 @@
-<p class="nano-content content">
+<p>
     EVOLABLE ASIA Co., Ltd (sau đây gọi là [Công ty chúng tôi]) qui định chính sách bên dưới nhằm mục đích bảo mật thông tin và quản lý việc sử dụng thông tin cá nhân một cách hợp lý để người sử dụng yên tâm sử dụng website của công ty(sau đây gọi là [Website]).<br/><br/>
     <span class="text-bold">Định nghĩa thông tin cá nhân</span>
     <br/><br/>

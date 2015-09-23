@@ -425,7 +425,6 @@ class jobs_management extends PW_Template_Loader {
         //
         wp_register_script('js-jobs-frontend', $this->get_plugin_url() . '/assets/js/job.js', array('jquery'), '1.0', TRUE);
         wp_enqueue_script('js-jobs-frontend');
-
         $dataToBePassed = array(
             'plugin_url' => $this->get_plugin_url(),
         );

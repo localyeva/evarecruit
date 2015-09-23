@@ -177,7 +177,9 @@ get_header();
                 <div class="box">
                     <div class="row">
                         <div class="col-xs-10 nano">
-                            <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
+                            <div class="nano-content">
+                                <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
+                            </div>
                         </div>
                     </div>
                 </div>

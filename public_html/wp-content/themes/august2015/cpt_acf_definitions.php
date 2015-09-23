@@ -160,6 +160,30 @@ function cptui_register_my_cpts() {
     register_post_type("slider-evnironment", $args);
 
     $labels = array(
+        "name" => "Slider Home",
+        "singular_name" => "Slider Home",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "slider-home", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 32,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h7.png',
+        "supports" => array("title"),
+    );
+    register_post_type("slider-home", $args);
+
+    $labels = array(
         "name" => "About Us",
         "singular_name" => "About Us",
     );
@@ -177,8 +201,8 @@ function cptui_register_my_cpts() {
         "hierarchical" => false,
         "rewrite" => array("slug" => "about-us", "with_front" => true),
         "query_var" => true,
-        "menu_position" => 32,
-        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h7.png',
+        "menu_position" => 33,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h8.png',
         "supports" => array("title"),
     );
     register_post_type("about-us", $args);
@@ -643,6 +667,53 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'slider-evnironment',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_slider-home',
+        'title' => 'Slider Home',
+        'fields' => array(
+            array(
+                'key' => 'field_56010c065d750',
+                'label' => 'Images',
+                'name' => 'images',
+                'type' => 'repeater',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_56010c365d751',
+                        'label' => 'Image',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'column_width' => '',
+                        'save_format' => 'url',
+                        'preview_size' => 'thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'row_min' => '',
+                'row_limit' => '',
+                'layout' => 'table',
+                'button_label' => 'Add Row',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'slider-home',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
