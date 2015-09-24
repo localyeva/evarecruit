@@ -13,6 +13,7 @@ function assetSrc($file)
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.sidr.min.js"></script>
+        <script type="text/javascript" src="js/parallax.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/jquery.sidr.dark.css">
         <link rel="stylesheet" href="<?php assetSrc('css/style.css'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -27,7 +28,6 @@ function assetSrc($file)
             <?php include('./_home/environment.php'); ?>
             <?php include('./_home/intro_movie.php'); ?>
             <?php include('./_home/ceo_message.php'); ?>
-            <?php include('./_home/job_list.php'); ?>
             <?php include('./_home/map.php'); ?>
             <?php include('./_home/info.php'); ?>
         </div>

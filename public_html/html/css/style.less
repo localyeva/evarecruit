@@ -113,6 +113,10 @@ h1, h2, h3, h4, h5, h6 {
 	.text-semi-bold;
 	// link
 }
+.parallax-window {
+    min-height: 400px;
+    // background: transparent;
+}
 .navbar-default {
 	margin-bottom: 0;
 	li.active {
@@ -130,11 +134,11 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .header-banner {
-	height: @banner-height;
-	background: url('../img/1.png');
+	min-height: @banner-height;
+	// background: url('../img/1.png');
 	color: #fff;
 	.container {
-		height: @banner-height;
+		min-height: @banner-height;
 		margin: auto auto;
 		vertical-align: middle;
 		h2:first-child {
