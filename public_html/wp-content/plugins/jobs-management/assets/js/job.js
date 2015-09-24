@@ -1,7 +1,3 @@
-$(function () {
-    $(".nano").nanoScroller();
-});
-
 $().ready(function () {
 
     var form_valid = $('#apply-form');
@@ -43,6 +39,9 @@ $().ready(function () {
     });
 
     $('a.openform').fancybox({
+        afterShow: function(){
+            $('.nano').nanoScroller();
+        },
         afterClose: function () {
             $(".error").html('');
             $(".error").removeClass("error");

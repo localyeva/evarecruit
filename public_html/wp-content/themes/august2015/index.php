@@ -7,13 +7,47 @@
 get_header();
 ?>
 
-<div class="header-banner">
-    <div class="container text-center">
-        <h2 class="text-bold"><?php echo get_intro_1_text() ?></h2>
-        <h2><?php echo get_intro_2_text() ?></h2>
-        <h3><?php echo get_intro_3_text() ?></h3>
+<?php
+$args = array(
+    'post_type' => 'slider-home',
+    'posts_per_page' => -1,
+    'orderby' => array('date' => 'DESC'),
+);
+$loop = new WP_Query($args);
+$slider_home = array();
+if ($loop->have_posts()) {
+    while ($loop->have_posts()) {
+        $loop->the_post();
+        while (have_rows('images')) {
+            the_row();
+            $slider_home[]['image'] = get_sub_field('image');
+        }
+    }
+}
+?>
+
+<div class="bs-example" data-example-id="carousel-with-captions">
+    <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel" data-interval=5000>
+        <ol class="carousel-indicators">
+            <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+                <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
+            <?php endfor; ?>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+                <div class="item <?php echo ($i == 0) ? 'active' : '' ?>">
+                    <img alt="" src="<?php echo $slider_home[$i]['image'] ?>">
+                    <div class="carousel-caption">
+                        <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
+                        <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
+                        <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
+                    </div>
+                </div>
+            <?php endfor; ?>
+        </div>
     </div>
 </div>
+
 <div class="header-join">
     <div class="container text-center">
         <h2 class="text-bold"><?php echo get_home_top_text() ?></h2>
@@ -138,7 +172,7 @@ get_header();
             if ($loop->have_posts()) {
                 while ($loop->have_posts()) {
                     $loop->the_post();
-                    $img = array(the_title(),get_field('main_image'));
+                    $img = array(the_title(), get_field('main_image'));
                     $images[$cat_name][] = $img;
                     $all_images[] = $img;
                     $num_imgs++;
@@ -148,7 +182,7 @@ get_header();
                             $img = array(the_title(), get_sub_field('image'));
                             $images[$cat_name][] = $img;
                             $all_images[] = $img;
-                            $num_imgs++;                            
+                            $num_imgs++;
                         }
                     }
                 }
@@ -162,7 +196,7 @@ get_header();
                 <ul class="nav nav-pills nav-justified">
                     <li role="presentation" data-tab="all"><a href="#">All</a></li>
                     <?php foreach ($categories as $category): ?>
-                    <li role="presentation" data-tab="<?php echo $category->name ?>"><a href="#"><?php echo $category->name ?></a></li>
+                        <li role="presentation" data-tab="<?php echo $category->name ?>"><a href="#"><?php echo $category->name ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
@@ -170,105 +204,119 @@ get_header();
         <div class="row-gap-large"></div>
         <!-- //Image gallery -->
         <div class="row gallery" data-tab="all">
-            <?php if($num_imgs <=4 ){
-                for ($i = 0; $i <= 4; $i++){
-                    if(isset($images[$i])){                
-             ?>
-            <div class="col-xs-3">
-                <div class="row">
-                            <div class="col-xs-12">
-                                <img src="<?php echo $images[$i][1] ?>" alt="<?php echo $images[$i][0] ?>" class="img-responsive" />
+            <?php
+            if ($num_imgs <= 4) {
+                for ($i = 0; $i <= 4; $i++) {
+                    if (isset($images[$i])) {
+                        ?>
+                        <div class="col-xs-3">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <img src="<?php echo $images[$i][1] ?>" alt="<?php echo $images[$i][0] ?>" class="img-responsive" />
+                                </div>
                             </div>
-                </div>
-            </div>
-            <?php }}}else{
-                $mod = $num_imgs%4;
-                $num = intval($num_imgs/4);
-                if($mod == 0){
+                        </div>
+                        <?php
+                    }
+                }
+            } else {
+                $mod = $num_imgs % 4;
+                $num = intval($num_imgs / 4);
+                if ($mod == 0) {
                     $parts = array_chunk($all_images, $num);
-                }else if($mod == 1){
+                } else if ($mod == 1) {
                     $parts[0] = array_slice($all_images, 0, $num + 1);
                     $parts[1] = array_slice($all_images, $num + 1, $num);
                     $parts[2] = array_slice($all_images, ($num + 1) + $num, $num);
-                    $parts[3] = array_slice($all_images, ($num + 1) + 2*$num, $num);
-                }else if($mod == 2){
+                    $parts[3] = array_slice($all_images, ($num + 1) + 2 * $num, $num);
+                } else if ($mod == 2) {
                     $parts[0] = array_slice($all_images, 0, $num + 1);
-                    $parts[1] = array_slice($all_images, $num + 1, $num+1);
-                    $parts[2] = array_slice($all_images, ($num + 1)*2, $num);
-                    $parts[3] = array_slice($all_images, ($num + 1)*2 + $num, $num);
-                }else{
+                    $parts[1] = array_slice($all_images, $num + 1, $num + 1);
+                    $parts[2] = array_slice($all_images, ($num + 1) * 2, $num);
+                    $parts[3] = array_slice($all_images, ($num + 1) * 2 + $num, $num);
+                } else {
                     $parts[0] = array_slice($all_images, 0, $num + 1);
-                    $parts[1] = array_slice($all_images, $num + 1, $num+1);
-                    $parts[2] = array_slice($all_images, ($num + 1)*2, $num+1);
-                    $parts[3] = array_slice($all_images, ($num + 1)*3, $num);
+                    $parts[1] = array_slice($all_images, $num + 1, $num + 1);
+                    $parts[2] = array_slice($all_images, ($num + 1) * 2, $num + 1);
+                    $parts[3] = array_slice($all_images, ($num + 1) * 3, $num);
                 }
-                for ($i = 0; $i < 4; $i++){
+                for ($i = 0; $i < 4; $i++) {
                     $tparts = $parts[$i];
-            ?>
-            <div class="col-xs-3">
-                <div class="row">
-                    <?php foreach ($tparts as $part) {
                     ?>
-                    <div class="col-xs-12">
-                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                    <div class="col-xs-3">
+                        <div class="row">
+                            <?php foreach ($tparts as $part) {
+                                ?>
+                                <div class="col-xs-12">
+                                    <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                    <?php } ?>
-                </div>
-            </div>
-            <?php }}?>
+                    <?php
+                }
+            }
+            ?>
         </div>
 
-            <?php foreach ($images as $cat_name=>$pimages){            
+        <?php foreach ($images as $cat_name => $pimages) {
             ?>
             <div class="row gallery" data-tab="<?php echo $cat_name ?>">
-            <?php $num_imgs = count($pimages);
-            if($num_imgs <=4 ){
-            for ($i = 0; $i <= 4; $i++){
-                if(isset($pimages[$i])){                
-             ?>
-            <div class="col-xs-3">
-                <div class="row">
-                            <div class="col-xs-12">
-                                <img src="<?php echo $pimages[$i][1] ?>" alt="<?php echo $pimages[$i][0] ?>" class="img-responsive" />
+                <?php
+                $num_imgs = count($pimages);
+                if ($num_imgs <= 4) {
+                    for ($i = 0; $i <= 4; $i++) {
+                        if (isset($pimages[$i])) {
+                            ?>
+                            <div class="col-xs-3">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <img src="<?php echo $pimages[$i][1] ?>" alt="<?php echo $pimages[$i][0] ?>" class="img-responsive" />
+                                    </div>
+                                </div>
                             </div>
-                </div>
-            </div>
-            <?php }}}else{
-                $mod = $num_imgs%4;
-                $num = intval($num_imgs/4);
-                if($mod == 0){
-                    $parts = array_chunk($pimages, $num);
-                }else if($mod == 1){
-                    $parts[0] = array_slice($pimages, 0, $num);
-                    $parts[1] = array_slice($pimages, $num + 1, $num);
-                    $parts[2] = array_slice($pimages, ($num + 1) + $num, $num);
-                    $parts[3] = array_slice($pimages, ($num + 1) + 2*$num, $num);
-                }else if($mod == 2){
-                    $parts[0] = array_slice($pimages, 0, $num + 1);
-                    $parts[1] = array_slice($pimages, $num + 1, $num+1);
-                    $parts[2] = array_slice($pimages, ($num + 1)*2, $num);
-                    $parts[3] = array_slice($pimages, ($num + 1)*2 + $num, $num);
-                }else{
-                    $parts[0] = array_slice($pimages, 0, $num + 1);
-                    $parts[1] = array_slice($pimages, $num + 1, $num+1);
-                    $parts[2] = array_slice($pimages, ($num + 1)*2, $num+1);
-                    $parts[3] = array_slice($pimages, ($num + 1)*3, $num);
+                            <?php
+                        }
+                    }
+                } else {
+                    $mod = $num_imgs % 4;
+                    $num = intval($num_imgs / 4);
+                    if ($mod == 0) {
+                        $parts = array_chunk($pimages, $num);
+                    } else if ($mod == 1) {
+                        $parts[0] = array_slice($pimages, 0, $num);
+                        $parts[1] = array_slice($pimages, $num + 1, $num);
+                        $parts[2] = array_slice($pimages, ($num + 1) + $num, $num);
+                        $parts[3] = array_slice($pimages, ($num + 1) + 2 * $num, $num);
+                    } else if ($mod == 2) {
+                        $parts[0] = array_slice($pimages, 0, $num + 1);
+                        $parts[1] = array_slice($pimages, $num + 1, $num + 1);
+                        $parts[2] = array_slice($pimages, ($num + 1) * 2, $num);
+                        $parts[3] = array_slice($pimages, ($num + 1) * 2 + $num, $num);
+                    } else {
+                        $parts[0] = array_slice($pimages, 0, $num + 1);
+                        $parts[1] = array_slice($pimages, $num + 1, $num + 1);
+                        $parts[2] = array_slice($pimages, ($num + 1) * 2, $num + 1);
+                        $parts[3] = array_slice($pimages, ($num + 1) * 3, $num);
+                    }
+                    for ($i = 0; $i < 4; $i++) {
+                        $tparts = $parts[$i];
+                        ?>
+                        <div class="col-xs-3">
+                            <div class="row">
+                                <?php foreach ($tparts as $part) {
+                                    ?>
+                                    <div class="col-xs-12">
+                                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <?php
+                    }
                 }
-                for ($i = 0; $i < 4; $i++){
-                    $tparts = $parts[$i];
-            ?>
-            <div class="col-xs-3">
-                <div class="row">
-                    <?php foreach ($tparts as $part) {
-                    ?>
-                    <div class="col-xs-12">
-                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
-                    </div>
-                    <?php } ?>
-                </div>
-            </div>
-            <?php }}?>
-                
+                ?>
+
             </div>
         <?php } ?>
         <!-- //Image gallery End -->
@@ -286,10 +334,10 @@ get_header();
             </div>
             <div class="col-md-4 col-xs-8">
                 <h2><?php echo get_part_work_environment_movie_title_text() ?></h2>
-<?php echo get_part_work_environment_movie_desc_text() ?>                
+                <?php echo get_part_work_environment_movie_desc_text() ?>                
             </div>
             <div class="col-md-6 col-md-offset-1 col-xs-12">
-<?php echo get_part_work_environment_movie_link() ?>                
+                <?php echo get_part_work_environment_movie_link() ?>                
             </div>
         </div>
     </div>
@@ -312,7 +360,7 @@ get_header();
 
 <!--//Job List-->
 <div id="new-opportunities">
-<?php echo do_shortcode('[jobs-part type="form-list"]') ?>
+    <?php echo do_shortcode('[jobs-part type="form-list"]') ?>
 </div>
 <!--//Job List End-->
 
