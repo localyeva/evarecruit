@@ -11,7 +11,6 @@
 @row-gap-small-height: 10px;
 @row-gap-small-medium: 20px;
 @row-gap-small-large: 50px;
-@navbar-height: 150px;
 @orange: #FF530D;
 @bold: 700;
 // Helper function
@@ -152,6 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom: 50px;
 }
 .header-about {
+	background: #fff;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -163,6 +163,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 .header-environment {
+	background: #fff;
 	img {
 		margin-bottom: 5px;
 	}
@@ -706,28 +707,33 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-control {
 	background-image: none !important;
 }
-.carousel-fade .carousel-inner .item {
-	opacity: .3;
-	-webkit-transition-property: opacity;
-	-moz-transition-property: opacity;
-	-o-transition-property: opacity;
-	transition-property: opacity;
-}
-.carousel-fade .carousel-inner .active {
-	opacity: 1;
-}
-.carousel-fade .carousel-inner .active.left,
-.carousel-fade .carousel-inner .active.right {
-	left: 0;
-	opacity: .3;
-	z-index: 1;
-}
-.carousel-fade .carousel-inner .next.left,
-.carousel-fade .carousel-inner .prev.right {
-	opacity: 1;
-}
-.carousel-fade .carousel-control {
-	z-index: 2;
+.carousel-fade {
+	.carousel-inner {
+		.item {
+			opacity: .3;
+			-webkit-transition-property: opacity;
+			-moz-transition-property: opacity;
+			-o-transition-property: opacity;
+			transition-property: opacity;
+			// img {
+			// 	visibility: hidden;
+			// }
+		}
+		.active {
+			opacity: 1;
+		}
+		.active.left, .active.right {
+			left: 0;
+			opacity: .3;
+			z-index: 1;
+		}
+		.next.left, .prev.right {
+			opacity: 1;
+		}
+	}
+	.carousel-control {
+		z-index: 2;
+	}
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';

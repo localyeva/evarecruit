@@ -41,11 +41,11 @@
     </nav>
 </div>
 <div id="navigation">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand horizontal hidden" href="#">
-                    <img alt="Brand" src="img/logo.png">
+                    <img alt="Brand" src="img/logo.png" height=80>
                 </a>
             </div>
             <div class="navbar-collapse collapse">
