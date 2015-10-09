@@ -1,15 +1,13 @@
 <div class="header-about">
 	<div class="container">
-		<h2 class="text-center">About us</h2>
-		<div class="row-gap-large"></div>
 		<div class="row content">
-			<div class="col-xs-12 col-md-6">
-				<img class="img-responsive" src="img/2.png" alt="">
-			</div>
-			<div class="col-xs-12 col-md-6">
+			<div class="col-xs-12 col-md-5"></div>
+			<div class="col-xs-12 col-md-7">
+				<h2>About us</h2>
+				<div class="row-gap-large"></div>
 				<div class="row">
 					<div class="col-xs-12">
-						<p>Lorem 07/2011: Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						<p><strong>Lorem 07/2011:</strong> Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -20,7 +18,7 @@
 
 				<div class="row">
 					<div class="col-xs-12">
-						<p>Lorem 07/2011: Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						<p><b>Lorem 07/2011:</b> Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -31,7 +29,7 @@
 
 				<div class="row">
 					<div class="col-xs-12">
-						<p>Lorem 07/2011: Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						<p><strong>Lorem 07/2011:</strong> Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse

@@ -22,7 +22,7 @@ define('DB_NAME', 'eva_recruit');
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'abcdabcd');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

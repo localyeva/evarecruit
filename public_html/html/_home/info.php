@@ -4,7 +4,7 @@
             <div class="col-xs-12 col-md-6">
                 <div class="row">
                     <div class="col-xs-12">
-                        <img src="img/logo.png" alt="" class="img-responsive">
+                        <img src="img/logo.png" alt="" class="img-responsive logo">
                     </div>
                 </div>
                 <div class="row-gap-large"></div>
