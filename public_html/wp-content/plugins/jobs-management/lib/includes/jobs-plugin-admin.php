@@ -185,7 +185,7 @@ class jobs_plugin_admin {
                 ),
                 array(
                     'id' => 'text_block_candidate',
-                    'label' => __('Mail Template (To Candidate)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_block_cadidate )</h5>",
+                    'label' => __('Mail Template (To Candidate)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_block_candidate )</h5>",
                     'description' => __('{{apply_date}} {{fullname}} {{email}} {{phone_number}} {{gender}} {{attach_file}} {{job_id}} {{job_title}} {{job_position}} {{job_level}} {{job_salary}} {{job_location}} {{job_expired}} {{job_slug}}', 'plugin_textdomain'),
                     'type' => 'wysiwyg',
                     'default' => '',

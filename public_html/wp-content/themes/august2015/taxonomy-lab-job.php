@@ -17,6 +17,6 @@ if (function_exists('setPostViews')) {
 get_header();
 ?>
 
-<h2>Job of Lab</h2>
+<h2>Job of Lab on Theme</h2>
 
 <?php get_footer(); ?>
