@@ -130,7 +130,6 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
     echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
     /* -------------------------------------------------------------- send mail */
     require_once plugin_dir_path(__FILE__) . '../lib/includes/Twig/Autoloader.php';
-    require_once plugin_dir_path(__FILE__) . '../lib/includes/Mail.php';
     Twig_Autoloader::register();
 
     $loader = new Twig_Loader_String;
@@ -141,22 +140,16 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
     $fromname = job_get_option('wpt_job_text_from_name');
 
     // Mail to Candidate
-    $body_candidate = job_get_option('wpt_job_text_block_cadidate');
+    $body_candidate = job_get_option('wpt_job_text_block_candidate');
     if (isset($body_candidate) && $body_candidate != '') {
         $body_candidate = $twig->render($body_candidate, $data);
         //
         $subject_candidate = $twig->render(job_get_option('wpt_job_text_subject_candidate'), $data);
         //
-        $mail = new Mail();
-        $mail->from = $from;
-        $mail->fromName = $fromname;
-        $mail->to = $data['email'];
-        $mail->title = $subject_candidate;
-        $mail->body = $body_candidate;
-        $mail->send();
+        $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';	
+        //
+        wp_mail($data['email'], $subject_candidate, $body_candidate, $headers);
     }
-
-
 
     //Admin用メッセージ
     $body_admin = job_get_option('wpt_job_text_block_admin');
@@ -169,17 +162,14 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         )));
         //
         $subject_admin = job_get_option('wpt_job_text_subject_admin');
+        //
         $list_email = job_get_option('wpt_job_text_list_email');
         if (isset($list_email) && $list_email != '') {
             $list_email = preg_split('/\r\n|\n|\r/', $list_email);
             //
-            $mail = new Mail();
-            $mail->from = $from;
-            $mail->fromName = $fromname;
-            $mail->to = $list_email;
-            $mail->title = $subject_admin;
-            $mail->body = $body_admin;
-            $mail->send();
+            $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
+            //
+            wp_mail($list_email, $subject_admin, $body_admin, $headers);
         }
     }
 } else {

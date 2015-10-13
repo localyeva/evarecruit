@@ -13,6 +13,11 @@ $post_per_page = job_get_option('wpt_job_text_item_per_page_job');
 
 global $job_status;
 
+$terms = get_terms('lab');
+$args_terms = array();
+foreach ($terms as $term) {
+    $args_terms[] = $term->slug;
+}
 
 if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_GET['position'] == '' && $_GET['location'] == '' )) {
     $args = array(
@@ -20,6 +25,14 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
         'posts_per_page' => $post_per_page,
         'meta_key' => 'status',
         'orderby' => array('meta_value_num' => 'DESC'),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'lab',
+                'field' => 'slug',
+                'terms' => $args_terms,
+                'operator' => 'NOT IN',
+            ),
+        ),
         'paged' => $paged,
     );
     $wp_query = new WP_Query($args);
@@ -155,6 +168,14 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
             'posts_per_page' => $post_per_page,
             'meta_key' => 'status',
             'orderby' => array('meta_value_num' => 'DESC'),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'lab',
+                    'field' => 'slug',
+                    'terms' => $args_terms,
+                    'operator' => 'NOT IN',
+                ),
+            ),
             'paged' => $paged,
         );
         $wp_query = new WP_Query($args);

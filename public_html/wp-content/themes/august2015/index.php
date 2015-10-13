@@ -26,7 +26,7 @@ if ($loop->have_posts()) {
 }
 ?>
 
-<div class="bs-example" data-example-id="carousel-with-captions">
+<div class="bs-carousel" data-example-id="carousel-with-captions">
     <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel" data-interval=5000>
         <ol class="carousel-indicators">
             <?php for ($i = 0; $i < count($slider_home); $i++): ?>

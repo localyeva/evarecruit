@@ -51,11 +51,11 @@
             </nav>
         </div>
         <div id="navigation">
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="<?php echo bloginfo('url') ?>">
-                            <img alt="Brand" src="<?php echo get_site_logo() ?>">
+                            <img height=80 alt="Evolable Asia" src="<?php echo get_site_logo() ?>">
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
