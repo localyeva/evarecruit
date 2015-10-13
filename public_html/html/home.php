@@ -19,24 +19,25 @@ function assetSrc($file)
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     </head>
     <body>
-    	<?php include('./_common/navbar.php'); ?>
-        <div id="home">
-        	<?php include('./_home/banner.php'); ?>
-            <?php include('./_home/join.php'); ?>
-        	<?php include('./_home/about.php'); ?>
-            <?php include('./_home/service.php'); ?>
-            <?php include('./_home/environment.php'); ?>
-            <?php include('./_home/intro_movie.php'); ?>
-            <?php include('./_home/ceo_message.php'); ?>
-            <?php include('./_home/map.php'); ?>
-            <?php include('./_home/info.php'); ?>
-        </div>
-        <?php include('./_home/footer.php'); ?>
-        <script>
-            $('#responsive-menu-button').sidr({
-                name: 'sidr-main',
-                source: '#navigation'
-            });
-        </script>
+        	<?php include('./_common/navbar.php'); ?>
+            <div id="home">
+            	<?php include('./_home/banner.php'); ?>
+            	<?php include('./_home/about.php'); ?>
+                <?php include('./_home/apply-resume.php'); ?>
+                <?php include('./_home/find-job.php'); ?>
+                <?php include('./_home/environment.php'); ?>
+                <?php include('./_home/intro_movie.php'); ?>
+                <?php include('./_home/ceo_message.php'); ?>
+                <?php include('./_home/join.php'); ?>
+                <?php include('./_home/map.php'); ?>
+                <?php include('./_home/info.php'); ?>
+            </div>
+            <?php include('./_home/footer.php'); ?>
+            <script>
+                $('#responsive-menu-button').sidr({
+                    name: 'sidr-main',
+                    source: '#navigation'
+                });
+            </script>
     </body>
 </html>
