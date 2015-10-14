@@ -19,7 +19,6 @@
 						</div>
 					</div>
 				</form>
-				<div class="row-gap-medium"></div>
 				<div class="row-gap-small"></div>
 				<div class="row">
 					<div class="col-xs-12 col-md-10">

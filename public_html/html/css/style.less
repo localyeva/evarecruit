@@ -384,7 +384,7 @@ h1, h2, h3, h4, h5, h6 {
 					margin-top: 10px;
 					margin-bottom: 10px;
 					i.highlight {
-						color: #ff0000;
+						color: #ff3232;
 						font-weight: lighter;
 					}
 				}
@@ -570,6 +570,109 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	p {
 		text-align: justify;
+	}
+}
+#new-jobs .header-job-list {
+	background: transparent !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	.new {
+		color: #ff3232;
+	}
+	.hot {
+		.title {
+			color: #ff3232 !important;
+		}
+	}
+	.posted {
+		padding-left: 25px;
+		background: url('../img/new_job/4.png') 4px 0px no-repeat;
+		margin-bottom: 5px;
+		font-size: 12px;
+	}
+	.views {
+		padding-left: 25px;
+		background: url('../img/new_job/5.png') 0px 0px no-repeat;
+		margin-bottom: 0px;
+		font-size: 12px;
+	}
+	nav {
+		text-align: center;
+	}
+	.pagination {
+		margin: 10px auto;
+		li {
+			a {
+				background: transparent;
+				span {
+					color: #0090B0;
+				}
+			}
+		}
+	}
+	.nano {
+		background-color: #ffffff;
+		height: auto;
+		max-height: 1000px;
+		.nano-content {
+			right: 0px !important;
+			padding: 0px;
+			margin: 10px 0px;
+			.item {
+				padding: 15px 20px;
+				.title {
+					color: #434343;
+					line-height: 20px;
+					margin-bottom: 5px;
+					margin-top: 0px;
+				}
+				.info {
+					padding-right: 0px;
+				}
+				a:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	.sidebar {
+		.row {
+			background-color: #ffffff;
+			margin-left: 0px;
+			margin-bottom: 10px;
+			a:hover {
+				text-decoration: none;
+			}
+			img {
+				width: 100%;
+			}
+			h4 {
+				color: #ff3232;
+				font-size: 13px;
+				margin-bottom: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			.l-col {
+				width: 60%;
+				float: left;
+			}
+			.r-col {
+				width: 40%;
+				float: left;
+				font-size: 12px;
+				padding: 10px 10px 10px 0;
+				div {
+					margin-bottom: 5px;
+				}
+			}
+			.info {
+				font-size: 12px;
+				margin-bottom: 10px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		}
 	}
 }
 .header-job-list {
@@ -781,7 +884,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	height: 520px;
 	.nano-content {
-	  padding: 30px 50px;
+	  padding: 30px 0px;
 	}
 	.nano-pane {
 		margin: 10px 10px;
@@ -863,9 +966,14 @@ h1, h2, h3, h4, h5, h6 {
 			height: 730px;
 		}
 	}
+	.text-blue {
+		color: #0A93B2;
+		font-style: italic;
+		font-weight: lighter;
+	}
 	.item {
 		padding: 30px 20px;
-		border-bottom: 1px dotted #000;
+		border-bottom: 1px dotted #b1b1b1;
 		.title {
 			.text-bold;
 			font-size: @body-font-size*1.2;
@@ -879,10 +987,6 @@ h1, h2, h3, h4, h5, h6 {
 					color: #FF3232;
 				}
 			}
-		}
-		.text-blue {
-			color: #0A93B2;
-			font-style: italic;
 		}
 		img.date, img.view {
 			margin-right: 3px;
@@ -912,6 +1016,11 @@ h1, h2, h3, h4, h5, h6 {
 			margin-left: 10px;
 			margin-right: 10px;
 		}
+		.form-group {
+			.form-control {
+				margin-bottom: 10px;
+			}
+		}
 	}
 	.pagination {
 		li {
@@ -928,6 +1037,15 @@ h1, h2, h3, h4, h5, h6 {
 				&:first-child {
 					margin-left: 0;
 				}
+			}
+			span.gap {
+				margin: 5px 10px 5px 0px;
+				padding: 2px 15px 10px 15px;
+				border: none;
+				color: #0090B0;
+				background: transparent;
+				font-weight: bold;
+				font-size: 20px;
 			}
 		}
 	}
