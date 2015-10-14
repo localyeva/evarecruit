@@ -68,6 +68,21 @@
 </div>
 <script type="text/javascript">
     $(function () {
+        var nav = $('.navbar');
+        nav.removeClass('navbar-fixed-top');
+        $(window).scroll(function (e) {
+            var scroll = $(this).scrollTop();
+            if (scroll > 120) {
+                nav.addClass('navbar-fixed-top');
+            } else {
+                if (nav.hasClass('navbar-fixed-top')) {
+                    nav.removeClass('navbar-fixed-top');
+                }
+            }
+            console.log(scroll);
+            // console.log($('.navbar').position().top);
+        });
+
         $('#navigation li button.navbar-btn').click(function () {
             location.href = $(this).data('url');
         });
@@ -86,5 +101,5 @@
         $(window).resize(function (e) {
             hideMobilemenu();
         });
-    })
+    });
 </script>

@@ -64,11 +64,10 @@
 			zIndex: -1
 		});
 		$(window).scroll(function (e) {
-			var scroll = $(window).scrollTop();
-			console.log(scroll);
+			var scroll = $(this).scrollTop();
 			$item.css({
 				top: position.top - scroll/coef
 			})
-		})
+		});
 	});
 </script>
