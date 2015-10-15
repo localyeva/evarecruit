@@ -7,12 +7,12 @@
 						<div class="col-xs-12 col-md-6">
 							<input type="email" class="form-control" id="inputEmail3" placeholder="Nhập chức danh, ngành nghề, từ khóa">
 						</div>
-						<div class="col-xs-12 col-xs-3">
+						<div class="col-xs-12 col-md-3">
 							<select name="position" class="form-control">
 								<option value="">Vị trí</option>
 							</select>
 						</div>
-						<div class="col-xs-12 col-xs-3">
+						<div class="col-xs-12 col-md-3">
 							<select name="position" class="form-control">
 								<option value="">Địa điểm</option>
 							</select>
