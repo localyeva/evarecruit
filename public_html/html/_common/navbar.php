@@ -82,7 +82,6 @@
                 }
             }
             // console.log(scroll);
-
             // console.log($('.navbar').position().top);
         });
 
