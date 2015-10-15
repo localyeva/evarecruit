@@ -30,7 +30,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a href="#" class="navbar-brand">
-                    <img alt="Brand" src="img/logo_h.png">
+                    <img alt="Brand" src="img/logo_h.png" />
                 </a>
                 <a id="responsive-menu-button" class="btn btn-toggle navbar-btn pull-right" href="#">
                     <span class="sr-only">Toggle navigation</span>
@@ -45,7 +45,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand horizontal hidden" href="#">
-                    <img alt="Brand" src="img/logo.png" height=80>
+                    <img alt="Brand" src="img/logo_h.png" height="40" />
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -72,14 +72,16 @@
         nav.removeClass('navbar-fixed-top');
         $(window).scroll(function (e) {
             var scroll = $(this).scrollTop();
-            if (scroll > 120) {
-                nav.addClass('navbar-fixed-top');
+            if (scroll > 50) {
+                if (!nav.hasClass('navbar-fixed-top')) {
+                    nav.addClass('navbar-fixed-top');
+                }
             } else {
                 if (nav.hasClass('navbar-fixed-top')) {
                     nav.removeClass('navbar-fixed-top');
                 }
             }
-            console.log(scroll);
+            // console.log(scroll);
             // console.log($('.navbar').position().top);
         });
 

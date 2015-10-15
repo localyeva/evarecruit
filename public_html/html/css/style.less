@@ -153,6 +153,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar-default {
 	margin-bottom: 0;
+	height: auto !important;
+	.navbar-brand {
+		padding: 5px 15px !important;
+	}
+	ul.nav {
+		margin-top: 0px !important;
+	}
 	li.active {
 		a {
 			background: #f8f8f8 !important;
@@ -291,13 +298,13 @@ h1, h2, h3, h4, h5, h6 {
 				margin-top: 15px;
 				margin-bottom: 15px;
 				i.email {
-					background-image: url('../img/icons/email.png');
+					background: url('../img/icons/email.png') center center no-repeat;
 				}
 				i.user {
-					background-image: url('../img/icons/user.png');
+					background: url('../img/icons/user.png') center center no-repeat;
 				}
 				i.phone {
-					background-image: url('../img/icons/phone.png');
+					background: url('../img/icons/phone.png') center center no-repeat;
 				}
 				i.radio {
 					width: 30px;
@@ -315,9 +322,6 @@ h1, h2, h3, h4, h5, h6 {
 				margin-bottom: 10px;
 				i.icon {
 					background-color: #1f9b4c;
-					background-repeat: no-repeat;
-					background-position-x: center;
-					background-position-y: center;
 					width: 65px;
 					height: 55px;
 					position: absolute;
