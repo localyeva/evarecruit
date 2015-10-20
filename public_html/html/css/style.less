@@ -133,6 +133,9 @@ a.white-link {
 		text-decoration: none;
 	}
 }
+.text-blue {
+	color: #0A93B2;
+}
 .pagination {
 	> li {
 		> a.white-link, span {
@@ -223,6 +226,29 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
+.header-apply-resume, #new-job-detail {
+	.submit {
+		background-color: @orange;
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 28px;
+		padding: 10px 20px;
+		margin: 0 auto;
+		display: block;
+		float: none;
+		span.send {
+			background: url('../img/icons/r-arrow-circle.png') center left no-repeat;
+			width: 130px;
+			height: 40px;
+			padding-left: 50px;
+			margin: 0 auto;
+			display: block;
+		}
+	}
+	.submit:hover {
+		text-decoration: none;
+	}
+}
 .header-apply-resume {
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -271,24 +297,6 @@ h1, h2, h3, h4, h5, h6 {
 			}
 			.blankline {
 				height: 20px;
-			}
-			.submit {
-				background-color: @orange;
-				color: #ffffff;
-				font-weight: bold;
-				font-size: 28px;
-				padding: 10px 20px;
-				margin: 0 auto;
-				width: 400px;
-				display: block;
-				span.send {
-					background: url('../img/icons/r-arrow-circle.png') center left no-repeat;
-					width: 130px;
-					height: 40px;
-					padding-left: 50px;
-					margin: 0 auto;
-					display: block;
-				}
 			}
 			.filename {
 				font-size: 18px;
@@ -1010,6 +1018,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 #new-jobs, #new-job-detail {
 	background: #F2F2F2;
+	.header-banner {
+		img {
+			width: 100%;
+		}
+	}
+	.greybar {
+		height: 88px;
+		background-color: #dedede;
+	}
 	.header-search-bar {
 		padding: 30px 0;
 		background: url('../img/new_job/1.png') no-repeat;
@@ -1108,6 +1125,43 @@ h1, h2, h3, h4, h5, h6 {
 			}
 		}
 		border: 1px solid #C4C4C4;
+	}
+}
+#new-job-detail {
+	.lab-pictures {
+		border-top: 1px dotted #dedede !important;
+		border-bottom: 1px  dotted #dedede !important;
+		background-color: #ffffff;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.end-lab-info {
+		background-color: #ffffff;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.header-banner {
+		min-height: 0 !important;
+		.overlay {
+			height: 80px !important;
+			min-height: 80px !important;
+			margin-top: -80px;
+			div.info {
+				width: 100%;
+				height: 100%;
+				background: url('../img/bg/bg1px.png');
+				position: relative;
+				h2 {
+					position: absolute;
+					transform: translateY(-50%);
+					-webkit-transform: translateY(-50%);
+					top: 50%;
+					margin: 0 auto;
+					text-align: center;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 .header-top-apply {

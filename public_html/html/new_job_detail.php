@@ -20,16 +20,38 @@ function assetSrc($file)
     <body>
         <?php include('./_home/navbar.php'); ?>
         <div id="new-job-detail">
-            <?php include('./_new_jobs/search_bar.php'); ?>
-            <div class="container">
+            <?php include('./_common/navbar.php'); ?>
+            <div class="header-banner">
+                <img src="img/new_job_detail/9.png" alt="" />
+                <div class="overlay container">
+                    <div class="info">
+                        <h2>Lab name</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="greybar"></div>
+            <div class="container" style="margin-top: -88px;">
                 <div class="row">
                     <div class="col-xs-12">
                         <?php include('./_new_jobs/standout.php'); ?>
                         <?php include('./_new_jobs/detail.php'); ?>
-                        <?php include('./_new_jobs/actions.php'); ?>
-                        <div class="row-gap-medium"></div>
-                        <?php include('./_new_jobs/submit.php'); ?>
-                        <div class="row-gap-medium"></div>
+                        <?php // include('./_new_jobs/actions.php'); ?>
+                    </div>
+                </div>
+                <!-- pictures -->
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="lab-pictures col-xs-12 col-md-12">
+                            <img src="img/new_job_detail/10.png" alt="" class="col-xs-12 col-md-6" />
+                            <img src="img/new_job_detail/10.png" alt=""  class="col-xs-12 col-md-6" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="col-xs-12 col-md-12 end-lab-info">
+                            <a href="#" class="submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
+                        </div>
                     </div>
                 </div>
             </div>

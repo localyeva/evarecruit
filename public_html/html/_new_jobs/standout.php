@@ -5,8 +5,8 @@
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-3">
-			posted on <span class="time">2 days ago</span>
+		<div class="col-xs-12 col-md-3" style="text-align: right;">
+			posted on <span class="time text-blue">2 days ago</span>
 		</div>
 	</div>
 </div>
