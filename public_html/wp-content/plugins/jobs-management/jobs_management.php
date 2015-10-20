@@ -301,7 +301,9 @@ class jobs_management extends PW_Template_Loader {
         $term = get_the_terms($post->ID, 'lab');
 
         if (isset($term) && $term != FALSE) {
-            $single_template = $this->get_plugin_template_path() . 'taxonomy-lab-job.php';
+            if ($term[0]->taxonomy == 'lab' && $post->post_type == 'job') {
+                $single_template = $this->get_plugin_template_path() . 'taxonomy-lab-job.php';
+            }
         } else {
             if ($post->post_type == 'job') {
                 $single_template = $this->get_plugin_template_path() . 'single-job.php';

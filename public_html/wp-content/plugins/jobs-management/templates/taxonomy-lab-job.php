@@ -16,28 +16,30 @@ if (function_exists('setPostViews')) {
 
 /* get meta data of term */
 $term = get_the_terms($post->ID, 'lab');
+$args_terms = array();
+foreach ($term as $ele) {
+    $args_terms[] = $ele->slug;
+}
 
-if(function_exists('get_lab_images')){
+if (function_exists('get_lab_images')) {
     $lab_images = get_lab_images();
 }
 
 get_header();
 ?>
-
-<div class="header-banner" style="background: url('<?php echo $lab_images['top-image'] ?>') no-repeat scroll 0 0">
-    <div class="container text-center">
-        <h2 class="text-bold"><?php echo $term[0]->name ?></h2>
-        <h3><?php echo $term[0]->description ?></h3>
-    </div>
-</div>
-
 <div id="new-job-detail">
 
-    <!--//Search Bar-->
-    <?php // require_once(dirname(__FILE__) . '/job-search-bar.php') ?>
-    <!--//Search Bar End-->
+    <div class="header-banner">
+        <img src="<?php echo $lab_images['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
+        <div class="overlay container">
+            <div class="info">
+                <h2><?php echo $term[0]->name ?></h2>
+            </div>
+        </div>
+    </div>
+    <div class="greybar"></div>
 
-    <div id="print-job-part" class="container">
+    <div id="print-job-part" class="container" style="margin-top: -88px;">
         <div class="row">
             <div class="col-xs-12">
 
@@ -48,7 +50,7 @@ get_header();
                                 <?php the_title() ?>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-3">
+                        <div class="col-xs-12 col-md-3" style="text-align: right;">
                             posted on <span class="time"><?php echo get_time_duration(get_the_date('Y-m-d H:i:s')) ?></span>
                         </div>
                     </div>
@@ -86,63 +88,48 @@ get_header();
                     </div>
                 </div>
 
-                <div class="detail lab-photos noprint">
-                    <div class="row">
-                        <?php for ($i = 1; $i < 3; $i++): ?>
-                            <?php if (isset($lab_images['image-' . $i])): ?>
-                                <div class="col-xs-12 col-md-6">
-                                    <img class="img-responsive" src="<?php echo $lab_images['image-' . $i] ?>" />
-                                </div>
-                            <?php endif; ?>
-                        <?php endfor; ?>
-                    </div>
-                </div>
-
-                <div class="actions noprint">
-                    <div class="row">
-                        <!--
-                        <div class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/4.png" alt="">
-                                <span class="item-name">Save job</span>
-                            </div>
-                        </div>
-                        -->
-                        <div id="print-job" class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
-                                <span class="item-name">Print this job</span>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/6.png" alt="">
-                                <span class="item-name">Report this job</span>
-                            </div>
-                        </div>
-                        -->
-                        <!--
-                        <div class="col-xs-12 col-md-6 text-right item">[Edit]</div>
-                        -->
-                    </div>
-                </div>
-
-                <div class="row-gap-medium"></div>
-
-                <div class="row noprint">
-                    <div class="col-xs-12">
-                        <a href="#apply-form-modal" class="openform"><button class="large pull-right btn btn-blue">Apply</button></a>
-                    </div>
-                </div>
-
-                <div class="row-gap-medium"></div>
             </div>
         </div>
+
+        <!-- pictures -->
+        <div class="row noprint">
+            <div class="col-xs-12 col-md-12">
+                <div class="lab-pictures col-xs-12 col-md-12">
+                    <?php for ($i = 1; $i < 3; $i++): ?>
+                        <?php if (isset($lab_images['image-' . $i])): ?>
+                            <img class="img-responsive col-xs-12 col-md-6" src="<?php echo $lab_images['image-' . $i] ?>" />
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions noprint">
+            <div class="row">
+                <div id="print-job" class="col-xs-12 col-md-2">
+                    <div class="item">
+                        <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
+                        <span class="item-name">Print this job</span>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <div class="row noprint">
+            <div class="col-xs-12 col-md-12">
+                <div class="col-xs-12 col-md-12 end-lab-info">
+                    <a href="#apply-form-modal" class="openform submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<style>#re_check-error{display: none;}</style>
+<style>
+    #re_check-error{display: none;}
+</style>
+
 <!-- // Apply Form Start -->
 <div id="apply-form-modal" class="apply-form-modal" style="display: none;">
     <div class="header-top-apply">
@@ -247,10 +234,18 @@ get_header();
         <div class="container">
             <h2 class="text-bold text-center"><?php echo get_staff_detail_thought_title_text() ?></h2>
             <?php
+            $staff_ids = array();
             $args = array(
                 'post_type' => 'staff',
                 'posts_per_page' => -1,
                 'orderby' => array('date' => 'ASC'),
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'lab',
+                        'field' => 'slug',
+                        'terms' => $args_terms,
+                    ),
+                ),
             );
             $loop = new WP_Query($args);
             ?>
@@ -264,6 +259,7 @@ get_header();
                         break;
                     }
                     $loop->the_post();
+                    $staff_ids[] = $post->ID;
                     ?>
                     <div class="row-gap-medium"></div>
                     <div class="row item">
@@ -337,8 +333,16 @@ get_header();
     <?php
     $args = array(
         'post_type' => 'staff',
+        'post__not_in' => $staff_ids,
         'posts_per_page' => -1,
         'orderby' => array('date' => 'ASC'),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'lab',
+                'field' => 'slug',
+                'terms' => $args_terms,
+            ),
+        ),
     );
     $loop = new WP_Query($args);
     if ($loop->have_posts()):

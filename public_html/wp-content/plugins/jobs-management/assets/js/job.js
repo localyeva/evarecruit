@@ -39,8 +39,10 @@ $().ready(function () {
     });
 
     $('a.openform').fancybox({
+        maxWidth: 900,
+        'scrolling' : 'no',
         afterShow: function () {
-            $('.nano').nanoScroller();
+//            $('.nano').nanoScroller();
         },
         afterClose: function () {
             $(".error").html('');

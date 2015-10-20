@@ -73,12 +73,13 @@ get_header();
                     ?>
                     <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
                     <?php $term_position = get_the_terms($post->ID, 'job-position'); ?>
+                    <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
                     <div class="row">
-                        <a href="<?php the_permalink() ?>" title="<?php echo get_the_title() ?>">
+                        <a href="<?php the_permalink() ?>" title="<?php echo $term_lab[0]->name ?>">
                             <img src="<?php echo $lab_images['top-image'] ?>" alt="" />
                         </a>
                         <div class="l-col">
-                            <a href="" title="">
+                            <a href="<?php the_permalink() ?>" title="<?php echo get_the_title() ?>">
                                 <h4><?php echo get_the_title() ?> <?php if (get_field('status') != 0): ?><i class="new">(<?php echo $job_status[get_field('status')] ?>)</i><?php endif; ?></h4>
                             </a>
                             <div class="info">

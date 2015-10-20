@@ -19,7 +19,7 @@ function get_lab_images() {
     if (function_exists('get_all_wp_terms_meta')) {
         $arrayMetaList = get_all_wp_terms_meta($term[0]->term_id);
     }
-
+    
     $images = array();
     foreach ($arrayMetaList as $key => $value) {
         $images[$key] = $value[0];
@@ -27,6 +27,7 @@ function get_lab_images() {
         $ext = substr(strrchr($images[$key], '.'), 1);
         $images['thumbnail-' . $key] = str_replace('.' . $ext, '-150x150.' . $ext, $value[0]);
         $images['medium-' . $key] = str_replace('.' . $ext, '-225x300.' . $ext, $value[0]);
+        $images['attachment-' . $key] = wp_get_attachment_url($term[0]->term_id);
     }
 
     return $images;

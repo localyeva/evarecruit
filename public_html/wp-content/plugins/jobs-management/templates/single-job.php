@@ -106,7 +106,7 @@ get_header();
 
                 <div class="row noprint">
                     <div class="col-xs-12">
-                        <a href="#apply-form-modal" class="openform"><button class="large pull-right btn btn-blue">Apply</button></a>
+                        <a href="#apply-form-modal" class="openform  submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
                     </div>
                 </div>
 

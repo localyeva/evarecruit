@@ -98,6 +98,9 @@ a.white-link:focus:active {
   color: white;
   text-decoration: none;
 }
+.text-blue {
+  color: #0A93B2;
+}
 .pagination > li > a.white-link,
 .pagination > li span,
 .pagination > li > a.white-link:hover,
@@ -190,6 +193,30 @@ h6 {
   margin-bottom: 18px;
   text-align: justify;
 }
+.header-apply-resume .submit,
+#new-job-detail .submit {
+  background-color: #ff530d;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 28px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  display: block;
+  float: none;
+}
+.header-apply-resume .submit span.send,
+#new-job-detail .submit span.send {
+  background: url('../img/icons/r-arrow-circle.png') center left no-repeat;
+  width: 130px;
+  height: 40px;
+  padding-left: 50px;
+  margin: 0 auto;
+  display: block;
+}
+.header-apply-resume .submit:hover,
+#new-job-detail .submit:hover {
+  text-decoration: none;
+}
 .header-apply-resume {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -240,24 +267,6 @@ h6 {
 }
 .header-apply-resume .container .input-form .blankline {
   height: 20px;
-}
-.header-apply-resume .container .input-form .submit {
-  background-color: #ff530d;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 28px;
-  padding: 10px 20px;
-  margin: 0 auto;
-  width: 400px;
-  display: block;
-}
-.header-apply-resume .container .input-form .submit span.send {
-  background: url('../img/icons/r-arrow-circle.png') center left no-repeat;
-  width: 130px;
-  height: 40px;
-  padding-left: 50px;
-  margin: 0 auto;
-  display: block;
 }
 .header-apply-resume .container .input-form .filename {
   font-size: 18px;
@@ -973,6 +982,15 @@ select {
 #new-job-detail {
   background: #F2F2F2;
 }
+#new-jobs .header-banner img,
+#new-job-detail .header-banner img {
+  width: 100%;
+}
+#new-jobs .greybar,
+#new-job-detail .greybar {
+  height: 88px;
+  background-color: #dedede;
+}
 #new-jobs .header-search-bar,
 #new-job-detail .header-search-bar {
   padding: 30px 0;
@@ -1084,6 +1102,41 @@ select {
 #new-jobs .actions .item .item-name,
 #new-job-detail .actions .item .item-name {
   margin-left: 8px;
+}
+#new-job-detail .lab-pictures {
+  border-top: 1px dotted #dedede !important;
+  border-bottom: 1px  dotted #dedede !important;
+  background-color: #ffffff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#new-job-detail .end-lab-info {
+  background-color: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#new-job-detail .header-banner {
+  min-height: 0 !important;
+}
+#new-job-detail .header-banner .overlay {
+  height: 80px !important;
+  min-height: 80px !important;
+  margin-top: -80px;
+}
+#new-job-detail .header-banner .overlay div.info {
+  width: 100%;
+  height: 100%;
+  background: url('../img/bg/bg1px.png');
+  position: relative;
+}
+#new-job-detail .header-banner .overlay div.info h2 {
+  position: absolute;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  top: 50%;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }
 .header-top-apply {
   background: url('../img/new_job/1.png') no-repeat;

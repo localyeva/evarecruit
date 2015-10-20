@@ -110,7 +110,7 @@ class jobs_cpt_acf_settings {
             "rewrite" => array('slug' => 'lab', 'with_front' => true),
             "show_admin_column" => false,
         );
-        register_taxonomy("lab", array("job"), $args);
+        register_taxonomy("lab", array("job", "staff"), $args);
     }
 
     /* ---------------------------------------------------------------------------- */

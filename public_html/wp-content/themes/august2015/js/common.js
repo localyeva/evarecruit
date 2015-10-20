@@ -13,7 +13,8 @@ jQuery.fn.extend(
 
 /*---------------------------------------------------------------- Nano Scroll*/
 $(function () {
-    $(".nano").nanoScroller();
+//    console.log($('div.nano').length);
+//    $(".nano").nanoScroller();
 });
 
 /*------------------------------------------------------------- Top Nav Button*/
