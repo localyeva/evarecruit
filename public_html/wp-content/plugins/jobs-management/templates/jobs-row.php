@@ -6,8 +6,9 @@
                     <a class="<?php echo $job_status[get_field('status')] ?>" href="<?php the_permalink() ?>"><?php the_title() ?></a>
                 </div>
                 <div class="info">
-                    <?php $term = get_the_terms($post->ID, 'job-location'); ?>
-                    <span class="localtion"><?php echo $term[0]->name ?></span> | <span class="level"><?php echo get_field('work_level') ?></span>
+                    <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
+                    <?php $term_position = get_the_terms($post->ID, 'job-position'); ?>
+                    <span class="localtion"><?php echo $term_location[0]->name ?></span> | <span class="level"><?php echo $term_position[0]->name ?> / <?php echo get_field('work_level') ?></span>
                 </div>
             </div>
             <div class="col-xs-3">

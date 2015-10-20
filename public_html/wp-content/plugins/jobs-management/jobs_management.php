@@ -262,6 +262,12 @@ class jobs_management extends PW_Template_Loader {
             case 'form-list':
                 $template->get_template_part('jobs-form-list');
                 break;
+            case 'find-ur-dream-jobs':
+                $template->get_template_part('jobs-find-ur-dream-jobs');
+                break;
+            case 'apply-ur-resume':
+                $template->get_template_part('jobs-apply-ur-resume');
+                break;
         }
 
         return ob_get_clean();

@@ -400,17 +400,17 @@ class jobs_plugin_admin {
                 switch ($field['type']) {
                     case 'text':
                         $_data = isset($data[$option_name]) ? $data[$option_name] : '';
-                        $html .= '<input id="' . esc_attr($field['id']) . '" type="text" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '" value="' . $_data . '" size="100%"/>' . "\n";
+                        $html .= '<input id="' . esc_attr($field['id']) . '" type="text" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '" value="' . stripcslashes($_data) . '" size="100%"/>' . "\n";
                         break;
                     case 'textarea':
                         $_data = isset($data[$option_name]) ? $data[$option_name] : '';
-                        $html .= '<textarea id="' . esc_attr($field['id']) . '" rows="5" cols="50" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '">' . $_data . '</textarea><br/>' . "\n";
+                        $html .= '<textarea id="' . esc_attr($field['id']) . '" rows="5" cols="50" name="' . esc_attr($option_name) . '" placeholder="' . esc_attr($field['placeholder']) . '">' . stripcslashes($_data) . '</textarea><br/>' . "\n";
                         $html .= '<br/><span class="description">' . $field['description'] . '</span>';
                         break;
                     case 'wysiwyg':
                         $_data = isset($data[$option_name]) ? $data[$option_name] : '';
                         $html .= wp_editor_resize(NULL, 200);
-                        $html .= wp_editor($_data, esc_attr($option_name), array('wpautop' => false, 'tinymce' => true));
+                        $html .= wp_editor(stripcslashes($_data), esc_attr($option_name), array('wpautop' => false, 'tinymce' => true));
                         $html .= $field['description'];
                         break;
                 }

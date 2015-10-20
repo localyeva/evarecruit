@@ -23,6 +23,12 @@ function wp_jobs_upload_dir($dirs) {
     return $dirs;
 }
 
+function my_mail_content_type($content_type) {
+    return 'text/html';
+}
+
+add_filter('wp_mail_content_type', 'my_mail_content_type');
+
 if (!function_exists('wp_handle_upload')) {
     require_once( ABSPATH . 'wp-admin/includes/file.php' );
 }
@@ -33,6 +39,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     // validate input data
     $gump = new GUMP;
+
 
     $_POST = $gump->sanitize($_POST);
 
@@ -90,6 +97,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     $url_cv = '';
     if ($movefile && !isset($movefile['error'])) {
+        chmod($movefile['file'], 444);
         $url_cv = isset($movefile['url']) ? $movefile['url'] : '';
     } else {
         $result = array(
@@ -108,14 +116,14 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'phone_number' => $_POST['re_tel'],
         'gender' => $_POST['re_gender'][0],
         'attach_file' => $url_cv,
-        'job_id' => $_POST['job_id'],
-        'job_title' => $_POST['job_title'],
-        'job_position' => $_POST['job_position'],
-        'job_level' => $_POST['job_level'],
-        'job_salary' => $_POST['job_salary'],
-        'job_location' => $_POST['job_location'],
-        'job_expired' => $_POST['job_expired'],
-        'job_slug' => $_POST['job_slug'],
+        'job_id' => isset($_POST['job_id']) ? $_POST['job_id'] : '',
+        'job_title' => isset($_POST['job_title']) ? $_POST['job_title'] : 'Apply Resumne',
+        'job_position' => isset($_POST['job_position']) ? $_POST['job_position'] : '',
+        'job_level' => isset($_POST['job_level']) ? $_POST['job_level'] : '',
+        'job_salary' => isset($_POST['job_salary']) ? $_POST['job_salary'] : '',
+        'job_location' => isset($_POST['job_location']) ? $_POST['job_location'] : '',
+        'job_expired' => isset($_POST['job_expired']) ? $_POST['job_expired'] : '',
+        'job_slug' => isset($_POST['job_slug']) ? $_POST['job_slug'] : '',
     );
 
     $wpdb->insert($table_name, $data);
@@ -146,9 +154,9 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         //
         $subject_candidate = $twig->render(job_get_option('wpt_job_text_subject_candidate'), $data);
         //
-        $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';	
-        //
-        wp_mail($data['email'], $subject_candidate, $body_candidate, $headers);
+        $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
+        //	
+        wp_mail($data['email'], stripslashes($subject_candidate), stripslashes($body_candidate), $headers);
     }
 
     //Admin用メッセージ
@@ -169,7 +177,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
             //
             $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
             //
-            wp_mail($list_email, $subject_admin, $body_admin, $headers);
+            wp_mail($list_email, stripslashes($subject_admin), stripslashes($body_admin), $headers);
         }
     }
 } else {

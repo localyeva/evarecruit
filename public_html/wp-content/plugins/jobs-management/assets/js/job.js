@@ -39,7 +39,7 @@ $().ready(function () {
     });
 
     $('a.openform').fancybox({
-        afterShow: function(){
+        afterShow: function () {
             $('.nano').nanoScroller();
         },
         afterClose: function () {
@@ -76,5 +76,44 @@ $(function () {
         WinPrint.focus();
         WinPrint.print();
         WinPrint.close();
+    });
+});
+
+/* Featured Employers */
+$(document).ready(function () {
+    $('.paging').find('li').click(function () {
+        var current = $(this).data('index');
+        var paging = $(this).parents('.paging');
+        paging.siblings('.ads').hide();
+        paging.find('li').removeClass('active');
+        $(this).addClass('active');
+        for (var i = current * 3; i < (current * 3) + 3; i++) {
+            paging.siblings('.ads').eq(i).show();
+        }
+        ;
+    });
+    $('.ads').hide();
+    $('.paging li:eq(0)').click();
+});
+
+/* Apply */
+$(document).ready(function () {
+    $('.upload-cv').find('input:button').click(function () {
+        var fileUpload = $(this).siblings('input:file');
+        fileUpload.click();
+
+    });
+    $("input:file").change(function () {
+        var fileName = $(this).val();
+        $(this).siblings(".filename").html(fileName);
+    });
+    $('.radiogroup > label.option').click(function () {
+        var radioGroup = $(this).parent('.radiogroup');
+        radioGroup.find('.radio').removeClass('checked');
+        $(this).children('.radio').addClass('checked').children('input:radio').click();
+    });
+    $('.submit').click(function (event) {
+        event.preventDefault();
+        $(this).parents('form').submit();
     });
 });

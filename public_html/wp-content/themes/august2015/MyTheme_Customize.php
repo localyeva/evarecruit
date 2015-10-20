@@ -86,11 +86,11 @@ function theme_customize_register($wp_customize) {
         'default' => '',
     ));
     $wp_customize->add_control('home_top_text_c', array(
-        'label' => __('Top Text'),
+        'label' => __('Opportunities Header'),
         'section' => 'home',
         'settings' => 'home_top_text',
         'priority' => 1,
-        'type' => 'text',
+        'type' => 'textarea',
     ));
 
     /* ABOUT US */

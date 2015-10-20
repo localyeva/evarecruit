@@ -207,6 +207,30 @@ function cptui_register_my_cpts() {
     );
     register_post_type("about-us", $args);
 
+    $labels = array(
+        "name" => "CEO Message",
+        "singular_name" => "CEO Message",
+    );
+
+    $args = array(
+        "labels" => $labels,
+        "description" => "",
+        "public" => true,
+        "show_ui" => true,
+        "has_archive" => false,
+        "show_in_menu" => true,
+        "exclude_from_search" => false,
+        "capability_type" => "post",
+        "map_meta_cap" => true,
+        "hierarchical" => false,
+        "rewrite" => array("slug" => "ceo-message", "with_front" => true),
+        "query_var" => true,
+        "menu_position" => 34,
+        "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h9.png',
+        "supports" => array("title", "editor"),
+    );
+    register_post_type("ceo-message", $args);
+
 // End of cptui_register_my_cpts()
 }
 
@@ -794,6 +818,40 @@ if (function_exists("register_field_group")) {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'about-us',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+
+    register_field_group(array(
+        'id' => 'acf_ceo-message',
+        'title' => 'CEO Message',
+        'fields' => array(
+            array(
+                'key' => 'field_55ecfb04cde72',
+                'label' => 'Sign',
+                'name' => 'sign',
+                'type' => 'image',
+                'save_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'ceo-message',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),

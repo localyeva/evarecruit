@@ -40,7 +40,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="<?php echo bloginfo('url') ?>">
-                            <img alt="Brand" src="<?php echo get_template_directory_uri() ?>/img/logo_h.png">
+                            <img alt="Evolable Asia" src="<?php echo get_site_logo() ?>">
                         </a>
                         <a id="responsive-menu-button" class="btn btn-toggle navbar-btn pull-right" href="#">
                             <span class="sr-only">Toggle navigation</span>
@@ -55,7 +55,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="<?php echo bloginfo('url') ?>">
-                            <img height=80 alt="Evolable Asia" src="<?php echo get_site_logo() ?>">
+                            <img height="40" alt="Evolable Asia" src="<?php echo get_site_logo() ?>">
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
