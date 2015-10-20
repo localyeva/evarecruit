@@ -114,12 +114,13 @@ class jobs_management extends PW_Template_Loader {
 //        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_styles'), 10, 1);
         // Hooks a function to a specific filter action.
         // applied to the list of columns to print on the manage posts screen.
+        add_filter('manage_edit-job_sortable_columns', array($this, 'sort_post_column'));
         add_filter('manage_job_posts_columns', array($this, 'add_post_column'));
         // Hooks a function to a specific action. 
         // allows you to add custom columns to the list post/custom post type pages.
         // '10' default: specify the function's priority.
         // and '2' is the number of the functions' arguments.
-        add_action('manage_posts_custom_column', array($this, 'post_custom_column'), 10, 2);
+        add_action('manage_job_posts_custom_column', array($this, 'post_custom_column'), 10, 2);
 
 
         // Add a filter to the attributes metabox to inject template into the cache.
@@ -447,6 +448,19 @@ class jobs_management extends PW_Template_Loader {
         // returns values of the custom field with specified key
         $count = get_post_meta($post_id, $count_key, true);
         return $count;
+    }
+
+    /**
+     * 
+     * Add sortable columns
+     * 
+     * @param type $columns
+     * @return type
+     */
+    public function sort_post_column($columns) {
+        return array_merge($columns, array(
+//            'location' => __('Location'),
+        ));
     }
 
     /**

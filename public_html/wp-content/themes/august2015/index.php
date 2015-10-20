@@ -48,59 +48,55 @@ if ($loop->have_posts()) {
     </div>
 </div>
 
-<div class="header-join">
-    <div class="container text-center">
-        <h2 class="text-bold"><?php echo get_home_top_text() ?></h2>
-        <div class="row-gap-medium"></div>
-        <a href="<?php echo bloginfo('url') ?>/#new-opportunities" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
-    </div>
-</div>
 <!--//About-->
-
-<div id="about-us" class="header-about">
+<div class="header-about">
     <div class="container">
-        <h2 class="text-center"><?php echo get_part_about_us_title_text() ?></h2>
-        <div class="row-gap-large"></div>
-        <div class="row">
-            <?php
-            $args = array(
-                'post_type' => 'about-us',
-                'posts_per_page' => -1,
-                'orderby' => array('date' => 'DESC'),
-            );
-            $loop = new WP_Query($args);
-            ?>
-            <?php
-            if ($loop->have_posts()):
-                $num_posts = count($loop->posts);
-                ?>    
-                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                    <div class="col-xs-12 col-md-6">
-                        <img class="img-responsive" src="<?php echo get_field('image_chart') ?>" alt="">
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <?php if (have_rows('process')): ?>
-                            <?php while (have_rows('process')) : the_row(); ?>
-                                <div class="col-xs-12">
-                                    <?php the_content() ?>
-                                    <p>
-                                        <?php echo get_sub_field('stage') . ": " ?>
-                                        <?php echo get_sub_field('description') ?>
-                                    </p>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php endif; ?>                    
-                    </div>
-                <?php endwhile; ?>
-            <?php endif; ?>
-            <?php wp_reset_postdata() ?>
+        <div class="row content">
+            <div class="col-xs-12 col-md-5"></div>
+            <div class="col-xs-12 col-md-7">
+                <h2><?php echo get_part_about_us_title_text() ?></h2>
+                <div class="row-gap-large"></div>
+                <?php
+                $args = array(
+                    'post_type' => 'about-us',
+                    'posts_per_page' => -1,
+                    'orderby' => array('date' => 'DESC'),
+                );
+                $loop = new WP_Query($args);
+                ?>
+                <?php
+                if ($loop->have_posts()):
+                    $num_posts = count($loop->posts);
+                    ?>    
+                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <?php echo get_field('content') ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <?php if (have_rows('process')): ?>
+                                <?php while (have_rows('process')) : the_row(); ?>
+                                    <div class="col-xs-12">
+                                        <p>
+                                            <strong><?php echo get_sub_field('stage') . ": " ?></strong>
+                                            <?php echo get_sub_field('description') ?>
+                                        </p>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>                    
+                        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <?php wp_reset_postdata() ?>
+            </div>
         </div>
     </div>
 </div>
 <!--/About End-->
 
 <!--//Service-->
-<div id="services" class="header-service">
+<div id="services" class="header-service" style="display: none;">
     <div class="container">
         <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
         <div class="row-gap-medium"></div>
@@ -138,8 +134,20 @@ if ($loop->have_posts()) {
         <div class="row-gap-large"></div>
     </div>
 </div>
-
 <!--//Service End-->
+
+<!--//Job Apply your resume-->
+<div id="free-apply">
+    <?php echo do_shortcode('[jobs-part type="apply-ur-resume"]') ?>
+</div>
+<!--//Job Apply your resume End-->
+
+<!--//Job List-->
+<div id="new-opportunities">
+    <?php echo do_shortcode('[jobs-part type="find-ur-dream-jobs"]') ?>
+</div>
+<!--//Job List End-->
+
 <!--//Environment-->
 <div class="header-environment">
     <div class="container">
@@ -322,10 +330,9 @@ if ($loop->have_posts()) {
         <!-- //Image gallery End -->
     </div>
 </div>
-
 <!--//Environment End-->
+
 <!--//Intro Movie-->
-<div class="row-gap-large"></div>
 <div class="header-intro-movie">
     <div class="container">
         <div class="row">
@@ -343,26 +350,56 @@ if ($loop->have_posts()) {
     </div>
 </div>
 <!--//Intro Movie End-->
+
 <!--//CEO Message-->
 <div class="header-ceo-message">
     <div class="container">
         <div class="row-gap-large"></div>
-        <h2 class="text-center"><?php echo get_part_ceo_message_title() ?></h2>
-        <div class="row-gap-medium"></div>
-        <div class="row">
-            <div class="col-xs-12">
-                <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" class="img-responsive">
+        <div class="row content">
+            <div class="col-xs-12 col-md-4">
+                <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" style="position:relative;right:172px;margin-bottom:0px;" />
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <h2><?php echo get_part_ceo_message_title() ?> <strong>CEO</strong></h2>
+                <div class="row-gap-medium"></div>
+
+                <?php
+                $args = array(
+                    'post_type' => 'ceo-message',
+                    'posts_per_page' => -1,
+                    'orderby' => array('date' => 'DESC'),
+                );
+                $loop = new WP_Query($args);
+                ?>
+                <?php
+                if ($loop->have_posts()):
+                    $num_posts = count($loop->posts);
+                    ?>    
+                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <?php echo get_the_content() ?>
+                            </div>
+                        </div>
+                        <div class="row" style="float:right;">
+                            <img src="<?php echo get_field('sign') ?>" alt="" />
+                        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <?php wp_reset_postdata() ?>
             </div>
         </div>
     </div>
 </div>
 <!--//CEO Message End-->
 
-<!--//Job List-->
-<div id="new-opportunities">
-    <?php echo do_shortcode('[jobs-part type="form-list"]') ?>
+<div class="header-join">
+    <div class="container text-center">
+        <h2 class="text-bold"><?php echo get_home_top_text() ?></h2>
+        <div class="row-gap-medium"></div>
+        <a href="<?php echo bloginfo('url') ?>/#new-opportunities" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
+    </div>
 </div>
-<!--//Job List End-->
 
 <!--//Map-->
 <?php get_template_part('google-map') ?>

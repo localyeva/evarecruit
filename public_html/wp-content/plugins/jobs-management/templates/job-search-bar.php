@@ -223,7 +223,6 @@ if (!isset($_GET) || !isset($_GET['search']) || (!isset($_GET['keyword']) && $_G
                             </select>
                         </div>
                     </div>
-                    <div class="row-gap-medium"></div>
                     <div class="row-gap-small"></div>
                     <div class="row">
                         <div class="col-xs-12 col-md-10">

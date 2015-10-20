@@ -191,14 +191,35 @@ $(function () {
     })
     $item.css({
         position: 'fixed',
-        top: position.top,
+//        top: position.top,
         zIndex: -1
     });
     $(window).scroll(function (e) {
         var scroll = $(window).scrollTop();
-        console.log(scroll);
+//        console.log(scroll);
         $item.css({
-            top: position.top - scroll / coef
+//            top: position.top - scroll / coef
         })
     })
+});
+
+/* fix top menu */
+$(function () {
+    var nav = $('.navbar');
+    // nav.removeClass('navbar-fixed-top');
+    $(window).scroll(function (e) {
+        var scroll = $(this).scrollTop();
+        if (scroll > 50) {
+            if (!nav.hasClass('navbar-fixed-top')) {
+                nav.addClass('navbar-fixed-top');
+            }
+        } else {
+            if (nav.hasClass('navbar-fixed-top')) {
+                nav.removeClass('navbar-fixed-top');
+            }
+        }
+        // console.log(scroll);
+        // console.log($('.navbar').position().top);
+    });
+
 });
