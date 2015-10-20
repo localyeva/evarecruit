@@ -29,7 +29,7 @@
             </fieldset>
             <div class="blankline"></div>
             <fieldset>
-                <a href="" class="submit"><span class="send">Apply</span></a>
+                <a href="" class="submit col-xs-12 col-md-6"><span class="send">Apply</span></a>
             </fieldset>
         </form>
     </div>
