@@ -180,14 +180,14 @@ if ($loop->have_posts()) {
             if ($loop->have_posts()) {
                 while ($loop->have_posts()) {
                     $loop->the_post();
-                    $img = array(get_the_title(), get_field('main_image'));
+                    $img = array(get_the_title(), get_field('main_image'), 'work-environment');
                     $images[$cat_name][] = $img;
                     $all_images[] = $img;
                     $num_imgs++;
                     if (have_rows('images')) {
                         while (have_rows('images')) {
                             the_row();
-                            $img = array(get_the_title(), get_sub_field('image'));
+                            $img = array(get_the_title(), get_sub_field('image'), 'work-environment');
                             $images[$cat_name][] = $img;
                             $all_images[] = $img;
                             $num_imgs++;
@@ -256,7 +256,7 @@ if ($loop->have_posts()) {
                             <?php foreach ($tparts as $part) {
                                 ?>
                                 <div class="col-xs-12">
-                                    <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                                    <a href="<?php echo bloginfo('url') . '/' . $part[2] ?>"><img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" /></a>
                                 </div>
                             <?php } ?>
                         </div>
@@ -315,7 +315,7 @@ if ($loop->have_posts()) {
                                 <?php foreach ($tparts as $part) {
                                     ?>
                                     <div class="col-xs-12">
-                                        <img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" />
+                                        <a href="<?php echo bloginfo('url') . '/' . $part[2] ?>"><img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" /></a>
                                     </div>
                                 <?php } ?>
                             </div>
