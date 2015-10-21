@@ -522,6 +522,14 @@ h6 {
 .header-environment .nav-pills li.active a {
   margin-bottom: 0px;
 }
+.header-work-environment {
+  background-color: #ffffff;
+}
+.header-work-environment h2 {
+  font-size: 48px;
+  font-weight: lighter;
+  margin: 40px 0;
+}
 .header-intro-movie {
   font-size: 16px;
   padding-top: 50px;
