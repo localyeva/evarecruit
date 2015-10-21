@@ -26,6 +26,7 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.dark.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.fancybox.css" rel="stylesheet">
+        <link href="<?php echo get_template_directory_uri() ?>/css/nanoscroller.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/style.css" rel="stylesheet">
 
         <!--[if lt IE 9]>

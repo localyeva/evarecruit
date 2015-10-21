@@ -14,7 +14,7 @@ jQuery.fn.extend(
 /*---------------------------------------------------------------- Nano Scroll*/
 $(function () {
 //    console.log($('div.nano').length);
-//    $(".nano").nanoScroller();
+    $(".nano").nanoScroller();
 });
 
 /*------------------------------------------------------------- Top Nav Button*/
