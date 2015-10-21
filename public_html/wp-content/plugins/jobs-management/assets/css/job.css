@@ -15,3 +15,7 @@ input[type=email].error {
 .fancybox-inner {
   overflow-x: hidden !important;
 }
+#new-jobs .pagination li.active a {
+  background: #0090b0;
+  color: #ffffff;
+}

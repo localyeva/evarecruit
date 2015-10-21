@@ -51,7 +51,9 @@ get_header();
 
             $args = array(
                 'post_type' => 'job',
-                'posts_per_page' => 3,
+                'posts_per_page' => -1,
+                'meta_key' => 'status',
+                'orderby' => array('meta_value_num' => 'DESC'),
                 'paged' => $paged,
                 'tax_query' => array(
                     array(
@@ -62,6 +64,7 @@ get_header();
                 ),
             );
             $wp_query = new WP_Query($args);
+            $total_elements = $wp_query->found_posts;
             ?>
 
             <?php if ($wp_query->have_posts()): ?>
@@ -95,6 +98,21 @@ get_header();
                         </div>
                     </div>
                 <?php endwhile; ?>
+            <?php endif; ?>
+            <?php wp_reset_postdata(); ?>            
+
+            <?php $i = 0 ?>
+            <?php if ($total_elements > 0): ?>
+                <div class="row paging">
+                    <ul>
+                        <?php for ($counter = 0; $counter <= $total_elements; $counter++): ?>
+                            <?php if ($counter % 3 == 0): ?>
+                                <li data-index="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : ''; ?>"></li>
+                                <?php $i++; ?>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </ul>
+                </div>
             <?php endif; ?>
         </div>
         <!-- Lab Jobs List -->

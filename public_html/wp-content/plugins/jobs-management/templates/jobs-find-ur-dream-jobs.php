@@ -77,7 +77,7 @@ foreach ($terms as $term) {
             <?php
             $args = array(
                 'post_type' => 'job',
-                'posts_per_page' => job_get_option('wpt_job_text_item_per_page'),
+                'posts_per_page' => -1,
                 'meta_key' => 'status',
                 'orderby' => array('meta_value_num' => 'DESC'),
                 'paged' => $paged,

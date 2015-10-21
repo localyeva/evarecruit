@@ -4,6 +4,8 @@
 */
 
 @error-color: #B10016;
+@page-active-bg: #0090b0;
+@page-active-color: #fff;
 
 .error{
     color: @error-color;
@@ -19,4 +21,17 @@ input[type=text], input[type=email]{
 }
 .fancybox-inner{
     overflow-x: hidden !important;
+}
+
+#new-jobs{
+    .pagination{
+        li{
+            &.active{
+                a{
+                    background: @page-active-bg;
+                    color: @page-active-color;
+                }
+            }
+        }
+    }
 }
