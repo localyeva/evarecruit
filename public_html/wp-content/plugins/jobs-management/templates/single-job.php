@@ -121,19 +121,17 @@ get_header();
 <div id="apply-form-modal" class="apply-form-modal" style="display: none;">
     <div class="header-top-apply">
         <div class="container text-center">
-            <h2 class="text-bold">Apply Your Resume</h2>
+            <h2>Apply Your Resume</h2>
         </div>
     </div>
     <div class="row-gap-large"></div>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <form id="apply-form" name="apply-form" class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
-                <div class="form-group">
-                    <label for="re_email" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="re_email" name="re_email" placeholder="Email">
-                    </div>
-                </div>
+            <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
+                <fieldset class="box">
+                    <i class="icon email"></i>
+                    <input type="text" id="re_email" name="re_email" placeholder="Email" />
+                </fieldset>
 
                 <div class="form-group">
                     <label for="re_fullname" class="col-sm-2 control-label">Full Name</label>
