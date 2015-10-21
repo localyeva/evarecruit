@@ -5,7 +5,7 @@
 			<div class="col-xs-12 col-md-4">
 				<img src="img/ceo_message/50.png" alt="" style="position:relative;right:172px;margin-bottom:0px;" />
 			</div>
-			<div class="col-xs-12 col-md-8">
+			<div class="col-xs-12 col-md-8 bg-white">
 				<h2>Thông điệp từ <strong>CEO</strong></h2>
 				<div class="row-gap-medium"></div>
 				<div class="row">

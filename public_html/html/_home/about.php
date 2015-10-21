@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row content">
 			<div class="col-xs-12 col-md-5"></div>
-			<div class="col-xs-12 col-md-7">
+			<div class="col-xs-12 col-md-7 bg-white">
 				<h2>About us</h2>
 				<div class="row-gap-large"></div>
 				<div class="row">

@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Index
- * 
+ *
  */
 get_header();
 ?>
@@ -53,7 +53,7 @@ if ($loop->have_posts()) {
     <div class="container">
         <div class="row content">
             <div class="col-xs-12 col-md-5"></div>
-            <div class="col-xs-12 col-md-7">
+            <div class="col-xs-12 col-md-7 bg-white">
                 <h2><?php echo get_part_about_us_title_text() ?></h2>
                 <div class="row-gap-large"></div>
                 <?php
@@ -67,7 +67,7 @@ if ($loop->have_posts()) {
                 <?php
                 if ($loop->have_posts()):
                     $num_posts = count($loop->posts);
-                    ?>    
+                    ?>
                     <?php while ($loop->have_posts()): $loop->the_post(); ?>
                         <div class="row">
                             <div class="col-xs-12">
@@ -84,7 +84,7 @@ if ($loop->have_posts()) {
                                         </p>
                                     </div>
                                 <?php endwhile; ?>
-                            <?php endif; ?>                    
+                            <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
@@ -126,7 +126,7 @@ if ($loop->have_posts()) {
                                 </a>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 <?php endwhile; ?>
             <?php endif; ?>
             <?php wp_reset_postdata() ?>
@@ -341,10 +341,10 @@ if ($loop->have_posts()) {
             </div>
             <div class="col-md-4 col-xs-8">
                 <h2><?php echo get_part_work_environment_movie_title_text() ?></h2>
-                <?php echo get_part_work_environment_movie_desc_text() ?>                
+                <?php echo get_part_work_environment_movie_desc_text() ?>
             </div>
-            <div class="col-md-6 col-md-offset-1 col-xs-12">
-                <?php echo get_part_work_environment_movie_link() ?>                
+            <div class="col-md-6 col-md-offset-1 col-xs-12 video-container">
+                <?php echo get_part_work_environment_movie_link() ?>
             </div>
         </div>
     </div>
@@ -359,7 +359,7 @@ if ($loop->have_posts()) {
             <div class="col-xs-12 col-md-4">
                 <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" style="position:relative;right:172px;margin-bottom:0px;" />
             </div>
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-md-8 bg-white">
                 <h2><?php echo get_part_ceo_message_title() ?> <strong>CEO</strong></h2>
                 <div class="row-gap-medium"></div>
 
@@ -374,7 +374,7 @@ if ($loop->have_posts()) {
                 <?php
                 if ($loop->have_posts()):
                     $num_posts = count($loop->posts);
-                    ?>    
+                    ?>
                     <?php while ($loop->have_posts()): $loop->the_post(); ?>
                         <div class="row">
                             <div class="col-xs-12">
