@@ -5,6 +5,7 @@
  * 
  */
 get_header();
+global $staff_ids;
 ?>
 <div id="detail-staff">
     <div class="header-banner">
@@ -19,23 +20,22 @@ get_header();
         <div class="container">
             <h2 class="text-bold text-center"><?php echo get_staff_detail_thought_title_text() ?></h2>
             <?php
+            $staff_ids = array();
             $args = array(
                 'post_type' => 'staff',
-                'posts_per_page' => -1,
-                'orderby' => array('date' => 'ASC'),
+                'orderby' => 'rand',
+                'posts_per_page' => 3,
             );
             $loop = new WP_Query($args);
+            $i = 0;
             ?>
             <?php
             if ($loop->have_posts()):
-                $i = 0;
                 ?>    
                 <?php
                 while ($loop->have_posts()):
-                    if ($i == 3) {
-                        break;
-                    }
                     $loop->the_post();
+                    $staff_ids[] = $post->ID;
                     ?>
                     <div class="row-gap-medium"></div>
                     <div class="row item">
@@ -105,7 +105,7 @@ get_header();
             <?php wp_reset_postdata() ?>                    
         </div>
     </div>
-
+    
     <?php get_template_part('part_template_staff_list') ?>  
 </div>
 
