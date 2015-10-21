@@ -59,7 +59,7 @@ function cptui_register_my_cpts() {
         "query_var" => true,
         "menu_position" => 27,
         "menu_icon" => get_template_directory_uri() . '/img/ad-ico/h2.png',
-        "supports" => array("title"),
+        "supports" => array("title", "editor"),
     );
     register_post_type("work-environment", $args);
 

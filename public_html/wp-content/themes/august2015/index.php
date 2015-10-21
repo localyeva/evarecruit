@@ -180,14 +180,14 @@ if ($loop->have_posts()) {
             if ($loop->have_posts()) {
                 while ($loop->have_posts()) {
                     $loop->the_post();
-                    $img = array(the_title(), get_field('main_image'));
+                    $img = array(get_the_title(), get_field('main_image'));
                     $images[$cat_name][] = $img;
                     $all_images[] = $img;
                     $num_imgs++;
                     if (have_rows('images')) {
                         while (have_rows('images')) {
                             the_row();
-                            $img = array(the_title(), get_sub_field('image'));
+                            $img = array(get_the_title(), get_sub_field('image'));
                             $images[$cat_name][] = $img;
                             $all_images[] = $img;
                             $num_imgs++;
