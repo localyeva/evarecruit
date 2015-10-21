@@ -1,6 +1,9 @@
 <?php
+global $staff_ids;
+
 $args = array(
     'post_type' => 'staff',
+    'post__not_in' => $staff_ids,
     'posts_per_page' => -1,
     'orderby' => array('date' => 'ASC'),
 );

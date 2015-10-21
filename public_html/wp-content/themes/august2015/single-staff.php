@@ -6,6 +6,10 @@
  */
 
 get_header();
+
+global $staff_ids;
+
+$staff_ids[] = $post->ID;
 ?>
 <div id="detail-staff">
     <div class="header-banner">

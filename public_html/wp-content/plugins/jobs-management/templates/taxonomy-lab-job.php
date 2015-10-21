@@ -237,7 +237,7 @@ get_header();
             $staff_ids = array();
             $args = array(
                 'post_type' => 'staff',
-                'posts_per_page' => -1,
+                'posts_per_page' => 3,
                 'orderby' => array('date' => 'ASC'),
                 'tax_query' => array(
                     array(
@@ -255,9 +255,6 @@ get_header();
                 ?>    
                 <?php
                 while ($loop->have_posts()):
-                    if ($i == 3) {
-                        break;
-                    }
                     $loop->the_post();
                     $staff_ids[] = $post->ID;
                     ?>

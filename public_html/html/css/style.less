@@ -57,6 +57,22 @@
 			margin: 0 !important;
 		}
 	}
+	.header-environment {
+		.nav-pills {
+			li {
+				a {
+					padding-top: 18px !important;
+					padding-bottom: 18px !important;
+				}
+			}
+			li.active:before {
+				display: block !important;
+			}
+			li.active:after {
+				display: block !important;
+			}
+		}
+	}
 }
 
 // Helper class
@@ -555,16 +571,20 @@ h1, h2, h3, h4, h5, h6 {
 	.nav-pills {
 		li {
 			a {
-				padding-top: 18px;
-				padding-bottom: 18px;
+				padding-top: 5px;
+				padding-bottom: 5px;
 				font-size: 18px;
 				font-weight: lighter;
 			}
 		}
 		li.active {
+			margin-bottom: 5px;
 			a {
 				margin-bottom: 0px;
 			}
+		}
+		li.active:before {
+			display: none;
 		}
 	}
 }
@@ -798,7 +818,7 @@ h1, h2, h3, h4, h5, h6 {
 		&.active {
 			&:after {
 				content: '';
-			    display: block;
+			    display: none;
 			    width: 0;
 			    height: 0;
 			    border-color: #fff;
