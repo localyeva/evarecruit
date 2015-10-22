@@ -149,7 +149,7 @@ if ($loop->have_posts()) {
 <!--//Job List End-->
 
 <!--//Environment-->
-<div class="header-environment">
+<div id="work-invironment" class="header-environment">
     <div class="container">
         <div class="row-gap-small"></div>
         <h2 class="text-center"><?php echo get_part_work_environment_title_text() ?></h2>
@@ -158,177 +158,117 @@ if ($loop->have_posts()) {
         $args = array(
             'hide_empty' => 0
         );
-        $categories = get_terms('cat-work-environment', $args);
-        $images = array();
-        $all_images = array();
-        $num_imgs = 0;
-        foreach ($categories as $category) {
-            $cat_name = $category->name;
-            $images[$cat_name] = array();
-            $args = array(
-                'post_type' => 'work-environment',
-                'posts_per_page' => -1,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'cat-work-environment',
-                        'terms' => array($category->term_id),
-                    ),
-                ),
-                'orderby' => array('date' => 'ASC'),
-            );
-            $loop = new WP_Query($args);
-            if ($loop->have_posts()) {
-                while ($loop->have_posts()) {
-                    $loop->the_post();
-                    $img = array(get_the_title(), get_field('main_image'), 'work-environment');
-                    $images[$cat_name][] = $img;
-                    $all_images[] = $img;
-                    $num_imgs++;
-                    if (have_rows('images')) {
-                        while (have_rows('images')) {
-                            the_row();
-                            $img = array(get_the_title(), get_sub_field('image'), 'work-environment');
-                            $images[$cat_name][] = $img;
-                            $all_images[] = $img;
-                            $num_imgs++;
-                        }
-                    }
-                }
-            }
+        $terms = get_terms('cat-work-environment', $args);
+        $args_terms = array();
+        foreach ($terms as $term) {
+            $args_terms[] = $term->slug;
         }
-
-        wp_reset_postdata();
+        // not in terms
+        $loop_all = array();
+        $args = array(
+            'post_type' => 'work-environment',
+            'posts_per_page' => -1,
+            'orderby' => array('date' => 'ASC'),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'cat-work-environment',
+                    'field' => 'slug',
+                    'terms' => $args_terms,
+                    'operator' => 'NOT IN',
+                ),
+            ),
+        );
+        $loop_all = new WP_Query($args);
+        $count_all = $loop_all->found_posts;
+        //
         ?>
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2">
                 <ul class="nav nav-pills nav-justified">
                     <li role="presentation" data-tab="all"><a href="#">All</a></li>
-                    <?php foreach ($categories as $category): ?>
-                        <li role="presentation" data-tab="<?php echo $category->name ?>"><a href="#"><?php echo $category->name ?></a></li>
+                    <?php foreach ($terms as $term): ?>
+                        <li role="presentation" data-tab="<?php echo $term->slug ?>"><a href="#"><?php echo $term->name ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
         </div>
         <div class="row-gap-large"></div>
-        <!-- //Image gallery -->
+        <!-- // image not in terms -->
         <div class="row gallery" data-tab="all">
-            <?php
-            if ($num_imgs <= 4) {
-                for ($i = 0; $i <= 4; $i++) {
-                    if (isset($images[$i])) {
-                        ?>
-                        <div class="col-xs-3">
+            <?php if ($count_all <= 4): ?>
+                <?php if ($loop_all->have_posts()): ?>
+                    <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
+                        <div class="col-xs-3">                
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <img src="<?php echo $images[$i][1] ?>" alt="<?php echo $images[$i][0] ?>" class="img-responsive" />
+                                    <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                    }
-                }
-            } else {
-                $mod = $num_imgs % 4;
-                $num = intval($num_imgs / 4);
-                if ($mod == 0) {
-                    $parts = array_chunk($all_images, $num);
-                } else if ($mod == 1) {
-                    $parts[0] = array_slice($all_images, 0, $num + 1);
-                    $parts[1] = array_slice($all_images, $num + 1, $num);
-                    $parts[2] = array_slice($all_images, ($num + 1) + $num, $num);
-                    $parts[3] = array_slice($all_images, ($num + 1) + 2 * $num, $num);
-                } else if ($mod == 2) {
-                    $parts[0] = array_slice($all_images, 0, $num + 1);
-                    $parts[1] = array_slice($all_images, $num + 1, $num + 1);
-                    $parts[2] = array_slice($all_images, ($num + 1) * 2, $num);
-                    $parts[3] = array_slice($all_images, ($num + 1) * 2 + $num, $num);
-                } else {
-                    $parts[0] = array_slice($all_images, 0, $num + 1);
-                    $parts[1] = array_slice($all_images, $num + 1, $num + 1);
-                    $parts[2] = array_slice($all_images, ($num + 1) * 2, $num + 1);
-                    $parts[3] = array_slice($all_images, ($num + 1) * 3, $num);
-                }
-                for ($i = 0; $i < 4; $i++) {
-                    $tparts = $parts[$i];
-                    ?>
-                    <div class="col-xs-3">
-                        <div class="row">
-                            <?php foreach ($tparts as $part) {
-                                ?>
-                                <div class="col-xs-12">
-                                    <a href="<?php echo bloginfo('url') . '/' . $part[2] ?>"><img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" /></a>
-                                </div>
-                            <?php } ?>
-                        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            <?php else: ?>
+                <div class="col-xs-3">
+                    <div class="row">
+                        <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
+                            <div class="col-xs-12">
+                                <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                            </div>
+                        <?php endwhile; ?>
                     </div>
-                    <?php
-                }
-            }
-            ?>
+                </div>
+            <?php endif; ?>
         </div>
-
-        <?php foreach ($images as $cat_name => $pimages) {
+        <!-- image in terms -->
+        <?php
+        // in terms
+        foreach ($args_terms as $term_slug) :
             ?>
-            <div class="row gallery" data-tab="<?php echo $cat_name ?>">
+            <div class="row gallery" data-tab="<?php echo $term_slug ?>">
                 <?php
-                $num_imgs = count($pimages);
-                if ($num_imgs <= 4) {
-                    for ($i = 0; $i <= 4; $i++) {
-                        if (isset($pimages[$i])) {
-                            ?>
-                            <div class="col-xs-3">
+                //
+                $loop_ele = array();
+                $args = array(
+                    'post_type' => 'work-environment',
+                    'posts_per_page' => -1,
+                    'orderby' => array('date' => 'ASC'),
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'cat-work-environment',
+                            'field' => 'slug',
+                            'terms' => array($term_slug),
+                        ),
+                    ),
+                );
+                $loop_ele = new WP_Query($args);
+                $count_ele = $loop_ele->found_posts;
+                ?>
+                <?php if ($count_ele <= 4): ?>
+                    <?php if ($loop_ele->have_posts()): ?>
+                        <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
+                            <div class="col-xs-3">                
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <img src="<?php echo $pimages[$i][1] ?>" alt="<?php echo $pimages[$i][0] ?>" class="img-responsive" />
+                                        <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                                     </div>
                                 </div>
                             </div>
-                            <?php
-                        }
-                    }
-                } else {
-                    $mod = $num_imgs % 4;
-                    $num = intval($num_imgs / 4);
-                    if ($mod == 0) {
-                        $parts = array_chunk($pimages, $num);
-                    } else if ($mod == 1) {
-                        $parts[0] = array_slice($pimages, 0, $num);
-                        $parts[1] = array_slice($pimages, $num + 1, $num);
-                        $parts[2] = array_slice($pimages, ($num + 1) + $num, $num);
-                        $parts[3] = array_slice($pimages, ($num + 1) + 2 * $num, $num);
-                    } else if ($mod == 2) {
-                        $parts[0] = array_slice($pimages, 0, $num + 1);
-                        $parts[1] = array_slice($pimages, $num + 1, $num + 1);
-                        $parts[2] = array_slice($pimages, ($num + 1) * 2, $num);
-                        $parts[3] = array_slice($pimages, ($num + 1) * 2 + $num, $num);
-                    } else {
-                        $parts[0] = array_slice($pimages, 0, $num + 1);
-                        $parts[1] = array_slice($pimages, $num + 1, $num + 1);
-                        $parts[2] = array_slice($pimages, ($num + 1) * 2, $num + 1);
-                        $parts[3] = array_slice($pimages, ($num + 1) * 3, $num);
-                    }
-                    for ($i = 0; $i < 4; $i++) {
-                        $tparts = $parts[$i];
-                        ?>
-                        <div class="col-xs-3">
-                            <div class="row">
-                                <?php foreach ($tparts as $part) {
-                                    ?>
-                                    <div class="col-xs-12">
-                                        <a href="<?php echo bloginfo('url') . '/' . $part[2] ?>"><img src="<?php echo $part[1] ?>" alt="<?php echo $part[0] ?>" class="img-responsive" /></a>
-                                    </div>
-                                <?php } ?>
-                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col-xs-3">
+                        <div class="row">
+                            <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
+                                <div class="col-xs-12">
+                                    <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                                </div>
+                            <?php endwhile; ?>
                         </div>
-                        <?php
-                    }
-                }
-                ?>
-
+                    </div>
+                <?php endif; ?>
             </div>
-        <?php } ?>
-        <!-- //Image gallery End -->
-    </div>
+        <?php endforeach; ?>
+    </div>    
 </div>
 <!--//Environment End-->
 
