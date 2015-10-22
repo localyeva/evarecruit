@@ -37,13 +37,13 @@ if ($loop->have_posts()) {
             <?php for ($i = 0; $i < count($slider_home); $i++): ?>
                 <div class="item <?php echo ($i == 0) ? 'active' : '' ?>">
                     <img alt="" src="<?php echo $slider_home[$i]['image'] ?>">
-                    <div class="carousel-caption">
-                        <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
-                        <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
-                        <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
-                    </div>
                 </div>
             <?php endfor; ?>
+        </div>
+        <div class="slide-caption">
+            <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
+            <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
+            <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
         </div>
     </div>
 </div>

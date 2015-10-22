@@ -16,27 +16,15 @@
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
 				<img alt="900x500" src="img/1.png">
-				<div class="carousel-caption">
-					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
-					<h2 class="mission">Our mission</h2>
-					<h3 clas"out-tro">To be No.1 providing IT software development support in Asia</h3>
-				</div>
+
 			</div>
 			<div class="item">
 				<img alt="900x500" src="img/1.png">
-				<div class="carousel-caption">
-					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
-					<h2 class="mission">Our mission</h2>
-					<h3 clas"out-tro">To be No.1 providing IT software development support in Asia</h3>
-				</div>
+
 			</div>
 			<div class="item">
 				<img alt="900x500" src="img/1.png">
-				<div class="carousel-caption">
-					<h1 class="text-bold standout">Welcome Evolable Asia</h1>
-					<h2 class="mission">Our mission</h2>
-					<h3 clas"out-tro">To be No.1 providing IT software development support in Asia</h3>
-				</div>
+
 			</div>
 		</div>
 		<!-- <a class="left carousel-control" href="#carousel-captions" role="button" data-slide="prev">
@@ -48,6 +36,11 @@
 			<span class="sr-only">Next</span>
 		</a> -->
 	</div>
+</div>
+<div class="slide-caption">
+    <h1 class="text-bold standout">Our Misstion</h1>
+    <h2 class="mission">Test test test tes tse</h2>
+    <h3 class="out-tro">fff dafsd asdf asdf asdf</h3>
 </div>
 <div class="clearfix"></div>
 <script type="text/javascript">

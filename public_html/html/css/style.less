@@ -73,6 +73,26 @@
 			}
 		}
 	}
+	.carousel-indicators {
+		bottom: 10% !important;
+		li {
+			border-color: #ffffff !important;
+			&.active {
+				background-color: #ffffff !important;
+			}
+		}
+	}
+	.slide-caption {
+		h1 {
+     		font-size: 3vmax !important;
+		}
+		h2 {
+			font-size: 2.5vmax !important;
+		}
+		h3 {
+			font-size: 2vmax !important;
+		}
+	}
 }
 
 // Helper class
@@ -154,6 +174,33 @@ a.white-link {
 }
 .bg-white {
 	background-color: #ffffff;
+}
+#carousel-captions {
+	background: url('../img/bg/grid.png');
+}
+.slide-caption {
+	text-align: center;
+	top: 50%;
+	-ms-transform: translateY(-50%); /* IE 9 */
+    -webkit-transform: translateY(-50%); /* Chrome, Safari, Opera */
+    transform: translateY(-50%);
+	position: absolute;
+	width: 100%;
+	color: #ffffff;
+	text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+     h1 {
+     	font-size: 5vmax;
+     }
+     h2 {
+     	font-size: 4.5vmax;
+     }
+     h3 {
+     	font-size: 4vmax;
+     }
 }
 .pagination {
 	> li {
@@ -1516,6 +1563,16 @@ button {
 	-webkit-border-radius: 5px !important;
 	-moz-border-radius: 5px !important;
 	border-radius: 5px !important;
+}
+.carousel-indicators {
+	position: absolute;
+	bottom: -20%;
+	li {
+		border-color: #000000;
+		&.active {
+			background-color: #000000;
+		}
+	}
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';
