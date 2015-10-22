@@ -37,13 +37,9 @@ class MyThemeOptions {
     function add_plugin_page() {
         // This page will be under "Theme Options"
         // work
-        add_menu_page(
-                'Theme Options', 'Theme Options', 'manage_options', 'my-setting-theme', array($this, 'settings_page')
-        );
-        // not work ???
-//        add_options_page(
-//                'Theme Options', 'Theme Options', 'manage_options', 'my-setting-theme', array($this, 'settings_page')
-//        );
+//        add_menu_page('Theme Options', 'Theme Options', 'manage_options', 'my-setting-theme', array($this, 'settings_page'));
+        
+        add_submenu_page('themes.php', 'Theme Options', 'Theme Options', 'manage_options', 'my-setting-theme', array($this, 'settings_page'));
     }
 
     /**
