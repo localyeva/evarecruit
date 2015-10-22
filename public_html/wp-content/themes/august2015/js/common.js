@@ -125,6 +125,10 @@ $(function () {
     }
 });
 
+/*----------------------------------------------------------- Gallary*/
+$(function(){
+   $('.gallery').masonry();
+});
 /*----------------------------------------------------------- Global Services*/
 $('#navigation li button.navbar-btn').click(function () {
     location.href = $(this).data('url');
@@ -189,7 +193,13 @@ $(function () {
     var coef = 5;
     $('#carousel-captions').css({
         height: $item.height()
-    })
+    });
+    $( window ).resize(function() {
+        $('#carousel-captions').css({
+            height: $item.height()
+        });
+    });
+
     $item.css({
         position: 'fixed',
 //        top: position.top,
