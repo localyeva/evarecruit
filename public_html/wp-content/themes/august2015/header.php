@@ -63,9 +63,9 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="<?php echo bloginfo('url') ?>">Home</a></li>
                             <!--<li><a href="<?php echo bloginfo('url') ?>/#services" data-goto="services">Services</a></li>-->
-                            <li><a href="<?php echo bloginfo('url') ?>/#work-invironment" data-goto="work-invironment">Work Invironment</a></li>
-                            <li><a href="<?php echo bloginfo('url') ?>/#about-us" data-goto="about-us">About</a></li>
-                            <li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>
+                            <li><a href="<?php echo bloginfo('url') ?>/work-invironment">Work Invironment</a></li>
+                            <!--<li><a href="<?php echo bloginfo('url') ?>/#about-us" data-goto="about-us">About</a></li>-->
+                            <!--<li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>-->
                             <li>
                                 <button data-url="<?php echo bloginfo('url') ?>/jobs" type="button" class="btn btn-orange navbar-btn">Join Us Now</button>
                             </li>
