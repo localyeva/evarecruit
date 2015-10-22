@@ -35,7 +35,7 @@
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.sidr.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.nanoscroller.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.fancybox.pack.js"></script>
-<!--<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>-->
+<script src="<?php echo get_template_directory_uri() ?>/js/masonry.min.js"></script>
 <?php wp_footer(); ?> 
 </body>
 </html>

@@ -125,6 +125,10 @@ $(function () {
     }
 });
 
+/*----------------------------------------------------------- Gallary*/
+$(function(){
+   $('.gallery').masonry();
+});
 /*----------------------------------------------------------- Global Services*/
 $('#navigation li button.navbar-btn').click(function () {
     location.href = $(this).data('url');

@@ -195,28 +195,27 @@ if ($loop->have_posts()) {
         <div class="row-gap-large"></div>
         <!-- // image not in terms -->
         <div class="row gallery" data-tab="all">
-            <?php if ($count_all <= 4): ?>
-                <?php if ($loop_all->have_posts()): ?>
-                    <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
-                        <div class="col-xs-3">                
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-            <?php else: ?>
-                <div class="col-xs-3">
-                    <div class="row">
-                        <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
+            <?php if ($loop_all->have_posts()): ?>
+                <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
+                    <div class="col-xs-3">                
+                        <div class="row">
                             <div class="col-xs-12">
                                 <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                             </div>
-                        <?php endwhile; ?>
+                        </div>
                     </div>
-                </div>
+                    <?php if (have_rows('images')): ?>
+                        <?php while (have_rows('images')): the_row(); ?>
+                            <div class="col-xs-3">                
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_sub_field('image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                <?php endwhile; ?>
             <?php endif; ?>
         </div>
         <!-- image in terms -->
@@ -243,28 +242,16 @@ if ($loop->have_posts()) {
                 $loop_ele = new WP_Query($args);
                 $count_ele = $loop_ele->found_posts;
                 ?>
-                <?php if ($count_ele <= 4): ?>
-                    <?php if ($loop_ele->have_posts()): ?>
-                        <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
-                            <div class="col-xs-3">                
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <div class="col-xs-3">
-                        <div class="row">
-                            <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
+                <?php if ($loop_ele->have_posts()): ?>
+                    <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
+                        <div class="col-xs-3">                
+                            <div class="row">
                                 <div class="col-xs-12">
                                     <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                                 </div>
-                            <?php endwhile; ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endwhile; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

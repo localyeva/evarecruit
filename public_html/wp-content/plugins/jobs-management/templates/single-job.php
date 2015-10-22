@@ -60,14 +60,14 @@ get_header();
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="title">Job Description</div>
-                            <?php echo get_field('job_requirement') ?>
+                            <?php echo get_field('job_description') ?>
                         </div>
                     </div>
                     <!-- requirement -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Job Description</div>
-                            <?php echo get_field('job_description') ?>
+                            <div class="title">Job Requirement</div>
+                            <?php echo get_field('job_requirement') ?>
                         </div>
                     </div>
                 </div>
