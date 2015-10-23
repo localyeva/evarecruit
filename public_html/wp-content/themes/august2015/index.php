@@ -197,7 +197,7 @@ if ($loop->have_posts()) {
         <div class="row gallery" data-tab="all">
             <?php if ($loop_all->have_posts()): ?>
                 <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
-                    <div class="col-xs-3">                
+                    <div class="col-xs-3">
                         <div class="row">
                             <div class="col-xs-12">
                                 <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
@@ -206,7 +206,7 @@ if ($loop->have_posts()) {
                     </div>
                     <?php if (have_rows('images')): ?>
                         <?php while (have_rows('images')): the_row(); ?>
-                            <div class="col-xs-3">                
+                            <div class="col-xs-3">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_sub_field('image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
@@ -244,7 +244,7 @@ if ($loop->have_posts()) {
                 ?>
                 <?php if ($loop_ele->have_posts()): ?>
                     <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
-                        <div class="col-xs-3">                
+                        <div class="col-xs-3">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
@@ -255,7 +255,7 @@ if ($loop->have_posts()) {
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
-    </div>    
+    </div>
 </div>
 <!--//Environment End-->
 
@@ -287,7 +287,7 @@ if ($loop->have_posts()) {
                 <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" style="position:relative;right:172px;margin-bottom:0px;" />
             </div>
             <div class="col-xs-12 col-md-8 bg-white">
-                <h2><?php echo get_part_ceo_message_title() ?> <strong>CEO</strong></h2>
+                <h2><?php echo get_part_ceo_message_title() ?></h2>
                 <div class="row-gap-medium"></div>
 
                 <?php
@@ -322,7 +322,7 @@ if ($loop->have_posts()) {
 
 <div class="header-join">
     <div class="container text-center">
-        <h2 class="text-bold"><?php echo get_home_top_text() ?></h2>
+        <h2><?php echo get_home_top_text() ?></h2>
         <div class="row-gap-medium"></div>
         <a href="<?php echo bloginfo('url') ?>/#new-opportunities" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
     </div>

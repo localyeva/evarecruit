@@ -217,7 +217,7 @@ $(function () {
 /* fix top menu */
 $(function () {
     var nav = $('.navbar');
-    // nav.removeClass('navbar-fixed-top');
+    nav.removeClass('navbar-fixed-top');
     $(window).scroll(function (e) {
         var scroll = $(this).scrollTop();
         if (scroll > 50) {
