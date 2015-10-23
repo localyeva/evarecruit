@@ -2,8 +2,9 @@
 
 
 /*--------------------------------------------------------------------- import*/
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500italic,500&subset=latin,vietnamese);
+@import url(https://fonts.googleapis.com/css?family=Roboto:700,300,500italic,900,300italic,400italic,900italic,100italic,100,500,400,700italic&subset=vietnamese,latin);
 // LESS variables
+@font-family-roboto: 'Roboto', sans-serif;
 @body-font-size: 14px;
 @banner-height: 400px;
 @header-text-color: #e2e2e2;
@@ -14,6 +15,7 @@
 @orange: #FF530D;
 @heavy-blue-sky: #0090b0;
 @bold: 700;
+@normal: 400;
 // Helper function
 .border-radius(@radius) {
 	-webkit-border-radius: @radius;
@@ -32,6 +34,7 @@
 	.header-ceo-message {
 		.container {
 			h2 {
+				font-family: @font-family-roboto;
 				text-align: left !important;
 			}
 		}
@@ -211,12 +214,22 @@ a.white-link {
 }
 // begin styling
 body, html {
-	font-family: 'Roboto', sans-serif;
+	font-family: @font-family-roboto;
 	font-size: @body-font-size;
+	h1, h2, h3, h4, h5, h6{
+		font-family: @font-family-roboto;
+	}
 }
 h1, h2, h3, h4, h5, h6 {
 	.text-semi-bold;
 	// link
+}
+h2 {
+	font-size: 48px;
+	font-weight: @normal;
+}
+h3 {
+	font-weight: @normal;
 }
 .navbar-default {
 	margin-bottom: 0;
@@ -279,7 +292,6 @@ h1, h2, h3, h4, h5, h6 {
 	.container {
 		h2 {
 			font-size: 48px;
-			font-weight: lighter;
 			text-align: center;
 		}
 		p {
@@ -348,7 +360,6 @@ h1, h2, h3, h4, h5, h6 {
 				text-align: center;
 				color: @heavy-blue-sky;
 				font-size: 48px;
-				font-weight: lighter;
 				margin: 0px 0px 45px 0px;
 			}
 			label {
@@ -445,7 +456,6 @@ h1, h2, h3, h4, h5, h6 {
 			text-align: center;
 			color: #ffffff;
 			font-size: 48px;
-			font-weight: lighter;
 			margin: 0px 0px 45px 0px;
 		}
 		.list {
@@ -514,7 +524,6 @@ h1, h2, h3, h4, h5, h6 {
 			h3 {
 				opacity: 1;
 				font-size: 26px;
-				font-weight: lighter;
 				width: 100%;
 				margin-top: 13px;
 				text-align: center;
@@ -608,7 +617,6 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	h2 {
 		font-size: 48px;
-		font-weight: lighter;
 	}
 	.nav-pills {
 		li {
@@ -616,7 +624,7 @@ h1, h2, h3, h4, h5, h6 {
 				padding-top: 5px;
 				padding-bottom: 5px;
 				font-size: 18px;
-				font-weight: lighter;
+				font-weight: @normal;
 			}
 		}
 		li.active {
@@ -634,7 +642,6 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #ffffff;
 	h2 {
 		font-size: 48px;
-		font-weight: lighter;
 		margin: 40px 0;
 	}
 }
@@ -820,7 +827,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 	.container {
 		padding-top: 50px;
-		padding-bottom: 50px;
 		.logo {
 			margin: 0 auto;
 		}
