@@ -194,7 +194,7 @@ if ($loop->have_posts()) {
         </div>
         <div class="row-gap-large"></div>
         <!-- // image not in terms -->
-        <div class="row gallery" data-tab="all">
+        <div class="row gallery gallery-all" data-tab="all">
             <?php if ($loop_all->have_posts()): ?>
                 <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
                     <div class="col-xs-3">                
