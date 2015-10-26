@@ -50,17 +50,18 @@
 		var coef = 5;
 		$('#carousel-captions').css({
 			height: $item.height()
-		})
+		});
+		/*
 		$item.css({
 			position: 'fixed',
 			top: position.top,
 			zIndex: -1
-		});
-		$(window).scroll(function (e) {
-			var scroll = $(this).scrollTop();
-			$item.css({
-				top: position.top - scroll/coef
-			})
-		});
+		});*/
+		// $(window).scroll(function (e) {
+		// 	var scroll = $(this).scrollTop();
+		// 	$item.css({
+		// 		top: position.top - scroll/coef
+		// 	})
+		// });
 	});
 </script>
