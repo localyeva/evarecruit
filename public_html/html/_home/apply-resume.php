@@ -1,7 +1,5 @@
 <div class="header-apply-resume">
     <div class="container">
-        <div class="overlay">
-        </div>
         <form class="input-form col-xs-12 col-md-12" enctype="multipart/form-data">
             <h2>Apply Your Resume</h2>
             <fieldset class="box">

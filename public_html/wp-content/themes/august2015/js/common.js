@@ -126,21 +126,30 @@ $(function () {
 });
 
 /*----------------------------------------------------------- Gallary*/
-$(function () {
-    $('.gallery-all').masonry();
+$(function(){
+   $('.gallery').masonry();
 });
 /*----------------------------------------------------------- Global Services*/
 $('#navigation li button.navbar-btn').click(function () {
     location.href = $(this).data('url');
 });
 
-/*----------------------------------------------------------- Work Environment*/
 $("a.photo").fancybox({
     helpers: {
         title: {
             type: 'inside'
         }
     }
+});
+
+$("a.photo1").fancybox({
+    helpers: {
+        title: {
+            type: 'inside'
+        }
+    },
+    openEffect: 'none',
+    closeEffect: 'none'
 });
 
 $('.image-wrapper').mouseover(function (e) {
@@ -178,31 +187,19 @@ $(function () {
     });
 })
 
-$(function () {
+
+$(function() {
     var $item = $('#carousel-captions .item');
     var position = $item.offset();
     var coef = 5;
     $('#carousel-captions').css({
         height: $item.height()
     });
-    $(window).resize(function () {
+    $( window ).resize(function() {
         $('#carousel-captions').css({
             height: $item.height()
         });
     });
-
-    $item.css({
-        position: 'fixed',
-//        top: position.top,
-        zIndex: -1
-    });
-    $(window).scroll(function (e) {
-        var scroll = $(window).scrollTop();
-//        console.log(scroll);
-        $item.css({
-//            top: position.top - scroll / coef
-        })
-    })
 });
 
 /* fix top menu */
