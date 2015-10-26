@@ -36,6 +36,11 @@ get_header();
                         </div>
                         <div class="col-xs-12 col-md-3">
                             posted on <span class="time"><?php echo get_time_duration(get_the_date('Y-m-d H:i:s')) ?></span>
+                            <div id="print-job" class="noprint pull-right">
+                                <div class="item">
+                                    <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,46 +75,15 @@ get_header();
                             <?php echo get_field('job_requirement') ?>
                         </div>
                     </div>
-                </div>
+                    
+                    <div class="row-gap-medium"></div>
 
-                <div class="actions noprint">
-                    <div class="row">
-                        <!--
-                        <div class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/4.png" alt="">
-                                <span class="item-name">Save job</span>
-                            </div>
+                    <div class="row noprint">
+                        <div class="col-xs-12">
+                            <a href="#apply-form-modal" class="openform  submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
                         </div>
-                        -->
-                        <div id="print-job" class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
-                                <span class="item-name">Print this job</span>
-                            </div>
-                        </div>
-                        <!--
-                        <div class="col-xs-12 col-md-2">
-                            <div class="item">
-                                <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/6.png" alt="">
-                                <span class="item-name">Report this job</span>
-                            </div>
-                        </div>
-                        -->
-                        <!--
-                        <div class="col-xs-12 col-md-6 text-right item">[Edit]</div>
-                        -->
                     </div>
                 </div>
-
-                <div class="row-gap-medium"></div>
-
-                <div class="row noprint">
-                    <div class="col-xs-12">
-                        <a href="#apply-form-modal" class="openform  submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
-                    </div>
-                </div>
-
                 <div class="row-gap-medium"></div>
             </div>
         </div>
@@ -127,11 +101,13 @@ get_header();
     <div class="row-gap-large"></div>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
-                <fieldset class="box">
-                    <i class="icon email"></i>
-                    <input type="text" id="re_email" name="re_email" placeholder="Email" />
-                </fieldset>
+            <form id="apply-form" name="apply-form" class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
+                <div class="form-group">
+                    <label for="re_email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="re_email" name="re_email" placeholder="Email">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="re_fullname" class="col-sm-2 control-label">Full Name</label>

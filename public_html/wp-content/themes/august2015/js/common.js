@@ -126,8 +126,8 @@ $(function () {
 });
 
 /*----------------------------------------------------------- Gallary*/
-$(function(){
-   $('.gallery-all').masonry();
+$(function () {
+    $('.gallery-all').masonry();
 });
 /*----------------------------------------------------------- Global Services*/
 $('#navigation li button.navbar-btn').click(function () {
@@ -185,7 +185,7 @@ $(function () {
     $('#carousel-captions').css({
         height: $item.height()
     });
-    $( window ).resize(function() {
+    $(window).resize(function () {
         $('#carousel-captions').css({
             height: $item.height()
         });
