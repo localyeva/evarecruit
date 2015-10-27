@@ -24,6 +24,10 @@
 }
 
 @media only screen and (min-width: 1024px) {
+	h2 {
+		font-size: 48px !important;
+		font-weight: @normal;
+	}
 	.header-about {
 		.container {
 			h2 {
@@ -36,6 +40,12 @@
 			h2 {
 				font-family: @font-family-roboto;
 				text-align: left !important;
+			}
+			img#ceo-picture {
+				width: 428px !important;
+				position: relative;
+				left: -40px !important;
+				margin-bottom: 0px;
 			}
 		}
 	}
@@ -74,6 +84,11 @@
 			li.active:after {
 				display: block !important;
 			}
+		}
+	}
+	.header-intro-movie {
+		h2 {
+			font-size: 48px !important;
 		}
 	}
 	.carousel-indicators {
@@ -233,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
 	// link
 }
 h2 {
-	font-size: 48px;
+	font-size: 15vw;
 	font-weight: @normal;
 }
 h3 {
@@ -298,10 +313,6 @@ h3 {
 	padding-bottom: 50px;
 	background: #ffffff url('../img/bg/about-us.png') top center no-repeat;
 	.container {
-		h2 {
-			font-size: 48px;
-			text-align: center;
-		}
 		p {
 			font-size: 16px;
 			line-height: 25px;
@@ -357,7 +368,6 @@ h3 {
 			h2 {
 				text-align: center;
 				color: @heavy-blue-sky;
-				font-size: 48px;
 				margin: 0px 0px 45px 0px;
 			}
 			label {
@@ -649,6 +659,9 @@ h3 {
 	padding-bottom: 50px;
 	background: #0090B0 url('../img/bg/49.png');
 	color: #fff;
+	h2 {
+		font-size: 8vw;
+	}
 	h3 {
 		font-size: 30px;
 	}
@@ -675,6 +688,23 @@ h3 {
 	}
 	p {
 		text-align: justify;
+	}
+	.container {
+		.bg-white {
+			margin-bottom: 10px;
+		}
+		img#ceo-picture {
+			width: 200px;
+			position: relative;
+			left: -15px;
+			margin-bottom: 0px;
+			z-index: 100;
+		}
+		img#ceo-signature {
+			width: 200px;
+			right: 10px;
+			position: relative;
+		}
 	}
 }
 #new-jobs .header-job-list {
@@ -902,7 +932,8 @@ h3 {
     	padding-top: 5px;
     	padding-bottom: 5px;
     	img {
-    		height: 40px;
+    		width: 240px;
+			margin-top: 6px;
     	}
     }
 }

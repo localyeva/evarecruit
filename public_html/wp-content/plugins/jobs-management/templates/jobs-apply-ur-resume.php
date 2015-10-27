@@ -1,7 +1,7 @@
 <?php
 /*
  * Author: KhangLe
- * 
+ *
  */
 
 if (!defined('ABSPATH')) {
@@ -31,12 +31,13 @@ if (!defined('ABSPATH')) {
                 <label class="option"><i class="radio"></i><input type="radio" name="re_gender[]" id="re_gender_m" value="m"  style="display:none;" checked />Male</label>
                 <label class="option"><i class="radio"></i><input type="radio" name="re_gender[]" id="re_gender_f" value="f"  style="display:none;" />Female</label>
             </fieldset>
+            <!--
             <fieldset class="upload-cv">
                 <label>Attach CV</label>
                 <input type="file" id="re_attach" name="re_attach" />
                 <!--<input type="button" value="Browse" />-->
                 <!--<span class="filename">No file select</span>-->
-            </fieldset>
+            <!--</fieldset>-->
             <fieldset class="agree-cv">
                 <label for="re_check">
                     <input type="checkbox" id="re_check" name="re_check" value="" checked>
