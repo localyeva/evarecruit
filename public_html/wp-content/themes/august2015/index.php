@@ -54,7 +54,7 @@ if ($loop->have_posts()) {
         <div class="row content">
             <div class="col-xs-12 col-md-5"></div>
             <div class="col-xs-12 col-md-7 bg-white">
-                <h2><?php echo get_part_about_us_title_text() ?></h2>
+                <h2 class="text-center"><?php echo get_part_about_us_title_text() ?></h2>
                 <div class="row-gap-large"></div>
                 <?php
                 $args = array(
@@ -284,7 +284,7 @@ if ($loop->have_posts()) {
         <div class="row-gap-large"></div>
         <div class="row content">
             <div class="col-xs-12 col-md-4">
-                <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" style="position:relative;right:172px;margin-bottom:0px;" />
+                <img src="<?php echo get_part_ceo_message_image(); ?>" alt="" id="ceo-picture" />
             </div>
             <div class="col-xs-12 col-md-8 bg-white">
                 <h2><?php echo get_part_ceo_message_title() ?></h2>
@@ -309,7 +309,7 @@ if ($loop->have_posts()) {
                             </div>
                         </div>
                         <div class="row" style="float:right;">
-                            <img src="<?php echo get_field('sign') ?>" alt="" />
+                            <img src="<?php echo get_field('sign') ?>" alt="" id="ceo-signature" />
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
