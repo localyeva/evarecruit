@@ -29,12 +29,16 @@
 </div>
 
 <!-- Google Code for Document request Conversion Page -->
+<!--
 <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.sidr.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.nanoscroller.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.fancybox.pack.js"></script>
+-->
+<script src="<?php echo get_template_directory_uri() ?>/js/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/app.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/masonry.min.js"></script>
 <?php wp_footer(); ?>
 </body>

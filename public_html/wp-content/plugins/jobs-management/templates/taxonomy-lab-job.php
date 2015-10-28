@@ -21,8 +21,8 @@ foreach ($term as $ele) {
     $args_terms[] = $ele->slug;
 }
 
-if (function_exists('get_lab_images')) {
-    $lab_images = get_lab_images();
+if (function_exists('get_lab_info')) {
+    $lab_info = get_lab_info();
 }
 
 get_header();
@@ -30,7 +30,7 @@ get_header();
 <div id="new-job-detail">
 
     <div class="header-banner">
-        <img src="<?php echo $lab_images['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
+        <img src="<?php // echo $lab_info['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
         <div class="overlay container">
             <div class="info">
                 <h2><?php echo $term[0]->name ?></h2>
@@ -62,6 +62,20 @@ get_header();
                 </div>
 
                 <div class="detail">
+                    <div class="row">
+                        <div class="col-xs-12">
+                        <div class="title">Project Information</div>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php echo stripcslashes($lab_info['lab-des-1']) ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php // echo $lab_info['lab-des-2'] ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php // echo $lab_info['lab-des-3'] ?>
+                        </div>
+                    </div>
                     <!-- info -->
                     <div class="row">
                         <div class="col-xs-12">
@@ -81,14 +95,14 @@ get_header();
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="title">Job Description</div>
-                            <?php echo get_field('job_requirement') ?>
+                            <?php echo get_field('job_description') ?>
                         </div>
                     </div>
                     <!-- requirement -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Job Description</div>
-                            <?php echo get_field('job_description') ?>
+                            <div class="title">Job Requirement</div>
+                            <?php echo get_field('job_requirement') ?>
                         </div>
                     </div>
                 </div>
@@ -101,8 +115,8 @@ get_header();
             <div class="col-xs-12 col-md-12">
                 <div class="lab-pictures col-xs-12 col-md-12">
                     <?php for ($i = 1; $i < 3; $i++): ?>
-                        <?php if (isset($lab_images['image-' . $i])): ?>
-                            <img class="img-responsive col-xs-12 col-md-6" src="<?php echo $lab_images['image-' . $i] ?>" />
+                        <?php if (isset($lab_info['image-' . $i])): ?>
+                            <img class="img-responsive col-xs-12 col-md-6" src="<?php echo $lab_info['image-' . $i] ?>" />
                         <?php endif; ?>
                     <?php endfor; ?>
                 </div>

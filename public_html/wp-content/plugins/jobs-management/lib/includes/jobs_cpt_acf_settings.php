@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of jobs_cpt_acf_settings
  *
@@ -218,3 +217,142 @@ class jobs_cpt_acf_settings {
 }
 
 new jobs_cpt_acf_settings();
+
+/* ---------------------------------------------------------------------------- */
+
+global $jola_settings;
+
+$jola_settings['top-image'] = array(
+    'id' => 'top-image',
+    'label' => 'Top Image',
+    'description' => '...',
+    'type' => 'media',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-des-1'] = array(
+    'id' => 'lab-des-1',
+    'label' => 'Description 1',
+    'description' => '...',
+    'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
+function taxonomy_add_new_meta_field() {
+    global $jola_settings;
+    $html = '';
+    //
+    foreach ($jola_settings as $field => $data) {
+        //
+        $t_id = $data['id'];
+        //  
+        switch ($data['type']) {
+            case 'wysiwyg':
+                ?>
+                <div class="form-field">
+                    <label for="<?php echo $t_id ?>"> <?php _e($data['label']) ?></label>
+                    <?php wp_editor('', $t_id, array('wpautop' => false, 'tinymce' => true)); ?>
+                    <p class="description"><?php _e($data['description']) ?></p>
+                </div>
+                <?php
+                break;
+            case 'media':
+                ?>
+                <div class="form-field">
+                    <label for="<?php echo $t_id ?>"> <?php _e($data['label']) ?></label>
+                    <p class="description"><?php _e($data['description']) ?></p>
+                </div>
+                <?php
+                break;
+        }
+    }
+    //
+}
+
+add_action('lab_add_form_fields', 'taxonomy_add_new_meta_field', 10, 2);
+
+function taxonomy_edit_meta_field($term) {
+    global $jola_settings;
+    $html = '';
+    //
+    foreach ($jola_settings as $field => $data) {
+        // retrieve the existing value(s) for this meta field. This returns an array
+        $t_id = $data['id'] . '-' . $term->term_id;
+        $term_meta = get_option('jola_' . $t_id);
+        //
+        switch ($data['type']) {
+            case 'wysiwyg':
+                ?>
+                <tr class="form-field">
+                    <th scope="row" valign="top"><label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label></th>
+                    <td>
+                        <label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label>
+                        <?php wp_editor($term_meta[$t_id] ? stripcslashes($term_meta[$t_id]) : '', $t_id, array('wpautop' => false, 'tinymce' => true)); ?>
+                        <p class="description"><?php _e($data['description']) ?></p>
+                    </td>
+                </tr>
+                <?php
+                break;
+            case 'media':
+                $image_thumb = '';
+                if ($term_meta[$t_id]) {
+                    $image_thumb = wp_get_attachment_thumb_url($term_meta[$t_id]);
+                }
+                ?>
+                <tr class="form-field">
+                    <th scope="row" valign="top"><label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label></th>
+                    <td>
+                        <img id="<?php echo $t_id ?>_preview" class="image_preview" src="<?php echo $image_thumb ?>" /><br/>
+                        <input id="<?php echo $t_id ?>_button" type="button" data-uploader_title="Upload an image" data-uploader_button_text="Use image" class="image_upload_button button" value="Upload new image" />
+                        <input id="<?php echo $t_id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
+                        <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo $term_meta[$t_id] ?>"/><br/>
+                        <p class="description"><?php _e($data['description']) ?></p>
+                    </td>
+                </tr>
+
+                <tr class="form-field">
+                    <th scope="row" valign="top">
+                        <label for="<?php echo $t_id ?>" class="wpaft_meta_name_label"><?php _e($data['label']) ?></label>
+                    </th>
+                    <td>
+                        <div id="<?php echo $t_id ?>_selected_image" class="wpaft_selected_image">
+                            <?php if ($image_thumb != '') echo '<img src="' . $image_thumb . '" style="max-width:100%;"/>'; ?>
+                        </div>
+                        <input type="text" name="<?php echo $t_id ?>" id="<?php echo $t_id ?>" value="<?php echo $image_thumb; ?>" /><br />
+                        <br />
+                        <img src="images/media-button-image.gif" alt="Add photos from your media" /> 
+                        <a href="media-upload.php?type=image&#038;wpaft_send_label=<?php echo $t_id ?>&#038;TB_iframe=1&#038;tab=library&#038;height=500&#038;width=640" onclick="image_photo_url_add('<?php echo $t_id ?>')" class="thickbox" title="Add an Image"> 
+                            <strong>
+                                <?php echo _e('Click here to add/change your image', 'wp-texonomy-meta'); ?>
+                            </strong>
+                        </a>
+                    </td>
+                </tr>
+                <?php
+                break;
+        }
+    }
+}
+
+add_action('lab_edit_form_fields', 'taxonomy_edit_meta_field', 10, 2);
+
+function save_taxonomy_custom_meta($term_id) {
+    global $jola_settings;
+    //
+    foreach ($jola_settings as $field => $data) {
+        //
+        $t_id = $data['id'] . '-' . $term_id;
+        //
+        if (isset($_POST[$t_id])) {
+            $term_meta = get_option('jola_' . $t_id);
+            $term_meta[$t_id] = $_POST[$t_id];
+            // Save the option array.
+            update_option('jola_' . $t_id, $term_meta);
+        }
+    }
+}
+
+add_action('edited_lab', 'save_taxonomy_custom_meta', 10, 2);
+add_action('create_lab', 'save_taxonomy_custom_meta', 10, 2);

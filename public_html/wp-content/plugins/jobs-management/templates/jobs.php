@@ -70,8 +70,8 @@ get_header();
             <?php if ($wp_query->have_posts()): ?>
                 <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                     <?php
-                    if (function_exists('get_lab_images')) {
-                        $lab_images = get_lab_images();
+                    if (function_exists('get_lab_info')) {
+                        $lab_images = get_lab_info();
                     }
                     ?>
                     <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>

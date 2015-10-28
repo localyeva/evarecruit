@@ -7,26 +7,28 @@
 
         <link type="image/x-icon" href="<?php echo get_template_directory_uri() ?>/images/evaicon.png" rel="shortcut icon">
 
-        <meta content="Evolable Asia" name="author">
-        <meta content="Trang tuyển dụng Evolable Asia" itemprop="description" name="description">
-        <meta content="tuyển dụng,Evolable Asia,developer,BSE,BPO,communicator,jobs,japan,recruitment,lập trình,phiên dịch tiếng Nhật,web,di động,kỹ sư cầu nối" itemprop="keywords" name="keywords">
-
-        <meta content="795903230445450" property="fb:app_id">
-        <meta content="website" property="og:type">
-        <meta content="http://jobs.evolable.asia/" property="og:url">
-        <meta content="Evolable Asia - Tuyển dụng" property="og:site_name">
-        <meta content="" property="og:title">
-        <meta content="http://jobs.evolable.asia/uploaded/images/source/fb_share.png?123456" property="og:image">
-        <meta content="" property="og:description">
+        <meta name="author" content="Evolable Asia">
+        <meta name="description" itemprop="description" content="Trang tuyển dụng Evolable Asia. Chúng tôi đang tìm kiếm các ứng viên đáp ứng nhu cầu cho các dự án phát triển phần mềm, dịch vụ BPO.">
+        <meta name="keywords" itemprop="keywords" content="tuyển dụng,Evolable Asia,developer,communicator,jobs,japan,recruitment,lập trình" />
+        <meta property="fb:app_id" content="795903230445450">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://jobs.evolable.asia/">
+        <meta property="og:site_name" content="Evolable Asia - Tuyển dụng">
+        <meta property="og:title" content="">
+        <meta property="og:image" content="http://jobs@evolable.asia/wp-content/uploads/2015/08/fb_share.png">
+        <meta property="og:description" content="Trang tuyển dụng Evolable Asia. Chúng tôi đang tìm kiếm các ứng viên đáp ứng nhu cầu cho các dự án phát triển phần mềm, dịch vụ BPO.">
 
         <title><?php echo bloginfo('name') ?></title>
 
         <!-- Bootstrap -->
+        <!--
         <link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css" rel="stylesheet">        
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.dark.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.fancybox.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/nanoscroller.css" rel="stylesheet">
+        -->
+        <link href="<?php echo get_template_directory_uri() ?>/css/app.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/style.css" rel="stylesheet">
 
         <!--[if lt IE 9]>

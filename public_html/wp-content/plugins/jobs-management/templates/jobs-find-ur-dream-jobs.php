@@ -102,8 +102,8 @@ foreach ($terms as $term) {
                             <h4><?php echo $term_lab[0]->name ?></h4>
                             <span class="overlay"></span>
                             <?php
-                            if (function_exists('get_lab_images')) {
-                                $lab_images = get_lab_images();
+                            if (function_exists('get_lab_info')) {
+                                $lab_images = get_lab_info();
                             }
                             ?>
                             <img src="<?php echo $lab_images['top-image'] ?>" alt="<?php echo $post->name ?>" />

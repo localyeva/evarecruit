@@ -14,23 +14,27 @@ function job_get_option($option_name) {
     return NULL;
 }
 
-function get_lab_images() {
-    $term = get_the_terms(get_the_ID(), 'lab');
-    if (function_exists('get_all_wp_terms_meta')) {
-        $arrayMetaList = get_all_wp_terms_meta($term[0]->term_id);
-    }
+function get_lab_info() {
+//    $term = get_the_terms(get_the_ID(), 'lab');
+//    if (function_exists('get_all_wp_terms_meta')) {
+//        $arrayMetaList = get_all_wp_terms_meta($term[0]->term_id);
+//    }
+//    
+//    $info = array();
+//    foreach ($arrayMetaList as $key => $value) {
+//        $info[$key] = $value[0];
+//        // get extension
+////        $ext = substr(strrchr($info[$key], '.'), 1);
+////        $info['thumbnail-' . $key] = str_replace('.' . $ext, '-150x150.' . $ext, $value[0]);
+////        $info['medium-' . $key] = str_replace('.' . $ext, '-225x300.' . $ext, $value[0]);
+////        $info['attachment-' . $key] = wp_get_attachment_url($term[0]->term_id);
+//    }
     
-    $images = array();
-    foreach ($arrayMetaList as $key => $value) {
-        $images[$key] = $value[0];
-        // get extension
-        $ext = substr(strrchr($images[$key], '.'), 1);
-        $images['thumbnail-' . $key] = str_replace('.' . $ext, '-150x150.' . $ext, $value[0]);
-        $images['medium-' . $key] = str_replace('.' . $ext, '-225x300.' . $ext, $value[0]);
-        $images['attachment-' . $key] = wp_get_attachment_url($term[0]->term_id);
-    }
+    $info = array_merge(
+            get_option('jola_lab-des-1')
+            );
 
-    return $images;
+    return $info;
 }
 
 /* Filter Tiny MCE Default Settings */
