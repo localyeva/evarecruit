@@ -61,6 +61,19 @@ gulp.task('js', function() {
     .pipe(gulp.dest('public/js'));
 });
 
+// Plugin - JS
+gulp.task('plugin-js', function() {
+    gulp.src('plugin-js/jquery.validate.min.js')
+    .pipe(addsrc.append('plugin-js/jquery.validate.bootstrap.popover.min.js'))
+    .pipe(addsrc.append('plugin-js/additional-methods.min.js'))
+    .pipe(sourcemaps.init())
+    .pipe(concat('plugin.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('source-maps'))
+    .pipe(gulp.dest('public/js'));
+});
+
+
 // Compile JS
 gulp.task('compile', function () {
   gulp.src('js/*.js')
@@ -70,4 +83,4 @@ gulp.task('compile', function () {
 
 
 // Default Task
-gulp.task('default', ['js', 'css', 'css-extra']);
+gulp.task('default', ['js', 'css', 'css-extra', 'plugin-js']);
