@@ -4,8 +4,8 @@
 */
 
 @error-color: #B10016;
-@bg-color: #F2DEDE;
-@border-color: #EED3D7;
+@bg-color: #f2f2f2;
+@border-color: #f2f2f2;
 @page-active-bg: #0090b0;
 @page-active-color: #fff;
 
@@ -23,14 +23,8 @@
         max-width: none;
         z-index: 9999;
     }
-    &.top{
-        > .arrow::after{
-            border-bottom-width: 0;
-            border-top-color: @bg-color;
-            bottom: 1px;
-            content: " ";
-            margin-left: -10px;
-        }
+    .arrow{
+        display: none;
     }
 }
 

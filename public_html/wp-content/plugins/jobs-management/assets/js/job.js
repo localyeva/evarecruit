@@ -2,7 +2,7 @@ $().ready(function () {
 
     var form_valid = $('#apply-form');
     form_valid.validate_popover({
-        popoverPosition: 'top',
+        popoverPosition: 'right',
         rules: {
             're_email': {
                 required: true,

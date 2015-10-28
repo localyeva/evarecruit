@@ -418,12 +418,16 @@ class jobs_management extends PW_Template_Loader {
      */
     public function register_scripts() {
         //
-        wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
-        wp_enqueue_script('js-validate-frontend');
-        wp_register_script('js-validate-popover-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.bootstrap.popover.min.js', array('jquery'), '1.6.3', TRUE);
-        wp_enqueue_script('js-validate-popover-frontend');
-        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/assets/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
-        wp_enqueue_script('js-additional-frontend');
+//        wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
+//        wp_enqueue_script('js-validate-frontend');
+//        wp_register_script('js-validate-popover-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.bootstrap.popover.min.js', array('jquery'), '1.6.3', TRUE);
+//        wp_enqueue_script('js-validate-popover-frontend');
+//        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/assets/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
+//        wp_enqueue_script('js-additional-frontend');
+        
+        wp_register_script('js-job-plugin-frontend', $this->get_plugin_url() . '/assets/js/job-plugin.js', array('jquery'), '1.0.0', TRUE);
+        wp_enqueue_script('js-job-plugin-frontend');
+        
         //
 //        wp_register_script('js-easing-frontend', $this->get_plugin_url() . '/assets/js/jquery.easing.js', array('jquery'), '1.3', TRUE);
 //        wp_enqueue_script('js-easing-frontend');
