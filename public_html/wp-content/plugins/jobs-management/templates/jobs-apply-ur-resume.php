@@ -31,9 +31,7 @@ if (!defined('ABSPATH')) {
             </fieldset>
             <fieldset class="upload-cv">
                 <label>Attach CV</label>
-                <input type="file" id="re_attach" name="re_attach" />
-                <!--<input type="button" value="Browse" />-->
-                <!--<span class="filename">No file select</span>-->
+                <input type="file" id="re_attach" name="re_attach" class="btn" />
             </fieldset>
             <fieldset class="agree-cv">
                 <label for="re_check">
