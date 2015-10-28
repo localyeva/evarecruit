@@ -1,7 +1,8 @@
 $().ready(function () {
 
     var form_valid = $('#apply-form');
-    form_valid.validate({
+    form_valid.validate_popover({
+        popoverPosition: 'top',
         rules: {
             're_email': {
                 required: true,

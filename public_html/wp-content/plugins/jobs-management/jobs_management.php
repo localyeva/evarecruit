@@ -420,6 +420,8 @@ class jobs_management extends PW_Template_Loader {
         //
         wp_register_script('js-validate-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.min.js', array('jquery'), '1.14.0', TRUE);
         wp_enqueue_script('js-validate-frontend');
+        wp_register_script('js-validate-popover-frontend', $this->get_plugin_url() . '/assets/js/jquery.validate.bootstrap.popover.min.js', array('jquery'), '1.6.3', TRUE);
+        wp_enqueue_script('js-validate-popover-frontend');
         wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/assets/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
         wp_enqueue_script('js-additional-frontend');
         //

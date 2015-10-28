@@ -4,12 +4,36 @@
 */
 
 @error-color: #B10016;
+@bg-color: #F2DEDE;
+@border-color: #EED3D7;
 @page-active-bg: #0090b0;
 @page-active-color: #fff;
 
 .error{
     color: @error-color;
 }
+
+.popover{
+    &.error-popover{
+        background-color: @bg-color;
+        border-color: @border-color;
+        box-shadow: none;
+        color: @error-color;
+        cursor: pointer;
+        max-width: none;
+        z-index: 9999;
+    }
+    &.top{
+        > .arrow::after{
+            border-bottom-width: 0;
+            border-top-color: @bg-color;
+            bottom: 1px;
+            content: " ";
+            margin-left: -10px;
+        }
+    }
+}
+
 input[type=text], input[type=email]{
     &.error{
         border: 1px solid @error-color;
