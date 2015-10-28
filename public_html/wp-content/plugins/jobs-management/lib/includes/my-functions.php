@@ -15,26 +15,22 @@ function job_get_option($option_name) {
 }
 
 function get_lab_info() {
-//    $term = get_the_terms(get_the_ID(), 'lab');
-//    if (function_exists('get_all_wp_terms_meta')) {
-//        $arrayMetaList = get_all_wp_terms_meta($term[0]->term_id);
-//    }
-//    
-//    $info = array();
-//    foreach ($arrayMetaList as $key => $value) {
-//        $info[$key] = $value[0];
-//        // get extension
-////        $ext = substr(strrchr($info[$key], '.'), 1);
-////        $info['thumbnail-' . $key] = str_replace('.' . $ext, '-150x150.' . $ext, $value[0]);
-////        $info['medium-' . $key] = str_replace('.' . $ext, '-225x300.' . $ext, $value[0]);
-////        $info['attachment-' . $key] = wp_get_attachment_url($term[0]->term_id);
-//    }
+    global $jola_settings;
     
-    $info = array_merge(
-            get_option('jola_lab-des-1')
-            );
-
-    return $info;
+    $term = get_the_terms(get_the_ID(), 'lab');
+    $t_id = $term[0]->term_id;
+    $lab_info = array();
+            
+    foreach ($jola_settings as $field => $data){
+        $key = $data['id'];
+        $tax_id = $key . '-' . $t_id;
+        $tax_meta = 'jola_' . $tax_id;
+        //
+        $info = get_option($tax_meta);
+        $lab_info[$key] = stripcslashes($info[$tax_id]);
+    }
+    
+    return $lab_info;
 }
 
 /* Filter Tiny MCE Default Settings */

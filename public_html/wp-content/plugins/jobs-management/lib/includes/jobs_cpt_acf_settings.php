@@ -225,7 +225,25 @@ global $jola_settings;
 $jola_settings['top-image'] = array(
     'id' => 'top-image',
     'label' => 'Top Image',
-    'description' => '...',
+    'description' => '',
+    'type' => 'media',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['image-1'] = array(
+    'id' => 'image-1',
+    'label' => 'About Image 1',
+    'description' => '',
+    'type' => 'media',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['image-2'] = array(
+    'id' => 'image-2',
+    'label' => 'About Image 2',
+    'description' => '',
     'type' => 'media',
     'default',
     'placeholder',
@@ -233,12 +251,36 @@ $jola_settings['top-image'] = array(
 
 $jola_settings['lab-des-1'] = array(
     'id' => 'lab-des-1',
-    'label' => 'Description 1',
-    'description' => '...',
+    'label' => 'About Us',
+    'description' => '',
     'type' => 'wysiwyg',
     'default',
     'placeholder',
 );
+
+$jola_settings['lab-des-2'] = array(
+    'id' => 'lab-des-2',
+    'label' => 'Development Team',
+    'description' => '',
+    'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-des-3'] = array(
+    'id' => 'lab-des-3',
+    'label' => 'Carrier',
+    'description' => '',
+    'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
+//function jola_load_media(){
+//    wp_enqueue_media();
+//}
+//
+//add_action('jola_admin_print_styles', 'jola_load_media');
 
 function taxonomy_add_new_meta_field() {
     global $jola_settings;
@@ -262,6 +304,12 @@ function taxonomy_add_new_meta_field() {
                 ?>
                 <div class="form-field">
                     <label for="<?php echo $t_id ?>"> <?php _e($data['label']) ?></label>
+                    <img src="images/media-button-image.gif" alt="Add photos from your media" /> 
+                    <a href="media-upload.php?type=image&#038;wpaft_send_label=<?php echo $t_id ?>&#038;TB_iframe=1&#038;tab=library&#038;height=500&#038;width=640" onclick="image_photo_url_add('<?php echo $t_id ?>')" class="thickbox" title="Add an Image"> 
+                        <strong>
+                            <?php echo _e('Click here to add/change your image', 'wp-texonomy-meta'); ?>
+                        </strong>
+                    </a>
                     <p class="description"><?php _e($data['description']) ?></p>
                 </div>
                 <?php
@@ -271,7 +319,7 @@ function taxonomy_add_new_meta_field() {
     //
 }
 
-add_action('lab_add_form_fields', 'taxonomy_add_new_meta_field', 10, 2);
+//add_action('lab_add_form_fields', 'taxonomy_add_new_meta_field', 10, 2);
 
 function taxonomy_edit_meta_field($term) {
     global $jola_settings;
@@ -288,7 +336,6 @@ function taxonomy_edit_meta_field($term) {
                 <tr class="form-field">
                     <th scope="row" valign="top"><label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label></th>
                     <td>
-                        <label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label>
                         <?php wp_editor($term_meta[$t_id] ? stripcslashes($term_meta[$t_id]) : '', $t_id, array('wpautop' => false, 'tinymce' => true)); ?>
                         <p class="description"><?php _e($data['description']) ?></p>
                     </td>
@@ -298,27 +345,16 @@ function taxonomy_edit_meta_field($term) {
             case 'media':
                 $image_thumb = '';
                 if ($term_meta[$t_id]) {
-                    $image_thumb = wp_get_attachment_thumb_url($term_meta[$t_id]);
+                    $image_thumb = $term_meta[$t_id];
                 }
                 ?>
-                <tr class="form-field">
-                    <th scope="row" valign="top"><label for="<?php echo $t_id ?>"><?php _e($data['label']) ?></label></th>
-                    <td>
-                        <img id="<?php echo $t_id ?>_preview" class="image_preview" src="<?php echo $image_thumb ?>" /><br/>
-                        <input id="<?php echo $t_id ?>_button" type="button" data-uploader_title="Upload an image" data-uploader_button_text="Use image" class="image_upload_button button" value="Upload new image" />
-                        <input id="<?php echo $t_id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
-                        <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo $term_meta[$t_id] ?>"/><br/>
-                        <p class="description"><?php _e($data['description']) ?></p>
-                    </td>
-                </tr>
-
                 <tr class="form-field">
                     <th scope="row" valign="top">
                         <label for="<?php echo $t_id ?>" class="wpaft_meta_name_label"><?php _e($data['label']) ?></label>
                     </th>
                     <td>
                         <div id="<?php echo $t_id ?>_selected_image" class="wpaft_selected_image">
-                            <?php if ($image_thumb != '') echo '<img src="' . $image_thumb . '" style="max-width:100%;"/>'; ?>
+                            <?php if ($image_thumb != '') echo '<img src="' . $image_thumb . '" style="max-width:50%;"/>'; ?>
                         </div>
                         <input type="text" name="<?php echo $t_id ?>" id="<?php echo $t_id ?>" value="<?php echo $image_thumb; ?>" /><br />
                         <br />

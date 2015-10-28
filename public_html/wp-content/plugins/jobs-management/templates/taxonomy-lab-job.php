@@ -30,7 +30,7 @@ get_header();
 <div id="new-job-detail">
 
     <div class="header-banner">
-        <img src="<?php // echo $lab_info['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
+        <img src="<?php echo $lab_info['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
         <div class="overlay container">
             <div class="info">
                 <h2><?php echo $term[0]->name ?></h2>
@@ -67,13 +67,13 @@ get_header();
                         <div class="title">Project Information</div>
                         </div>
                         <div class="col-xs-12">
-                            <?php echo stripcslashes($lab_info['lab-des-1']) ?>
+                            <?php echo $lab_info['lab-des-1'] ?>
                         </div>
                         <div class="col-xs-12">
-                            <?php // echo $lab_info['lab-des-2'] ?>
+                            <?php echo $lab_info['lab-des-2'] ?>
                         </div>
                         <div class="col-xs-12">
-                            <?php // echo $lab_info['lab-des-3'] ?>
+                            <?php echo $lab_info['lab-des-3'] ?>
                         </div>
                     </div>
                     <!-- info -->

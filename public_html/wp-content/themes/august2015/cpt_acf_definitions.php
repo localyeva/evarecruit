@@ -866,34 +866,3 @@ if (function_exists("register_field_group")) {
         'menu_order' => 0,
     ));
 }
-
-// first meta section
-$meta_sections[] = array(
-    'title' => 'Personal Information',            // section title
-    'taxonomies' => array('lab'),            // list of taxonomies. Default is array('category', 'post_tag'). Optional
-    'id' => 'first_section',                    // ID of each section, will be the option name
-    'fields' => array(                            // list of meta fields
-        array(
-            'name' => 'Full name',                    // field name
-            'desc' => 'Format: Firstname Lastname',    // field description, optional
-            'id' => 'fname',                        // field id, i.e. the meta key
-            'type' => 'text',                        // text box
-            'std' => 'Anh Tran',                    // default value, optional
-        )
-    )
-);
-// second meta section
-$meta_sections[] = array(
-    'id' => 'additional',
-    'title' => 'Additional Information',
-    'taxonomies' => array('job-position', 'job-location'),
-    'fields' => array(
-        array(
-            'name' => 'Your thoughts about Deluxe Blog Tips',
-            'id' => 'thoughts',
-            'type' => 'wysiwyg',                    // WYSIWYG editor
-            'std' => '<b>It\' OK</b>',
-            'desc' => 'Do you think so?'
-        )
-    )
-);
