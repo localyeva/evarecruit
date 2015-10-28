@@ -54,7 +54,7 @@ if ($loop->have_posts()) {
         <div class="row content">
             <div class="col-xs-12 col-md-5"></div>
             <div class="col-xs-12 col-md-7 bg-white">
-                <h2 class="text-center"><?php echo get_part_about_us_title_text() ?></h2>
+                <h2><?php echo get_part_about_us_title_text() ?></h2>
                 <div class="row-gap-large"></div>
                 <?php
                 $args = array(
