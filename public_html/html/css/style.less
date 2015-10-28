@@ -23,6 +23,28 @@
 	border-radius: @radius;
 }
 
+/* iPhone 6 */
+@media only screen and (max-device-width: 667px)
+    and (-webkit-device-pixel-ratio: 2) {
+    .facebook {
+		text-align: center !important;
+		iframe {
+			width: 320px !important;
+		}
+	}
+}
+
+/* iPhone 6+ */
+@media screen and (min-device-width : 414px)
+    and (-webkit-device-pixel-ratio: 3) {
+    .facebook {
+		text-align: center !important;
+		iframe {
+			width: 320px !important;
+		}
+	}
+}
+
 @media only screen and (min-width: 1024px) {
 	h2 {
 		font-size: 48px !important;
@@ -206,13 +228,13 @@ a.white-link {
 	width: 100%;
 	color: #ffffff;
      h1 {
-     	font-size: 5vw;
+     	font-size: 8vw;
      }
      h2 {
-     	font-size: 4.5vw;
+     	font-size: 6vw;
      }
      h3 {
-     	font-size: 4vw;
+     	font-size: 5vw;
      }
 }
 #carousel-captions {
