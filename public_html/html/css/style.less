@@ -22,15 +22,29 @@
 	-moz-border-radius: @radius;
 	border-radius: @radius;
 }
-@media only screen and (max-width: 400px)
-{
-	.facebook {
+
+/* iPhone 6 */
+@media only screen and (max-device-width: 667px)
+    and (-webkit-device-pixel-ratio: 2) {
+    .facebook {
 		text-align: center !important;
 		iframe {
-			width: 90% !important;
+			width: 320px !important;
 		}
 	}
 }
+
+/* iPhone 6+ */
+@media screen and (min-device-width : 414px)
+    and (-webkit-device-pixel-ratio: 3) {
+    .facebook {
+		text-align: center !important;
+		iframe {
+			width: 320px !important;
+		}
+	}
+}
+
 @media only screen and (min-width: 1024px) {
 	h2 {
 		font-size: 48px !important;
