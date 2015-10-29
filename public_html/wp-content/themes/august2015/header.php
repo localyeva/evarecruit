@@ -69,7 +69,7 @@
                             <!--<li><a href="<?php echo bloginfo('url') ?>/#about-us" data-goto="about-us">About</a></li>-->
                             <!--<li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>-->
                             <li>
-                                <button data-url="<?php echo bloginfo('url') ?>/jobs" type="button" class="btn btn-orange navbar-btn">Join Us Now</button>
+                                <button data-url="<?php echo bloginfo('url') ?>/jobs" type="button" class="btn btn-orange navbar-btn hand">Join Us Now</button>
                             </li>
                         </ul>
                     </div>

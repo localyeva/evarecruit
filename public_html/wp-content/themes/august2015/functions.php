@@ -124,6 +124,7 @@ function remove_menus_from_plugins() {
 
     remove_menu_page('edit.php?post_type=acf');     // ACF
     remove_menu_page('cptui_main_menu');          // CPT
+    remove_menu_page('admin.php?page=cptui_manage_post_types');          // CPT
 }
 
 add_action('admin_init', 'remove_menus_from_plugins');
@@ -142,7 +143,7 @@ function remove_menus() {
         remove_menu_page('edit.php');                   //Posts
 //        remove_menu_page('upload.php');                 //Media
         remove_menu_page('edit-comments.php');          //Comments
-        remove_menu_page('plugins.php');                //Plugins
+//        remove_menu_page('plugins.php');                //Plugins
 //        remove_menu_page('users.php');                  //Users
         remove_menu_page('tools.php');                  //Tools
         remove_menu_page('options-general.php');        //Settings
