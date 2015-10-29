@@ -363,7 +363,10 @@ class jobs_plugin_admin {
                         $html .= '<td>' . $post->email . '</td>';
                         $html .= '<td>' . $post->phone_number . '</td>';
                         $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
-                        $html .= '<td><a target="_blank" href="' . $post->attach_file . '" download="' . $download . '"><button>Download CV</button></a></td>';
+                        $html .= '<td>'
+                                . '<a target="_blank" href="' . $post->attach_file . '" download="' . $download . '"><button>Download CV</button></a><br/>'
+                                . '<a href="download.php?attach=' . $post->attach_file . '&clean=' . $download . '">Download</a>'
+                                . '</td>';
                         $html .= '<td>';
                         $html .= '<a class="pop-job" href="#job_' . $post->id . '">' . $post->job_title . '</a>';
                         $html .= '<div id="job_' . $post->id . '" class="table" style="display:none;">'
