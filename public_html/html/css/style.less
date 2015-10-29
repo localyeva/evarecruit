@@ -271,9 +271,6 @@ a.white-link {
 .bg-white {
 	background-color: #ffffff;
 }
-#carousel-captions {
-	background: url('../img/bg/grid.png');
-}
 .slide-caption {
 	text-align: center;
 	top: 50%;
@@ -724,6 +721,9 @@ h3 {
 	h2 {
 		font-size: 48px;
 		margin: 40px 0;
+	}
+	h3 {
+		margin-top: 10px;
 	}
 }
 .header-intro-movie {
@@ -1624,6 +1624,12 @@ h3 {
 			transition-property: opacity;
 			img {
 				margin: 0 auto;
+			}
+			.mask {
+				width: 100%;
+				background: url('../img/bg/grid.png');
+				z-index: 2000;
+				position: absolute;
 			}
 		}
 		.active {

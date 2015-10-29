@@ -185,8 +185,14 @@ $(function () {
     $('#carousel-captions').css({
         height: $item.height()
     });
+    $('#carousel-captions').find('.mask').css({
+        height: $item.height()
+    });
     $(window).resize(function () {
         $('#carousel-captions').css({
+            height: $item.height()
+        });
+        $('#carousel-captions').find('.mask').css({
             height: $item.height()
         });
     });
