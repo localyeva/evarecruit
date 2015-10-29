@@ -223,7 +223,7 @@ new jobs_cpt_acf_settings();
 global $jola_settings;
 
 $jola_settings['top-image'] = array(
-    'id' => 'top_image',
+    'id' => 'top-image',
     'label' => 'Top Image',
     'description' => '',
     'type' => 'media',
@@ -232,7 +232,7 @@ $jola_settings['top-image'] = array(
 );
 
 $jola_settings['image-1'] = array(
-    'id' => 'image_1',
+    'id' => 'image-1',
     'label' => 'About Image 1',
     'description' => '',
     'type' => 'media',
@@ -241,7 +241,7 @@ $jola_settings['image-1'] = array(
 );
 
 $jola_settings['image-2'] = array(
-    'id' => 'image_2',
+    'id' => 'image-2',
     'label' => 'About Image 2',
     'description' => '',
     'type' => 'media',
@@ -250,7 +250,7 @@ $jola_settings['image-2'] = array(
 );
 
 $jola_settings['lab-des-1'] = array(
-    'id' => 'lab_des_1',
+    'id' => 'lab-des-1',
     'label' => 'About Us',
     'description' => '',
     'type' => 'wysiwyg',
@@ -259,7 +259,7 @@ $jola_settings['lab-des-1'] = array(
 );
 
 $jola_settings['lab-des-2'] = array(
-    'id' => 'lab_des_2',
+    'id' => 'lab-des-2',
     'label' => 'Development Team',
     'description' => '',
     'type' => 'wysiwyg',
@@ -268,7 +268,7 @@ $jola_settings['lab-des-2'] = array(
 );
 
 $jola_settings['lab-des-3'] = array(
-    'id' => 'lab_des_3',
+    'id' => 'lab-des-3',
     'label' => 'Carrier',
     'description' => '',
     'type' => 'wysiwyg',

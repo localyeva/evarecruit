@@ -23,11 +23,18 @@ jQuery(document).ready(function ($) {
     /***** Uploading images *****/
 
     var file_frame;
+    var button_id;
+    var field_id;
+    var preview_id;
 
     jQuery.fn.uploadMediaFile = function (button, preview_media) {
-        var button_id = button.attr('id');
-        var field_id = button_id.replace('_button', '');
-        var preview_id = button_id.replace('_button', '_preview');
+        button_id = button.attr('id');
+        field_id = button_id.replace('_button', '');
+        preview_id = button_id.replace('_button', '_preview');
+        
+console.log(button_id);
+console.log(field_id);
+console.log(preview_id);
 
         // If the media frame already exists, reopen it.
         if (file_frame) {
@@ -47,7 +54,7 @@ jQuery(document).ready(function ($) {
         // When an image is selected, run a callback.
         file_frame.on('select', function () {
             attachment = file_frame.state().get('selection').first().toJSON();
-            jQuery("#" + field_id).val(attachment.id);
+            jQuery("#" + field_id).val(attachment.url);
             if (preview_media) {
                 jQuery("#" + preview_id).attr('src', attachment.sizes.thumbnail.url);
             }
@@ -63,7 +70,7 @@ jQuery(document).ready(function ($) {
 
     jQuery('.image_delete_button').click(function () {
         jQuery(this).closest('td').find('.image_data_field').val('');
-        jQuery('.image_preview').remove();
+        jQuery(this).closest('td').find('.image_preview').attr('src', 'images/media-button-image.gif');
         return false;
     });
 
