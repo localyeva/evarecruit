@@ -38,7 +38,7 @@
     .facebook {
 		text-align: center !important;
 		iframe {
-			width: 95% !important;
+			width: 290px !important;
 		}
 	}
 	.slide-caption {
@@ -170,7 +170,7 @@
 
 @media only screen and (max-width: 400px) {
 	h2 {
-		font-size: 10vw !important;
+		font-size: 8vw !important;
 	}
 	.slide-caption {
 		h1 {
@@ -1369,8 +1369,8 @@ h3 {
 	background: url('../img/new_job/1.png') no-repeat;
 	background-size: cover;
 	color: #fff;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 	h2 {
 		font-size: 48px;
 	}
@@ -1633,7 +1633,7 @@ h3 {
 			.mask {
 				width: 100%;
 				background: url('../img/bg/grid.png');
-				z-index: 2000;
+				z-index: 10;
 				position: absolute;
 			}
 		}
@@ -1682,6 +1682,20 @@ button {
 }
 .hand{
 	cursor: pointer;
+}
+.btn-apply {
+	margin: 0 auto;
+	float: none;
+}
+
+.navbar-default .navbar-nav > li > a.btn-join, .navbar-default .navbar-text{
+    background-color: #ff530d;
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 12px;
+}
+.navbar-default .navbar-nav > li > a.btn-join:focus, .navbar-default .navbar-nav > li > a.btn-join:hover{
+    background-color: #ff530d;
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';

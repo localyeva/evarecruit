@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Job of Lab
- * 
+ *
  */
 if (!defined('ABSPATH')) {
     die('No script kiddies please!');
@@ -141,7 +141,7 @@ get_header();
 <!-- // Apply Form Start -->
 <div id="apply-form-modal" class="apply-form-modal" style="display: none;">
     <div class="header-top-apply">
-        <div class="container text-center">
+        <div class="text-center">
             <h2 class="text-bold">Apply Your Resume</h2>
         </div>
     </div>
@@ -193,7 +193,7 @@ get_header();
 
                 <div class="row-gap-medium"></div>
                 <div class="form-group">
-                    <label for="content" class="col-sm-2 control-label">Terms - Privacy</label>
+                    <label for="content" class="control-label">Terms - Privacy</label>
                 </div>
                 <div class="box">
                     <div class="row">
@@ -217,7 +217,7 @@ get_header();
                 </div>
                 <div class="row-gap-medium"></div>
                 <div class="row">
-                    <div class="col-xs-3 col-xs-offset-9">
+                    <div class="col-md-5 col-xs-12 btn-apply">
                         <button class="btn btn-block btn-orange" type="submit" name="apply" value="job">Submit request</button>
                     </div>
                 </div>
@@ -260,7 +260,7 @@ get_header();
             <?php
             if ($loop->have_posts()):
                 $i = 0;
-                ?>    
+                ?>
                 <?php
                 while ($loop->have_posts()):
                     $loop->the_post();
@@ -285,7 +285,7 @@ get_header();
                                 </div>
                                 <?php if (have_rows('activity_images')): ?>
                                     <div class="row photo">
-                                        <?php while (have_rows('activity_images')) : the_row(); ?>                                
+                                        <?php while (have_rows('activity_images')) : the_row(); ?>
                                             <div class="col-xs-3 pull-right">
                                                 <a href="<?php echo get_sub_field('image'); ?>" class="photo1" rel="gal<?php echo $i; ?>" title="EVOLABLE ASIA">
                                                     <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
@@ -307,7 +307,7 @@ get_header();
                                 </div>
                                 <?php if (have_rows('activity_images')): ?>
                                     <div class="row photo">
-                                        <?php while (have_rows('activity_images')) : the_row(); ?>                                
+                                        <?php while (have_rows('activity_images')) : the_row(); ?>
                                             <div class="col-xs-3 pull-right">
                                                 <a href="<?php echo get_sub_field('image'); ?>" class="photo1" rel="gallery2" title="EVOLABLE ASIA">
                                                     <img src="<?php echo get_sub_field('image'); ?>" alt="" class="img-responsive">
@@ -331,7 +331,7 @@ get_header();
                 endwhile;
                 ?>
             <?php endif; ?>
-            <?php wp_reset_postdata() ?>                    
+            <?php wp_reset_postdata() ?>
         </div>
     </div>
 
@@ -367,7 +367,7 @@ get_header();
                 $num_parts = $num_posts % 6 == 0 ? $num_posts / 6 : intval($num_posts / 6) + 1;
                 for ($i = 0; $i < $num_parts; $i++) {
                     $j = 0;
-                    ?>                    
+                    ?>
                     <div class="row-gap-medium"></div>
                     <div class="row">
                         <?php
@@ -385,7 +385,7 @@ get_header();
                             $j++;
                         }
                         ?>
-                    </div> 
+                    </div>
 
                 <?php } ?>
                 <div class="row-gap-large"></div>
