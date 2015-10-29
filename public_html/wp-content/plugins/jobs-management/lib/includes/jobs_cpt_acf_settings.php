@@ -223,7 +223,7 @@ new jobs_cpt_acf_settings();
 global $jola_settings;
 
 $jola_settings['top-image'] = array(
-    'id' => 'top-image',
+    'id' => 'top_image',
     'label' => 'Top Image',
     'description' => '',
     'type' => 'media',
@@ -232,7 +232,7 @@ $jola_settings['top-image'] = array(
 );
 
 $jola_settings['image-1'] = array(
-    'id' => 'image-1',
+    'id' => 'image_1',
     'label' => 'About Image 1',
     'description' => '',
     'type' => 'media',
@@ -241,7 +241,7 @@ $jola_settings['image-1'] = array(
 );
 
 $jola_settings['image-2'] = array(
-    'id' => 'image-2',
+    'id' => 'image_2',
     'label' => 'About Image 2',
     'description' => '',
     'type' => 'media',
@@ -250,7 +250,7 @@ $jola_settings['image-2'] = array(
 );
 
 $jola_settings['lab-des-1'] = array(
-    'id' => 'lab-des-1',
+    'id' => 'lab_des_1',
     'label' => 'About Us',
     'description' => '',
     'type' => 'wysiwyg',
@@ -259,7 +259,7 @@ $jola_settings['lab-des-1'] = array(
 );
 
 $jola_settings['lab-des-2'] = array(
-    'id' => 'lab-des-2',
+    'id' => 'lab_des_2',
     'label' => 'Development Team',
     'description' => '',
     'type' => 'wysiwyg',
@@ -268,7 +268,7 @@ $jola_settings['lab-des-2'] = array(
 );
 
 $jola_settings['lab-des-3'] = array(
-    'id' => 'lab-des-3',
+    'id' => 'lab_des_3',
     'label' => 'Carrier',
     'description' => '',
     'type' => 'wysiwyg',
@@ -276,11 +276,24 @@ $jola_settings['lab-des-3'] = array(
     'placeholder',
 );
 
-//function jola_load_media(){
-//    wp_enqueue_media();
-//}
-//
-//add_action('jola_admin_print_styles', 'jola_load_media');
+function jola_load_media() {
+    $assets_dir = esc_url(trailingslashit(plugins_url('/assets/', __FILE__)));
+
+    wp_register_style('fancybox-style', $assets_dir . 'fancybox/jquery.fancybox.css');
+    wp_enqueue_style('fancybox-style');
+    //
+    wp_enqueue_style('farbtastic');
+    wp_enqueue_script('farbtastic');
+    //
+    wp_enqueue_media();
+    wp_register_script('wpt-admin-js', $assets_dir . 'js/settings.js', array('farbtastic', 'jquery'), '1.0.0');
+    wp_enqueue_script('wpt-admin-js');
+    //
+    wp_register_script('fancybox-admin-js', $assets_dir . 'fancybox/jquery.fancybox.pack.js', array('farbtastic', 'jquery'), '2.1.5');
+    wp_enqueue_script('fancybox-admin-js');
+}
+
+add_action('admin_init', 'jola_load_media');
 
 function taxonomy_add_new_meta_field() {
     global $jola_settings;
@@ -343,27 +356,20 @@ function taxonomy_edit_meta_field($term) {
                 <?php
                 break;
             case 'media':
-                $image_thumb = '';
+                $image_thumb = 'images/media-button-image.gif';
                 if ($term_meta[$t_id]) {
                     $image_thumb = $term_meta[$t_id];
                 }
                 ?>
                 <tr class="form-field">
                     <th scope="row" valign="top">
-                        <label for="<?php echo $t_id ?>" class="wpaft_meta_name_label"><?php _e($data['label']) ?></label>
+                        <label for="<?php echo $t_id ?>" class="meta_name_label"><?php _e($data['label']) ?></label>
                     </th>
                     <td>
-                        <div id="<?php echo $t_id ?>_selected_image" class="wpaft_selected_image">
-                            <?php if ($image_thumb != '') echo '<img src="' . $image_thumb . '" style="max-width:50%;"/>'; ?>
-                        </div>
-                        <input type="text" name="<?php echo $t_id ?>" id="<?php echo $t_id ?>" value="<?php echo $image_thumb; ?>" /><br />
-                        <br />
-                        <img src="images/media-button-image.gif" alt="Add photos from your media" /> 
-                        <a href="media-upload.php?type=image&#038;wpaft_send_label=<?php echo $t_id ?>&#038;TB_iframe=1&#038;tab=library&#038;height=500&#038;width=640" onclick="image_photo_url_add('<?php echo $t_id ?>')" class="thickbox" title="Add an Image"> 
-                            <strong>
-                                <?php echo _e('Click here to add/change your image', 'wp-texonomy-meta'); ?>
-                            </strong>
-                        </a>
+                        <img id="<?php echo $t_id ?>_preview" class="image_preview" src="<?php echo $image_thumb ?>" style="max-width:50%;" /><br/>
+                        <input id="<?php echo $t_id ?>_button" type="button" data-uploader_title="Upload an image" data-uploader_button_text="Use image" class="image_upload_button button" value="Upload new image" />
+                        <input id="<?php echo $t_id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
+                        <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo $image_thumb ?>"/>
                     </td>
                 </tr>
                 <?php
