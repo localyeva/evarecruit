@@ -61,6 +61,17 @@
                             <img height="40" alt="Evolable Asia" src="<?php echo get_site_logo() ?>">
                         </a>
                     </div>
+                    <style>
+                        .navbar-default .navbar-nav > li > a.btn-join, .navbar-default .navbar-text{
+                            background-color: #ff530d;
+                            border-radius: 5px;
+                            color: #fff;
+                            padding: 6px 12px;
+                        }
+                        .navbar-default .navbar-nav > li > a.btn-join:focus, .navbar-default .navbar-nav > li > a.btn-join:hover{
+                            background-color: #ff530d;
+                        }
+                    </style>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="<?php echo bloginfo('url') ?>">Home</a></li>
@@ -69,7 +80,7 @@
                             <!--<li><a href="<?php echo bloginfo('url') ?>/#about-us" data-goto="about-us">About</a></li>-->
                             <!--<li><a href="<?php echo bloginfo('url') ?>/team">Team</a></li>-->
                             <li>
-                                <button data-url="<?php echo bloginfo('url') ?>/jobs" type="button" class="btn btn-orange navbar-btn hand">Join Us Now</button>
+                                <a class="btn btn-orange navbar-btn btn-join white-link" href="<?php echo bloginfo('url') ?>/jobs">Join Us Now</a>
                             </li>
                         </ul>
                     </div>
