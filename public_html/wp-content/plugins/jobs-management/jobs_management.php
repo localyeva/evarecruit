@@ -365,6 +365,16 @@ class jobs_management extends PW_Template_Loader {
      */
     public function register_pages() {
 
+        // CV download page
+        $download_cv = array(
+            'post_name' => 'download',
+            'post_title' => 'Download',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'page_template' => '',
+        );
+        $download_cv_page_id = $this->create_page_if_null($download_cv);
+        
         // Apply Job
         $apply_job = array(
             'post_name' => 'jobs-apply',
@@ -547,6 +557,7 @@ class jobs_management extends PW_Template_Loader {
             phone_number varchar(15) DEFAULT '' NOT NULL,
             gender varchar(1) DEFAULT '-',
             attach_file varchar(255) NOT NULL,
+            download_link varchar(255) NOT NULL,
             job_id int(12) NULL,
             job_title varchar(255) NULL,
             job_slug varchar(255) NULL,

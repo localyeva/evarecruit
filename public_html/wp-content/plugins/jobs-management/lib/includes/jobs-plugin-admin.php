@@ -210,7 +210,7 @@ class jobs_plugin_admin {
                 array(
                     'id' => 'text_block_admin',
                     'label' => __('Mail Template (To Admin)', 'plugin_textdomain') . "<br><h5>( {$this->settings_base}text_block_admin )</h5>",
-                    'description' => __('{{apply_date}} {{fullname}} {{email}} {{phone_number}} {{gender}} {{attach_file}} {{job_id}} {{job_title}} {{job_position}} {{job_level}} {{job_salary}} {{job_location}} {{job_expired}} {{job_slug}} {{entry_time}} {{entry_host}} {{entry_ua}}', 'plugin_textdomain'),
+                    'description' => __('{{apply_date}} {{fullname}} {{email}} {{phone_number}} {{gender}} {{download_link}} {{attach_file}} {{job_id}} {{job_title}} {{job_position}} {{job_level}} {{job_salary}} {{job_location}} {{job_expired}} {{job_slug}} {{entry_time}} {{entry_host}} {{entry_ua}}', 'plugin_textdomain'),
                     'type' => 'wysiwyg',
                     'default' => '',
                     'placeholder' => __('', 'plugin_textdomain')
@@ -364,7 +364,7 @@ class jobs_plugin_admin {
                         $html .= '<td>' . $post->phone_number . '</td>';
                         $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
                         $html .= '<td>'
-                                . '<a target="_blank" href="' . home_url() . '/download?attach=' . $post->id . '"><button>Download CV</button></a>'
+                                . '<a class="btn button" href="' . home_url() . '/download?attach=' . $post->id . '">Download CV</a>'
                                 . '</td>';
                         $html .= '<td>';
                         $html .= '<a class="pop-job" href="#job_' . $post->id . '">' . $post->job_title . '</a>';

@@ -109,6 +109,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     $table_name = $wpdb->prefix . 'jobs_management';
 
+    $download_link = isset($_POST['job_id']) ? (home_url() . '/download?attach=' . $_POST['job_id']) : '';
     $data = array(
         'apply_date' => current_time('mysql'),
         'fullname' => $_POST['re_fullname'],
@@ -116,6 +117,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'phone_number' => $_POST['re_tel'],
         'gender' => $_POST['re_gender'][0],
         'attach_file' => $url_cv,
+        'download_link' =>  $download_link,
         'job_id' => isset($_POST['job_id']) ? $_POST['job_id'] : '',
         'job_title' => isset($_POST['job_title']) ? $_POST['job_title'] : 'Apply Resumne',
         'job_position' => isset($_POST['job_position']) ? $_POST['job_position'] : '',
