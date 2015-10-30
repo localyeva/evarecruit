@@ -145,6 +145,9 @@ class jobs_management extends PW_Template_Loader {
 
         add_filter('archive_template', array($this, 'get_custom_post_type_archive_template'), 10, 1);
         add_filter('single_template', array($this, 'get_custom_post_type_single_template'), 10, 1);
+
+        //
+        add_action('template_redirect', array($this, 'download_cv'));
     }
 
     /**
@@ -424,10 +427,10 @@ class jobs_management extends PW_Template_Loader {
 //        wp_enqueue_script('js-validate-popover-frontend');
 //        wp_register_script('js-additional-frontend', $this->get_plugin_url() . '/assets/js/additional-methods.min.js', array('jquery'), '1.14.0', TRUE);
 //        wp_enqueue_script('js-additional-frontend');
-        
+
         wp_register_script('js-job-plugin-frontend', $this->get_plugin_url() . '/assets/js/job-plugin.js', array('jquery'), '1.0.0', TRUE);
         wp_enqueue_script('js-job-plugin-frontend');
-        
+
         //
 //        wp_register_script('js-easing-frontend', $this->get_plugin_url() . '/assets/js/jquery.easing.js', array('jquery'), '1.3', TRUE);
 //        wp_enqueue_script('js-easing-frontend');
@@ -557,6 +560,56 @@ class jobs_management extends PW_Template_Loader {
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta($sql);
+    }
+
+    /**
+     * 
+     */
+    function download_cv() {
+        global $wp_query;
+        global $wpdb;
+        //
+        if (isset($wp_query->query['pagename'])) {
+            if ($wp_query->query['pagename'] == 'download') {
+                if (current_user_can('manage_options')) {
+                    //
+                    if (isset($_GET['attach'])) {
+                        if (is_numeric($_GET['attach'])) {
+                            $id = $_GET['attach'];
+                            //
+                            $table_name = $wpdb->prefix . 'jobs_management';
+                            $list_candidates = $wpdb->get_results(
+                                    ""
+                                    . " SELECT * "
+                                    . " FROM  $table_name "
+                                    . " WHERE id =  $id "
+                            );
+                            $post = $list_candidates[0];
+                            //
+                            $attach_file = $post->attach_file;
+                            $ext = substr(strrchr($attach_file, '.'), 1);
+                            $clean_name = sanitize_title($post->fullname . '-cv') . '.' . $ext;
+                            //
+                            $parse = parse_url($attach_file);
+                            $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
+                            //
+                            header('Content-Description: File Transfer');
+                            header('Content-Type: application/force-download');
+                            header("Content-Disposition: attachment; filename=\"" . $clean_name . "\";");
+                            header('Content-Transfer-Encoding: binary');
+                            header('Expires: 0');
+                            header('Cache-Control: must-revalidate');
+                            header('Pragma: public');
+                            header('Content-Length: ' . filesize($attach_file_path));
+                            ob_clean();
+                            flush();
+                            readfile($attach_file_path);
+                            exit();
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

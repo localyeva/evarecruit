@@ -124,7 +124,7 @@ function remove_menus_from_plugins() {
 
     remove_menu_page('edit.php?post_type=acf');     // ACF
     remove_menu_page('cptui_main_menu');          // CPT
-    remove_menu_page('admin.php?page=cptui_manage_post_types');          // CPT
+//    remove_menu_page('admin.php?page=cptui_manage_post_types');          // CPT
 }
 
 add_action('admin_init', 'remove_menus_from_plugins');
