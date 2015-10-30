@@ -414,8 +414,7 @@ h3 {
 .header-apply-resume {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background: url('../img/apply-resume.png') top left no-repeat;
-	background-size: cover;
+	background: url('../img/apply-resume.png') top left;
 	font-size: 22px;
 	.container {
 		position: relative;
@@ -638,6 +637,9 @@ h3 {
 					-webkit-border-radius: 5px !important;
 					-moz-border-radius: 5px !important;
 					border-radius: 5px !important;
+					&:hover {
+						background-color: #ff733a !important;
+					}
 				}
 			}
 		}
@@ -950,7 +952,7 @@ h3 {
 	background-color: @orange;
 	color: #fff;
 	&:hover, &:focus, &:active, &:focus:active {
-		background-color: #ff733a;
+		background-color: #ff733a !important;
 		color: #fff;
 	}
 }
@@ -1137,18 +1139,35 @@ h3 {
 		}
 		.item {
 			background: #fff;
-			.content {
-				&.icon-right {
+			padding: 0px;
+			margin: 0px;
+			margin-bottom: 20px;
+			.avatar {
+				padding: 0px;
+			}
+			&.left-alignment {
+				.avatar {
+					float: left;
+				}
+				.content {
 					padding: 20px 70px 10px 10px;
+					float: right;
 					&:before {
 						margin-bottom: -15px;
 						margin-right: -50px;
 						content: url('../img/detail_staff/11.png');
 						float: right;
 					}
+
 				}
-				&.icon-left {
+			}
+			&.right-alignment {
+				.avatar {
+					float: right;
+				}
+				.content {
 					padding: 20px 10px 10px 70px;
+					float: left;
 					&:before {
 						margin-bottom: -15px;
 						margin-left: -50px;
