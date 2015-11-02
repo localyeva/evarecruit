@@ -52,6 +52,25 @@ $().ready(function () {
         }
     });
 
+    $('.relative-position').each(function() {
+        if ($(this).attr('rel') == $('#re_position').val()) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+
+    $('#re_position').change(function() {
+        var currentPosition = $(this).val();
+        $('.relative-position').each(function() {
+            if ($(this).attr('rel') == currentPosition) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
 });
 
 
