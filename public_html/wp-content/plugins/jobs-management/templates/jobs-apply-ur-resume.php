@@ -12,48 +12,54 @@ if (!defined('ABSPATH')) {
     <div class="container">
         <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
             <h2>Apply Your Resume</h2>
-            <fieldset class="form-group has-success has-feedback">
-                <!-- <i class="icon email"></i> -->
-                <label class="control-label" for="re_email">Email</label>
+            <fieldset class="form-group has-feedback">
+                <label class="control-label" for="re_email"></label>
                 <input type="text" class="form-control input-lg" id="re_email" name="re_email" placeholder="Email">
-                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                <!-- <span id="inputSuccess2Status" class="sr-only">(success)</span> -->
+<!--                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
-            <fieldset class="form-group has-warning has-feedback">
-                <label class="control-label" for="re_fullname">Full name</label>
+            <fieldset class="form-group has-feedback">
+                <label class="control-label" for="re_fullname" style="display: none"></label>
                 <input type="text" class="form-control input-lg" id="re_fullname" name="re_fullname" placeholder="Full Name">
-                <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+                <!--<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
-            <fieldset class="form-group has-error has-feedback">
-                <label class="control-label" for="re_tel">Phone number</label>
+            <fieldset class="form-group has-feedback">
+                <label class="control-label" for="re_tel" style="display: none"></label>
                 <input type="text" class="form-control input-lg" id="re_tel" name="re_tel" placeholder="Phone Number">
-                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                <!--<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
             <fieldset class="form-group">
                 <label class="control-label" for="re_position">Position</label>
                 <select class="form-control input-lg" id="re_position" name="re_position" placeholder="Choose a position">
-                    <option value="1">Lập trình (Developer)</<option>
+                    <option value="">-- Select --</option>
+                    <option value="1">Lập trình (Developer)</option>
                     <option value="2">HTML Coder</<option>
-                    <option value="3">Xử lý dữ liệu (BPO)</<option>
-                    <option value="4">Kỹ sư cầu nối (BSE)</<option>
+                    <option value="3">Xử lý dữ liệu (BPO)</option>
+                    <option value="4">Kỹ sư cầu nối (BSE)</option>
                     <option value="5">Thông dịch / Trợ lý (Japanese Communicator/Assistant)</<option>
-                    <option value="6">Khác (Others)</<option>
+                    <option value="6">Khác (Others)</option>
                 </select>
+                <input type="hidden" id="job_position" name="job_position" value="" />
             </fieldset>
             <fieldset class="form-group relative-position" rel="1">
-                <!-- <label class="control-label" for="re_programming_language">Programming language</label> -->
                 <input type="text" class="form-control input-lg" id="re_programming_language" name="re_programming_language" placeholder="Ex: PHP, Java, Object-C, ...">
             </fieldset>
             <fieldset class="form-group relative-position" rel="6">
-                <!-- <label class="control-label" for="re_other_position">Others</label> -->
                 <input type="text" class="form-control input-lg" id="re_other_position" name="re_other_position" placeholder="Ex: HR, Sales, Accounting, ...">
             </fieldset>
             <fieldset class="form-group">
-                <label class="control-label" for="re_location">Location</label>
-                <select class="form-control input-lg" id="re_location" name="re_location" placeholder="Location">
-                    <option value="HCM">HCM</<option>
-                    <option value="Ha Noi">Ha Noi</<option>
-                    <option value="Da Nang">Da Nang</<option>
+                <label class="control-label" for="job_location">Location</label>
+                <?php
+                $args = array(
+                    'orderby' => 'count',
+                    'hide_empty' => 0
+                );
+                $locations = get_terms('job-location', $args);
+                ?>
+                <select class="form-control input-lg" id="job_location" name="job_location" placeholder="Location">
+                    <option value="">-- Select --</option>
+                    <?php foreach ($locations as $location): ?>
+                        <option value="<?php echo $location->name ?>"><?php echo $location->name ?></option>
+                    <?php endforeach; ?>
                 </select>
             </fieldset>
             <fieldset class="form-group upload-cv">

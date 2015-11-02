@@ -55,7 +55,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         're_email' => 'trim|sanitize_email',
         're_fullname' => 'trim',
         're_tel' => 'trim',
-        're_gender' => 'trim',
+//        're_gender' => 'trim',
     );
     $gump->filter_rules($rules);
 
@@ -115,7 +115,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'fullname' => $_POST['re_fullname'],
         'email' => $_POST['re_email'],
         'phone_number' => $_POST['re_tel'],
-        'gender' => $_POST['re_gender'][0],
+//        'gender' => $_POST['re_gender'][0],
         'attach_file' => $url_cv,
         'download_link' =>  $download_link,
         'job_id' => isset($_POST['job_id']) ? $_POST['job_id'] : '',

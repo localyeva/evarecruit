@@ -321,7 +321,7 @@ class jobs_plugin_admin {
                         ""
                         . " SELECT * "
                         . " FROM  $table_name "
-                        . " ORDER BY job_expired, apply_date DESC "
+                        . " ORDER BY id DESC "
                         . " LIMIT ${offset}, ${items_per_page} "
                 );
 

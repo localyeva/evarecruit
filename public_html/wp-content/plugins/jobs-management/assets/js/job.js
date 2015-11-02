@@ -1,7 +1,8 @@
 $().ready(function () {
 
+    var error_icon_template = '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
     var form_valid = $('#apply-form');
-    form_valid.validate_popover({
+    form_valid.validate({
         popoverPosition: 'right',
         rules: {
             're_email': {
@@ -21,9 +22,9 @@ $().ready(function () {
             }
         },
         messages: {
-            're_email': 'Vui lòng kiểm tra email',
-            're_fullname': 'Vui lòng nhập tên',
-            're_tel': 'Vui lòng nhập điện thoại',
+            're_email': error_icon_template,
+            're_fullname': error_icon_template,
+            're_tel': error_icon_template,
             're_attach': {
                 required: 'Vui lòng Upload CV của bạn',
                 extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx'
