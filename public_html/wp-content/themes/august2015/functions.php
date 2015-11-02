@@ -122,12 +122,10 @@ function add_custom_script() {
 
 function remove_menus_from_plugins() {
 
-    remove_menu_page('edit.php?post_type=acf');     // ACF
-    remove_menu_page('cptui_main_menu');          // CPT
-//    remove_menu_page('admin.php?page=cptui_manage_post_types');          // CPT
+//    remove_menu_page('cptui_main_menu');          // CPT
 }
 
-add_action('admin_init', 'remove_menus_from_plugins');
+//add_action('admin_init', 'remove_menus_from_plugins');
 
 function remove_menus() {
 
@@ -139,6 +137,8 @@ function remove_menus() {
     $arr_roles = array('administrator');
 
     if (in_array($role, $arr_roles)) {
+        remove_menu_page('edit.php?post_type=acf');     // ACF
+        remove_menu_page('cptui_main_menu');          // CPT
         remove_menu_page('index.php');                  //Dashboard
         remove_menu_page('edit.php');                   //Posts
 //        remove_menu_page('upload.php');                 //Media
@@ -148,6 +148,16 @@ function remove_menus() {
         remove_menu_page('tools.php');                  //Tools
 //        remove_menu_page('options-general.php');        //Settings
     } else {
+        remove_menu_page('edit.php?post_type=ceo-message');
+        remove_menu_page('edit.php?post_type=about-us');
+        remove_menu_page('edit.php?post_type=slider-home');
+        remove_menu_page('edit.php?post_type=slider-evnironment');
+        remove_menu_page('edit.php?post_type=staff');
+        remove_menu_page('edit.php?post_type=stay-connected');
+        remove_menu_page('edit.php?post_type=global-service');
+        remove_menu_page('edit.php?post_type=work-environment');
+        remove_menu_page('edit.php?post_type=service');
+        //
         remove_menu_page('index.php');                  //Dashboard
         remove_menu_page('edit.php');                   //Posts
         remove_menu_page('upload.php');                 //Media
@@ -162,3 +172,13 @@ function remove_menus() {
 }
 
 add_action('admin_menu', 'remove_menus');
+
+function mytheme_register_nav_menus() {
+    $arr1 = array('primary_navigation' => 'Primary Navigation');
+    $arr2 = array('footer_navigation' => 'Footer Navigation');
+    register_nav_menus(
+        $arr1,
+        $arr2
+    );
+}
+add_action( 'after_setup_theme', 'mytheme_register_nav_menus' );
