@@ -196,20 +196,35 @@ if ($loop->have_posts()) {
         <div class="row-gap-large"></div>
         <!-- // image not in terms -->
         <div class="row gallery gallery-all" data-tab="all">
+            <?php $i = 0; ?>
             <?php if ($loop_all->have_posts()): ?>
                 <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
+                    <?php
+                    if ($i > 8) {
+                        $i = 1;
+                    } else {
+                        $i++;
+                    }
+                    ?>
                     <div class="col-xs-3">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                 <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                             </div>
                         </div>
                     </div>
                     <?php if (have_rows('images')): ?>
                         <?php while (have_rows('images')): the_row(); ?>
+                            <?php
+                            if ($i > 8) {
+                                $i = 1;
+                            } else {
+                                $i++;
+                            }
+                            ?>
                             <div class="col-xs-3">
                                 <div class="row">
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                         <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_sub_field('image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
                                     </div>
                                 </div>
