@@ -8,22 +8,20 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 ?>
-<div class="header-apply-resume">
+<div class="header-apply-resume" style="position: relative;">
+    <div style="width: 100%; z-index: 99999; display: none; position: absolute; height: 100%; background: rgba(255, 255, 255, 0.15) none repeat scroll 0px 0px;" class="overlay"><i style="z-index: 999999; font-size: 36px; text-align: center; display: block; margin-top: 11em;" class="fa fa-spinner fa-spin"></i></div>
     <div class="container">
         <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
             <h2>Apply Your Resume</h2>
             <div class="row-gap-small"></div>
             <fieldset class="form-group has-feedback">
                 <input type="text" class="form-control input-lg" id="re_email" name="re_email" placeholder="Email">
-<!--                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
             <fieldset class="form-group has-feedback">
                 <input type="text" class="form-control input-lg" id="re_fullname" name="re_fullname" placeholder="Full Name">
-                <!--<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
             <fieldset class="form-group has-feedback">
                 <input type="text" class="form-control input-lg" id="re_tel" name="re_tel" placeholder="Phone Number">
-                <!--<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>-->
             </fieldset>
             <fieldset class="form-group">
                 <label class="control-label" for="re_position">Position</label>

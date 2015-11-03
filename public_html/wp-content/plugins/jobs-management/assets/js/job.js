@@ -32,6 +32,24 @@ $().ready(function () {
         },
         submitHandler: function (form) {
             if ($('#re_check').is(':checked')) {
+                //
+                var re_position;
+                var re_position_id = $('#re_position').val();
+                switch (re_position_id){
+                    case 1:
+                        re_position = $('#re_position option:selected').text() + ' ' + $('#re_programming_language').val();
+                        break;
+                    case 6:
+                        re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
+                        break;
+                    default:
+                        re_position = $('#re_position option:selected').text();
+                        break;
+                }
+                $('#job_position').val(re_position);
+                //
+                $('.header-apply-resume .overlay').show();
+                //
                 form.submit();
             } else {
                 alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
@@ -59,7 +77,7 @@ $().ready(function () {
         } else {
             $(this).hide();
         }
-    });
+});
 
     $('#re_position').change(function() {
         var currentPosition = $(this).val();
@@ -87,6 +105,8 @@ function get_iframe_result(data) {
         $('#apply-form')[0].reset();
         $('.fancybox-close').fancybox().trigger('click');
     }
+    //
+    $('.header-apply-resume .overlay').hide();
 }
 
 $(function () {
