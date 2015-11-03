@@ -118,25 +118,3 @@ $(document).ready(function () {
     $('.ads').hide();
     $('.paging li:eq(0)').click();
 });
-
-/* Apply */
-$(document).ready(function () {
-    $('.upload-cv').find('input:button').click(function () {
-        var fileUpload = $(this).siblings('input:file');
-        fileUpload.click();
-
-    });
-    $("input:file").change(function () {
-        var fileName = $(this).val();
-        $(this).siblings(".filename").html(fileName);
-    });
-    $('.radiogroup > label.option').click(function () {
-        var radioGroup = $(this).parent('.radiogroup');
-        radioGroup.find('.radio').removeClass('checked');
-        $(this).children('.radio').addClass('checked').children('input:radio').click();
-    });
-    $('.submit').click(function (event) {
-        event.preventDefault();
-        $(this).parents('form').submit();
-    });
-});
