@@ -191,6 +191,19 @@
 	}
 }
 
+.input-lg {
+	padding: 5px 16px;
+	height: 37px !important;
+}
+
+.has-feedback {
+	label.error {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
+}
+
 // Helper class
 .row-gap-small {
 	height: @row-gap-small-height;
@@ -415,7 +428,7 @@ h3 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background: url('../img/apply-resume.png') top left;
-	font-size: 22px;
+	font-size: 18px;
 	.container {
 		position: relative;
 		top: 0px;
@@ -434,7 +447,7 @@ h3 {
 			h2 {
 				text-align: center;
 				color: @heavy-blue-sky;
-				margin: 0px 0px 45px 0px;
+				/* margin: 0px 0px 25px 0px; */
 			}
 			label {
 				font-weight: bold;
@@ -480,7 +493,7 @@ h3 {
 					background: url('../img/icons/radio-checked.png') top left no-repeat;
 				}
 				.glyphicon {
-					top: 35px;
+					top: 3px;
 				}
 			}
 			fieldset.box {
@@ -504,6 +517,13 @@ h3 {
 				/* padding: 10px 20px; */
 				/* padding-left: 75px; */
 				/* box-sizing: border-box; */
+			}
+			input[type="file"] {
+				padding-top: 0px;
+				padding-bottom: 0px;
+				border: 0;
+				background: transparent;
+				box-shadow: none;
 			}
 			input[type="radio"] {
 				margin-right: 5px;
