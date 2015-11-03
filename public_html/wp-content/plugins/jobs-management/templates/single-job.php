@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Jobs
- * 
+ *
  */
 
 if (!defined('ABSPATH')) {
@@ -75,7 +75,7 @@ get_header();
                             <?php echo get_field('job_requirement') ?>
                         </div>
                     </div>
-                    
+
                     <div class="row-gap-medium"></div>
 
                     <div class="row noprint">
@@ -94,50 +94,36 @@ get_header();
 <!-- // Apply Form Start -->
 <div id="apply-form-modal" class="apply-form-modal" style="display: none;">
     <div class="header-top-apply">
-        <div class="container text-center">
-            <h2>Apply Your Resume</h2>
+        <div class="text-center">
+            <h2 class="text-bold">Apply Your Resume</h2>
         </div>
     </div>
     <div class="row-gap-large"></div>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
             <form id="apply-form" name="apply-form" class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="re_email" name="re_email" placeholder="Email">
+                        <input type="text" class="form-control input-lg" id="re_email" name="re_email" placeholder="Email">
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_fullname" class="col-sm-2 control-label">Full Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="re_fullname" name="re_fullname" placeholder="Full Name">
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_tel" class="col-sm-2 control-label">Phone Number</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="re_tel" name="re_tel" placeholder="Phone Number">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="re_gender" class="col-sm-2 control-label">Gender</label>
-                    <div class="col-sm-10">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="re_gender[]" id="re_gender_m" value="m" checked>Male
-                            </label>
-                            <label>
-                                <input type="radio" name="re_gender[]" id="re_gender_f" value="f">Female
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_attach" class="col-sm-2 control-label">Attach CV</label>
                     <div class="col-sm-10">
                         <input type="file" id="re_attach" name="re_attach" />
@@ -145,15 +131,13 @@ get_header();
                 </div>
 
                 <div class="row-gap-medium"></div>
-                <div class="form-group">
-                    <label for="content" class="col-sm-2 control-label">Terms - Privacy</label>
+                <div class="form-group has-feedback">
+                    <label for="content" class="control-label">Terms - Privacy</label>
                 </div>
                 <div class="box">
                     <div class="row">
-                        <div class="col-xs-10 nano">
-                            <div class="nano-content">
+                        <div class="col-xs-10">
                                 <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,7 +156,7 @@ get_header();
                 </div>
                 <div class="row-gap-medium"></div>
                 <div class="row">
-                    <div class="col-xs-3 col-xs-offset-9">
+                    <div class="col-md-5 col-xs-12 btn-apply">
                         <button class="btn btn-block btn-orange" type="submit" name="apply" value="job">Submit request</button>
                     </div>
                 </div>

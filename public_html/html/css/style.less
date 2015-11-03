@@ -38,7 +38,7 @@
     .facebook {
 		text-align: center !important;
 		iframe {
-			width: 320px !important;
+			width: 290px !important;
 		}
 	}
 	.slide-caption {
@@ -170,7 +170,7 @@
 
 @media only screen and (max-width: 400px) {
 	h2 {
-		font-size: 10vw !important;
+		font-size: 8vw !important;
 	}
 	.slide-caption {
 		h1 {
@@ -188,6 +188,19 @@
 @media only screen and (max-width: 768px) {
 	h2 {
 		text-align: center !important;
+	}
+}
+
+.input-lg {
+	padding: 5px 16px;
+	height: 37px !important;
+}
+
+.has-feedback {
+	label.error {
+		position: absolute;
+		top: 0px;
+		right: 0px;
 	}
 }
 
@@ -270,9 +283,6 @@ a.white-link {
 }
 .bg-white {
 	background-color: #ffffff;
-}
-#carousel-captions {
-	background: url('../img/bg/grid.png');
 }
 .slide-caption {
 	text-align: center;
@@ -417,9 +427,8 @@ h3 {
 .header-apply-resume {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background: url('../img/apply-resume.png') top left no-repeat;
-	background-size: cover;
-	font-size: 22px;
+	background: url('../img/apply-resume.png') top left;
+	font-size: 18px;
 	.container {
 		position: relative;
 		top: 0px;
@@ -438,7 +447,7 @@ h3 {
 			h2 {
 				text-align: center;
 				color: @heavy-blue-sky;
-				margin: 0px 0px 45px 0px;
+				/* margin: 0px 0px 25px 0px; */
 			}
 			label {
 				font-weight: bold;
@@ -484,7 +493,7 @@ h3 {
 					background: url('../img/icons/radio-checked.png') top left no-repeat;
 				}
 				.glyphicon {
-					top: 35px;
+					top: 3px;
 				}
 			}
 			fieldset.box {
@@ -508,6 +517,13 @@ h3 {
 				/* padding: 10px 20px; */
 				/* padding-left: 75px; */
 				/* box-sizing: border-box; */
+			}
+			input[type="file"] {
+				padding-top: 0px;
+				padding-bottom: 0px;
+				border: 0;
+				background: transparent;
+				box-shadow: none;
 			}
 			input[type="radio"] {
 				margin-right: 5px;
@@ -641,6 +657,9 @@ h3 {
 					-webkit-border-radius: 5px !important;
 					-moz-border-radius: 5px !important;
 					border-radius: 5px !important;
+					&:hover {
+						background-color: #ff733a !important;
+					}
 				}
 			}
 		}
@@ -724,6 +743,14 @@ h3 {
 	h2 {
 		font-size: 48px;
 		margin: 40px 0;
+	}
+	h3 {
+		margin-top: 10px;
+	}
+	.container {
+		.col-xs-6 {
+			margin-bottom: 30px;
+		}
 	}
 }
 .header-intro-movie {
@@ -945,7 +972,7 @@ h3 {
 	background-color: @orange;
 	color: #fff;
 	&:hover, &:focus, &:active, &:focus:active {
-		background-color: #ff733a;
+		background-color: #ff733a !important;
 		color: #fff;
 	}
 }
@@ -1132,18 +1159,35 @@ h3 {
 		}
 		.item {
 			background: #fff;
-			.content {
-				&.icon-right {
+			padding: 0px;
+			margin: 0px;
+			margin-bottom: 20px;
+			.avatar {
+				padding: 0px;
+			}
+			&.left-alignment {
+				.avatar {
+					float: left;
+				}
+				.content {
 					padding: 20px 70px 10px 10px;
+					float: right;
 					&:before {
 						margin-bottom: -15px;
 						margin-right: -50px;
 						content: url('../img/detail_staff/11.png');
 						float: right;
 					}
+
 				}
-				&.icon-left {
+			}
+			&.right-alignment {
+				.avatar {
+					float: right;
+				}
+				.content {
 					padding: 20px 10px 10px 70px;
+					float: left;
 					&:before {
 						margin-bottom: -15px;
 						margin-left: -50px;
@@ -1364,8 +1408,8 @@ h3 {
 	background: url('../img/new_job/1.png') no-repeat;
 	background-size: cover;
 	color: #fff;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 	h2 {
 		font-size: 48px;
 	}
@@ -1625,6 +1669,12 @@ h3 {
 			img {
 				margin: 0 auto;
 			}
+			.mask {
+				width: 100%;
+				background: url('../img/bg/grid.png');
+				z-index: 10;
+				position: absolute;
+			}
 		}
 		.active {
 			opacity: 1;
@@ -1671,6 +1721,20 @@ button {
 }
 .hand{
 	cursor: pointer;
+}
+.btn-apply {
+	margin: 0 auto;
+	float: none;
+}
+
+.navbar-default .navbar-nav > li > a.btn-join, .navbar-default .navbar-text{
+    background-color: #ff530d;
+    border-radius: 5px;
+    color: #fff;
+    padding: 6px 12px;
+}
+.navbar-default .navbar-nav > li > a.btn-join:focus, .navbar-default .navbar-nav > li > a.btn-join:hover{
+    background-color: #ff530d;
 }
 @import 'screen-xs.less';
 @import 'screen-sm.less';

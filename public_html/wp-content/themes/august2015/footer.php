@@ -40,6 +40,7 @@
 <script src="<?php echo get_template_directory_uri() ?>/js/jquery.min.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/app.js"></script>
 <script src="<?php echo get_template_directory_uri() ?>/js/masonry.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/wow/wow.min.js"></script>
 <?php wp_footer(); ?>
 </body>
 </html>

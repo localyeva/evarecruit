@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Job of Lab
- * 
+ *
  */
 if (!defined('ABSPATH')) {
     die('No script kiddies please!');
@@ -141,7 +141,7 @@ get_header();
 <!-- // Apply Form Start -->
 <div id="apply-form-modal" class="apply-form-modal" style="display: none;">
     <div class="header-top-apply">
-        <div class="container text-center">
+        <div class="text-center">
             <h2 class="text-bold">Apply Your Resume</h2>
         </div>
     </div>
@@ -149,42 +149,28 @@ get_header();
     <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
             <form id="apply-form" name="apply-form" class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="re_email" name="re_email" placeholder="Email">
+                        <input type="text" class="form-control input-lg" id="re_email" name="re_email" placeholder="Email">
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_fullname" class="col-sm-2 control-label">Full Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="re_fullname" name="re_fullname" placeholder="Full Name">
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_tel" class="col-sm-2 control-label">Phone Number</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="re_tel" name="re_tel" placeholder="Phone Number">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="re_gender" class="col-sm-2 control-label">Gender</label>
-                    <div class="col-sm-10">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="re_gender[]" id="re_gender_m" value="m" checked>Male
-                            </label>
-                            <label>
-                                <input type="radio" name="re_gender[]" id="re_gender_f" value="f">Female
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <div class="form-group has-feedback">
                     <label for="re_attach" class="col-sm-2 control-label">Attach CV</label>
                     <div class="col-sm-10">
                         <input type="file" id="re_attach" name="re_attach" />
@@ -192,8 +178,8 @@ get_header();
                 </div>
 
                 <div class="row-gap-medium"></div>
-                <div class="form-group">
-                    <label for="content" class="col-sm-2 control-label">Terms - Privacy</label>
+                <div class="form-group has-feedback">
+                    <label for="content" class="control-label">Terms - Privacy</label>
                 </div>
                 <div class="box">
                     <div class="row">
@@ -217,7 +203,7 @@ get_header();
                 </div>
                 <div class="row-gap-medium"></div>
                 <div class="row">
-                    <div class="col-xs-3 col-xs-offset-9">
+                    <div class="col-md-5 col-xs-12 btn-apply">
                         <button class="btn btn-block btn-orange" type="submit" name="apply" value="job">Submit request</button>
                     </div>
                 </div>
@@ -260,23 +246,22 @@ get_header();
             <?php
             if ($loop->have_posts()):
                 $i = 0;
-                ?>    
+                ?>
                 <?php
                 while ($loop->have_posts()):
                     $loop->the_post();
                     $staff_ids[] = $post->ID;
                     ?>
-                    <div class="row-gap-medium"></div>
-                    <div class="row item">
                         <?php if ($i % 2 == 0): ?>
-                            <div class="col-md-4 col-xs-12 no-padding-lr">
+                        <div class="row item left-alignment col-md-12 col-xs-12">
+                            <div class="col-md-4 col-xs-12 avatar">
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
                                 <div class="caption full-width left">
                                     <h3><?php the_title(); ?></h3>
                                     <div class="intro"><?php echo get_field('job_description'); ?></div>
                                 </div>
                             </div>
-                            <div class="col-md-8 col-xs-12 content icon-right">
+                            <div class="col-md-8 col-xs-12 content">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <p class="text"><?php echo get_field('staff_thoughts') ?></p>
@@ -285,7 +270,7 @@ get_header();
                                 </div>
                                 <?php if (have_rows('activity_images')): ?>
                                     <div class="row photo">
-                                        <?php while (have_rows('activity_images')) : the_row(); ?>                                
+                                        <?php while (have_rows('activity_images')) : the_row(); ?>
                                             <div class="col-xs-3 pull-right">
                                                 <a href="<?php echo get_sub_field('image'); ?>" class="photo1" rel="gal<?php echo $i; ?>" title="EVOLABLE ASIA">
                                                     <img src="<?php echo get_sub_field('image') ?>" alt="" class="img-responsive">
@@ -295,8 +280,10 @@ get_header();
                                     </div>
                                 <?php endif; ?>
                             </div>
+                        </div>
                         <?php else: ?>
-                            <div class="col-md-8 col-xs-12 no-padding-l content icon-left">
+                        <div class="row item right-alignment col-md-12 col-xs-12">
+                            <div class="col-md-8 col-xs-12 content">
                                 <div class="row-gap-medium"></div>
                                 <div class="row-gap-small"></div>
                                 <div class="row">
@@ -307,7 +294,7 @@ get_header();
                                 </div>
                                 <?php if (have_rows('activity_images')): ?>
                                     <div class="row photo">
-                                        <?php while (have_rows('activity_images')) : the_row(); ?>                                
+                                        <?php while (have_rows('activity_images')) : the_row(); ?>
                                             <div class="col-xs-3 pull-right">
                                                 <a href="<?php echo get_sub_field('image'); ?>" class="photo1" rel="gallery2" title="EVOLABLE ASIA">
                                                     <img src="<?php echo get_sub_field('image'); ?>" alt="" class="img-responsive">
@@ -317,21 +304,21 @@ get_header();
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <div class="col-md-4 col-xs-12 no-padding-lr">
+                            <div class="col-md-4 col-xs-12 avatar">
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
                                 <div class="caption full-width right">
                                     <h3><?php the_title(); ?></h3>
                                     <div class="intro"><?php echo get_field('job_description'); ?></div>
                                 </div>
                             </div>
+                        </div>
                         <?php endif; ?>
-                    </div>
                     <?php
                     $i++;
                 endwhile;
                 ?>
             <?php endif; ?>
-            <?php wp_reset_postdata() ?>                    
+            <?php wp_reset_postdata() ?>
         </div>
     </div>
 
@@ -367,7 +354,7 @@ get_header();
                 $num_parts = $num_posts % 6 == 0 ? $num_posts / 6 : intval($num_posts / 6) + 1;
                 for ($i = 0; $i < $num_parts; $i++) {
                     $j = 0;
-                    ?>                    
+                    ?>
                     <div class="row-gap-medium"></div>
                     <div class="row">
                         <?php
@@ -385,7 +372,7 @@ get_header();
                             $j++;
                         }
                         ?>
-                    </div> 
+                    </div>
 
                 <?php } ?>
                 <div class="row-gap-large"></div>

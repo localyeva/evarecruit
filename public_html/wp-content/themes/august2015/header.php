@@ -23,13 +23,14 @@
         <!-- Bootstrap -->
         <!--
         <link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css" rel="stylesheet">        
+        <link href="<?php echo get_template_directory_uri() ?>/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.sidr.dark.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/jquery.fancybox.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/nanoscroller.css" rel="stylesheet">
         -->
         <link href="<?php echo get_template_directory_uri() ?>/css/app.css" rel="stylesheet">
         <link href="<?php echo get_template_directory_uri() ?>/css/style.css" rel="stylesheet">
+        <link href="<?php echo get_template_directory_uri() ?>/css/animate.css" rel="stylesheet">
 
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
