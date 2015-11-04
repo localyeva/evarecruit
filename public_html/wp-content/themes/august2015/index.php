@@ -35,9 +35,8 @@ if ($loop->have_posts()) {
         </ol>
         <div class="carousel-inner" role="listbox">
             <?php for ($i = 0; $i < count($slider_home); $i++): ?>
-                <div class="item <?php echo ($i == 0) ? 'active' : '' ?>">
+                <div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $slider_home[$i]['image'] ?>') fixed;" >
                     <div class="mask"></div>
-                    <img alt="" src="<?php echo $slider_home[$i]['image'] ?>">
                 </div>
             <?php endfor; ?>
         </div>

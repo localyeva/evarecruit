@@ -222,3 +222,21 @@ $(function () {
     });
     wow.init();
 });
+
+/*  Paralax slider */
+$(function () {
+    $('#carousel-captions').height($(window).height());
+    $('.carousel-inner').height($(window).height());
+    $('.carousel-inner .item').each(function() {
+        $(this).height($(window).height());
+        $(this).parallax({
+            speed: 0.15
+        });
+    });
+
+    $( window ).resize(function() {
+        $('#carousel-captions').height($(window).height());
+        $('.carousel-inner').height($(window).height());
+        $('.carousel-inner .item').height($(window).height());
+    });
+});
