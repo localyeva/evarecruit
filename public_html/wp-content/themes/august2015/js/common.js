@@ -240,3 +240,12 @@ $(function () {
         $('.carousel-inner .item').height($(window).height());
     });
 });
+
+$(function () {
+   $("#carousel-captions").swiperight(function() {
+      $("#carousel-captions").carousel('prev');
+    });
+   $("#carousel-captions").swipeleft(function() {
+      $("#carousel-captions").carousel('next');
+   });
+});
