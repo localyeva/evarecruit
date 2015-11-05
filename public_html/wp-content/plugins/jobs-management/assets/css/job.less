@@ -53,3 +53,56 @@ input[type=text], input[type=email]{
         }
     }
 }
+
+.header-find-job{
+    h2{
+        text-transform: capitalize;
+    }
+}
+
+.apply-overlay{
+    width: 100%; 
+    z-index: 9999; 
+    display: none; 
+    position: absolute; 
+    height: 100%; 
+    background: rgba(255, 255, 255, 0.15) none repeat scroll 0px 0px;
+}
+
+.apply-spin{
+    z-index: 99999; 
+    font-size: 36px; 
+    text-align: center; 
+    display: block; 
+    margin-top: 11em;
+}
+
+.apply-rs-popup {
+    position: absolute;
+    min-width: 340px;
+    /*height: 130px;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin: -130px 0 0 -190px;*/
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+    z-index: 9999;
+    padding: 20px;
+
+    background: white;
+    box-shadow: 0px 0px 20px rgba( 0, 0, 0, 0.6 );
+    border-radius: 3px;
+
+    -webkit-transform: scale( 0.8 );
+    -moz-transform: scale( 0.8 );
+    -ms-transform: scale( 0.8 );
+    -o-transform: scale( 0.8 );
+    transform: scale( 0.8 );
+    h2{
+        color: @page-active-bg;
+        font-size: 2.2em !important
+    }
+    p{
+        font-size: 1.8em !important
+    }
+}

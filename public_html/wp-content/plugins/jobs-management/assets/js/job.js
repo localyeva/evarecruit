@@ -1,3 +1,17 @@
+jQuery.fn.center = function (parent) {
+    if (parent) {
+        parent = this.parent();
+    } else {
+        parent = window;
+    }
+    this.css({
+        "position": "absolute",
+        "top": ((($(parent).height() - this.outerHeight()) / 2) + $(parent).scrollTop() + "px"),
+        "left": ((($(parent).width() - this.outerWidth()) / 2) + $(parent).scrollLeft() + "px")
+    });
+    return this;
+}
+
 $().ready(function () {
 
     var error_icon_template = '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
@@ -31,17 +45,6 @@ $().ready(function () {
             }
         },
         submitHandler: function (form) {
-            BootstrapDialog.show({
-                message: 'There is no fading effects on this dialog.',
-                animate: true,
-                buttons: [{
-                        label: 'Close the dialog',
-                        action: function (dialogRef) {
-                            dialogRef.close();
-                        }
-                    }]
-            });
-            return false;
             //
             if ($('#re_check').is(':checked')) {
                 //
@@ -54,13 +57,16 @@ $().ready(function () {
                     case '6':
                         re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
                         break;
+                    case '':
+                        re_position = '';
+                        break;
                     default:
                         re_position = $('#re_position option:selected').text();
                         break;
                 }
                 $('#job_position').val(re_position);
                 //
-                $('.header-apply-resume .overlay').show();
+                $('#apply-overlay').show();
                 //
                 form.submit();
             } else {
@@ -68,6 +74,10 @@ $().ready(function () {
             }
             return false;
         }
+    });
+
+    $('#apply-rs-close').on('click', function(){
+       $('#apply-rs-overlay').hide();
     });
 
     $('a.openform').fancybox({
@@ -108,17 +118,19 @@ $().ready(function () {
 function get_iframe_result(data) {
     var rs = jQuery.parseJSON(data);
     //
+    $('#apply-overlay').hide();
     if (rs.code == 'ERR') {
         $.each(rs.message, function (key, value) {
             $('#' + key).after('<label id="' + key + '-error" class="error" for="' + key + '">' + value + '</label>');
         });
     } else {
-        alert(rs.message);
+        /* alert(rs.message); */
+        $('#apply-rs-overlay').show();
+        $('#apply-rs-popup').center(true);
         $('#apply-form')[0].reset();
         $('.fancybox-close').fancybox().trigger('click');
     }
     //
-    $('.header-apply-resume .overlay').hide();
 }
 
 $(function () {

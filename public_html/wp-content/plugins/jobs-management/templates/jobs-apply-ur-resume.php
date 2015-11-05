@@ -8,8 +8,21 @@ if (!defined('ABSPATH')) {
     die('No script kiddies please!');
 }
 ?>
+
 <div class="header-apply-resume" style="position: relative;">
-    <div style="width: 100%; z-index: 99999; display: none; position: absolute; height: 100%; background: rgba(255, 255, 255, 0.15) none repeat scroll 0px 0px;" class="overlay"><i style="z-index: 999999; font-size: 36px; text-align: center; display: block; margin-top: 11em;" class="fa fa-spinner fa-spin"></i></div>
+    <div id="apply-overlay" class="apply-overlay">
+        <i class="fa fa-spinner fa-spin apply-spin"></i>
+    </div>
+    <div id="apply-rs-overlay" class="apply-overlay">
+        <aside id="apply-rs-popup" class="apply-rs-popup">
+            <h2>Apply Resume</h2>
+            <p>
+                Cảm ơn bạn đã ứng tuyển!
+            </p>
+            <button id="apply-rs-close" class="btn btn-default center-block">Close</button>
+        </aside>
+    </div>
+    
     <div class="container">
         <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
             <h2>Apply Your Resume</h2>
@@ -65,7 +78,7 @@ if (!defined('ABSPATH')) {
             <fieldset class="form-group agree-cv">
                 <label for="re_check">
                     <input type="checkbox" id="re_check" name="re_check" value="" checked>
-                    I agree to the Evolable Asia Terms and Privacy.
+                    I agree Evolable Asia Terms and Privacy.
                 </label>
             </fieldset>
             <div class="blankline"></div>
