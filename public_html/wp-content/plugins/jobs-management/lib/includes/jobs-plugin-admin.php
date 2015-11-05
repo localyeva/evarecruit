@@ -343,9 +343,9 @@ class jobs_plugin_admin {
                 $html .= '<td width="135">Applied Date</td>';
                 $html .= '<td width="75">Expired</td>';
                 $html .= '<td width="200">Candidate Name</td>';
-                $html .= '<td width="250">Email</td>';
-                $html .= '<td width="100">Telephone</td>';
-                $html .= '<td width="40">Gender</td>';
+                $html .= '<td width="250">Email & Telephone</td>';
+                $html .= '<td width="100">Location</td>';
+                $html .= '<td width="350">Position</td>';
                 $html .= '<td width="105">CV</td>';
                 $html .= '<td width="">Job Title</td>';
                 $html .= '</tr>';
@@ -360,16 +360,21 @@ class jobs_plugin_admin {
                         $html .= '<td>' . date_format(new DateTime($post->apply_date), 'd-m-Y H:i:s') . '</td>';
                         $html .= '<td>' . $post->job_expired . '</td>';
                         $html .= '<td>' . $post->fullname . '</td>';
-                        $html .= '<td>' . $post->email . '</td>';
-                        $html .= '<td>' . $post->phone_number . '</td>';
-                        $html .= '<td style="text-align:center;">' . strtoupper($post->gender) . '</td>';
+                        $html .= '<td>' . $post->email . '<br/>' . $post->phone_number . '</td>';
+                        $html .= '<td>' . $post->job_location . '</td>';
+                        $html .= '<td>' . $post->job_position . '</td>';
                         $html .= '<td>'
                                 . '<a class="btn button" href="' . home_url() . '/download?attach=' . $post->id . '">Download CV</a>'
                                 . '</td>';
                         $html .= '<td>';
                         $html .= '<a class="pop-job" href="#job_' . $post->id . '">' . $post->job_title . '</a>';
                         $html .= '<div id="job_' . $post->id . '" class="table" style="display:none;">'
-                                . '<h3><a href="' . $post->job_slug . '">' . $post->job_title . '</a></h3>'
+                                . '<h3>Candidate</h3>'
+                                . '<p>Fullname: ' . $post->fullname . '</p>'
+                                . '<p>Email: ' . $post->email . '</p>'
+                                . '<p>Telephone: ' . $post->phone_number . '</p>'
+                                . '<hr>'
+                                . '<h3><a href="' . $post->job_slug . '">[' . $post->id . '] ' . $post->job_title . '</a></h3>'
                                 . '<p>Salary: ' . $post->job_salary . '</p>'
                                 . '<p>Expired: ' . $post->job_expired . '</p>'
                                 . '<p>Location: ' . $post->job_location . '</p>'

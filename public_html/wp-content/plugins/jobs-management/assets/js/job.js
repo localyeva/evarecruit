@@ -31,15 +31,27 @@ $().ready(function () {
             }
         },
         submitHandler: function (form) {
+            BootstrapDialog.show({
+                message: 'There is no fading effects on this dialog.',
+                animate: true,
+                buttons: [{
+                        label: 'Close the dialog',
+                        action: function (dialogRef) {
+                            dialogRef.close();
+                        }
+                    }]
+            });
+            return false;
+            //
             if ($('#re_check').is(':checked')) {
                 //
                 var re_position;
                 var re_position_id = $('#re_position').val();
-                switch (re_position_id){
-                    case 1:
+                switch (re_position_id) {
+                    case '1':
                         re_position = $('#re_position option:selected').text() + ' ' + $('#re_programming_language').val();
                         break;
-                    case 6:
+                    case '6':
                         re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
                         break;
                     default:
@@ -71,17 +83,17 @@ $().ready(function () {
         }
     });
 
-    $('.relative-position').each(function() {
+    $('.relative-position').each(function () {
         if ($(this).attr('rel') == $('#re_position').val()) {
             $(this).show();
         } else {
             $(this).hide();
         }
-});
+    });
 
-    $('#re_position').change(function() {
+    $('#re_position').change(function () {
         var currentPosition = $(this).val();
-        $('.relative-position').each(function() {
+        $('.relative-position').each(function () {
             if ($(this).attr('rel') == currentPosition) {
                 $(this).show();
             } else {
