@@ -27,7 +27,7 @@ if ($loop->have_posts()) {
 ?>
 
 <div class="bs-carousel" data-example-id="carousel-with-captions">
-    <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel" data-interval=5000>
+    <div id="carousel-captions" class="carousel slide" data-ride="carousel" data-interval=5000>
         <ol class="carousel-indicators">
             <?php for ($i = 0; $i < count($slider_home); $i++): ?>
                 <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
