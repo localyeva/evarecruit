@@ -80,7 +80,7 @@ get_header();
                     <!-- info -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Recruit Information</div>
+                            <div class="title">Recruiting Information</div>
                             <div class="content">
                                 <?php $position = get_the_terms($post->ID, 'job-position'); ?>
                                 <p>Position: <?php echo $position[0]->name ?></p>
