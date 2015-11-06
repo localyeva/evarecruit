@@ -1,7 +1,7 @@
 <?php
 /*
  * Author: KhangLe
- * 
+ *
  */
 
 if (!defined('ABSPATH')) {
@@ -51,7 +51,7 @@ foreach ($terms as $term) {
                 while ($wp_query->have_posts()): $wp_query->the_post();
                     $counter++;
                     ?>
-                    <?php $oe_class = ($counter % 2 == 0) ? '' : 'odd'; ?> 
+                    <?php $oe_class = ($counter % 2 == 0) ? '' : 'odd'; ?>
                     <div class="row info <?php echo $oe_class ?>">
                         <h4><a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><?php the_title() ?> <?php if (get_field('status') != 0): ?><i class="highlight">(<?php echo $job_status[get_field('status')] ?>)</i><?php endif; ?></a></h4>
                         <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
@@ -73,7 +73,7 @@ foreach ($terms as $term) {
                 <h3>Featured Labs</h3>
             </div>
             <div class="row-gap-medium space"></div>
-
+            <div class="row block-content">
             <?php
             $args = array(
                 'post_type' => 'job',
@@ -96,7 +96,7 @@ foreach ($terms as $term) {
                 <?php
                 while ($wp_query->have_posts()): $wp_query->the_post();
                     ?>
-                    <div class="row ads">
+                    <div class="ads">
                         <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                             <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
                             <h4><?php echo $term_lab[0]->name ?></h4>
@@ -117,7 +117,7 @@ foreach ($terms as $term) {
             <?php if ($total_elements > 0): ?>
                 <div class="row paging">
                     <ul>
-                        <?php for ($counter = 0; $counter <= $total_elements; $counter++): ?>
+                        <?php for ($counter = 0; $counter < $total_elements; $counter++): ?>
                             <?php if ($counter % 3 == 0): ?>
                                 <li data-index="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : ''; ?>"></li>
                                 <?php $i++; ?>
@@ -126,6 +126,7 @@ foreach ($terms as $term) {
                     </ul>
                 </div>
             <?php endif; ?>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
