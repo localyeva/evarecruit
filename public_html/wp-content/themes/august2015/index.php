@@ -278,14 +278,11 @@ if ($loop->have_posts()) {
 <div class="header-intro-movie">
     <div class="container">
         <div class="row">
-            <div class="no-padding-r col-md-1 col-xs-4">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri() ?>/img/7.png" alt="">
-            </div>
-            <div class="col-md-4 col-xs-8">
+            <div class="col-md-4 col-xs-12">
                 <h2><?php echo get_part_work_environment_movie_title_text() ?></h2>
                 <?php echo get_part_work_environment_movie_desc_text() ?>
             </div>
-            <div class="col-md-6 col-md-offset-1 col-xs-12 video-container">
+            <div class="col-md-8 col-xs-12 video-container">
                 <?php echo get_part_work_environment_movie_link() ?>
             </div>
         </div>

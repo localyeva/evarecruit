@@ -38,6 +38,8 @@
                 <h3>Featured Employers</h3>
             </div>
             <div class="row-gap-medium space"></div>
+            <div class="page">
+            </div>
             <div class="row ads">
                 <a href="#" title="">
                     <h4>Lab name</h4>
