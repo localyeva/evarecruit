@@ -63,14 +63,14 @@ foreach ($terms as $term) {
             <?php wp_reset_postdata(); ?>
             <div class="row info see-all-job-overlay"></div>
             <div class="see-all-job">
-                <a href="<?php echo bloginfo('url') ?>/jobs">See all jobs</a>
+                <a href="<?php echo bloginfo('url') ?>/jobs">See All Jobs</a>
             </div>
         </div>
 
         <div class="col-xs-12 col-md-4 list r-col">
             <div class="row">
                 <div class="header"></div>
-                <h3>Featured Employers</h3>
+                <h3>Featured Labs</h3>
             </div>
             <div class="row-gap-medium space"></div>
 

@@ -47,7 +47,8 @@ get_header();
                     <div class="row">
                         <div class="col-xs-12 col-md-9">
                             <div class="title">
-                                <?php the_title() ?>
+                                <?php // the_title() ?>
+                                Project Information
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3" style="text-align: right;">
@@ -63,9 +64,9 @@ get_header();
 
                 <div class="detail">
                     <div class="row">
-                        <div class="col-xs-12">
-                        <div class="title">Project Information</div>
-                        </div>
+                        <!--<div class="col-xs-12">-->
+                        <!--<div class="title">Project Information</div>-->
+                        <!--</div>-->
                         <div class="col-xs-12">
                             <?php echo $lab_info['lab-des-1'] ?>
                         </div>
