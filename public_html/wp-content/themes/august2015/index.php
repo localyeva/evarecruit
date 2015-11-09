@@ -270,7 +270,9 @@ if ($loop->have_posts()) {
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
+        <div class="clearfix"></div>
     </div>
+    <div class="clearfix"></div>
 </div>
 <div class="row-gap-large"></div>
 <!--//Environment End-->
