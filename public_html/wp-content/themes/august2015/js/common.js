@@ -233,6 +233,10 @@ $(function () {
             speed: 0.15
         });
     });
+    $('.header-apply-resume').parallax({
+        speed: 0.15
+    });
+
 
     $( window ).resize(function() {
         $('#carousel-captions').height($(window).height());
