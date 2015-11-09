@@ -272,21 +272,19 @@ if ($loop->have_posts()) {
         <?php endforeach; ?>
     </div>
 </div>
+<div class="row-gap-large"></div>
 <!--//Environment End-->
 
 <!--//Intro Movie-->
 <div class="header-intro-movie">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <h2><?php echo get_part_work_environment_movie_title_text() ?></h2>
-                <?php echo get_part_work_environment_movie_desc_text() ?>
-            </div>
-            <div class="col-md-8 col-xs-12 video-container">
-                <?php echo get_part_work_environment_movie_link() ?>
-            </div>
-        </div>
-    </div>
+    <!-- <div class="container"> -->
+        <!-- <div class="row"> -->
+            <video autoplay loop poster="polina.jpg" id="bgvid">
+                <!-- <source src="polina.webm" type="video/webm"> -->
+                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            </video>
+        <!-- </div> -->
+    <!-- </div> -->
 </div>
 <!--//Intro Movie End-->
 
