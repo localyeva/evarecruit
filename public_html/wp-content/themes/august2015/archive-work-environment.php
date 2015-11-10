@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Work Environment
- * 
+ *
  */
 
 get_header();
@@ -17,6 +17,7 @@ $section_count = count($terms);
 ?>
 
 <div class="header-work-environment">
+    <h1 class="text-center"><?php echo get_part_work_environment_title_text() ?></h1>
     <div class="container">
 
         <?php foreach ($terms as $term): ?>
