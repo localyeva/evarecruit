@@ -5,8 +5,8 @@
   Plugin URI:
   Description: This plugin allows you mangage jobs through (cpt acf template)
   Version:     1.0
-  Author:      Khang LD
-  Author URI:
+  Author:      Le Duong Khang
+  Author URI:  mailto:leduongkhang@gmail.com
   License:
   License URI:
   Domain Path:
