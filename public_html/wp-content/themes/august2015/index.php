@@ -281,9 +281,9 @@ if ($loop->have_posts()) {
 <div class="header-intro-movie">
     <!-- <div class="container"> -->
         <!-- <div class="row"> -->
-            <video autoplay loop poster="polina.jpg" id="bgvid">
-                <!-- <source src="polina.webm" type="video/webm"> -->
-                <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <video autoplay loop poster="<?php echo get_part_work_environment_movie_cover() ?>" id="bgvid">
+                <source src="<?php echo get_part_work_environment_movie_webm() ?>" type="video/webm"> 
+                <source src="<?php echo get_part_work_environment_movie_mp4() ?>" type="video/mp4">
             </video>
         <!-- </div> -->
     <!-- </div> -->

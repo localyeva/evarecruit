@@ -129,38 +129,68 @@ function theme_customize_register($wp_customize) {
         'type' => 'text',
     ));
 
-    $wp_customize->add_setting('part_work_environment_movie_title_text', array(
-        'default' => '',
-    ));
-    $wp_customize->add_control('part_work_environment_movie_title_text_c', array(
-        'label' => __('Part Work Environment Movie Title Text'),
-        'section' => 'home',
-        'settings' => 'part_work_environment_movie_title_text',
-        'priority' => 1,
-        'type' => 'text',
-    ));
+//    $wp_customize->add_setting('part_work_environment_movie_title_text', array(
+//        'default' => '',
+//    ));
+//    $wp_customize->add_control('part_work_environment_movie_title_text_c', array(
+//        'label' => __('Part Work Environment Movie Title Text'),
+//        'section' => 'home',
+//        'settings' => 'part_work_environment_movie_title_text',
+//        'priority' => 1,
+//        'type' => 'text',
+//    ));
+//    $wp_customize->add_setting('part_work_environment_movie_desc_text', array(
+//        'default' => '',
+//    ));
+//    $wp_customize->add_control('part_work_environment_movie_desc_text_c', array(
+//        'label' => __('Part Work Environment Movie Description Text'),
+//        'section' => 'home',
+//        'settings' => 'part_work_environment_movie_desc_text',
+//        'priority' => 1,
+//        'type' => 'textarea',
+//    ));
+//    $wp_customize->add_setting('part_work_environment_movie_link', array(
+//        'default' => '',
+//    ));
+//    $wp_customize->add_control('part_work_environment_movie_link_c', array(
+//        'label' => __('Part Work Environment Movie Link'),
+//        'section' => 'home',
+//        'settings' => 'part_work_environment_movie_link',
+//        'priority' => 1,
+//        'type' => 'text',
+//    ));
 
-    $wp_customize->add_setting('part_work_environment_movie_desc_text', array(
+    $wp_customize->add_setting('part_work_environment_movie_cover', array(
         'default' => '',
     ));
-    $wp_customize->add_control('part_work_environment_movie_desc_text_c', array(
-        'label' => __('Part Work Environment Movie Description Text'),
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'part_work_environment_movie_cover_c', array(
+        'label' => __('Work Environment Movie Cover'),
         'section' => 'home',
-        'settings' => 'part_work_environment_movie_desc_text',
+        'settings' => 'part_work_environment_movie_cover',
         'priority' => 1,
-        'type' => 'textarea',
-    ));
+    )));
 
-    $wp_customize->add_setting('part_work_environment_movie_link', array(
+    $wp_customize->add_setting('part_work_environment_movie_mp4', array(
         'default' => '',
     ));
-    $wp_customize->add_control('part_work_environment_movie_link_c', array(
-        'label' => __('Part Work Environment Movie Link'),
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'part_work_environment_movie_mp4_c', array(
+        'label' => __('Work Environment Movie MP4'),
         'section' => 'home',
-        'settings' => 'part_work_environment_movie_link',
+        'settings' => 'part_work_environment_movie_mp4',
+        'mime_type' => 'video',
         'priority' => 1,
-        'type' => 'text',
+    )));
+
+    $wp_customize->add_setting('part_work_environment_movie_webm', array(
+        'default' => '',
     ));
+    $wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'part_work_environment_movie_webm_c', array(
+        'label' => __('Work Environment Movie WEBM'),
+        'section' => 'home',
+        'settings' => 'part_work_environment_movie_webm',
+        'priority' => 1,
+        'mime_type' => 'video',
+    )));
 
     $wp_customize->add_setting('part_ceo_message_title', array(
         'default' => '',
@@ -302,16 +332,30 @@ function get_part_work_environment_title_text() {
     return get_theme_mod('part_work_environment_title_text');
 }
 
-function get_part_work_environment_movie_title_text() {
-    return get_theme_mod('part_work_environment_movie_title_text');
+//function get_part_work_environment_movie_title_text() {
+//    return get_theme_mod('part_work_environment_movie_title_text');
+//}
+//
+//function get_part_work_environment_movie_desc_text() {
+//    return get_theme_mod('part_work_environment_movie_desc_text');
+//}
+//
+//function get_part_work_environment_movie_link() {
+//    return get_theme_mod('part_work_environment_movie_link');
+//}
+
+function get_part_work_environment_movie_cover() {
+    return esc_url(get_theme_mod('part_work_environment_movie_cover'));
 }
 
-function get_part_work_environment_movie_desc_text() {
-    return get_theme_mod('part_work_environment_movie_desc_text');
+function get_part_work_environment_movie_mp4() {
+    $id = get_theme_mod('part_work_environment_movie_mp4');
+    return wp_get_attachment_url($id);
 }
 
-function get_part_work_environment_movie_link() {
-    return get_theme_mod('part_work_environment_movie_link');
+function get_part_work_environment_movie_webm() {
+    $id = get_theme_mod('part_work_environment_movie_webm');
+    return wp_get_attachment_url($id);
 }
 
 function get_part_ceo_message_title() {
