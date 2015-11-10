@@ -117,9 +117,13 @@
 	.header-find-job {
 		.list.l-col {
 			width: 60% !important;
+			padding-right: 25px;
 		}
 		.list.r-col {
 			width: 40% !important;
+			.block-content {
+				background-color: #ffffff;
+			}
 		}
 	}
 	.header-info {
@@ -586,7 +590,6 @@ h3 {
 				}
 			}
 			.ads {
-				background-color: #ffffff;
 				color: #ffffff;
 				padding: 11px 20px 11px 20px;
 				position: relative;
@@ -672,19 +675,20 @@ h3 {
 		.list.r-col {
 			margin-bottom: 20px;
 			.header {
-				margin-left: 5px;
+				/*margin-left: 5px;*/
 			}
 			.space {
 				background-color: #ffffff;
-				margin: 0 -15px 0 -10px;
+				margin: 0 -15px;
 				height: 10px;
 			}
 			.ads {
-				margin-left: -10px;
+				/* margin-left: -10px; */
 			}
 			.paging {
 				text-align: center;
-				margin-left: -10px;
+				margin-left: 0px;
+				margin-right: 0px;
 				padding: 8px 0;
 				background-color: #ffffff;
 				ul {
@@ -957,6 +961,34 @@ h3 {
 	}
 	.text-muted {
 		color: #333;
+	}
+	.paging {
+		text-align: center;
+		margin-left: 0px;
+		padding: 8px 0;
+		background-color: #ffffff;
+		ul {
+			display: inline-block;
+			padding: 0;
+			list-style: none;
+			margin-bottom: 0px;
+			li {
+				background-color: #c1c1c1;
+				width: 12px;
+				height: 12px;
+				border-radius: 13px;
+				margin: 0 3px;
+				float: left;
+			}
+			li.active {
+				background-color: #0090b0;
+			}
+		}
+	}
+}
+.paging {
+	li {
+		cursor: pointer;
 	}
 }
 .header-map {

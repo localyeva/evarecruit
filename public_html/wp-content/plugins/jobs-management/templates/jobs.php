@@ -2,7 +2,7 @@
 /*
  * Author: KhangLe
  * Template Name: Jobs
- * 
+ *
  */
 
 if (!defined('ABSPATH')) {
@@ -77,7 +77,7 @@ get_header();
                     <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
                     <?php $term_position = get_the_terms($post->ID, 'job-position'); ?>
                     <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
-                    <div class="row">
+                    <div class="row ads">
                         <a href="<?php the_permalink() ?>" title="<?php echo $term_lab[0]->name ?>">
                             <img src="<?php echo $lab_images['top-image'] ?>" alt="" />
                         </a>
@@ -99,13 +99,13 @@ get_header();
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>
-            <?php wp_reset_postdata(); ?>            
+            <?php wp_reset_postdata(); ?>
 
             <?php $i = 0 ?>
             <?php if ($total_elements > 0): ?>
                 <div class="row paging">
                     <ul>
-                        <?php for ($counter = 0; $counter <= $total_elements; $counter++): ?>
+                        <?php for ($counter = 0; $counter < $total_elements; $counter++): ?>
                             <?php if ($counter % 3 == 0): ?>
                                 <li data-index="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : ''; ?>"></li>
                                 <?php $i++; ?>

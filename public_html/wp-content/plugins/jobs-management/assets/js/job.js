@@ -151,11 +151,12 @@ $(document).ready(function () {
     $('.paging').find('li').click(function () {
         var current = $(this).data('index');
         var paging = $(this).parents('.paging');
+        paging.siblings('.ads').slideUp();
         paging.siblings('.ads').hide();
         paging.find('li').removeClass('active');
         $(this).addClass('active');
         for (var i = current * 3; i < (current * 3) + 3; i++) {
-            paging.siblings('.ads').eq(i).show();
+            paging.siblings('.ads').eq(i).fadeIn();
         }
         ;
     });
