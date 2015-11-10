@@ -47,7 +47,6 @@ get_header();
                     <div class="row">
                         <div class="col-xs-12 col-md-9">
                             <div class="title">
-                                <?php // the_title() ?>
                                 Project Information
                             </div>
                         </div>
@@ -64,23 +63,50 @@ get_header();
 
                 <div class="detail">
                     <div class="row">
-                        <!--<div class="col-xs-12">-->
-                        <!--<div class="title">Project Information</div>-->
-                        <!--</div>-->
-                        <div class="col-xs-12">
-                            <?php echo $lab_info['lab-des-1'] ?>
-                        </div>
-                        <div class="col-xs-12">
-                            <?php echo $lab_info['lab-des-2'] ?>
-                        </div>
-                        <div class="col-xs-12">
-                            <?php echo $lab_info['lab-des-3'] ?>
-                        </div>
+                        <?php if ($lab_info['lab-des-1'] != ''): ?>
+                            <div class="col-xs-12">
+                                <div class="title">About us</div>
+                            </div>
+                            <div class="col-xs-12">
+                                <?php echo $lab_info['lab-des-1'] ?>
+                            </div>
+                            <div class="row-gap-medium clearfix"></div>
+                        <?php endif; ?>
+                        <!---->
+                        <?php if ($lab_info['lab-des-2'] != ''): ?>
+                            <div class="col-xs-12">
+                                <div class="title">Expected role for Vietnamese team</div>
+                            </div>
+                            <div class="col-xs-12">
+                                <?php echo $lab_info['lab-des-2'] ?>
+                            </div>
+                            <div class="row-gap-medium clearfix"></div>
+                        <?php endif; ?>
+                        <!---->
+                        <?php if ($lab_info['lab-des-3'] != ''): ?>
+                            <div class="col-xs-12">
+                                <div class="title">What kind of career can vietnamese member get?</div>
+                            </div>
+                            <div class="col-xs-12">
+                                <?php echo $lab_info['lab-des-3'] ?>
+                            </div>
+                            <div class="row-gap-medium clearfix"></div>
+                        <?php endif; ?>
+                        <!---->
+                        <?php if ($lab_info['lab-des-4'] != ''): ?>
+                            <div class="col-xs-12">
+                                <div class="title">Personality of  candidate</div>
+                            </div>
+                            <div class="col-xs-12">
+                                <?php echo $lab_info['lab-des-4'] ?>
+                            </div>
+                        <div class="row-gap-medium clearfix"></div>
+                        <?php endif; ?>
                     </div>
                     <!-- info -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Recruiting Information</div>
+                            <div class="title">Recruiting Information: <strong><?php the_title() ?></strong></div>
                             <div class="content">
                                 <?php $position = get_the_terms($post->ID, 'job-position'); ?>
                                 <p>Position: <?php echo $position[0]->name ?></p>
@@ -168,7 +194,7 @@ get_header();
                     $loop->the_post();
                     $staff_ids[] = $post->ID;
                     ?>
-                        <?php if ($i % 2 == 0): ?>
+                    <?php if ($i % 2 == 0): ?>
                         <div class="row item left-alignment col-md-12 col-xs-12">
                             <div class="col-md-4 col-xs-12 avatar">
                                 <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive full-width">
@@ -197,7 +223,7 @@ get_header();
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <?php else: ?>
+                    <?php else: ?>
                         <div class="row item right-alignment col-md-12 col-xs-12">
                             <div class="col-md-8 col-xs-12 content">
                                 <div class="row-gap-medium"></div>
@@ -228,7 +254,7 @@ get_header();
                                 </div>
                             </div>
                         </div>
-                        <?php endif; ?>
+                    <?php endif; ?>
                     <?php
                     $i++;
                 endwhile;

@@ -276,6 +276,15 @@ $jola_settings['lab-des-3'] = array(
     'placeholder',
 );
 
+$jola_settings['lab-des-4'] = array(
+    'id' => 'lab-des-4',
+    'label' => 'Personality',
+    'description' => '',
+    'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
 function jola_load_media() {
     $assets_dir = esc_url(trailingslashit(plugins_url('/assets/', __FILE__)));
 
