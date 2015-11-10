@@ -148,18 +148,32 @@ $(function () {
 
 /* Featured Employers */
 $(document).ready(function () {
+    var currentPage = 0;
     $('.paging').find('li').click(function () {
-        var current = $(this).data('index');
+        var currentPage = $(this).data('index');
         var paging = $(this).parents('.paging');
         paging.siblings('.ads').slideUp();
         paging.siblings('.ads').hide();
         paging.find('li').removeClass('active');
         $(this).addClass('active');
-        for (var i = current * 3; i < (current * 3) + 3; i++) {
+        for (var i = currentPage * 3; i < (currentPage * 3) + 3; i++) {
             paging.siblings('.ads').eq(i).fadeIn();
         }
         ;
     });
     $('.ads').hide();
-    $('.paging li:eq(0)').click();
+    $('.paging li:eq(' + currentPage + ')').click();
+
+    setInterval(function() {
+        var pageCount = $('.paging ul').children('li').length;
+        $('.paging ul').find('li.active').each(function() {
+            currentPage = $(this).data('index');
+        });
+        if (currentPage < pageCount - 1) {
+            currentPage ++;
+        } else {
+            currentPage = 0;
+        }
+        $('.paging li:eq(' + currentPage + ')').click();
+    }, 5000);
 });
