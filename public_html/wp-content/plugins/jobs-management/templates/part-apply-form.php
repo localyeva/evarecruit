@@ -47,7 +47,7 @@
                 </div>
                 <div class="box">
                     <div class="row">
-                        <div class="col-xs-10">
+                        <div class="col-xs-12 box-content">
                             <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
                         </div>
                     </div>

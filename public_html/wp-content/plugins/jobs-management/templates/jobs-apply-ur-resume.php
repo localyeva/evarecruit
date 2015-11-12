@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
             <button id="apply-rs-close" class="btn btn-default center-block">Close</button>
         </aside>
     </div>
-    
+
     <div class="container">
         <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
             <h2>Apply Your Resume</h2>
