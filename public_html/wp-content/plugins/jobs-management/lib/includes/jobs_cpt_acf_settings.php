@@ -365,9 +365,11 @@ function taxonomy_edit_meta_field($term) {
                 <?php
                 break;
             case 'media':
+                $media_meta = json_decode($term_meta[$t_id]);
+                //
                 $image_thumb = 'images/media-button-image.gif';
-                if ($term_meta[$t_id]) {
-                    $image_thumb = $term_meta[$t_id];
+                if (isset($media_meta->thumbnail) && $media_meta->thumbnail != '') {
+                    $image_thumb = $media_meta->thumbnail;
                 }
                 ?>
                 <tr class="form-field">
@@ -375,10 +377,13 @@ function taxonomy_edit_meta_field($term) {
                         <label for="<?php echo $t_id ?>" class="meta_name_label"><?php _e($data['label']) ?></label>
                     </th>
                     <td>
-                        <img id="<?php echo $t_id ?>_preview" class="image_preview" src="<?php echo $image_thumb ?>" style="max-width:50%;" /><br/>
+                        <img id="<?php echo $t_id ?>_preview" class="image_preview" src="<?php echo $image_thumb ?>" /><br/>
                         <input id="<?php echo $t_id ?>_button" type="button" data-uploader_title="Upload an image" data-uploader_button_text="Use image" class="image_upload_button button" value="Upload new image" />
                         <input id="<?php echo $t_id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
-                        <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo $image_thumb ?>"/>
+                        <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo isset($media_meta->url) ? $media_meta->url : '' ?>"/>
+                        <input id="<?php echo $t_id ?>_thumbnail" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_thumbnail" value="<?php echo isset($media_meta->thumbnail) ? $media_meta->url : '' ?>"/>
+                        <input id="<?php echo $t_id ?>_medium" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_medium" value="<?php echo isset($media_meta->medium) ? $media_meta->url : '' ?>"/>
+                        <input id="<?php echo $t_id ?>_large" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_large" value="<?php echo isset($media_meta->large) ? $media_meta->large : '' ?>"/>
                     </td>
                 </tr>
                 <?php
@@ -393,14 +398,36 @@ function save_taxonomy_custom_meta($term_id) {
     global $jola_settings;
     //
     foreach ($jola_settings as $field => $data) {
-        //
-        $t_id = $data['id'] . '-' . $term_id;
-        //
-        if (isset($_POST[$t_id])) {
-            $term_meta = get_option('jola_' . $t_id);
-            $term_meta[$t_id] = $_POST[$t_id];
-            // Save the option array.
-            update_option('jola_' . $t_id, $term_meta);
+        switch ($data['type']) {
+            case 'media':
+                //
+                $t_id = $data['id'] . '-' . $term_id;
+                //
+                if (isset($_POST[$t_id])) {
+                    //
+                    $term_meta = get_option('jola_' . $t_id);
+                    //
+                    $images['url'] = $_POST[$t_id];
+                    $images['thumbnail'] = isset($_POST[$t_id . '_thumbnail']) ? $_POST[$t_id . '_thumbnail'] : '';
+                    $images['medium'] = isset($_POST[$t_id . '_medium']) ? $_POST[$t_id . '_medium'] : '';
+                    $images['large'] = isset($_POST[$t_id . '_large']) ? $_POST[$t_id . '_large'] : '';
+                    //
+                    $term_meta[$t_id] = json_encode($images);
+                    // Save the option array.
+                    update_option('jola_' . $t_id, $term_meta);
+                }
+                break;
+            default:
+                //
+                $t_id = $data['id'] . '-' . $term_id;
+                //
+                if (isset($_POST[$t_id])) {
+                    $term_meta = get_option('jola_' . $t_id);
+                    $term_meta[$t_id] = $_POST[$t_id];
+                    // Save the option array.
+                    update_option('jola_' . $t_id, $term_meta);
+                }
+                break;
         }
     }
 }

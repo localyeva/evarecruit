@@ -106,7 +106,7 @@ foreach ($terms as $term) {
                                 $lab_images = get_lab_info();
                             }
                             ?>
-                            <img src="<?php echo $lab_images['top-image'] ?>" alt="<?php echo $post->name ?>" />
+                            <img src="<?php echo $lab_images['top-image']['large'] ?>" alt="<?php echo $post->name ?>" />
                         </a>
                     </div>
                 <?php endwhile; ?>

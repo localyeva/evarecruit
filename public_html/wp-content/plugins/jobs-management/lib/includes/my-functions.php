@@ -2,6 +2,15 @@
 
 /**
  * 
+ * @param type $string
+ * @return type
+ */
+function isJSON($string){
+   return is_string($string) && is_object(json_decode($string)) ? true : false;
+}
+
+/**
+ * 
  * @param type $option_name
  * @return type
  */
@@ -27,9 +36,18 @@ function get_lab_info() {
         $tax_meta = 'jola_' . $tax_id;
         //
         $info = get_option($tax_meta);
-        $lab_info[$key] = stripcslashes($info[$tax_id]);
+        if(isJSON($info[$tax_id])){
+            $data = json_decode($info[$tax_id]);
+            //
+            $lab_info[$key]['url'] = $data->url;
+            $lab_info[$key]['thumbnail'] = $data->thumbnail;
+            $lab_info[$key]['medium'] = $data->medium;
+            $lab_info[$key]['large'] = $data->large;
+        } else{
+            $lab_info[$key] = stripcslashes($info[$tax_id]);
+        }
     }
-    
+    //
     return $lab_info;
 }
 

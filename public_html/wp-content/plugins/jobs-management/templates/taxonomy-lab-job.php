@@ -30,7 +30,7 @@ get_header();
 <div id="new-job-detail">
 
     <div class="header-banner">
-        <img src="<?php echo $lab_info['top-image'] ?>" alt="<?php echo $term[0]->name ?>" />
+        <img src="<?php echo $lab_info['top-image']['url'] ?>" alt="<?php echo $term[0]->name ?>" />
         <div class="overlay container">
             <div class="info">
                 <h2><?php echo $term[0]->name ?></h2>
@@ -142,8 +142,8 @@ get_header();
             <div class="col-xs-12 col-md-12">
                 <div class="lab-pictures col-xs-12 col-md-12">
                     <?php for ($i = 1; $i < 3; $i++): ?>
-                        <?php if (isset($lab_info['image-' . $i])): ?>
-                            <img class="img-responsive col-xs-12 col-md-6" src="<?php echo $lab_info['image-' . $i] ?>" />
+                        <?php if (isset($lab_info['image-' . $i]['url'])): ?>
+                            <img class="img-responsive col-xs-12 col-md-6" src="<?php echo $lab_info['image-' . $i]['url'] ?>" />
                         <?php endif; ?>
                     <?php endfor; ?>
                 </div>

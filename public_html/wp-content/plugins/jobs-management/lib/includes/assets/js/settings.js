@@ -32,10 +32,6 @@ jQuery(document).ready(function ($) {
         field_id = button_id.replace('_button', '');
         preview_id = button_id.replace('_button', '_preview');
         
-console.log(button_id);
-console.log(field_id);
-console.log(preview_id);
-
         // If the media frame already exists, reopen it.
         if (file_frame) {
             file_frame.open();
@@ -55,6 +51,20 @@ console.log(preview_id);
         file_frame.on('select', function () {
             attachment = file_frame.state().get('selection').first().toJSON();
             jQuery("#" + field_id).val(attachment.url);
+            
+            console.log(attachment)
+            if($.type(attachment.sizes.thumbnail) !== 'undefined'){
+                jQuery("#" + field_id + '_thumbnail').val(attachment.sizes.thumbnail.url);
+            }
+            //
+            if($.type(attachment.sizes.medium) !== 'undefined'){
+                jQuery("#" + field_id + '_medium').val(attachment.sizes.medium.url);
+            }
+            //
+            if($.type(attachment.sizes.large) !== 'undefined'){
+                jQuery("#" + field_id + '_large').val(attachment.sizes.large.url);
+            }
+            //
             if (preview_media) {
                 jQuery("#" + preview_id).attr('src', attachment.sizes.thumbnail.url);
             }

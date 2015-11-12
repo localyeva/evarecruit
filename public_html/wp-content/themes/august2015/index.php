@@ -204,11 +204,15 @@ if ($loop->have_posts()) {
                     } else {
                         $i++;
                     }
+                    //
+                    $main_image = get_field('main_image');
+                    $size = 'medium';
+                    $thumb = $main_image['sizes'][$size];
                     ?>
                     <div class="col-xs-3">
                         <div class="row">
                             <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
-                                <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                                <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
                             </div>
                         </div>
                     </div>
@@ -220,11 +224,15 @@ if ($loop->have_posts()) {
                             } else {
                                 $i++;
                             }
+                            //
+                            $sub_image = get_sub_field('image');
+                            $size = 'medium';
+                            $thumb_sub = $sub_image['sizes'][$size];
                             ?>
                             <div class="col-xs-3">
                                 <div class="row">
                                     <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
-                                        <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_sub_field('image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                                        <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb_sub ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -259,10 +267,16 @@ if ($loop->have_posts()) {
                 ?>
                 <?php if ($loop_ele->have_posts()): ?>
                     <?php while ($loop_ele->have_posts()): $loop_ele->the_post(); ?>
+                        <?php
+                        //
+                        $main_image = get_field('main_image');
+                        $size = 'medium';
+                        $thumb = $main_image['sizes'][$size];
+                        ?>
                         <div class="col-xs-3">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive" /></a>
+                                    <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
                                 </div>
                             </div>
                         </div>
@@ -280,12 +294,12 @@ if ($loop->have_posts()) {
 <!--//Intro Movie-->
 <div class="header-intro-movie">
     <!-- <div class="container"> -->
-        <!-- <div class="row"> -->
-            <video autoplay loop poster="<?php echo get_part_work_environment_movie_cover() ?>" id="bgvid">
-                <source src="<?php echo get_part_work_environment_movie_webm() ?>" type="video/webm"> 
-                <source src="<?php echo get_part_work_environment_movie_mp4() ?>" type="video/mp4">
-            </video>
-        <!-- </div> -->
+    <!-- <div class="row"> -->
+    <video autoplay loop poster="<?php echo get_part_work_environment_movie_cover() ?>" id="bgvid">
+        <source src="<?php echo get_part_work_environment_movie_webm() ?>" type="video/webm"> 
+        <source src="<?php echo get_part_work_environment_movie_mp4() ?>" type="video/mp4">
+    </video>
+    <!-- </div> -->
     <!-- </div> -->
 </div>
 <!--//Intro Movie End-->

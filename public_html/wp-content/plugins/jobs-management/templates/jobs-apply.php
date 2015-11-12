@@ -117,7 +117,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'phone_number' => $_POST['re_tel'],
 //        'gender' => $_POST['re_gender'][0],
         'attach_file' => $url_cv,
-        'download_link' =>  $download_link,
+        'download_link' => $download_link,
         'job_id' => isset($_POST['job_id']) ? $_POST['job_id'] : '',
         'job_title' => isset($_POST['job_title']) ? $_POST['job_title'] : 'Apply Resumne',
         'job_position' => isset($_POST['job_position']) ? $_POST['job_position'] : '',
@@ -130,57 +130,74 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     $wpdb->insert($table_name, $data);
 
+    $last_id = $wpdb->insert_id;
+
     remove_filter('upload_dir', 'wp_jobs_upload_dir');
-    //
-    $result = array(
-        'code' => 'OK',
-        'message' => 'Cảm ơn bạn đã ứng tuyển',
-    );
 
-    echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
-    /* -------------------------------------------------------------- send mail */
-    require_once plugin_dir_path(__FILE__) . '../lib/includes/Twig/Autoloader.php';
-    Twig_Autoloader::register();
-
-    $loader = new Twig_Loader_String;
-
-    $twig = new Twig_Environment($loader);
-
-    $from = job_get_option('wpt_job_text_from_email');
-    $fromname = job_get_option('wpt_job_text_from_name');
-
-    // Mail to Candidate
-    $body_candidate = job_get_option('wpt_job_text_block_candidate');
-    if (isset($body_candidate) && $body_candidate != '') {
-        $body_candidate = $twig->render($body_candidate, $data);
+    if ($last_id > 0) {
+        array_merge($data, array(
+            'id' => $last_id
+        ));
         //
-        $subject_candidate = $twig->render(job_get_option('wpt_job_text_subject_candidate'), $data);
-        //
-        $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
-        //	
-        wp_mail($data['email'], stripslashes($subject_candidate), stripslashes($body_candidate), $headers);
-    }
+        $result = array(
+            'code' => 'OK',
+            'message' => 'Cảm ơn bạn đã ứng tuyển',
+        );
 
-    //Admin用メッセージ
-    $body_admin = job_get_option('wpt_job_text_block_admin');
-    if (isset($body_admin) && $body_admin != '') {
-        $body_admin = $twig->render($body_admin, array_merge(
-                        $data, array(
-            'entry_time' => gmdate("Y/m/d H:i:s", time() + 9 * 3600),
-            'entry_host' => gethostbyaddr(getenv("REMOTE_ADDR")),
-            'entry_ua' => getenv("HTTP_USER_AGENT"),
-        )));
-        //
-        $subject_admin = job_get_option('wpt_job_text_subject_admin');
-        //
-        $list_email = job_get_option('wpt_job_text_list_email');
-        if (isset($list_email) && $list_email != '') {
-            $list_email = preg_split('/\r\n|\n|\r/', $list_email);
+        echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
+        /* -------------------------------------------------------------- send mail */
+        require_once plugin_dir_path(__FILE__) . '../lib/includes/Twig/Autoloader.php';
+        Twig_Autoloader::register();
+
+        $loader = new Twig_Loader_String;
+
+        $twig = new Twig_Environment($loader);
+
+        $from = job_get_option('wpt_job_text_from_email');
+        $fromname = job_get_option('wpt_job_text_from_name');
+
+        // Mail to Candidate
+        $body_candidate = job_get_option('wpt_job_text_block_candidate');
+        if (isset($body_candidate) && $body_candidate != '') {
+            $body_candidate = $twig->render($body_candidate, $data);
+            //
+            $subject_candidate = $twig->render(job_get_option('wpt_job_text_subject_candidate'), $data);
             //
             $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
-            //
-            wp_mail($list_email, stripslashes($subject_admin), stripslashes($body_admin), $headers);
+            //	
+            wp_mail($data['email'], stripslashes($subject_candidate), stripslashes($body_candidate), $headers);
         }
+
+        //Admin用メッセージ
+        $body_admin = job_get_option('wpt_job_text_block_admin');
+        if (isset($body_admin) && $body_admin != '') {
+            $body_admin = $twig->render($body_admin, array_merge(
+                            $data, array(
+                'entry_time' => gmdate("Y/m/d H:i:s", time() + 9 * 3600),
+                'entry_host' => gethostbyaddr(getenv("REMOTE_ADDR")),
+                'entry_ua' => getenv("HTTP_USER_AGENT"),
+            )));
+            //
+            $subject_admin = job_get_option('wpt_job_text_subject_admin');
+            //
+            $list_email = job_get_option('wpt_job_text_list_email');
+            if (isset($list_email) && $list_email != '') {
+                $list_email = preg_split('/\r\n|\n|\r/', $list_email);
+                //
+                $headers = 'From: ' . $fromname . ' <' . $from . '>' . '\r\n';
+                //
+                // attach file into mail
+                $attach_file = $data['attach_file'];
+                //
+                $parse = parse_url($attach_file);
+                $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
+                $attachments = array($attach_file_path);
+                //
+                wp_mail($list_email, stripslashes($subject_admin), stripslashes($body_admin), $headers, $attachments);
+            }
+        }
+    } else {
+        echo "<script>window.parent.parent.get_iframe_result('" . json_encode($result) . "');</script>";
     }
 } else {
     wp_redirect(home_url());

@@ -79,7 +79,7 @@ get_header();
                     <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
                     <div class="row ads">
                         <a href="<?php the_permalink() ?>" title="<?php echo $term_lab[0]->name ?>">
-                            <img src="<?php echo $lab_images['top-image'] ?>" alt="" />
+                            <img src="<?php echo $lab_images['top-image']['large'] ?>" alt="" />
                         </a>
                         <div class="l-col">
                             <a href="<?php the_permalink() ?>" title="<?php echo get_the_title() ?>">
