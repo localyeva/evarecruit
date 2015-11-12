@@ -43,9 +43,15 @@ $section_count = count($terms);
                 <div class="row-gap-medium"></div>
                 <div class="row">
                     <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                    <?php 
+                    $main_image = get_field('main_image');
+                    $url = $main_image['url'];
+                    $size = 'large';
+                    $thumb = $main_image['sizes'][$size];
+                    ?>
                         <div class="col-xs-6">
-                            <a href="<?php echo get_field('main_image') ?>" class="photo" rel="<?php echo $term->slug ?>" title="<?php echo get_the_title() ?>">
-                                <img src="<?php echo get_field('main_image') ?>" alt="<?php echo get_the_title() ?>" class="img-responsive">
+                            <a href="<?php echo $url ?>" class="photo" rel="<?php echo $term->slug ?>" title="<?php echo get_the_title() ?>">
+                                <img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive">
                             </a>
                             <div class="row-gap-small"></div>
                             <h3><?php echo get_the_title() ?></h3>
