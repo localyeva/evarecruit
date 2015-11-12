@@ -1,6 +1,9 @@
 <style>#re_check-error{display: none;}</style>
 <!-- // Apply Form Start -->
-<div id="apply-form-modal" class="apply-form-modal" style="display: none;">
+<div id="apply-form-modal" class="apply-form-modal" style="display: none;position: relative;">
+    <div id="apply-overlay" class="apply-overlay">
+        <i class="fa fa-spinner fa-spin apply-spin"></i>
+    </div>
     <div class="header-top-apply">
         <div class="text-center">
             <h2 class="text-bold">Apply Your Resume</h2>
