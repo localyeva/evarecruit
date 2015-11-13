@@ -78,7 +78,7 @@ if (!defined('ABSPATH')) {
             <fieldset class="form-group agree-cv">
                 <label for="re_check">
                     <input type="checkbox" id="re_check" name="re_check" value="" checked>
-                    I agree Evolable Asia Terms and Privacy.
+                    I agree Evolable Asia <a href="#privacy-modal" class="open-privacy">Terms and Privacy</a>
                 </label>
             </fieldset>
             <div class="blankline"></div>
@@ -91,3 +91,7 @@ if (!defined('ABSPATH')) {
 </div>
 
 <iframe id="iapply" name="iapply" width="0" height="0" border="0" style="display: none;"></iframe>
+
+<div id="privacy-modal" style="display:none;">
+    <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
+</div>

@@ -93,6 +93,10 @@ $().ready(function () {
         }
     });
 
+    $('a.open-privacy').fancybox({
+        maxWidth: 500,
+    });
+
     $('.relative-position').each(function () {
         if ($(this).attr('rel') == $('#re_position').val()) {
             $(this).show();
