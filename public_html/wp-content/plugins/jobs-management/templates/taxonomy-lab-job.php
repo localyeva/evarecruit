@@ -65,7 +65,7 @@ get_header();
                     <div class="row">
                         <?php if ($lab_info['lab-des-1'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">About us</div>
+                                <div class="title">Tổng Quan</div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-1'] ?>
@@ -75,7 +75,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-2'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Expected role for Vietnamese team</div>
+                                <div class="title">Điều kì vọng vào Team Việt Nam</div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-2'] ?>
@@ -85,7 +85,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-3'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">What kind of career can vietnamese member get?</div>
+                                <div class="title">Những kinh nghiệm tích luỹ được từ công việc này</div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-3'] ?>
@@ -95,7 +95,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-4'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Personality of  candidate</div>
+                                <div class="title">Yêu cầu về tính cách</div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-4'] ?>
@@ -173,7 +173,7 @@ get_header();
             $staff_ids = array();
             $args = array(
                 'post_type' => 'staff',
-                'posts_per_page' => 3,
+                'posts_per_page' => 5,
                 'orderby' => array('date' => 'ASC'),
                 'tax_query' => array(
                     array(
