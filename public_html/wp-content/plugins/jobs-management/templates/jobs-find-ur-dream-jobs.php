@@ -99,7 +99,7 @@ foreach ($terms as $term) {
                     <div class="ads">
                         <a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
                             <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
-                            <h4><?php echo $term_lab[0]->name ?></h4>
+                            <h4><?php echo $term_lab[0]->name ?><br/><span class="subtitle"><?php the_title() ?></span></h4>
                             <span class="overlay"></span>
                             <?php
                             if (function_exists('get_lab_info')) {
