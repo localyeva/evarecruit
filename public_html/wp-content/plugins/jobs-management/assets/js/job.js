@@ -153,6 +153,8 @@ $(function () {
 /* Featured Employers */
 $(document).ready(function () {
     var currentPage = 0;
+    var blockContentHeight = 0;
+
     $('.paging').find('li').click(function () {
         var currentPage = $(this).data('index');
         var paging = $(this).parents('.paging');
@@ -163,10 +165,12 @@ $(document).ready(function () {
         for (var i = currentPage * 3; i < (currentPage * 3) + 3; i++) {
             paging.siblings('.ads').eq(i).fadeIn();
         }
-        ;
+        if (blockContentHeight == 0 && currentPage == 0) {
+            $('.block-content').css('height', 'auto');
+            blockContentHeight = $('.block-content').height();
+        }
+        $('.block-content').height(blockContentHeight);
     });
-    $('.ads').hide();
-    $('.paging li:eq(' + currentPage + ')').click();
 
     setInterval(function() {
         var pageCount = $('.paging ul').children('li').length;
@@ -180,4 +184,14 @@ $(document).ready(function () {
         }
         $('.paging li:eq(' + currentPage + ')').click();
     }, 5000);
+
+    $('.ads').hide();
+    $('.paging li:eq(' + currentPage + ')').click();
+
+    $(window).resize(function(){
+        blockContentHeight = 0;
+        currentPage = 0;
+        $('.ads').hide();
+        $('.paging li:eq(' + currentPage + ')').click();
+    });
 });
