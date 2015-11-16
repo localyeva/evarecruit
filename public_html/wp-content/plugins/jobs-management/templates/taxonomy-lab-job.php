@@ -52,11 +52,6 @@ get_header();
                         </div>
                         <div class="col-xs-12 col-md-3" style="text-align: right;">
                             posted on <span class="time"><?php echo get_time_duration(get_the_date('Y-m-d H:i:s')) ?></span>
-                            <div id="print-job" class="noprint pull-right">
-                                <div class="item">
-                                    <img src="<?php echo WP_PLUGIN_URL ?>/jobs-management/img/new_job_detail/5.png" alt="">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
