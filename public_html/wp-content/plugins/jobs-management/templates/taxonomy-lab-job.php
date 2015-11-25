@@ -62,10 +62,10 @@ get_header();
                 </div>
 
                 <div class="detail">
-                    <div class="row">
+                    <div class="row">                    
                         <?php if ($lab_info['lab-des-1'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Tổng Quan</div>
+                                <div class="title"><?php echo $lab_info['lab-title-1'] ?></div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-1'] ?>
@@ -75,7 +75,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-2'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Điều kì vọng vào Team Việt Nam</div>
+                                <div class="title"><?php echo $lab_info['lab-title-2'] ?></div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-2'] ?>
@@ -85,7 +85,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-3'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Những kinh nghiệm tích luỹ được từ công việc này</div>
+                                <div class="title"><?php echo $lab_info['lab-title-3'] ?></div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-3'] ?>
@@ -95,7 +95,7 @@ get_header();
                         <!---->
                         <?php if ($lab_info['lab-des-4'] != ''): ?>
                             <div class="col-xs-12">
-                                <div class="title">Yêu cầu về tính cách</div>
+                                <div class="title"><?php echo $lab_info['lab-title-4'] ?></div>
                             </div>
                             <div class="col-xs-12">
                                 <?php echo $lab_info['lab-des-4'] ?>
@@ -106,7 +106,7 @@ get_header();
                     <!-- info -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Recruiting Information: <strong><?php the_title() ?></strong></div>
+                            <div class="title"><?php echo $lab_info['lab-title-5'] ?>: <strong><?php the_title() ?></strong></div>
                             <div class="content">
                                 <?php $position = get_the_terms($post->ID, 'job-position'); ?>
                                 <p>Position: <?php echo $position[0]->name ?></p>
@@ -121,14 +121,14 @@ get_header();
                     <!-- description -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Job Description</div>
+                            <div class="title"><?php echo $lab_info['lab-title-6'] ?></div>
                             <?php echo get_field('job_description') ?>
                         </div>
                     </div>
                     <!-- requirement -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="title">Job Requirement</div>
+                            <div class="title"><?php echo $lab_info['lab-title-7'] ?></div>
                             <?php echo get_field('job_requirement') ?>
                         </div>
                     </div>

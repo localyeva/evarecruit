@@ -249,11 +249,31 @@ $jola_settings['image-2'] = array(
     'placeholder',
 );
 
+$jola_settings['lab-title-1'] = array(
+    'id' => 'lab-title-1',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Tổng Quan', 'About us' ),
+    'default',
+    'placeholder',
+);
+
 $jola_settings['lab-des-1'] = array(
     'id' => 'lab-des-1',
     'label' => 'About Us',
     'description' => '',
     'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-title-2'] = array(
+    'id' => 'lab-title-2',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Điều kì vọng vào Team Việt Nam', 'Expected role for Vietnamese team'),
     'default',
     'placeholder',
 );
@@ -267,6 +287,16 @@ $jola_settings['lab-des-2'] = array(
     'placeholder',
 );
 
+$jola_settings['lab-title-3'] = array(
+    'id' => 'lab-title-3',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Những kinh nghiệm tích luỹ được từ công việc này', 'What kind of career can vietnamese member get?'),
+    'default',
+    'placeholder',
+);
+
 $jola_settings['lab-des-3'] = array(
     'id' => 'lab-des-3',
     'label' => 'Carrier',
@@ -276,11 +306,51 @@ $jola_settings['lab-des-3'] = array(
     'placeholder',
 );
 
+$jola_settings['lab-title-4'] = array(
+    'id' => 'lab-title-4',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Yêu cầu về tính cách', 'Personality of candidate'),
+    'default',
+    'placeholder',
+);
+
 $jola_settings['lab-des-4'] = array(
     'id' => 'lab-des-4',
     'label' => 'Personality',
     'description' => '',
     'type' => 'wysiwyg',
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-title-5'] = array(
+    'id' => 'lab-title-5',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Thông Tin Tuyển Dụng', 'Recruiting Information'),
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-title-6'] = array(
+    'id' => 'lab-title-6',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Mô Tả Công Việc', 'Job Description'),
+    'default',
+    'placeholder',
+);
+
+$jola_settings['lab-title-7'] = array(
+    'id' => 'lab-title-7',
+    'label' => '',
+    'description' => '',
+    'type' => 'select',
+    'options' => array('Mô Tả Yêu Cầu', 'Job Requirement'),
     'default',
     'placeholder',
 );
@@ -381,9 +451,25 @@ function taxonomy_edit_meta_field($term) {
                         <input id="<?php echo $t_id ?>_button" type="button" data-uploader_title="Upload an image" data-uploader_button_text="Use image" class="image_upload_button button" value="Upload new image" />
                         <input id="<?php echo $t_id ?>_delete" type="button" class="image_delete_button button" value="Remove image" />
                         <input id="<?php echo $t_id ?>" class="image_data_field" type="hidden" name="<?php echo $t_id ?>" value="<?php echo isset($media_meta->url) ? $media_meta->url : '' ?>"/>
-                        <input id="<?php echo $t_id ?>_thumbnail" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_thumbnail" value="<?php echo isset($media_meta->thumbnail) ? $media_meta->url : '' ?>"/>
-                        <input id="<?php echo $t_id ?>_medium" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_medium" value="<?php echo isset($media_meta->medium) ? $media_meta->url : '' ?>"/>
+                        <input id="<?php echo $t_id ?>_thumbnail" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_thumbnail" value="<?php echo isset($media_meta->thumbnail) ? $media_meta->thumbnail : '' ?>"/>
+                        <input id="<?php echo $t_id ?>_medium" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_medium" value="<?php echo isset($media_meta->medium) ? $media_meta->medium : '' ?>"/>
                         <input id="<?php echo $t_id ?>_large" class="image_data_field" type="hidden" name="<?php echo $t_id ?>_large" value="<?php echo isset($media_meta->large) ? $media_meta->large : '' ?>"/>
+                    </td>
+                </tr>
+                <?php
+                break;
+            case 'select':            
+                ?>
+                <tr>
+                    <th>
+                        <label for="<?php echo $t_id ?>" class="meta_name_label"><?php _e($data['label']) ?></label>
+                    </th>
+                    <td>
+                        <select id="<?php echo $t_id ?>" name="<?php echo $t_id ?>">
+                            <?php foreach($data['options'] as $value): ?>
+                                <option value="<?php echo $value ?>" <?php echo ($term_meta[$t_id] == $value) ? 'selected' : '' ?>><?php echo $value ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </td>
                 </tr>
                 <?php
