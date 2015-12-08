@@ -7,10 +7,10 @@
  */
 
 include_once (dirname(__FILE__) . '/MyThemeOptions.php');
-include_once (dirname(__FILE__) . '/MyFunctions.php');
 include_once (dirname(__FILE__) . '/MyTheme_Customize.php');
 include_once (dirname(__FILE__) . '/MyTheme_Global_Service.php');
 include_once (dirname(__FILE__) . '/MyTheme_Customize_Staff_Detail.php');
+include_once (dirname(__FILE__) . '/MyFunctions.php');
 include_once(dirname(__FILE__) . '/cpt_acf_definitions.php');
 
 /* -------------------------------------------------------------------------- */

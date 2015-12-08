@@ -288,7 +288,7 @@ function generate_css() {
     <?php
 }
 
-add_action('wp_head', 'generate_css');
+//add_action('wp_head', 'generate_css');
 
 /* GENERAL */
 

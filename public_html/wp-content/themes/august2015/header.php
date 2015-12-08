@@ -10,14 +10,7 @@
         <meta name="author" content="Evolable Asia">
         <meta name="description" itemprop="description" content="Trang tuyển dụng Evolable Asia. Chúng tôi đang tìm kiếm các ứng viên đáp ứng nhu cầu cho các dự án phát triển phần mềm, dịch vụ BPO.">
         <meta name="keywords" itemprop="keywords" content="tuyển dụng,Evolable Asia,developer,communicator,jobs,japan,recruitment,lập trình" />
-        <meta property="fb:app_id" content="795903230445450">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="http://jobs.evolable.asia/">
-        <meta property="og:site_name" content="Evolable Asia - Tuyển dụng">
-        <meta property="og:title" content="">
-        <meta property="og:image" content="http://jobs.evolable.asia/wp-content/uploads/2015/08/fb_share.png">
-        <meta property="og:description" content="Trang tuyển dụng Evolable Asia. Chúng tôi đang tìm kiếm các ứng viên đáp ứng nhu cầu cho các dự án phát triển phần mềm, dịch vụ BPO.">
-
+        
         <title><?php echo bloginfo('name') ?></title>
 
         <!-- Bootstrap -->

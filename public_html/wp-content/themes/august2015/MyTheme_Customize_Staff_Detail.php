@@ -47,7 +47,7 @@ function staff_detail_generate_css() {
     <?php
 }
 
-add_action('wp_head', 'staff_detail_generate_css');
+//add_action('wp_head', 'staff_detail_generate_css');
 
 function get_staff_detail_top_image() {
     return esc_url(get_theme_mod('staff_detail_top_image'));
