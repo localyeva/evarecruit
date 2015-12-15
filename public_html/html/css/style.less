@@ -1776,6 +1776,39 @@ h3 {
 		z-index: 2;
 	}
 }
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
 .agree-cv input[type="checkbox"] {
   /* Double-sized Checkboxes */
 	-ms-transform: scale(2); /* IE */

@@ -225,6 +225,7 @@ $(function () {
 
 /*  Paralax slider */
 $(function () {
+    alert($('#carousel-captions').width());
     $('#carousel-captions').height($(window).height());
     $('.carousel-inner').height($(window).height());
     $('.carousel-inner .item').each(function() {
@@ -239,6 +240,7 @@ $(function () {
 
 
     $( window ).resize(function() {
+        alert($('#carousel-captions').width());
         $('#carousel-captions').height($(window).height());
         $('.carousel-inner').height($(window).height());
         $('.carousel-inner .item').height($(window).height());
