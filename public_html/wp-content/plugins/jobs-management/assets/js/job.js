@@ -151,6 +151,7 @@ $(function () {
 });
 
 /* Featured Employers */
+/*
 $(document).ready(function () {
     var currentPage = 0;
     var blockContentHeight = 0;
@@ -195,3 +196,4 @@ $(document).ready(function () {
         $('.paging li:eq(' + currentPage + ')').click();
     });
 });
+*/

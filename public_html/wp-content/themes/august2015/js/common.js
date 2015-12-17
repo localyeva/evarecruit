@@ -225,25 +225,26 @@ $(function () {
 
 /*  Paralax slider */
 $(function () {
-    alert($('#carousel-captions').width());
-    $('#carousel-captions').height($(window).height());
-    $('.carousel-inner').height($(window).height());
-    $('.carousel-inner .item').each(function() {
-        $(this).height($(window).height());
-        $(this).parallax({
-            speed: 0.15
-        });
-    });
-    $('.header-apply-resume').parallax({
-        speed: 0.15
-    });
-
+    var setBanerHeight = function() {
+        $('#carousel-captions')
+            .height($(window).height())
+            .find('.carousel-inner').height($(window).height())
+            .find('.item').each(function() {
+                $(this).height($(window).height());
+                $(this).parallax({
+                    speed: 0.15
+                });
+            });
+    }
 
     $( window ).resize(function() {
-        alert($('#carousel-captions').width());
-        $('#carousel-captions').height($(window).height());
-        $('.carousel-inner').height($(window).height());
-        $('.carousel-inner .item').height($(window).height());
+        setBanerHeight();
+    });
+
+    setBanerHeight();
+
+    $('.header-apply-resume').parallax({
+        speed: 0.15
     });
 });
 
