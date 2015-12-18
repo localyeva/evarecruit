@@ -23,7 +23,7 @@ get_header();
 
     <div class="container header-job-list">
         <!--//Jobs List-->
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-12 col-md-8 content">
             <?php require_once(dirname(__FILE__) . '/jobs-row_1.php') ?>
             <!--//Paging-->
             <div class="container">
@@ -41,7 +41,8 @@ get_header();
         <?php wp_reset_postdata(); ?>
 
         <!-- Lab Jobs List -->
-        <div class="col-xs-12 col-md-4 sidebar">
+        <div id="job-carousel-sidebar" class="col-xs-12 col-md-4 sidebar carousel slide vertical carousel-fade" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
             <?php
             $terms = get_terms('lab');
             $args_terms = array();
@@ -65,6 +66,8 @@ get_header();
             );
             $wp_query = new WP_Query($args);
             $total_elements = $wp_query->found_posts;
+            $i = 0;
+            $ads_per_item = 3;
             ?>
 
             <?php if ($wp_query->have_posts()): ?>
@@ -77,6 +80,15 @@ get_header();
                     <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
                     <?php $term_position = get_the_terms($post->ID, 'job-position'); ?>
                     <?php $term_lab = get_the_terms($post->ID, 'lab'); ?>
+                    <?php
+                    if ($i % $ads_per_item == 0) {
+                        $active = '';
+                        if ($i == 0) {
+                            $active = 'active';
+                        }
+                        echo '<div class="item ' . $active . '">';
+                    }
+                    ?>
                     <div class="row ads">
                         <a href="<?php the_permalink() ?>" title="<?php echo $term_lab[0]->name ?>">
                             <img src="<?php echo $lab_images['top-image']['large'] ?>" alt="" />
@@ -97,6 +109,12 @@ get_header();
                             <div class="views">Views: <?php echo getPostViews(get_the_ID(), 'job_views') ?></div>
                         </div>
                     </div>
+                    <?php
+                    if (($i + 1 - $ads_per_item) % $ads_per_item == 0 || $i == $total_elements - 1) {
+                        echo '</div>';
+                    }
+                    $i++;
+                    ?>
                 <?php endwhile; ?>
             <?php endif; ?>
             <?php wp_reset_postdata(); ?>
@@ -104,16 +122,17 @@ get_header();
             <?php $i = 0 ?>
             <?php if ($total_elements > 0): ?>
                 <div class="row paging">
-                    <ul>
+                    <ul class="carousel-indicators">
                         <?php for ($counter = 0; $counter < $total_elements; $counter++): ?>
                             <?php if ($counter % 3 == 0): ?>
-                                <li data-index="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : ''; ?>"></li>
+                                <li data-target="#job-carousel-sidebar" data-slide-to="<?php echo $i ?>" data-index="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : ''; ?>"></li>
                                 <?php $i++; ?>
                             <?php endif; ?>
                         <?php endfor; ?>
                     </ul>
                 </div>
             <?php endif; ?>
+            </div>
         </div>
         <!-- Lab Jobs List -->
     </div>

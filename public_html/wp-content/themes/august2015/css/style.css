@@ -398,6 +398,7 @@ h3 {
   padding-top: 50px;
   padding-bottom: 50px;
   background: url('../img/apply-resume.png') fixed;
+  background-size: cover;
   font-size: 18px;
 }
 .header-apply-resume .container {
@@ -825,29 +826,30 @@ h3 {
 #new-jobs .header-job-list .pagination li a span {
   color: #0090B0;
 }
-#new-jobs .header-job-list .nano {
+#new-jobs .header-job-list .list-detail {
   background-color: #ffffff;
   height: auto;
-  max-height: 1000px;
 }
-#new-jobs .header-job-list .nano .nano-content {
+#new-jobs .header-job-list .list-detail .list-detail-content {
   right: 0px !important;
   padding: 0px;
-  margin: 10px 0px;
+  margin: 0px;
 }
-#new-jobs .header-job-list .nano .nano-content .item {
+#new-jobs .header-job-list .list-detail .list-detail-content .item {
   padding: 15px 20px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-#new-jobs .header-job-list .nano .nano-content .item .title {
+#new-jobs .header-job-list .list-detail .list-detail-content .item .title {
   color: #434343;
   line-height: 20px;
   margin-bottom: 5px;
   margin-top: 0px;
 }
-#new-jobs .header-job-list .nano .nano-content .item .info {
+#new-jobs .header-job-list .list-detail .list-detail-content .item .info {
   padding-right: 0px;
 }
-#new-jobs .header-job-list .nano .nano-content .item a:hover {
+#new-jobs .header-job-list .list-detail .list-detail-content .item a:hover {
   text-decoration: none;
 }
 #new-jobs .header-job-list .sidebar .row {
@@ -1243,34 +1245,45 @@ select {
   font-style: italic;
   font-weight: lighter;
 }
-.header-job-list .item {
+.header-job-list .content .item {
   padding: 30px 20px;
   border-bottom: 1px dotted #b1b1b1;
 }
-.header-job-list .item .title {
+.header-job-list .content .item .title {
   font-weight: 700;
   font-size: 16.8px;
 }
-.header-job-list .item .title a,
-.header-job-list .item .title a:hover,
-.header-job-list .item .title a:active,
-.header-job-list .item .title a:focus {
+.header-job-list .content .item .title a,
+.header-job-list .content .item .title a:hover,
+.header-job-list .content .item .title a:active,
+.header-job-list .content .item .title a:focus {
   text-decoration: none;
 }
-.header-job-list .item .title a.urgent,
-.header-job-list .item .title a.new {
+.header-job-list .content .item .title a.urgent,
+.header-job-list .content .item .title a.new {
   color: #FF3232;
 }
-.header-job-list .item img.date,
-.header-job-list .item img.view {
+.header-job-list .content .item img.date,
+.header-job-list .content .item img.view {
   margin-right: 3px;
 }
-.header-job-list .item img.date.view,
-.header-job-list .item img.view.view {
+.header-job-list .content .item img.date.view,
+.header-job-list .content .item img.view.view {
   margin-left: -3px;
 }
-.header-job-list .item:last-child {
+.header-job-list .content .item:last-child {
   border-bottom: none;
+}
+.header-job-list .sidebar .row {
+  margin-right: 0px;
+}
+.header-job-list .sidebar .carousel-indicators {
+  position: static;
+  bottom: 10px;
+  left: 0;
+  width: auto;
+  padding-left: 0;
+  margin-left: 0;
 }
 #new-jobs,
 #new-job-detail,
@@ -1804,7 +1817,7 @@ select {
   top: 0;
 }
 .carousel.vertical:not(.carousel-fade)  .active.left {
-  top: -99.99999999%;
+  top: -100%;
 }
 .carousel.vertical:not(.carousel-fade)  .active.right {
   top: 100%;

@@ -4,11 +4,11 @@
  * Description: List All Hooked Functions
  * Credit: http://www.smashingmagazine.com/2009/08/10-useful-wordpress-hook-hacks/
  * Sources: http://www.rarst.net
- * 
+ *
  * @global type $wp_filter
  * @param type $tag
  * @return type
- * 
+ *
  */
 function list_hooked_functions($tag = false) {
     global $wp_filter;
@@ -37,7 +37,7 @@ function list_hooked_functions($tag = false) {
 }
 
 /**
- * 
+ *
  * @param type $text
  * @param type $open_tag
  * @param type $close_tag
@@ -55,7 +55,7 @@ function convert_newline($text = '', $open_tag = '<p>', $close_tag = '</p>') {
 }
 
 /**
- * 
+ *
  * @param type $unixTime
  * @return type
  */
@@ -87,7 +87,7 @@ function get_time_duration($unixTime) {
 }
 
 /**
- * 
+ *
  * @param type $datetime
  * @param type $full
  * @return type
@@ -124,12 +124,12 @@ function pretty_relative_time($datetime, $full = false) {
 }
 
 /**
- * 
+ *
  * @global type $wp_query
  * @return type
- * 
+ *
  * Function from Genesis Framework
- * 
+ *
  */
 function wpbeginner_numeric_posts_nav() {
 
@@ -200,12 +200,12 @@ function wpbeginner_numeric_posts_nav() {
 }
 
 /**
- * 
+ *
  * @param type $post_ID
  * @return string
- * 
+ *
  * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
- * 
+ *
  */
 function getPostViews($post_ID, $count_key = '') {
     if ($count_key == '') {
@@ -222,11 +222,11 @@ function getPostViews($post_ID, $count_key = '') {
 }
 
 /**
- * 
+ *
  * @param type $post_ID
- * 
+ *
  * Reference http://wpsnipp.com/index.php/functions-php/track-post-views-without-a-plugin-using-post-meta/#
- * 
+ *
  */
 function setPostViews($post_ID, $count_key = '') {
     if ($count_key == '') {
@@ -314,8 +314,10 @@ function insert_fb_in_head() {
     }
 
     if (isset($lab_info)) {
-        $thumbnail_src = $lab_info['top-image']['medium'];
-        echo '<meta property="og:image" content="' . esc_attr($thumbnail_src) . '"/>';
+        if (isset($lab_info['top-image']['medium'])) {
+            $thumbnail_src = isset($lab_info['top-image']['medium']);
+            echo '<meta property="og:image" content="' . esc_attr($thumbnail_src) . '"/>';
+        }
     } elseif (!has_post_thumbnail($post->ID)) {
 
         $default_image = "http://jobs.evolable.asia/wp-content/uploads/2015/08/fb_share.png";

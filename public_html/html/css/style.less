@@ -448,6 +448,7 @@ h3 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background: url('../img/apply-resume.png') fixed;
+	background-size: cover;
 	font-size: 18px;
 	.container {
 		position: relative;
@@ -893,16 +894,17 @@ h3 {
 			}
 		}
 	}
-	.nano {
+	.list-detail {
 		background-color: #ffffff;
 		height: auto;
-		max-height: 1000px;
-		.nano-content {
+		.list-detail-content {
 			right: 0px !important;
 			padding: 0px;
-			margin: 10px 0px;
+			margin: 0px;
 			.item {
 				padding: 15px 20px;
+				margin-left: 0px;
+				margin-right: 0px;
 				.title {
 					color: #434343;
 					line-height: 20px;
@@ -1312,31 +1314,46 @@ h3 {
 		font-style: italic;
 		font-weight: lighter;
 	}
-	.item {
-		padding: 30px 20px;
-		border-bottom: 1px dotted #b1b1b1;
-		.title {
-			.text-bold;
-			font-size: @body-font-size*1.2;
-		}
-		.title {
-			a {
-				&, &:hover, &:active, &:focus {
-					text-decoration: none;
-				}
-				&.urgent, &.new {
-					color: #FF3232;
+	.content {
+		.item {
+			padding: 30px 20px;
+			border-bottom: 1px dotted #b1b1b1;
+			.title {
+				.text-bold;
+				font-size: @body-font-size*1.2;
+			}
+			.title {
+				a {
+					&, &:hover, &:active, &:focus {
+						text-decoration: none;
+					}
+					&.urgent, &.new {
+						color: #FF3232;
+					}
 				}
 			}
-		}
-		img.date, img.view {
-			margin-right: 3px;
-			&.view {
-				margin-left: -3px;
+			img.date, img.view {
+				margin-right: 3px;
+				&.view {
+					margin-left: -3px;
+				}
+			}
+			&:last-child {
+				border-bottom: none;
 			}
 		}
-		&:last-child {
-			border-bottom: none;
+	}
+	.sidebar {
+		.row {
+			margin-right: 0px;
+		}
+		.carousel-indicators {
+		    position: static;
+		    bottom: 10px;
+		    left: 0;
+		    width: auto;
+		    padding-left: 0;
+		    margin-left: 0;
 		}
 	}
 }
