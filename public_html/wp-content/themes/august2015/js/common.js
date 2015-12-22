@@ -244,7 +244,7 @@ $(function () {
     setBanerHeight();
 
     $('.header-apply-resume').parallax({
-        speed: 0.15
+        speed: 0.15,
     });
 });
 
@@ -255,4 +255,8 @@ $(function () {
    $("#carousel-captions").swipeleft(function() {
       $("#carousel-captions").carousel('next');
    });
+});
+
+$(function () {
+    $('#labs-carousel').height($('#labs-carousel').height());
 });

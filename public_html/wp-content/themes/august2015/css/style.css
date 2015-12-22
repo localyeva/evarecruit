@@ -142,6 +142,9 @@
   h2 {
     text-align: center !important;
   }
+  .header-apply-resume {
+    background-image: url('../img/apply-resume-800x2400.png') !important;
+  }
 }
 .input-lg {
   padding: 5px 16px;
@@ -399,6 +402,10 @@ h3 {
   padding-bottom: 50px;
   background: url('../img/apply-resume.png') fixed;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-position: center center;
   font-size: 18px;
 }
 .header-apply-resume .container {

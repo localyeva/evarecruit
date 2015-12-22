@@ -150,6 +150,10 @@ $(function () {
     });
 });
 
+$(function () {
+    $('#job-carousel-sidebar').height($('#job-carousel-sidebar').height());
+});
+
 /* Featured Employers */
 /*
 $(document).ready(function () {
