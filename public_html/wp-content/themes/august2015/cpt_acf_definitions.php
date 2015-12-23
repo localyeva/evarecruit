@@ -3,7 +3,7 @@
 /*
  * This file is custom post type, custom taxonomy and custom fields
  * definition file.
- * 
+ *
  * Exported from CPT UI & Advanced Custom Fields
  */
 
