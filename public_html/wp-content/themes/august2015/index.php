@@ -296,7 +296,7 @@ if ($loop->have_posts()) {
     <!-- <div class="container"> -->
     <!-- <div class="row"> -->
     <video autoplay loop poster="<?php echo get_part_work_environment_movie_cover() ?>" id="bgvid">
-        <source src="<?php echo get_part_work_environment_movie_webm() ?>" type="video/webm"> 
+        <source src="<?php echo get_part_work_environment_movie_webm() ?>" type="video/webm">
         <source src="<?php echo get_part_work_environment_movie_mp4() ?>" type="video/mp4">
     </video>
     <!-- </div> -->
