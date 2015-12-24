@@ -1,8 +1,13 @@
+body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5, html h5, body h6, html h6{
+  font-family:'Arial',sans-serif !important;
+}
+
 #vffvientnam{
   position: relative;
   margin: 0;
   background-image: url("../img/vff/3.png");
-  background-size: auto, cover;
+  background-size: contain;
+  /*background-size: auto, cover;*/
   background-position: top left, center center;
   background-repeat: repeat, no-repeat;
   height: 1007px;
@@ -20,9 +25,10 @@
   position: relative;
   margin: 0;
   background-image: url("../img/vff/4.png");
-  background-size: auto, cover;
-  background-position: top left, center center;
-  background-repeat: repeat, no-repeat;
+  /*background-size: contain;*/
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   height: 217px;
   text-align: center;
   color: #fff;
@@ -46,24 +52,32 @@ p{
 h3{display: inline;}
 
 
-.row{
+/*.row{
   margin-right:0px !important;
-}
+}*/
 
 #vietnam{
   position: relative;
   margin: 0;
-  background-image: url("../img/vff/overlay.png"), url("../img/vff/9.png");
-  background-size: auto, cover;
-  background-position: top left, center center;
-  background-repeat: repeat, no-repeat;
+  background-image: url("../img/vff/9.png");
+  background-size: cover;
+  /*background-size: auto, cover;*/
+  background-position: center center;
+  background-repeat: no-repeat;
   height: 760px;
   text-align: center;
   color: #fff;
 }
+#vietnam:before {
+  /*content: 'Join us our team';*/
+  color: #fff;
+  min-height: 100px;
+  display: block;
+}
 
 #logoteam {
   background: rgba(0, 0, 0, 0) url("../img/vff/10.png") no-repeat scroll center center;
+  background-size: contain;
   position: relative;
   box-sizing: border-box;
   height: 100%;
@@ -84,19 +98,19 @@ h3{display: inline;}
 #content #box{
     width:27%;
     height:15%;
-    background-color:#538F9D;
+    background-color:#3c8191;
     margin:0 auto;
     opacity: 0.6;
   }
 #child{
   position: relative;
-  transform: translateY(-50%);
+  transform: translateY(-5%);
   top: 50%;
 }
 .child{
-  background: rgba(0, 0, 0, 0) url("../img/vff/11.png");
+  background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
   background-repeat: no-repeat;
-  background-position: 8% 32%;
+  background-position: 3% 32%;
   padding-left: 10px;
 
 }
@@ -115,7 +129,7 @@ h3{display: inline;}
   border-color: #959595;
 }
 .text-color{
-  color: #03A6C6;
+  color: #00aeef;
 }
 .text-size{
  font-size: 226%;
@@ -132,4 +146,34 @@ h3{display: inline;}
 }
 .text-colorvff{
   color: #333333;
+}
+
+.text-colorimg{
+  color: #bcbcbc;
+}
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+/*@media only screen and (max-width : 1200px){
+
+}
+
+@media only screen and (max-width : 979px){
+
+}
+
+@media only screen and (max-width : 767px){
+
+}
+
+@media only screen and (max-width : 480px){
+
+}
+
+*/
+@media only screen and (max-width : 320px){
+.container{
+  width: 320px !important;
+}
+
 }
