@@ -55,13 +55,15 @@
 			font-size: 5vw;
 		}
 	}
-	.carousel-indicators {
-		position: absolute;
-		bottom: -13% !important;
-		li {
-			border-color: #000000;
-			&.active {
-				background-color: #000000;
+	#carousel-captions {
+		.carousel-indicators {
+			position: absolute;
+			bottom: -13% !important;
+			li {
+				border-color: #000000;
+				&.active {
+					background-color: #000000;
+				}
 			}
 		}
 	}
@@ -158,13 +160,15 @@
 			font-size: 48px !important;
 		}
 	}
-	.carousel-indicators {
-		position: absolute;
-		bottom: 10% !important;
-		li {
-			border-color: #ffffff !important;
-			&.active {
-				background-color: #ffffff !important;
+	#carousel-captions {
+		.carousel-indicators {
+			position: absolute;
+			bottom: 10% !important;
+			li {
+				border-color: #ffffff !important;
+				&.active {
+					background-color: #ffffff !important;
+				}
 			}
 		}
 	}
@@ -201,6 +205,9 @@
 @media only screen and (max-width: 768px) {
 	h2 {
 		text-align: center !important;
+	}
+	.header-apply-resume {
+		background-image: url('../img/apply-resume-800x2400.png') !important;
 	}
 }
 
@@ -444,6 +451,11 @@ h3 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 	background: url('../img/apply-resume.png') fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-position: center center;
 	font-size: 18px;
 	.container {
 		position: relative;
@@ -717,7 +729,7 @@ h3 {
 						float: left;
 					}
 					li.active {
-						background-color: #0090b0;
+						background-color: #0090b0 !important;
 					}
 				}
 			}
@@ -889,16 +901,17 @@ h3 {
 			}
 		}
 	}
-	.nano {
+	.list-detail {
 		background-color: #ffffff;
 		height: auto;
-		max-height: 1000px;
-		.nano-content {
+		.list-detail-content {
 			right: 0px !important;
 			padding: 0px;
-			margin: 10px 0px;
+			margin: 0px;
 			.item {
 				padding: 15px 20px;
+				margin-left: 0px;
+				margin-right: 0px;
 				.title {
 					color: #434343;
 					line-height: 20px;
@@ -1308,31 +1321,46 @@ h3 {
 		font-style: italic;
 		font-weight: lighter;
 	}
-	.item {
-		padding: 30px 20px;
-		border-bottom: 1px dotted #b1b1b1;
-		.title {
-			.text-bold;
-			font-size: @body-font-size*1.2;
-		}
-		.title {
-			a {
-				&, &:hover, &:active, &:focus {
-					text-decoration: none;
-				}
-				&.urgent, &.new {
-					color: #FF3232;
+	.content {
+		.item {
+			padding: 30px 20px;
+			border-bottom: 1px dotted #b1b1b1;
+			.title {
+				.text-bold;
+				font-size: @body-font-size*1.2;
+			}
+			.title {
+				a {
+					&, &:hover, &:active, &:focus {
+						text-decoration: none;
+					}
+					&.urgent, &.new {
+						color: #FF3232;
+					}
 				}
 			}
-		}
-		img.date, img.view {
-			margin-right: 3px;
-			&.view {
-				margin-left: -3px;
+			img.date, img.view {
+				margin-right: 3px;
+				&.view {
+					margin-left: -3px;
+				}
+			}
+			&:last-child {
+				border-bottom: none;
 			}
 		}
-		&:last-child {
-			border-bottom: none;
+	}
+	.sidebar {
+		.row {
+			margin-right: 0px;
+		}
+		.carousel-indicators {
+		    position: static;
+		    bottom: 10px;
+		    left: 0;
+		    width: auto;
+		    padding-left: 0;
+		    margin-left: 0;
 		}
 	}
 }
@@ -1776,6 +1804,87 @@ h3 {
 		z-index: 2;
 	}
 }
+
+#labs-carousel {
+	.carousel-indicators {
+		position: static;
+		margin-left: 0px;
+		width: auto;
+	}
+}
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+.vertical .carousel-inner {
+  /* height: 100%; */
+}
+
+.carousel {
+	&.vertical {
+		&:not(.carousel-fade) {
+			.item {
+			    left: 0;
+				-webkit-transition: 0.6s ease-in-out top;
+				-moz-transition: 0.6s ease-in-out top;
+				-ms-transition: 0.6s ease-in-out top;
+				-o-transition: 0.6s ease-in-out top;
+				transition: 0.6s ease-in-out top;
+			}​
+			.active {
+				top: 0;
+				&.left {
+					top: -100%;
+				}
+				&.right {
+				  top: 100%;
+				}
+			}
+			.next {
+				top: 100%;
+				&.left {
+					top: 0;
+				}
+			}
+			.prev {
+				top: -100%;
+				&.right {
+					top: 0;
+				}
+			}
+		}
+	}
+}
+
 .agree-cv input[type="checkbox"] {
   /* Double-sized Checkboxes */
 	-ms-transform: scale(2); /* IE */

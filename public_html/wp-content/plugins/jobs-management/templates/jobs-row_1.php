@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="nano">
-        <div class="nano-content">
+    <div class="list-detail">
+        <div class="list-detail-content">
             <?php if ($wp_query->have_posts()): ?>
                 <?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
                     <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
