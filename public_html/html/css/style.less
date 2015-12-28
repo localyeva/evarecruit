@@ -1799,12 +1799,38 @@ h3 {
 		.next.left, .prev.right {
 			opacity: 1;
 		}
+		.parallax-window {
+		    /*min-height: 600px;*/
+		    height: 100%;
+		    background: transparent;
+		}
+	}
+	.carousel-caption {
+	    position: absolute;
+	    right: 15%;
+	    top: 30%;
+	    bottom: 30%;
+	    left: 15%;
+	    z-index: 10;
+	    padding-top: 20px;
+	    padding-bottom: 20px;
 	}
 	.carousel-control {
 		z-index: 2;
 	}
 }
-
+/*
+.parallax-mirror {
+	opacity: .3;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	transition-property: opacity;
+	&.active {
+		opacity: 1;
+	}
+}
+*/
 #labs-carousel {
 	.carousel-indicators {
 		position: static;

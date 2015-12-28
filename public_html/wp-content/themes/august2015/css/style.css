@@ -1778,9 +1778,36 @@ select {
 #carousel-captions .carousel-inner .prev.right {
   opacity: 1;
 }
+#carousel-captions .carousel-inner .parallax-window {
+  /*min-height: 600px;*/
+  height: 100%;
+  background: transparent;
+}
+#carousel-captions .carousel-caption {
+  position: absolute;
+  right: 15%;
+  top: 30%;
+  bottom: 30%;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 #carousel-captions .carousel-control {
   z-index: 2;
 }
+/*
+.parallax-mirror {
+	opacity: .3;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	transition-property: opacity;
+	&.active {
+		opacity: 1;
+	}
+}
+*/
 #labs-carousel .carousel-indicators {
   position: static;
   margin-left: 0px;
