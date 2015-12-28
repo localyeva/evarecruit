@@ -21,14 +21,14 @@ function assetSrc($file)
     <body>
         <?php include('./_apply/header.php'); ?>
         <div id="apply">
-	        <div class="container">
-				<?php include('./_apply/form.php'); ?>
-	        </div>
+          <div class="container">
+        <?php include('./_apply/form.php'); ?>
+          </div>
         </div>
         <style type="text/css">
-			body {
-				background: #F2F2F2;
-			}
+      body {
+        background: #F2F2F2;
+      }
         </style>
     </body>
 </html>
