@@ -206,7 +206,7 @@ if ($loop->have_posts()) {
         </div>
         <div class="row-gap-large"></div>
         <!-- // image not in terms -->
-        <div class="row gallery gallery-all" data-tab="all">
+        <div class="row masonry gallery gallery-all" data-tab="all">
             <?php $i = 0; ?>
             <?php if ($loop_all->have_posts()): ?>
                 <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
@@ -221,7 +221,7 @@ if ($loop->have_posts()) {
                     $size = 'medium';
                     $thumb = $main_image['sizes'][$size];
                     ?>
-                    <div class="col-xs-3">
+                    <div class="item">
                         <div class="row">
                             <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                 <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
@@ -241,7 +241,7 @@ if ($loop->have_posts()) {
                             $size = 'medium';
                             $thumb_sub = $sub_image['sizes'][$size];
                             ?>
-                            <div class="col-xs-3">
+                            <div class="item">
                                 <div class="row">
                                     <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                         <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb_sub ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
@@ -258,7 +258,7 @@ if ($loop->have_posts()) {
         // in terms
         foreach ($args_terms as $term_slug) :
             ?>
-            <div class="row gallery" data-tab="<?php echo $term_slug ?>">
+            <div class="row gallery masonry" data-tab="<?php echo $term_slug ?>">
                 <?php
                 //
                 $loop_ele = array();
@@ -285,7 +285,7 @@ if ($loop->have_posts()) {
                         $size = 'medium';
                         $thumb = $main_image['sizes'][$size];
                         ?>
-                        <div class="col-xs-3">
+                        <div class="item">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>

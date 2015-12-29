@@ -747,9 +747,6 @@ h3 {
 	font-size: 16px;
 	padding-top: 50px;
 	background: #fff;
-	img {
-		margin-bottom: 5px;
-	}
 	h2 {
 		font-size: 48px;
 	}
@@ -1959,6 +1956,58 @@ button {
 .test {
 	color: #ffffff;
 }
+
+/* Masonry container */
+.masonry {
+    column-count: 4;
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    /* Masonry bricks or child elements */
+    .item {
+	    background: #fff;
+	    display: inline-block;
+	    width: 100%;
+	    box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+    .masonry {
+        -moz-column-gap: 1.4em;
+	    -webkit-column-gap: 1.4em;
+	    column-gap: 1.4em;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .masonry {
+        -moz-column-gap: 1.3em;
+	    -webkit-column-gap: 1.3em;
+	    column-gap: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .masonry {
+        -moz-column-gap: 1.2em;
+	    -webkit-column-gap: 1.2em;
+	    column-gap: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .masonry {
+        -moz-column-gap: 1em;
+	    -webkit-column-gap: 1em;
+	    column-gap: 1em;
+    }
+}
+
 @import 'screen-xs.less';
 @import 'screen-sm.less';
 @import 'screen-sm-max.less';
