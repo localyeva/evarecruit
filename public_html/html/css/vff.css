@@ -1,792 +1,605 @@
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
 body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5, html h5, body h6, html h6{
   font-family:'Arial',sans-serif !important;
 }
 
-#vffvientnam{
-  position: relative;
-  margin: 0;
-  background-image: url("../img/vff/3.png");
-  /*background-size: contain;*/
-  background-size: auto, cover;
-  background-position: 50% 0%, center center;
-  background-repeat: repeat, no-repeat;
-  height: auto;
-  padding: 0em 0 6em 0;
-  text-align: center;
-  color: #fff;
-}
-
-#logo {
-  background: rgba(0, 0, 0, 0) url("../img/vff/2.png") no-repeat scroll center center;
-  position: relative;
-  box-sizing: border-box;
-  height: 35%;
-}
-#style1{
-  position: relative;
-  margin: 0;
-  background-image: url("../img/vff/4.png");
-  /*background-size: contain;*/
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 217px;
-  text-align: center;
-  color: #fff;
-}
-
-.classic {
-  font-family: "Times New Roman", Times, serif;
-}
-.voffset1{
-  margin-top:50px
-}
-
-.voffset2{
-  margin-top:1%;
-}
-
-p{
-  margin:0 0 10px;
-
-}
-h3{display: inline;}
-
-
-/*.row{
-  margin-right:0px !important;
-}*/
+#content #box{
+      width: 33% !important;
+      height:12% !important;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+    }
 
 #vietnam{
-  position: relative;
-  margin: 0;
-  background-image: url("../img/vff/9.png");
-  background-size: cover;
-  /*background-size: auto, cover;*/
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 760px;
-  text-align: center;
-  color: #fff;
-}
-#vietnam:before {
-  /*content: 'Join us our team';*/
-  color: #fff;
-  min-height: 100px;
-  display: block;
-}
+      position: relative;
+      margin: 0;
+      background-image: url("../img/vff/9.png");
+      background-size: cover;
+      /*background-size: auto, cover;*/
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 760px;
+      text-align: center;
+      color: #fff;
+    }
+    #vietnam:before {
+      /*content: 'Join us our team';*/
+      color: #fff;
+      min-height: 100px;
+      display: block;
+    }
 
-#logoteam {
-  background: rgba(0, 0, 0, 0) url("../img/vff/10.png") no-repeat scroll center center;
-  background-size: contain;
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-}
-
-
-#container{
-  display: table;
-  height:100%;
-  width:100%;
-}
-
-#content {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#content #box{
-    width:28%;
-    height:12%;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-#child{
-  position: relative;
-  transform: translateY(-5%);
-  top: 50%;
-}
-.child{
-  background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-  background-repeat: no-repeat;
-  background-position: 1% 34%;
-  padding-left: 18px;
-  background-size: 50px;
-
-}
-.text-left{
-  text-align: left;
-  font-size: 170%;
-}
-
-.decoration-border {
-  width: 180px;
-  height: 2px;
-  border-bottom: solid 1px #ffffff;
-  margin: 0 auto;
-}
-.decoration-border.grey {
-  border-color: #959595;
-}
-.text-color{
-  color: #00aeef;
-}
-.text-size{
- font-size: 226%;
-}
-.text-margin{
-  margin-top: 8%;
-}
-
-.margin-size{
-  font-size: 354%
-}
-.margin-sizevff{
-  font-size: 300%
-}
-.text-colorvff{
-  color: #333333;
-}
-
-.text-colorimg{
-  color: #bcbcbc;
-}
-
-
-
-#style1 h2{
-    font-size: 50px !important;
-  }
-.child h2{
-  font-size: 50px !important;
-}
-
-
-
-/*=====================================================
-=            Bootstrap 2.3.2 Media Queries            =
-=====================================================*/
-/*@media only screen and (max-width : 1200px){
-
-}
-
-@media only screen and (max-width : 979px){
-
-}
-
-*/
-/*@media only screen and (max-width : 480px){
-
-  h3,.margin-size{
-    font-size: 199%;
-  }
-  h3,.margin-sizevff{
-  font-size: 108%;
-  }
-
-  .voffset1{
-    margin-top: 16px;
-  }
 
   #vffvientnam{
-    padding: 0em 0 1em 0;
+      position: relative;
+      margin: 0;
+      background-image: url("../img/vff/3.png");
+      /*background-size: contain;*/
+      background-size: auto, cover;
+      background-position: 50% 0%, center center;
+      background-repeat: repeat, no-repeat;
+      height: auto;
+      padding: 0em 0 6em 0;
+      text-align: center;
+      color: #fff;
+    }
+
+
+  /*==========  Mobile First Method  ==========*/
+
+  /* Custom, iPhone Retina */
+  @media only screen and (min-width : 320px){
+
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (min-width : 480px){
+
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (min-width : 768px){
+
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width : 992px){
+
+  }
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (min-width : 1200px){
+    #logo {
+      background: rgba(0, 0, 0, 0) url("../img/vff/2.png") no-repeat scroll center center;
+      position: relative;
+      box-sizing: border-box;
+      height: 35%;
+    }
+    #style1{
+      position: relative;
+      margin: 0;
+      background-image: url("../img/vff/4.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 217px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .classic {
+      font-family: "Times New Roman", Times, serif;
+    }
+    .voffset1{
+      margin-top:50px
+    }
+
+    .voffset2{
+      margin-top:1%;
+    }
+
+    p{
+      margin:0 0 10px;
+
+    }
+    h3{display: inline;}
+
+    #logoteam {
+      background: rgba(0, 0, 0, 0) url("../img/vff/10.png") no-repeat scroll center center;
+      background-size: contain;
+      position: relative;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+
+    #container{
+      display: table;
+      height:100%;
+      width:100%;
+    }
+
+    #content {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #content #box{
+        width:28%;
+        height:12%;
+        background-color:#3c8191;
+        margin:0 auto;
+        opacity: 0.6;
+      }
+    #child{
+      position: relative;
+      transform: translateY(-5%);
+      top: 50%;
+    }
+    .child{
+      background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      background-position: 1% 34%;
+      padding-left: 18px;
+      background-size: 50px;
+
+    }
+    .text-left{
+      text-align: left;
+      font-size: 170%;
+    }
+
+    .decoration-border {
+      width: 180px;
+      height: 2px;
+      border-bottom: solid 1px #ffffff;
+      margin: 0 auto;
+    }
+    .decoration-border.grey {
+      border-color: #959595;
+    }
+    .text-color{
+      color: #00aeef;
+    }
+    .text-size{
+     font-size: 226%;
+    }
+    .text-margin{
+      margin-top: 8%;
+    }
+
+    .margin-size{
+      font-size: 354%
+    }
+    .margin-sizevff{
+      font-size: 300%
+    }
+    .text-colorvff{
+      color: #333333;
+    }
+
+    .text-colorimg{
+      color: #bcbcbc;
+    }
+
+
+
+    #style1 h2{
+        font-size: 50px !important;
+      }
+    .child h2{
+      font-size: 50px !important;
+    }
+  }
+
+
+
+  /*==========  Non-Mobile First Method  ==========*/
+
+  /* Large Devices, Wide Screens */
+  @media only screen and (max-width : 1200px){
+
+    #logo {
+      background: rgba(0, 0, 0, 0) url("../img/vff/2.png") no-repeat scroll center center;
+      position: relative;
+      box-sizing: border-box;
+      height: 35%;
+    }
+    #style1{
+      position: relative;
+      margin: 0;
+      background-image: url("../img/vff/4.png");
+      /*background-size: contain;*/
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 217px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .classic {
+      font-family: "Times New Roman", Times, serif;
+    }
+    .voffset1{
+      margin-top:50px
+    }
+
+    .voffset2{
+      margin-top:1%;
+    }
+
+    p{
+      margin:0 0 10px;
+
+    }
+    h3{display: inline;}
+
+    #logoteam {
+      background: rgba(0, 0, 0, 0) url("../img/vff/10.png") no-repeat scroll center center;
+      background-size: contain;
+      position: relative;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+
+    #container{
+      display: table;
+      height:100%;
+      width:100%;
+    }
+
+    #content {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #content #box{
+        width:28%;
+        height:12%;
+        background-color:#3c8191;
+        margin:0 auto;
+        opacity: 0.6;
+      }
+    #child{
+      position: relative;
+      transform: translateY(-5%);
+      top: 50%;
+    }
+    .child{
+      background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      background-position: 1% 34%;
+      padding-left: 18px;
+      background-size: 50px;
+
+    }
+    .text-left{
+      text-align: left;
+      font-size: 170%;
+    }
+
+    .decoration-border {
+      width: 180px;
+      height: 2px;
+      border-bottom: solid 1px #ffffff;
+      margin: 0 auto;
+    }
+    .decoration-border.grey {
+      border-color: #959595;
+    }
+    .text-color{
+      color: #00aeef;
+    }
+    .text-size{
+     font-size: 217%;
+    }
+    .text-margin{
+      margin-top: 8%;
+    }
+
+    .margin-size{
+      font-size: 328%
+    }
+    .margin-sizevff{
+      font-size: 300%
+    }
+    .text-colorvff{
+      color: #333333;
+    }
+
+    .text-colorimg{
+      color: #bcbcbc;
+    }
+
+
+
+    #style1 h2{
+        font-size: 50px !important;
+      }
+    .child h2{
+      font-size: 50px !important;
+    }
+  }
+
+  /* Medium Devices, Desktops */
+  @media only screen and (max-width : 992px){
+       h3,.margin-size{
+      font-size: 260% !important;
+    }
+    h3,.margin-sizevff{
+    font-size: 250% !important;
+    }
+
+    .voffset1{
+      margin-top: 16px !important;
+    }
+
+    #vffvientnam{
+      padding: 0em 0 1em 0 !important;
+    }
+
+    .text-left{
+      text-align: left;
+      font-size: 20px !important;
+  }
+
+  .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+      max-width: 20% !important;
+      height: auto;
+    }
+
+    #vietnam{
+      height: 216px !important;
+    }
+
+    #content #box{
+      width:50% !important;
+      height:15% !important;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+    }
+    .child b {
+      font-size: 15px !important;
+    }
+
+    #box .child{
+     background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      padding-left: 37px !important;
+      background-size: 18% !important;
+      background-position: 2px 12px !important;
+
+    }
+
+    #child{
+      position: relative;
+      transform: translateY(-75%);
+      top: 50%;
+    }
+
+    .text-size{
+     font-size: 217% !important;
+    }
+
+    #style1{
+      height: 120px !important;
+    }
+    #style1 h2{
+      font-size: 30px !important;
+    }
+  }
+
+  /* Small Devices, Tablets */
+  @media only screen and (max-width : 768px){
+
+       h3,.margin-size{
+      font-size: 260% !important;
+    }
+    h3,.margin-sizevff{
+    font-size: 250% !important;
+    }
+
+    .voffset1{
+      margin-top: 16px !important;
+    }
+
+    #vffvientnam{
+      padding: 0em 0 1em 0 !important;
+    }
+
+    .text-left{
+      text-align: left;
+      font-size: 20px !important;
+  }
+
+  .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+      max-width: 20% !important;
+      height: auto;
+    }
+
+    #vietnam{
+      height: 216px !important;
+    }
+
+    #content #box{
+      width:50% !important;
+      height:15% !important;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+    }
+    .child b {
+      font-size: 15px !important;
+    }
+
+    #box .child{
+     background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      padding-left: 37px !important;
+      background-size: 18% !important;
+      background-position: 2px 12px !important;
+
+    }
+
+    #child{
+      position: relative;
+      transform: translateY(-75%);
+      top: 50%;
+    }
+
+    .text-size{
+     font-size: 217% !important;
+    }
+
+    #style1{
+      height: 120px !important;
+    }
+    #style1 h2{
+      font-size: 30px !important;
+    }
+  }
+
+  /* Extra Small Devices, Phones */
+  @media only screen and (max-width : 480px){
+    h3,.margin-size{
+      font-size: 166% !important;
+    }
+    h3,.margin-sizevff{
+    font-size: 175% !important;
+    }
+
+    .voffset1{
+      margin-top: 16px !important;
+    }
+
+    #vffvientnam{
+      padding: 0em 0 1em 0 !important;
+    }
+
+    .text-left{
+      text-align: left;
+      font-size: 20px !important;
+  }
+
+  .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+      max-width: 20% !important;
+      height: auto;
+    }
+
+    #vietnam{
+      height: 216px !important;
+    }
+
+    #content #box{
+      width:50% !important;
+      height:15% !important;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+    }
+    .child b {
+      font-size: 15px !important;
+    }
+
+    #box .child{
+     background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      padding-left: 37px !important;
+      background-size: 18% !important;
+      background-position: 2px 12px !important;
+
+    }
+
+    #child{
+      position: relative;
+      transform: translateY(-75%);
+      top: 50%;
+    }
+
+    .text-size{
+     font-size: 140% !important;
+    }
+
+    #style1{
+      height: 120px !important;
+    }
+    #style1 h2{
+      font-size: 23px !important;
+    }
+  }
+
+  /* Custom, iPhone Retina */
+  @media only screen and (max-width : 320px){
+    h3,.margin-size{
+      font-size: 120% !important;
+    }
+    h3,.margin-sizevff{
+    font-size: 122% !important;
+    }
+
+    .voffset1{
+      margin-top: 16px !important;
+    }
+
+    #vffvientnam{
+      padding: 0em 0 1em 0 !important;
+    }
+
+    .text-left{
+      text-align: left;
+      font-size: 20px !important;
+  }
+
+  .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+      max-width: 20% !important;
+      height: auto;
+    }
+
+    #vietnam{
+      height: 216px !important;
+    }
+
+    #content #box{
+      width:50% !important;
+      height:15% !important;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+    }
+    .child b {
+      font-size: 15px !important;
+    }
+
+    #box .child{
+     background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
+      background-repeat: no-repeat;
+      padding-left: 37px !important;
+      background-size: 18% !important;
+      background-position: 2px 12px !important;
+
+    }
+
+    #child{
+      position: relative;
+      transform: translateY(-75%);
+      top: 50%;
+    }
+
+    .text-size{
+     font-size: 140% !important;
+    }
+
+    #style1{
+      height: 120px !important;
+    }
+    #style1 h2{
+      font-size: 23px !important;
+    }
   }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    max-width: 32%;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px;
-  }
-
-  #content #box{
-    width:69%;
-    height:15%;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-  .child b {
-    font-size: 16px;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px;
-    background-size: 16%;
-    background-position: 2px 10px;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 179%;
-  }
-
-  #style1{
-    height: 135px;
-  }
-
-}
-
-@media only screen and (max-width : 768px){
-
-  h3,.margin-size{
-    font-size: 199%;
-  }
-  h3,.margin-sizevff{
-  font-size: 108%;
-  }
-
-  .voffset1{
-    margin-top: 16px;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    max-width: 32%;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px;
-  }
-
-  #content #box{
-    width:69%;
-    height:15%;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-  .child b {
-    font-size: 19px;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px;
-    background-size: 16%;
-    background-position: 18px 21px;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 179%;
-  }
-
-  #style1{
-    height: 170px;
-  }
-  #style1 h2{
-    font-size: 36px;
-  }
-
-}*/
-
-
-/* ----------- iPhone 6+ ----------- */
-
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 414px)
-  and (max-device-width: 736px)
-  and (-webkit-min-device-pixel-ratio: 3) {
-
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-
-}
-
-/* Landscape */
-@media only screen  and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-  h3,.margin-size{
-    font-size: 278% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 200% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 20px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 17% !important;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:36% !important;
-    height:15% !important;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-  .child b {
-    font-size: 24px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 11% !important;
-    background-position: 13px 28px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 225% !important;
-  }
-
-  #style1{
-    height: 118px !important;
-  }
-  #style1 h2{
-    font-size: 27px !important;
-  }
-
-}
-
-/* ----------- iPhone 6 ----------- */
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait) {
-
-  h3,.margin-size{
-    font-size: 136% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 141% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 32% !important;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:50% !important;
-    height:15% !important;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-  .child b {
-    font-size: 15px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 18% !important;
-    background-position: 2px 12px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 113% !important;
-  }
-
-  #style1{
-    height: 93px !important;
-  }
-  #style1 h2{
-    font-size: 18px !important;
-  }
-
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  h3,.margin-size{
-    font-size: 251% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 265% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 20% !important;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:41% !important;
-    height:15% !important;
-    background-color:#3c8191 !important;
-    margin:0 auto !important;
-    opacity: 0.6 !important;
-  }
-  .child b {
-    font-size: 19px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 13% !important;
-    background-position: 15px 28px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 179% !important;
-  }
-
-  #style1{
-    height: 116px !important;
-  }
-  #style1 h2{
-    font-size: 26px !important;
-  }
-
-}
-
-
-
-/* ----------- iPhone 5 and 5S ----------- */
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-
-
-}
-
-/* Portrait */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape) {
-  h3,.margin-size{
-    font-size: 199% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 216% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 20% !important;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:41% !important;
-    height:15% !important;
-    background-color:#3c8191 !important;
-    margin:0 auto !important;
-    opacity: 0.6 !important;
-  }
-  .child b {
-    font-size: 19px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 13% !important;
-    background-position: 15px 28px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 176% !important;
-  }
-
-  #style1{
-    height: 116px !important;
-  }
-  #style1 h2{
-    font-size: 26px !important;
-  }
-}
-
-
-/* ----------- iPhone 4 and 4S ----------- */
-
-/* Portrait and Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-/* Portrait */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  h3,.margin-size{
-    font-size: 114% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 115% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 32% !important;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:69% !important;
-    height:15% !important;
-    background-color:#3c8191;
-    margin:0 auto;
-    opacity: 0.6;
-  }
-  .child b {
-    font-size: 19px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 16% !important;
-    background-position: 2px 26px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 95% !important;
-  }
-
-  #style1{
-    height: 85px !important;
-  }
-
-  #style1 h2{
-    font-size: 15px !important;
-  }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  h3,.margin-size{
-    font-size: 177% !important;
-  }
-  h3,.margin-sizevff{
-  font-size: 183% !important;
-  }
-
-  .voffset1{
-    margin-top: 16px !important;
-  }
-
-  #vffvientnam{
-    padding: 0em 0 1em 0 !important;
-  }
-
-  .text-left{
-    text-align: left;
-    font-size: 16px !important;
-}
-
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    /*display: block;*/
-    max-width: 20% !important;;
-    height: auto;
-  }
-
-  #vietnam{
-    height: 216px !important;
-  }
-
-  #content #box{
-    width:46% !important;
-    height:15% !important;
-    background-color:#3c8191 !important;
-    margin:0 auto !important;
-    opacity: 0.6 !important;
-  }
-  .child b {
-    font-size: 19px !important;
-  }
-
-  #box .child{
-   background: rgba(0, 0, 0, 0) url("../img/vff/11.png") center center;
-    background-repeat: no-repeat;
-    padding-left: 37px !important;
-    background-size: 17% !important;
-    background-position: 0px 27px !important;
-
-  }
-
-  #child{
-    position: relative;
-    transform: translateY(-75%);
-    top: 50%;
-  }
-
-  .text-size{
-   font-size: 146% !important;
-  }
-
-  #style1{
-    height: 107px !important;
-  }
-  #style1 h2{
-    font-size: 23px !important;
-  }
-
-}
