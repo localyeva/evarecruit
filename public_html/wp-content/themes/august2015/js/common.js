@@ -263,11 +263,14 @@ $(function () {
         });
 
         $('#carousel-captions').on('slide.bs.carousel', function (event) {
-            // do something…
-            img_src = $(event.relatedTarget.innerHTML).attr('data-image-src');
-            //alert(img_src);
+            
+            $(event.currentTarget.innerHTML).fadeOut(7000, function(){
+                // do something…
+                img_src = $(event.relatedTarget.innerHTML).attr('data-image-src');
+                //alert(img_src);
 
-            $("img.parallax-slider").attr('src', img_src);
+                $("img.parallax-slider").attr('src', img_src).fadeIn(7000);
+            });
         });
     }
 });
