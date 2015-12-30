@@ -186,7 +186,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
       color: #bcbcbc;
     }
 
-    .btn{
+   /* .btn{
         font-size: -webkit-xxx-large;
         background-color:#3c8191;
         margin:0 auto;
@@ -194,9 +194,15 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         width: 34%;
         border: 7px #FFFFFF solid;
 
-    }
+    }*/
     .text-color-btn{
       color: #FFFFFF;
+      font-size: -webkit-xxx-large;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+      width: 34%;
+      border: 7px #FFFFFF solid;
     }
     a:hover .btn {
       color: #FFFFFF;
@@ -346,7 +352,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
       font-size: 50px !important;
     }
 
-    .btn{
+   /* .btn{
         font-size: xx-large;
         background-color:#3c8191;
         margin:0 auto;
@@ -354,7 +360,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         width: 40%;
         border: 7px #FFFFFF solid;
 
-    }
+    }*/
 
     .imge{
         margin-right: 17px;
@@ -362,6 +368,12 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
 
     .text-color-btn{
       color: #FFFFFF;
+      font-size: xx-large;
+        background-color:#3c8191;
+        margin:0 auto;
+        opacity: 0.6;
+        width: 40%;
+        border: 7px #FFFFFF solid;
     }
     a:hover .btn {
       color: #FFFFFF;
@@ -437,7 +449,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
       font-size: 30px !important;
     }
 
-    .btn{
+   /* .btn{
         font-size: xx-large;
         background-color:#3c8191;
         margin:0 auto;
@@ -445,7 +457,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         width:45%;
         border: 7px #FFFFFF solid;
 
-    }
+    }*/
 
     .imge{
         margin-right: 17px;
@@ -453,6 +465,12 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
 
     .text-color-btn{
       color: #FFFFFF;
+      font-size: xx-large;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+      width:45%;
+      border: 7px #FFFFFF solid;
     }
     a:hover .btn {
       color: #FFFFFF;
@@ -530,7 +548,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
     }
 
 
-   .btn{
+   /*.btn{
         font-size: large;
         background-color:#3c8191;
         margin:0 auto;
@@ -538,7 +556,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         width:50%;
         border: 3px #FFFFFF solid;
 
-    }
+    }*/
 
     .imge{
         margin-right: 17px;
@@ -546,6 +564,12 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
 
     .text-color-btn{
       color: #FFFFFF;
+      font-size: large;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+      width:50%;
+      border: 3px #FFFFFF solid;
     }
     a:hover .btn {
       color: #FFFFFF;
@@ -625,7 +649,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         font-size: 24px !important;
     }
 
-    .btn{
+   /* .btn{
         font-size: large;
         background-color:#3c8191;
         margin:0 auto;
@@ -633,7 +657,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         width: 64%;
         border: 3px #FFFFFF solid;
 
-    }
+    }*/
 
     .imge{
         margin-right: 17px;
@@ -641,6 +665,12 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
 
     .text-color-btn{
       color: #FFFFFF;
+      font-size: large;
+        background-color:#3c8191;
+        margin:0 auto;
+        opacity: 0.6;
+        width: 64%;
+        border: 3px #FFFFFF solid;
     }
     a:hover .btn {
       color: #FFFFFF;
@@ -719,7 +749,7 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         font-size: 23px !important;
     }
 
-    .btn{
+  /*  .btn{
         background-color:#3c8191;
         margin:0 auto;
         opacity: 0.6;
@@ -727,13 +757,19 @@ body h1, html h1, body h2, html h2, body h3, html h3, body h4, html h4, body h5,
         border: 3px #FFFFFF solid;
         font-size: large;
 
-    }
+    }*/
 
     .imge{
         margin-right: 17px;
     }
     .text-color-btn{
       color: #FFFFFF;
+      background-color:#3c8191;
+      margin:0 auto;
+      opacity: 0.6;
+      width:69%;
+      border: 3px #FFFFFF solid;
+      font-size: large;
     }
     a:hover .btn {
       color: #FFFFFF;

@@ -270,12 +270,5 @@
         <button class="btn text-color-btn"><img src="img/vff/11.png" class="imge" />Join us our team</button>
       </a>
     </div>
-    <!-- <div id="content">
-      <div id="box">
-        <div class="col-md-12 col-xs-12">
-          <div id="child" class="child"> <h2><b>Join us our team</b></h2></div>
-        </div>
-      </div>
-    </div> -->
   </div>
 </section>
