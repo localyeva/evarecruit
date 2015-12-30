@@ -1,8 +1,1 @@
-@media (min-width: 1200px) {
-  .navbar-brand.horizontal {
-    display: block !important;
-  }
-  .navbar-brand.vertical {
-    display: none;
-  }
-}
+@media (min-width:1200px){.navbar-brand.horizontal{display:block !important}.navbar-brand.vertical{display:none}}/*# sourceMappingURL=screen-lg.css.map */
