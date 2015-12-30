@@ -1,1 +1,19 @@
-@media (min-width:992px){.header-our-thoughts .item{display:table}.header-our-thoughts .item [class*=col-md]{float:none;display:table-cell;vertical-align:top}.header-our-thoughts .item .content .photo{position:absolute;bottom:20px;width:100%;padding-right:70px}.carousel-caption{bottom:35%}}
+@media (min-width: 992px) {
+  .header-our-thoughts .item {
+    display: table;
+  }
+  .header-our-thoughts .item [class*="col-md"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+  }
+  .header-our-thoughts .item .content .photo {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding-right: 70px;
+  }
+  .carousel-caption {
+    bottom: 35%;
+  }
+}
