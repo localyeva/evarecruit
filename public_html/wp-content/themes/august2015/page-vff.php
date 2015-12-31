@@ -73,7 +73,7 @@ get_header();
       <div class="row voffset2"></div>
       <div class="row">
         <div class="text-center classic">
-          <h2>Việc muốn làm nhà tài trợ cho Việt Nam có <br/> 3 lý do</h2>
+          <h2>Việc muốn làm nhà tài trợ cho<br/> Việt Nam có  3 lý do</h2>
         </div>
       </div>
     </div>
