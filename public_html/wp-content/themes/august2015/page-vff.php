@@ -276,7 +276,7 @@ get_header();
 <section id="vietnam" class="main">
   <div id="container">
     <div id="content">
-      <a href="">
+      <a href="http://evarecruit.localhost/jobs">
         <button class="btn text-color-btn"><img src="<?php echo get_template_directory_uri() ?>/img/vff/11.png" class="imge" />Join us our team</button>
       </a>
     </div>
