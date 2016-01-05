@@ -1207,7 +1207,7 @@ select {
 }
 #detail-staff .header-our-thoughts .item.left-alignment .content:before {
   margin-bottom: -15px;
-  margin-right: -50px;
+  margin-right: -49.99999999px;
   content: url('../img/detail_staff/11.png');
   float: right;
 }
@@ -2006,24 +2006,25 @@ html h6 {
 }
 .submit_vff {
   background-color: #ff733a;
-  opacity: 0.9;
-  color: #FFFFFF;
   font-weight: bold;
+  color: #FFFFFF;
   border: 2px #ff530d solid;
-  font-size: 28px;
-  padding: 10px 20px;
+  font-size: 3em;
+  padding: 0px;
   margin: 0 auto;
   display: block;
   float: none;
-  width: 141px;
-  border-radius: inherit;
+  width: 175px;
 }
 .submit_vff:hover {
-  background-color: #ff530d;
+  opacity: 0.8;
   color: #FFFFFF;
 }
 a.submit_vff:hover {
   text-decoration: none !important;
+}
+.fa_vff {
+  margin-right: 15px;
 }
 /*==========  Mobile First Method  ==========*/
 /* Custom, iPhone Retina */

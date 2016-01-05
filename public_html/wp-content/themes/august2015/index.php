@@ -91,7 +91,8 @@ if ($loop->have_posts()) {
                 <?php wp_reset_postdata() ?>
                 <!-- baothi start 31/12/2015 -->
               <div class="row">
-                <a href="http://evarecruit.localhost/vff" class="btn submit_vff">VFF</a>
+                <a href="http://evarecruit.localhost/vff" class="btn submit_vff">
+                <i class="fa fa-arrow-circle-o-right fa-4 fa_vff"></i>VFF</a>
               </div>
               <!-- baothi start 31/12/2015 -->
             </div>
