@@ -27,6 +27,9 @@ function get_lab_info() {
     global $jola_settings;
 
     $term = get_the_terms(get_the_ID(), 'lab');
+    if($term == false) {
+        return NULL;
+    }
     $t_id = $term[0]->term_id;
     $lab_info = array();
 
