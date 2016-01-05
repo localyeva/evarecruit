@@ -102,7 +102,7 @@ if ($loop->have_posts()) {
                 <?php endif; ?>
                 <?php wp_reset_postdata() ?>
               <div class="row">
-                <a href="http://evarecruit.localhost/vff" class="btn submit_vff">
+                <a href="<?php echo home_url('vff') ?>" class="btn submit_vff">
                 <i class="fa fa-arrow-circle-o-right fa-4 fa_vff"></i>VFF</a>
               </div>
             </div>
