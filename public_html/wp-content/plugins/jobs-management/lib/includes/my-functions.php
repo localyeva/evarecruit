@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @param type $string
  * @return type
  */
@@ -10,7 +10,7 @@ function isJSON($string){
 }
 
 /**
- * 
+ *
  * @param type $option_name
  * @return type
  */
@@ -25,11 +25,14 @@ function job_get_option($option_name) {
 
 function get_lab_info() {
     global $jola_settings;
-    
+
     $term = get_the_terms(get_the_ID(), 'lab');
+    if($term == false) {
+        return NULL;
+    }
     $t_id = $term[0]->term_id;
     $lab_info = array();
-            
+
     foreach ($jola_settings as $field => $data){
         $key = $data['id'];
         $tax_id = $key . '-' . $t_id;
@@ -57,7 +60,7 @@ function get_lab_info() {
 /**
  * Switch Default Behaviour in TinyMCE to use "<br>"
  * On Enter instead of "<p>"
- * 
+ *
  * @link https://shellcreeper.com/?p=1041
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/tiny_mce_before_init
  * @link http://www.tinymce.com/wiki.php/Configuration:forced_root_block
@@ -73,9 +76,9 @@ function my_switch_tinymce_p_br($settings) {
  *
  * @param int $width
  * @param int $height
- * 
+ *
  * usage: Call the function  wp_editor_resize($width, $height); before wp_editor()  is being called.
- * 
+ *
  */
 function wp_editor_resize($width = 0, $height = 0) {
     $style = '<style type="text/css">';
@@ -90,7 +93,7 @@ function wp_editor_resize($width = 0, $height = 0) {
 }
 
 /**
- * 
+ *
  */
 add_action('admin_head', 'my_admin_custom_styles');
 
