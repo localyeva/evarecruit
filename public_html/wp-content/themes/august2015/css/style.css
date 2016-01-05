@@ -1207,7 +1207,7 @@ select {
 }
 #detail-staff .header-our-thoughts .item.left-alignment .content:before {
   margin-bottom: -15px;
-  margin-right: -49.99999999px;
+  margin-right: -50px;
   content: url('../img/detail_staff/11.png');
   float: right;
 }
@@ -2005,7 +2005,7 @@ html h6 {
   color: #fff;
 }
 .submit_vff {
-  background-color: #ff733a;
+  background-color: #ff530d;
   font-weight: bold;
   color: #FFFFFF;
   border: 2px #ff530d solid;
