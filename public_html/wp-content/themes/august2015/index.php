@@ -26,25 +26,37 @@ if ($loop->have_posts()) {
 }
 ?>
 
-<div class="bs-carousel" data-example-id="carousel-with-captions">
-    <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel" data-interval=5000>
-        <ol class="carousel-indicators">
-            <?php for ($i = 0; $i < count($slider_home); $i++): ?>
-                <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
-            <?php endfor; ?>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <?php for ($i = 0; $i < count($slider_home); $i++): ?>
-                <div class="item <?php echo ($i == 0) ? 'active' : '' ?>" style="background: url('<?php echo $slider_home[$i]['image'] ?>') fixed;" >
-                    <div class="mask"></div>
-                </div>
-            <?php endfor; ?>
-        </div>
-        <div class="slide-caption">
-            <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
-            <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
-            <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
-        </div>
+<div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+            <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
+        <?php endfor; ?>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+            <div class="item left next <?php echo ($i == 0) ? 'active' : '' ?>">
+                <div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo $slider_home[$i]['image'] ?>"></div>
+            </div>
+        <?php endfor; ?>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#carousel-captions" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-captions" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+    <div class="slide-caption">
+        <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
+        <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
+        <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
     </div>
 </div>
 
@@ -200,7 +212,7 @@ if ($loop->have_posts()) {
         </div>
         <div class="row-gap-large"></div>
         <!-- // image not in terms -->
-        <div class="row gallery gallery-all" data-tab="all">
+        <div class="row masonry gallery gallery-all" data-tab="all">
             <?php $i = 0; ?>
             <?php if ($loop_all->have_posts()): ?>
                 <?php while ($loop_all->have_posts()): $loop_all->the_post(); ?>
@@ -215,7 +227,7 @@ if ($loop->have_posts()) {
                     $size = 'medium';
                     $thumb = $main_image['sizes'][$size];
                     ?>
-                    <div class="col-xs-3">
+                    <div class="item">
                         <div class="row">
                             <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                 <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
@@ -235,7 +247,7 @@ if ($loop->have_posts()) {
                             $size = 'medium';
                             $thumb_sub = $sub_image['sizes'][$size];
                             ?>
-                            <div class="col-xs-3">
+                            <div class="item">
                                 <div class="row">
                                     <div class="col-xs-12 wow fadeInUp" data-wow-delay="<?php echo $i * 0.1; ?>s">
                                         <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb_sub ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>
@@ -252,7 +264,7 @@ if ($loop->have_posts()) {
         // in terms
         foreach ($args_terms as $term_slug) :
             ?>
-            <div class="row gallery" data-tab="<?php echo $term_slug ?>">
+            <div class="row gallery masonry" data-tab="<?php echo $term_slug ?>">
                 <?php
                 //
                 $loop_ele = array();
@@ -279,7 +291,7 @@ if ($loop->have_posts()) {
                         $size = 'medium';
                         $thumb = $main_image['sizes'][$size];
                         ?>
-                        <div class="col-xs-3">
+                        <div class="item">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <a href="<?php echo bloginfo('url') . '/work-environment' ?>"><img src="<?php echo $thumb ?>" alt="<?php echo get_the_title() ?>" class="img-responsive center-block" /></a>

@@ -744,39 +744,36 @@ h3 {
   }
 }
 .header-environment {
-  font-size: 16px;
-  padding-top: 50px;
-  background: #fff;
-  img {
-    margin-bottom: 5px;
-  }
-  h2 {
-    font-size: 48px;
-  }
-  .nav-pills {
-    li {
-      a {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-size: 18px;
-        font-weight: @normal;
-      }
-    }
-    li.active {
-      margin-bottom: 5px;
-      a {
-        margin-bottom: 0px;
-      }
-    }
-    li.active:before {
-      display: none;
-    }
-  }
-  .gallery-all {
-    .row:hover {
-      opacity: 0.5;
-    }
-  }
+	font-size: 16px;
+	padding-top: 50px;
+	background: #fff;
+	h2 {
+		font-size: 48px;
+	}
+	.nav-pills {
+		li {
+			a {
+				padding-top: 5px;
+				padding-bottom: 5px;
+				font-size: 18px;
+				font-weight: @normal;
+			}
+		}
+		li.active {
+			margin-bottom: 5px;
+			a {
+				margin-bottom: 0px;
+			}
+		}
+		li.active:before {
+			display: none;
+		}
+	}
+	.gallery-all {
+		.row:hover {
+			opacity: 0.5;
+		}
+	}
 }
 .header-work-environment {
   background-color: #ffffff;
@@ -1771,40 +1768,66 @@ h3 {
   background-image: none !important;
 }
 #carousel-captions {
-  .carousel-inner {
-    .item {
-      opacity: .3;
-      -webkit-transition-property: opacity;
-      -moz-transition-property: opacity;
-      -o-transition-property: opacity;
-      transition-property: opacity;
-      img {
-        margin: 0 auto;
-      }
-      .mask {
-        width: 100%;
-        background: url('../img/bg/grid.png');
-        z-index: 10;
-        position: absolute;
-      }
-    }
-    .active {
-      opacity: 1;
-    }
-    .active.left, .active.right {
-      left: 0;
-      opacity: .3;
-      z-index: 1;
-    }
-    .next.left, .prev.right {
-      opacity: 1;
-    }
-  }
-  .carousel-control {
-    z-index: 2;
-  }
+	.carousel-inner {
+		.item {
+			opacity: .3;
+			-webkit-transition-property: opacity;
+			-moz-transition-property: opacity;
+			-o-transition-property: opacity;
+			transition-property: opacity;
+			img {
+				margin: 0 auto;
+			}
+			.mask {
+				width: 100%;
+				background: url('../img/bg/grid.png');
+				z-index: 10;
+				position: absolute;
+			}
+		}
+		.active {
+			opacity: 1;
+		}
+		.active.left, .active.right {
+			left: 0;
+			opacity: .3;
+			z-index: 1;
+		}
+		.next.left, .prev.right {
+			opacity: 1;
+		}
+		.parallax-window {
+		    /*min-height: 600px;*/
+		    height: 100%;
+		    background: transparent;
+		}
+	}
+	.carousel-caption {
+	    position: absolute;
+	    right: 15%;
+	    top: 30%;
+	    bottom: 30%;
+	    left: 15%;
+	    z-index: 10;
+	    padding-top: 20px;
+	    padding-bottom: 20px;
+	}
+	.carousel-control {
+		z-index: 2;
+	}
 }
-
+/*
+.parallax-mirror {
+	opacity: .3;
+	-webkit-transition-property: opacity;
+	-moz-transition-property: opacity;
+	-o-transition-property: opacity;
+	transition-property: opacity;
+	&.active {
+		opacity: 1;
+	}
+}
+*/
 #labs-carousel {
   .carousel-indicators {
     position: static;
@@ -1934,6 +1957,56 @@ button {
   color: #ffffff;
 }
 
+/* Masonry container */
+.masonry {
+    column-count: 4;
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    -moz-column-gap: 1.5em;
+    -webkit-column-gap: 1.5em;
+    column-gap: 1.5em;
+    /* Masonry bricks or child elements */
+    .item {
+	    background: #fff;
+	    display: inline-block;
+	    width: 100%;
+	    box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+    .masonry {
+        -moz-column-gap: 1.4em;
+	    -webkit-column-gap: 1.4em;
+	    column-gap: 1.4em;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .masonry {
+        -moz-column-gap: 1.3em;
+	    -webkit-column-gap: 1.3em;
+	    column-gap: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .masonry {
+        -moz-column-gap: 1.2em;
+	    -webkit-column-gap: 1.2em;
+	    column-gap: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .masonry {
+        -moz-column-gap: 1em;
+	    -webkit-column-gap: 1em;
+	    column-gap: 1em;
+    }
+}
 
 @import 'screen-xs.less';
 @import 'screen-sm.less';
