@@ -214,16 +214,3 @@ get_header();
     </div>
 </section>
 
-<?php get_footer(); ?>
-.voffset1 {
-    margin-top: 91px;
-  }
-  .voffset2 {
-    margin-top: 1%;
-  }
-   .voffset3 {
-    margin-top: 24px;
-  }
-  .voffset4 {
-    margin-top: 8%;
-  }
