@@ -14,14 +14,14 @@ get_header();
     <div class="row ">
       <div class="col-md-1 col-xs-12 "></div>
       <div class="col-md-10 col-xs-12  text-margin">
-        <h3 class=" text-colorvff margin-size"> <b>Evolable Asia</b></h3><h3 class="text-color margin-size"> <b>là nhà tài trợ chính thức</b></h3>
+        <h3 class=" text-colorvff margin-size"> <b>Evolable Asia</b></h3><h3 class="text-color margin-size"> <b>- nhà tài trợ chính thức</b></h3>
       </div>
       <div class="col-md-1 col-xs-12 "></div>
     </div>
     <div class="row ">
       <div class="col-md-2 col-xs-12 "></div>
       <div class="col-md-8 col-xs-12 ">
-        <h3 class="margin-sizevff text-colorvff">cho đội tuyển bóng đá Việt Nam</h3>
+        <h3 class="margin-sizevff text-colorvff">cho liên đoàn bóng đá Việt Nam</h3>
       </div>
       <div class="col-md-2 col-xs-12 "></div>
     </div>
@@ -42,7 +42,7 @@ get_header();
       <div class="row">
         <div class="col-md-2 col-xs-12"></div>
         <div class="col-md-8 col-xs-12">
-          <p>Evolable Asia đã ký hợp đồng làm nhà tài trợ bóng đá Việt Nam vào ngày 5 tháng 8 năm 2015 (liên đoàn bóng đá Việt Nam)</p>
+          <p>Vào ngày 5/8/2015, Evolable Asia đã chính thức ký hợp đồng trở thành nhà tài trợ cho liên đoàn bóng đá Việt Nam ( Vietnam football Federation, dưới đây gọi tắt là VFF).</p>
         </div>
         <div class="col-md-2 col-xs-12"></div>
       </div>
@@ -50,7 +50,7 @@ get_header();
       <div class="row">
         <div class="col-md-2 col-xs-12"></div>
         <div class="col-md-8 col-xs-12">
-          <p>Tôi nghĩ rằng công ty ký hợp đồng tài trợ mà không có vụ lợi cho mình như việc hướng về những người tiêu dùng là rất hiếm</p>
+          <p>Việc mà một công ty hoàn toàn không phải là công ty chuyên sản xuất và kinh doanh các mặt hàng tiêu dùng - như Evolable Asia trở thành nhà tài trợ cho liên đoàn bóng đá Việt Nam , là một hiện tượng hiếm.</p>
         </div>
         <div class="col-md-2 col-xs-12"></div>
       </div>
@@ -58,7 +58,7 @@ get_header();
       <div class="row">
         <div class="col-md-2 col-xs-12"></div>
         <div class="col-md-8 col-xs-12">
-          <p>Tôi xin phép được giới thiệu về lý do ký hợp đồng tài trợ lần này với lập trường tiến hành kinh doanh và được sự ủng hộ của nhiều khách hàng.</p>
+          <p>Vậy tại sao Evolable Asia lại có một quyết định như vậy? </p>
         </div>
         <div class="col-md-2 col-xs-12"></div>
       </div>
@@ -73,7 +73,7 @@ get_header();
       <div class="row voffset2"></div>
       <div class="row">
         <div class="text-center classic">
-          <h2>Việc muốn làm nhà tài trợ cho<br/> Việt Nam có  3 lý do</h2>
+          <h2>3 lý do để trở thành nhà tài trợ </br> cho bóng đá Việt Nam.</h2>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@ get_header();
           <div class="col-md-8 col-xs-12">
 
               <img src="<?php echo get_template_directory_uri() ?>/img/vff/6.png" class="text-colorimg" alt="Responsive Image"/>
-              <h3 class="text-color"> <b>Tôi muốn cho mọi người biết</b></h3>
+              <h3 class="text-color"> <b>Đưa Evolable Asia đến gần với các ứng viên hơn.</b></h3>
 
           </div>
           <div class="col-md-2"></div>
@@ -97,13 +97,13 @@ get_header();
 
         <div class="row voffset2"></div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
               <h3 class="text-color text-size"><b>Công Ty Evolable Asia là công ty như thế nào</b><h3>
           </div>
           <div class="col-md-2"></div>
-        </div>
+        </div> -->
 
         <div class="row voffset2"></div>
 
@@ -120,7 +120,7 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Chúng tôi là công ty mới vừa được thành lập vào năm 2012</p>
+              <p>Công ty chúng tôi được thành lập vào năm 2012, vẫn còn là một cái tên khá mới giữa các công ty IT khác trên thị trường.</p>
             </div>
             <div class="col-md-2"></div>
           </div>
@@ -128,7 +128,7 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Trong ngành IT cũng nhiều người tìm việc chưa biết công ty chúng tôi, họ cũng không biết công ty chúng tôi là công ty như thế nào.</p>
+              <p>Ngay cả các kĩ sư IT khi đi tìm việc , có không ít bạn sẽ thắc mắc rằng: công ty Evolable Asia là công ty như thế nào ? </p>
             </div>
             <div class="col-md-2"></div>
           </div>
@@ -136,7 +136,7 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Tôi muốn nhận được sự cho phép tài trợ của VFF với suy nghĩ muốn truyền tải đơn giản "công ty chúng tôi là công ty như thế nào.</p>
+              <p>Việc chúng tôi trở thành nhà tài trợ cho liên đoàn bóng đá Việt Nam cũng là để trả lời câu hỏi này cho các bạn. </p>
             </div>
             <div class="col-md-2"></div>
           </div>
@@ -144,7 +144,15 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Tóm lại, nhân cơ hội này có thể truyền tải cho người tìm việc hiểu rõ cảm giác và ấn tượng " công ty kinh doanh có thể tài trợ cho VFF một cách trong sáng:, "Công ty muốn phát triển cùng với Việt Nam","là một công ty đương đầu với thế giới thông qua kinh doanh phát triển hệ thống".</p>
+              <p>Chúng tôi muốn trả lời với các bạn rằng : Công ty chúng tôi có nền tảng kinh doanh vững chắc có đủ tiêu chuẩn trở thành nhà tài trợ cho liên đoàn bóng đá Việt Nam; Chúng tôi sẽ trưởng thành và lớn mạnh cùng với Việt Nam ; Chúng tôi muốn thông qua ngành nghề kinh doanh chính của mình là "phát triển phần mềm" để cùng với đội tuyển Việt Nam "cạnh tranh với các đối thủ trên toàn Thế Giới".</p>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <p>Thông qua việc này , chúng tôi mong muốn các bạn - đặc biệt là những kỹ sư IT đang đi tìm việc hiểu rõ hơn về giá trị của công ty chúng tôi.</p>
             </div>
             <div class="col-md-2"></div>
           </div>
@@ -157,20 +165,20 @@ get_header();
           <div class="col-md-8">
 
               <img src="<?php echo get_template_directory_uri() ?>/img/vff/7.png" class="text-colorimg" />
-              <h3 class="text-color"> <b> Chủ đề tài trợ VFF trong công ty</b></h3>
+              <h3 class="text-color"> <b> United we play. United we win.</b></h3>
 
           </div>
           <div class="col-md-2"></div>
         </div>
         <div class="row voffset2"></div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
               <h3 class="text-color text-size"><b>"Chúng ta chơi, chúng ta giành chiến thắng"</b><h3>
           </div>
           <div class="col-md-2"></div>
-        </div>
+        </div> -->
         <div class="row voffset2"></div>
 
         <div class="row">
@@ -186,12 +194,12 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Ai cũng biết là nhân viên của chúng tôi hầu hết là người Việt Nam</p>
+              <p>Cũng ko cần giải thích nhiều thì các bạn cũng biết nhân viên trong công ty chúng tôi chủ yếu là người Việt Nam. Tại Việt Nam, bóng đá được mệnh danh là môn thể thao Vua, những chiến thắng của đội tuyển Việt Nam cũng là niềm tự hào của người Việt. Và chúng tôi trích một phần lợi nhuận của công ty - cũng là thành quả có được từ sự nỗ lực cố gắng của nhân viên để góp phần vào cổ vũ thắng lợi cho đội tuyển Việt Nam. Tức là , chính các bạn đang là một phần sức mạnh của đội tuyển Việt Nam - một trong những niềm tự hào của Quốc Gia. Giống như solgan của công ty chúng tôi "United we play, United we win" - chúng tôi sẽ cùng đồng hành với đội tuyển Việt Nam, đoàn kết và đi đến thắng lợi. </p>
             </div>
             <div class="col-md-2"></div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
               <p>Việc làm nhà tài trợ của VFF là niềm tự hào của người Việt Nam, niềm tự hào này chính là một phần lợi ích và thành quả nỗ lực của từng nhân viên.</p>
@@ -213,7 +221,7 @@ get_header();
               <p>Tôi nghĩ rằng chúng ta hãy giành chiến thắng, đoàn kết cùng VFF như Slogan trong công ty "Chúng ta chơi, chúng ta giành chiến thắng".</p>
             </div>
             <div class="col-md-2"></div>
-          </div>
+          </div> -->
         </div>
 
          <!-- dòng thứ 2 -->
@@ -244,7 +252,7 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Việc làm nhà tài trợ của VFF chính là tuyên ngôn mang tính đối ngoại của việc kinh doanh đang trưởng thành cùng với Việt Nam.</p>
+              <p>Việc trở thành nhà tài trợ cho và lớn mạnh cùng với đội tuyển Việt Nam là một trong những tuyên ngôn hướng ngoại về chiến lược kinh doanh của công ty.</p>
             </div>
             <div class="col-md-2"></div>
           </div>
@@ -252,18 +260,18 @@ get_header();
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-              <p>Thông qua việc áp đặt cho mình một trách nhiệm nặng nề là làm nhà tài trợ của VFF, biểu thị ý chí phát triển Việt Nam thông qua kinh doanh.</p>
+              <p>Bằng việc đảm nhận trọng trách lớn là nhà tài trợ cho liên đoàn bóng đá Việt Nam , chúng tôi muốn thể hiện ý chí muốn mang đến sự phát triển hơn nữa cho Việt Nam thông qua sự nghiệp kinh doanh của mình. Toàn thể nhân viên công ty chúng tôi cùng với khách hàng sẽ góp phần vào sự phát triển đó. </p>
             </div>
             <div class="col-md-2"></div>
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
               <p>Cùng với khách hàng và nhân viên, chúng tôi muốn đóng góp vào sự phát triển của Việt Nam.</p>
             </div>
             <div class="col-md-2"></div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row voffset1"></div>
