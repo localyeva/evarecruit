@@ -12,33 +12,24 @@ get_header();
 
     <div class="container">
         <div class="row ">
-            <div class="col-md-1 col-xs-12 "></div>
-            <div class="col-md-10 col-xs-12  text-margin">
+            <div class="col-md-12 col-xs-12  text-margin">
                 <h3 class=" text-colorvff margin-size"> <b>Evolable Asia</b></h3><h3 class="text-color margin-size"> <b>- nhà tài trợ chính thức</b></h3>
             </div>
-            <div class="col-md-1 col-xs-12 "></div>
         </div>
         <div class="row ">
-            <div class="col-md-2 col-xs-12 "></div>
-            <div class="col-md-8 col-xs-12 ">
+            <div class="col-md-12 col-xs-12 ">
                 <h3 class="margin-sizevff text-colorvff">cho liên đoàn bóng đá Việt Nam</h3>
             </div>
-            <div class="col-md-2 col-xs-12 "></div>
         </div>
-        <div class="row voffset1"></div>
-        <div class="row">
+        <div class="row voffset1">
             <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" class="img-responsive center-block " alt="Responsive Image"/>
         </div>
-        <div class="row voffset1"></div>
-        <div class="row voffset1"></div>
 
-        <div class="row">
+        <div class="row voffset1">
             <img src="<?php echo get_template_directory_uri() ?>/img/vff/2.png" class="img-responsive center-block " alt="Responsive Image"/>
         </div>
-        <div class="row voffset1"></div>
-        <div class="row voffset1"></div>
 
-        <div class="text-left text-colorvff">
+        <div class="text-left text-colorvff voffset1">
             <div class="row">
                 <div class="col-md-2 col-xs-12"></div>
                 <div class="col-md-8 col-xs-12">
@@ -70,8 +61,7 @@ get_header();
 <section>
     <div id="style1">
         <div class="container">
-            <div class="row voffset2"></div>
-            <div class="row">
+            <div class="row voffset2">
                 <div class="text-center classic">
                     <h2>3 lý do để trở thành nhà tài trợ </br> cho bóng đá Việt Nam.</h2>
                 </div>
@@ -83,7 +73,7 @@ get_header();
 <section>
     <div class="container">
         <div class="text-center classic">
-            <div class="row">
+            <div class="row voffset1">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 col-xs-12">
 
@@ -94,7 +84,7 @@ get_header();
                 <div class="col-md-2"></div>
             </div>
 
-            <div class="row">
+            <div class="row voffset3">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 col-xs-12">
                     <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" />
@@ -102,7 +92,7 @@ get_header();
                 <div class="col-md-2"></div>
             </div>
 
-            <div class="text-left">
+            <div class="text-left voffset3">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -144,7 +134,7 @@ get_header();
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row voffset3">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
 
@@ -155,16 +145,15 @@ get_header();
                 <div class="col-md-2"></div>
             </div>
 
-            <div class="row">
+            <div class="row voffset3">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" />
                 </div>
                 <div class="col-md-2"></div>
             </div>
-            <div class="row voffset2"></div>
 
-            <div class="text-left">
+            <div class="text-left voffset3">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -174,7 +163,7 @@ get_header();
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row voffset3">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
 
@@ -185,7 +174,7 @@ get_header();
                 <div class="col-md-2"></div>
             </div>
 
-            <div class="row">
+            <div class="row voffset3">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" />
@@ -193,7 +182,7 @@ get_header();
                 <div class="col-md-2"></div>
             </div>
 
-            <div class="text-left">
+            <div class="text-left voffset3">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -216,7 +205,7 @@ get_header();
 </section>
 
 <section id="vietnam" class="main">
-    <div id="container">
+    <div id="container" class="voffset4">
         <div id="content">
             <a href="<?php echo home_url('jobs') ?>">
                 <button class="btn text-color-btn"><img src="<?php echo get_template_directory_uri() ?>/img/vff/11.png" class="imge" />Join us our team</button>
@@ -226,3 +215,15 @@ get_header();
 </section>
 
 <?php get_footer(); ?>
+.voffset1 {
+    margin-top: 91px;
+  }
+  .voffset2 {
+    margin-top: 1%;
+  }
+   .voffset3 {
+    margin-top: 24px;
+  }
+  .voffset4 {
+    margin-top: 8%;
+  }
