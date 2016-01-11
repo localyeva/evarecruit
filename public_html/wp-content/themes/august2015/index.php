@@ -27,128 +27,128 @@ if ($loop->have_posts()) {
 ?>
 
 <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <?php for ($i = 0; $i < count($slider_home); $i++): ?>
-            <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
-        <?php endfor; ?>
-    </ol>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+      <li data-target="#carousel-captions" data-slide-to="<?php echo $i ?>" class="<?php echo ($i == 0) ? 'active' : '' ?>"></li>
+    <?php endfor; ?>
+  </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <?php for ($i = 0; $i < count($slider_home); $i++): ?>
-            <div class="item left next <?php echo ($i == 0) ? 'active' : '' ?>">
-                <div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo $slider_home[$i]['image'] ?>"></div>
-            </div>
-        <?php endfor; ?>
-    </div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      <?php for ($i = 0; $i < count($slider_home); $i++): ?>
+          <div class="item left next <?php echo ($i == 0) ? 'active' : '' ?>">
+              <div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo $slider_home[$i]['image'] ?>"></div>
+          </div>
+      <?php endfor; ?>
+  </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#carousel-captions" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-captions" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#carousel-captions" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-captions" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 
-    <div class="slide-caption">
-        <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
-        <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
-        <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
-    </div>
+  <div class="slide-caption">
+    <h1 class="text-bold standout"><?php echo get_intro_1_text() ?></h1>
+    <h2 class="mission"><?php echo get_intro_2_text() ?></h2>
+    <h3 class="out-tro"><?php echo get_intro_3_text() ?></h3>
+  </div>
 </div>
 
 <!--//About-->
 <div class="header-about">
-    <div class="container">
-        <div class="row content">
-            <div class="col-xs-12 col-md-5"></div>
-            <div class="col-xs-12 col-md-7 bg-white">
-                <h2><?php echo get_part_about_us_title_text() ?></h2>
-                <div class="row-gap-large"></div>
-                <?php
-                $args = array(
-                    'post_type' => 'about-us',
-                    'posts_per_page' => -1,
-                    'orderby' => array('date' => 'DESC'),
-                );
-                $loop = new WP_Query($args);
-                ?>
-                <?php
-                if ($loop->have_posts()):
-                    $num_posts = count($loop->posts);
-                    ?>
-                    <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <?php echo get_field('content') ?>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <?php if (have_rows('process')): ?>
-                                <?php while (have_rows('process')) : the_row(); ?>
-                                    <div class="col-xs-12">
-                                        <p>
-                                            <strong><?php echo get_sub_field('stage') . ": " ?></strong>
-                                            <?php echo get_sub_field('description') ?>
-                                        </p>
-                                    </div>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        </div>
+  <div class="container">
+    <div class="row content">
+      <div class="col-xs-12 col-md-5"></div>
+      <div class="col-xs-12 col-md-7 bg-white">
+        <h2><?php echo get_part_about_us_title_text() ?></h2>
+        <div class="row-gap-large"></div>
+          <?php
+          $args = array(
+              'post_type' => 'about-us',
+              'posts_per_page' => -1,
+              'orderby' => array('date' => 'DESC'),
+          );
+          $loop = new WP_Query($args);
+          ?>
+          <?php
+          if ($loop->have_posts()):
+              $num_posts = count($loop->posts);
+              ?>
+              <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                <div class="row">
+                  <div class="col-xs-12">
+                      <?php echo get_field('content') ?>
+                  </div>
+                </div>
+                <div class="row">
+                  <?php if (have_rows('process')): ?>
+                    <?php while (have_rows('process')) : the_row(); ?>
+                      <div class="col-xs-12">
+                        <p>
+                          <strong><?php echo get_sub_field('stage') . ": " ?></strong>
+                            <?php echo get_sub_field('description') ?>
+                        </p>
+                      </div>
                     <?php endwhile; ?>
-                <?php endif; ?>
-                <?php wp_reset_postdata() ?>
-              <div class="row">
-                <a href="<?php echo home_url('vff') ?>" class="btn submit_vff">
-                <i class="fa fa-arrow-circle-o-right fa-4 fa_vff"></i>VFF</a>
-              </div>
-            </div>
+                  <?php endif; ?>
+                </div>
+              <?php endwhile; ?>
+          <?php endif; ?>
+          <?php wp_reset_postdata() ?>
+        <div class="row">
+          <a href="<?php echo home_url('vff') ?>" class="btn submit_vff">
+          <i class="fa fa-angle-right fa-4 fa_vff"></i>VFF</a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!--/About End-->
 
 <!--//Service-->
 <div id="services" class="header-service" style="display: none;">
-    <div class="container">
-        <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
-        <div class="row-gap-medium"></div>
-        <div class="row">
-            <?php
-            $args = array(
-                'post_type' => 'service',
-                'posts_per_page' => -1,
-                'orderby' => array('date' => 'ASC'),
-            );
-            $loop = new WP_Query($args);
+  <div class="container">
+    <h2 class="text-center"><?php echo get_part_our_service_title_text() ?></h2>
+    <div class="row-gap-medium"></div>
+    <div class="row">
+        <?php
+        $args = array(
+            'post_type' => 'service',
+            'posts_per_page' => -1,
+            'orderby' => array('date' => 'ASC'),
+        );
+        $loop = new WP_Query($args);
+        ?>
+        <?php
+        if ($loop->have_posts()):
+            $num_posts = count($loop->posts);
             ?>
-            <?php
-            if ($loop->have_posts()):
-                $num_posts = count($loop->posts);
-                ?>
-                <?php while ($loop->have_posts()): $loop->the_post(); ?>
-                    <div class="col-xs-12 col-md-4">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
-                            </div>
-                            <div class="col-xs-9">
-                                <a class="white-link" href="<?php echo get_field('redirect_url') ?>">
-                                    <div class="h4"><?php the_title() ?></div>
-                                    <p><?php echo get_field('short_description') ?></p>
-                                </a>
-                            </div>
+            <?php while ($loop->have_posts()): $loop->the_post(); ?>
+                <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <img src="<?php echo get_field('image') ?>" alt="" class="img-responsive">
+                        </div>
+                        <div class="col-xs-9">
+                            <a class="white-link" href="<?php echo get_field('redirect_url') ?>">
+                                <div class="h4"><?php the_title() ?></div>
+                                <p><?php echo get_field('short_description') ?></p>
+                            </a>
                         </div>
                     </div>
-                <?php endwhile; ?>
-            <?php endif; ?>
-            <?php wp_reset_postdata() ?>
-        </div>
-        <div class="row-gap-large"></div>
+                </div>
+            <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_postdata() ?>
     </div>
+    <div class="row-gap-large"></div>
+  </div>
 </div>
 <!--//Service End-->
 
