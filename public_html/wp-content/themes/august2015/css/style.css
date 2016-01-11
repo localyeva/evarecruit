@@ -2365,7 +2365,7 @@ a.submit_vff:hover {
     background-color: #3c8191;
     margin: 0 auto;
     opacity: 0.6;
-    width: 40%;
+    width: 322px;
     border: 7px #FFFFFF solid;
   }
   a:hover .btn {
@@ -2431,7 +2431,7 @@ a.submit_vff:hover {
   }
   #child {
     position: relative;
-    transform: translateY(-74.99999999%);
+    transform: translateY(-75%);
     top: 50%;
   }
   .text-size {
@@ -2452,7 +2452,7 @@ a.submit_vff:hover {
     background-color: #3c8191;
     margin: 0 auto;
     opacity: 0.6;
-    width: 45%;
+    width: 322px;
     border: 7px #FFFFFF solid;
   }
   a:hover .btn {
@@ -2539,7 +2539,7 @@ a.submit_vff:hover {
     background-color: #3c8191;
     margin: 0 auto;
     opacity: 0.6;
-    width: 50%;
+    width: 228px;
     border: 3px #FFFFFF solid;
   }
   a:hover .btn {
@@ -2629,7 +2629,7 @@ a.submit_vff:hover {
     background-color: #3c8191;
     margin: 0 auto;
     opacity: 0.6;
-    width: 64%;
+    width: 218px;
     border: 3px #FFFFFF solid;
   }
   a:hover .btn {
@@ -2718,7 +2718,7 @@ a.submit_vff:hover {
     background-color: #3c8191;
     margin: 0 auto;
     opacity: 0.6;
-    width: 69%;
+    width: 212px;
     border: 3px #FFFFFF solid;
     font-size: large;
   }
