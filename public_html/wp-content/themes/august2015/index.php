@@ -27,6 +27,7 @@ if ($loop->have_posts()) {
 ?>
 
 <div id="carousel-captions" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="overlay"></div>
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <?php for ($i = 0; $i < count($slider_home); $i++): ?>
@@ -38,7 +39,7 @@ if ($loop->have_posts()) {
   <div class="carousel-inner" role="listbox">
       <?php for ($i = 0; $i < count($slider_home); $i++): ?>
           <div class="item left next <?php echo ($i == 0) ? 'active' : '' ?>">
-              <div class="bgintro parallax-window" data-parallax="scroll" data-image-src="<?php echo $slider_home[$i]['image'] ?>"></div>
+              <div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo $slider_home[$i]['image'] ?>"></div>
           </div>
       <?php endfor; ?>
   </div>
