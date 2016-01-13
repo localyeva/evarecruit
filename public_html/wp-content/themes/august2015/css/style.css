@@ -4,6 +4,9 @@
 .clearfix {
   clear: both;
 }
+.bgintro {
+  background: url(../img/grid.png) repeat !important;
+}
 /* iPhone 6 */
 @media only screen and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) {
   h2 {
@@ -2075,19 +2078,24 @@ html h6 {
   color: #fff;
 }
 .submit_vff {
-  background-color: #ff530d;
-  font-weight: bold;
-  color: #FFFFFF;
-  font-size: 3em;
-  padding: 0px;
+  background-color: #FFFFFF;
+  font-weight: 500;
+  color: #000000;
+  font-size: 1.286em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 0;
   margin: 0 auto;
   display: block;
   float: none;
   width: 175px;
+  border: 1px solid #333;
 }
 .submit_vff:hover {
   opacity: 0.8;
-  color: #FFFFFF;
+  color: #000000;
 }
 a.submit_vff:hover {
   text-decoration: none !important;
@@ -2123,10 +2131,16 @@ a.submit_vff:hover {
     font-family: "Times New Roman", Times, serif;
   }
   .voffset1 {
-    margin-top: 50px;
+    margin-top: 91px;
   }
   .voffset2 {
     margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 24px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   p {
     margin: 0 0 10px;
@@ -2253,10 +2267,16 @@ a.submit_vff:hover {
     font-family: "Times New Roman", Times, serif;
   }
   .voffset1 {
-    margin-top: 50px;
+    margin-top: 91px;
   }
   .voffset2 {
     margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 24px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   p {
     margin: 0 0 10px;
@@ -2366,7 +2386,16 @@ a.submit_vff:hover {
     font-size: 250% !important;
   }
   .voffset1 {
-    margin-top: 16px !important;
+    margin-top: 30px;
+  }
+  .voffset2 {
+    margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 12px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   #vffvientnam {
     padding: 0em 0 1em 0 !important;
@@ -2441,10 +2470,19 @@ a.submit_vff:hover {
   }
   h3,
   .margin-sizevff {
-    font-size: 250% !important;
+    font-size: 242% !important;
   }
   .voffset1 {
-    margin-top: 16px !important;
+    margin-top: 30px;
+  }
+  .voffset2 {
+    margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 10px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   #vffvientnam {
     padding: 0em 0 1em 0 !important;
@@ -2522,7 +2560,16 @@ a.submit_vff:hover {
     font-size: 175% !important;
   }
   .voffset1 {
-    margin-top: 16px !important;
+    margin-top: 25px;
+  }
+  .voffset2 {
+    margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 7px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   #vffvientnam {
     padding: 0em 0 1em 0 !important;
@@ -2603,7 +2650,16 @@ a.submit_vff:hover {
     font-size: 115% !important;
   }
   .voffset1 {
-    margin-top: 16px !important;
+    margin-top: 16px;
+  }
+  .voffset2 {
+    margin-top: 1%;
+  }
+  .voffset3 {
+    margin-top: 6px;
+  }
+  .voffset4 {
+    margin-top: 8%;
   }
   #vffvientnam {
     padding: 0em 0 1em 0 !important;
