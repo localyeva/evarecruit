@@ -22,11 +22,11 @@ get_header();
             </div>
         </div>
         <div class="row voffset1">
-            <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" class="img-responsive center-block " alt="Responsive Image"/>
+          <img src="<?php echo get_template_directory_uri() ?>/img/vff/5.png" class="img-responsive center-block " alt="Responsive Image"/>
         </div>
 
         <div class="row voffset1">
-            <img src="<?php echo get_template_directory_uri() ?>/img/vff/2.png" class="img-responsive center-block " alt="Responsive Image"/>
+            <img src="<?php echo get_template_directory_uri() ?>/img/vff/2.png" class="img-responsive center-block img-circle" alt="Responsive Image"/>
         </div>
 
         <div class="text-left text-colorvff voffset1">
@@ -170,11 +170,21 @@ get_header();
     </div>
 </section>
 
-<section id="vietnam" class="main">
+<!-- <section id="vietnam" class="main">
     <div id="container" class="voffset4">
         <div id="content">
             <a href="<?php echo home_url('jobs') ?>">
                 <button class="btn text-color-btn"><img src="<?php echo get_template_directory_uri() ?>/img/vff/11.png" class="imge" />Join us our team</button>
+            </a>
+        </div>
+    </div>
+</section> -->
+
+<section id="vietnam" class="main">
+    <div id="container" class="voffset4">
+        <div id="content">
+            <a href="<?php echo home_url('jobs') ?>">
+                <button class="btn text-color-btn"><i class="fa fa-long-arrow-right fa-3" ></i>Join us our team</button>
             </a>
         </div>
     </div>
