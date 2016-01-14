@@ -170,21 +170,11 @@ get_header();
     </div>
 </section>
 
-<!-- <section id="vietnam" class="main">
-    <div id="container" class="voffset4">
-        <div id="content">
-            <a href="<?php echo home_url('jobs') ?>">
-                <button class="btn text-color-btn"><img src="<?php echo get_template_directory_uri() ?>/img/vff/11.png" class="imge" />Join us our team</button>
-            </a>
-        </div>
-    </div>
-</section> -->
-
 <section id="vietnam" class="main">
     <div id="container" class="voffset4">
         <div id="content">
             <a href="<?php echo home_url('jobs') ?>">
-                <button class="btn text-color-btn"><i class="fa fa-long-arrow-right fa-3" ></i>Join us our team</button>
+                <button class="btn text-color-btn"><i class="fa fa-arrow-circle-o-right fa-3" ></i>Join us our team</button>
             </a>
         </div>
     </div>
