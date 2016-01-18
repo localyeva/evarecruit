@@ -41,7 +41,7 @@ get_header();
         <?php wp_reset_postdata(); ?>
 
         <!-- Lab Jobs List -->
-        <?php include('lab-jobs-list.php') ?>
+        <?php include('feature-labs-jobs-1.php') ?>
         <!-- Lab Jobs List -->
     </div>
 
