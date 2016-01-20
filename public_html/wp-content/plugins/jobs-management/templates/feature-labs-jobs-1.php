@@ -55,7 +55,7 @@
                             <h4><?php echo get_the_title() ?> <?php if (get_field('status') != 0): ?><i class="new">(<?php echo $job_status[get_field('status')] ?>)</i><?php endif; ?></h4>
                         </a>
                         <div class="info">
-                            <span class="localtion"><?php echo $term_location[0]->name ?></span> | <span class="level"><?php echo $term_position[0]->name ?> / <?php echo get_field('work_level') ?></span>
+                            <span class="localtion"><?php echo ($term_location != false) ? $term_location[0]->name : '' ?></span> | <span class="level"><?php echo ($term_position != false) ? $term_position[0]->name : '' ?> / <?php echo get_field('work_level') ?></span>
                         </div>
                     </div>
                     <div class="r-col">

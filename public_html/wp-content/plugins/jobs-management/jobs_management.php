@@ -146,6 +146,7 @@ class jobs_management extends PW_Template_Loader {
 
         add_filter('archive_template', array($this, 'get_custom_post_type_archive_template'), 10, 1);
         add_filter('single_template', array($this, 'get_custom_post_type_single_template'), 10, 1);
+        add_filter('taxonomy_template', array($this, 'get_custom_taxonomy_template'), 10, 1);
 
         //
         add_action('template_redirect', array($this, 'download_cv'));
@@ -308,6 +309,7 @@ class jobs_management extends PW_Template_Loader {
             if ($term[0]->taxonomy == 'lab' && $post->post_type == 'job') {
                 $single_template = $this->get_plugin_template_path() . 'taxonomy-lab-job.php';
             }
+            //
         } else {
             if ($post->post_type == 'job') {
                 $single_template = $this->get_plugin_template_path() . 'single-job.php';
@@ -318,21 +320,20 @@ class jobs_management extends PW_Template_Loader {
     }
 
     /**
-     * Register archive template
-     *
+     * 
+     * @param type $taxonomy_template
+     * 
      * @version	1.0.0
      * @since	1.0.0
      */
-    public function get_custom_post_type_taxonomy_template($taxonomy_template) {
-        global $wp_query, $post;
+    public function get_custom_taxonomy_template($taxonomy_template) {
 
-        $taxonomy = get_query_var('taxonomy');
+        global $wp_query;
 
-        var_dump($taxonomy);
-        var_dump($post);
+        if (get_query_var('lab') != '') {
+            $taxonomy_template = $this->get_plugin_template_path() . 'taxonomy-lab-jobs.php';
+        }
 
-//        if ($post->post_type == 'job') {
-//        }
         return $taxonomy_template;
     }
 
@@ -375,7 +376,7 @@ class jobs_management extends PW_Template_Loader {
             'page_template' => '',
         );
         $download_cv_page_id = $this->create_page_if_null($download_cv);
-        
+
         // Apply Job
         $apply_job = array(
             'post_name' => 'jobs-apply',

@@ -1,6 +1,6 @@
 <style>#re_check-error{display: none;}</style>
 <!-- // Apply Form Start -->
-<div id="apply-form-modal" class="apply-form-modal" style="display: none;position: relative;">
+<div id="apply-form-modal-<?php the_ID()?>" class="apply-form-modal" style="display: none;position: relative;">
     <div id="apply-overlay" class="apply-overlay">
         <i class="fa fa-spinner fa-spin apply-spin"></i>
     </div>
@@ -48,7 +48,7 @@
                 <div class="box">
                     <div class="row">
                         <div class="col-xs-12 box-content">
-                            <?php require_once(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
+                            <?php include(dirname(__FILE__) . '/part-job-privacy-agree.php'); ?>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
                 <input type="hidden" name="job_id" value="<?php the_ID() ?>"/>
                 <input type="hidden" name="job_slug" value="<?php echo $post->post_name ?>"/>
                 <input type="hidden" name="job_title" value="<?php the_title() ?>"/>
-                <input type="hidden" name="job_position" value="<?php echo $position[0]->name ?>"/>
-                <input type="hidden" name="job_location" value="<?php echo $location[0]->name ?>"/>
+                <input type="hidden" name="job_position" value="<?php echo ($position!==FALSE)?$position[0]->name:"" ?>"/>
+                <input type="hidden" name="job_location" value="<?php echo ($location!==FALSE)?$location[0]->name:"" ?>"/>
                 <input type="hidden" name="job_level" value="<?php echo get_field('work_level') ?>"/>
                 <input type="hidden" name="job_salary" value="<?php echo get_field('salary') ?>"/>
                 <input type="hidden" name="job_expired" value="<?php echo format_date(get_field('expire_date')) ?>"/>

@@ -54,6 +54,33 @@ function get_lab_info() {
     return $lab_info;
 }
 
+function get_lab_info_by_id($t_id) {
+    global $jola_settings;
+
+    $lab_info = array();
+
+    foreach ($jola_settings as $field => $data){
+        $key = $data['id'];
+        $tax_id = $key . '-' . $t_id;
+        $tax_meta = 'jola_' . $tax_id;
+        //
+        $info = get_option($tax_meta);
+        if(isJSON($info[$tax_id])){
+            $data = json_decode($info[$tax_id]);
+            //
+            $lab_info[$key]['url'] = $data->url;
+            $lab_info[$key]['thumbnail'] = $data->thumbnail;
+            $lab_info[$key]['medium'] = $data->medium;
+            $lab_info[$key]['large'] = $data->large;
+        } else{
+            $lab_info[$key] = stripcslashes($info[$tax_id]);
+        }
+    }
+    //
+    return $lab_info;
+}
+
+
 /* Filter Tiny MCE Default Settings */
 //add_filter('tiny_mce_before_init', 'my_switch_tinymce_p_br');
 

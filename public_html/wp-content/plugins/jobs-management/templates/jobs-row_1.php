@@ -10,7 +10,7 @@
                         <div class="col-xs-6 info">
                             <a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><h3 class="title"><?php the_title() ?></h3></a>
                             <div class="info">
-                                <span class="localtion"><?php echo $term_location[0]->name ?></span> | <span class="level"><?php echo $term_position[0]->name ?> / <?php echo get_field('work_level') ?></span>
+                                <span class="localtion"><?php echo ($term_location != false) ? $term_location[0]->name : '' ?></span> | <span class="level"><?php echo ($term_position != false) ? $term_position[0]->name : '' ?> / <?php echo get_field('work_level') ?></span>
                             </div>
                         </div>
                         <div class="col-xs-3 info">

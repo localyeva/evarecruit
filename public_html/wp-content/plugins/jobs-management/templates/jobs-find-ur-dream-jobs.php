@@ -56,7 +56,7 @@ foreach ($terms as $term) {
                         <h4><a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><?php the_title() ?> <?php if (get_field('status') != 0): ?><i class="highlight">(<?php echo $job_status[get_field('status')] ?>)</i><?php endif; ?></a></h4>
                         <?php $term_location = get_the_terms($post->ID, 'job-location'); ?>
                         <?php $term_position = get_the_terms($post->ID, 'job-position'); ?>
-                        <p><?php echo $term_location[0]->name ?> | <?php echo $term_position[0]->name ?>  / <?php echo get_field('work_level') ?></p>
+                        <p><?php echo ($term_location != false) ? $term_location[0]->name : '' ?> | <?php echo $term_position[0]->name ?>  / <?php echo get_field('work_level') ?></p>
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>
@@ -73,7 +73,7 @@ foreach ($terms as $term) {
                 <h3>Featured Labs</h3>
             </div>
             <div class="row-gap-medium space"></div>
-            <?php include('feature-labs-top-1.php') ?>
+            <?php include('feature-labs-top-2.php') ?>
         </div>
         <div class="clearfix"></div>
     </div>

@@ -51,7 +51,7 @@ get_header();
                                 <p>Work level: <?php echo get_field('work_level') ?></p>
                                 <p>Salary: <?php echo get_field('salary') ?></p>
                                 <?php $location = get_the_terms($post->ID, 'job-location'); ?>
-                                <p>Location: <?php echo $location[0]->name ?></p>
+                                <p>Location: <?php echo ($location!==FALSE)?$location[0]->name:"" ?></p>
                                 <p>Expire date: <?php echo format_date(get_field('expire_date')) ?></p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ get_header();
 
                     <div class="row noprint">
                         <div class="col-xs-12">
-                            <a href="#apply-form-modal" class="openform  submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
+                            <a href="#apply-form-modal-<?php the_ID()?>" class="openform  submit col-xs-12 col-md-4"><span class="send">Apply</span></a>
                         </div>
                     </div>
                 </div>

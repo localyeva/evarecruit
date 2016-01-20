@@ -631,6 +631,16 @@ h3 {
           top: 20%;
           left: 10%;
         }
+        .carousel-overlay {
+          background-color: #000000;
+          border: solid 1px #999999;
+          opacity: .3;
+          width: 80%;
+          height: 60%;
+          position: absolute;
+          top: 20%;
+          left: 10%;
+        }
         img {
           width: 100%;
         }
@@ -942,13 +952,6 @@ h3 {
       img {
         width: 100%;
       }
-      h4 {
-        color: #ff3232;
-        font-size: 13px;
-        margin-bottom: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
       .l-col {
         width: 60%;
         float: left;
@@ -969,6 +972,57 @@ h3 {
         padding-right: 10px;
       }
     }
+    .ads {
+        color: #ffffff;
+        padding: 11px 20px 11px 20px;
+        position: relative;
+        .overlay {
+          background-color: #000000;
+          border: solid 1px #999999;
+          opacity: .3;
+          width: 80%;
+          height: 60%;
+          position: absolute;
+          top: 20%;
+          left: 10%;
+        }
+
+        .carousel-overlay {
+          background-color: #000000;
+          border: solid 1px #999999;
+          opacity: .3;
+          width: 80%;
+          height: 60%;
+          position: absolute;
+          top: 20%;
+          left: 10%;
+        }
+        img {
+          width: 100%;
+        }
+        h4 {
+          position: absolute;
+          color: #ffffff;
+          text-align: center;
+          display: inline-block;
+          vertical-align: middle;
+
+          width: 80%;
+          left: 10%;
+          top: 25%;
+          opacity: 1;
+          z-index: 10;
+          font-size: 20px;
+          .subtitle {
+            font-size: 14px;
+          }
+        }
+        a {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
   }
 }
 .header-job-list {
@@ -1482,7 +1536,7 @@ h3 {
 #new-job-detail, #new-job-company {
   .lab-pictures {
     border-top: 1px dotted #dedede !important;
-    border-bottom: 1px  dotted #dedede !important;
+    //border-bottom: 1px  dotted #dedede !important;
     background-color: #ffffff;
     padding-top: 30px;
     padding-bottom: 30px;
