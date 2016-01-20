@@ -1,7 +1,7 @@
 <style>#re_check-error{display: none;}</style>
 <!-- // Apply Form Start -->
 <div id="apply-form-modal-<?php the_ID()?>" class="apply-form-modal" style="display: none;position: relative;">
-    <div id="apply-overlay" class="apply-overlay">
+    <div id="apply-overlay-<?php the_ID()?>" class="apply-overlay">
         <i class="fa fa-spinner fa-spin apply-spin"></i>
     </div>
     <div class="header-top-apply">
@@ -12,7 +12,7 @@
     <div class="row-gap-large"></div>
     <div class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <form id="apply-form" name="apply-form" class="form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
+            <form id="apply-form" name="apply-form" class="apply-form form-horizontal" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
                 <div class="form-group has-feedback">
                     <label for="re_email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">

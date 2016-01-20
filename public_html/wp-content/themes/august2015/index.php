@@ -367,7 +367,7 @@ if ($loop->have_posts()) {
     <div class="container text-center">
         <h2><?php echo get_home_top_text() ?></h2>
         <div class="row-gap-medium"></div>
-        <a href="<?php echo bloginfo('url') ?>/#new-opportunities" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
+        <a href="<?php echo home_url('jobs') ?>" data-goto="new-opportunities"><button class="btn btn-orange">Check for new opportunities</button></a>
     </div>
 </div>
 

@@ -14,70 +14,91 @@ jQuery.fn.center = function (parent) {
 
 $().ready(function () {
 
-    var error_icon_template = '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
-    var form_valid = $('#apply-form');
-    form_valid.validate({
-        popoverPosition: 'right',
-        rules: {
-            're_email': {
-                required: true,
-                email: true
-            },
-            're_fullname': {
-                required: true
-            },
-            're_tel': {
-                required: true,
-                number: true
-            },
-            're_attach': {
-                required: true,
-                extension: 'pdf|doc|docx|xls|xlsx'
-            }
-        },
-        messages: {
-            're_email': error_icon_template,
-            're_fullname': error_icon_template,
-            're_tel': error_icon_template,
-            're_attach': {
-                required: 'Vui lòng Upload CV của bạn',
-                extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx'
-            }
-        },
-        submitHandler: function (form) {
-            //
-            if ($('#re_check').is(':checked')) {
-                //
-                var re_position;
-                var re_position_id = $('#re_position').val();
-                switch (re_position_id) {
-                    case '1':
-                        re_position = $('#re_position option:selected').text() + ' ' + $('#re_programming_language').val();
-                        break;
-                    case '6':
-                        re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
-                        break;
-                    case '':
-                        re_position = '';
-                        break;
-                    default:
-                        re_position = $('#re_position option:selected').text();
-                        break;
-                }
-                $('#job_position').val(re_position);
-                //
-                $('#apply-overlay').show();
-                //
-                form.submit();
-            } else {
-                alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
-            }
-            return false;
+    $.validator.addMethod("uploadFile", function (val, element) {
+
+        var size = element.files[0].size;
+        console.log(size);
+
+        if (size > 0)// checks the file more than 1 MB
+        {
+            console.log("returning false");
+            return true;
+        } else {
+            console.log("returning true");
+            return true;
         }
+
+    }, "File type error");
+
+    var error_icon_template = '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
+    // var form_valid = $('#apply-form');
+
+    $('form.apply-form').each(function () {
+        $(this).validate({
+            popoverPosition: 'right',
+            rules: {
+                're_email': {
+                    required: true,
+                    email: true
+                },
+                're_fullname': {
+                    required: true
+                },
+                're_tel': {
+                    required: true,
+                    number: true
+                },
+                're_attach': {
+                    required: true,
+                    extension: 'pdf|doc|docx|xls|xlsx',
+                    uploadFile: true
+                }
+            },
+            messages: {
+                're_email': error_icon_template,
+                're_fullname': error_icon_template,
+                're_tel': error_icon_template,
+                're_attach': {
+                    required: 'Vui lòng Upload CV của bạn',
+                    extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx',
+                    uploadFile: 'vui lòng kiểm tra dung lượng'
+                }
+            },
+            submitHandler: function (form) {
+                //
+                if ($('#re_check').is(':checked')) {
+                    //
+                    var re_position;
+                    var re_position_id = $('#re_position').val();
+                    switch (re_position_id) {
+                        case '1':
+                            re_position = $('#re_position option:selected').text() + ' ' + $('#re_programming_language').val();
+                            break;
+                        case '6':
+                            re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
+                            break;
+                        case '':
+                            re_position = '';
+                            break;
+                        default:
+                            re_position = $('#re_position option:selected').text();
+                            break;
+                    }
+                    $('#job_position').val(re_position);
+                    //
+                    $('.apply-overlay').show();
+                    //
+                    form.submit();
+                } else {
+                    alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
+                }
+                return false;
+            }
+        });
     });
 
-    $('#apply-rs-close').on('click', function(){
-       $('#apply-rs-overlay').hide();
+    $('#apply-rs-close').on('click', function () {
+        $('#apply-rs-overlay').hide();
     });
 
     $('a.openform').fancybox({
@@ -122,7 +143,7 @@ $().ready(function () {
 function get_iframe_result(data) {
     var rs = jQuery.parseJSON(data);
     //
-    $('#apply-overlay').hide();
+    $('.apply-overlay').hide();
     if (rs.code == 'ERR') {
         $.each(rs.message, function (key, value) {
             $('#' + key).after('<label id="' + key + '-error" class="error" for="' + key + '">' + value + '</label>');
@@ -156,48 +177,48 @@ $(function () {
 
 /* Featured Employers */
 /*
-$(document).ready(function () {
-    var currentPage = 0;
-    var blockContentHeight = 0;
-
-    $('.paging').find('li').click(function () {
-        var currentPage = $(this).data('index');
-        var paging = $(this).parents('.paging');
-        paging.siblings('.ads').slideUp();
-        paging.siblings('.ads').hide();
-        paging.find('li').removeClass('active');
-        $(this).addClass('active');
-        for (var i = currentPage * 3; i < (currentPage * 3) + 3; i++) {
-            paging.siblings('.ads').eq(i).fadeIn();
-        }
-        if (blockContentHeight == 0 && currentPage == 0) {
-            $('.block-content').css('height', 'auto');
-            blockContentHeight = $('.block-content').height();
-        }
-        $('.block-content').height(blockContentHeight);
-    });
-
-    setInterval(function() {
-        var pageCount = $('.paging ul').children('li').length;
-        $('.paging ul').find('li.active').each(function() {
-            currentPage = $(this).data('index');
-        });
-        if (currentPage < pageCount - 1) {
-            currentPage ++;
-        } else {
-            currentPage = 0;
-        }
-        $('.paging li:eq(' + currentPage + ')').click();
-    }, 5000);
-
-    $('.ads').hide();
-    $('.paging li:eq(' + currentPage + ')').click();
-
-    $(window).resize(function(){
-        blockContentHeight = 0;
-        currentPage = 0;
-        $('.ads').hide();
-        $('.paging li:eq(' + currentPage + ')').click();
-    });
-});
-*/
+ $(document).ready(function () {
+ var currentPage = 0;
+ var blockContentHeight = 0;
+ 
+ $('.paging').find('li').click(function () {
+ var currentPage = $(this).data('index');
+ var paging = $(this).parents('.paging');
+ paging.siblings('.ads').slideUp();
+ paging.siblings('.ads').hide();
+ paging.find('li').removeClass('active');
+ $(this).addClass('active');
+ for (var i = currentPage * 3; i < (currentPage * 3) + 3; i++) {
+ paging.siblings('.ads').eq(i).fadeIn();
+ }
+ if (blockContentHeight == 0 && currentPage == 0) {
+ $('.block-content').css('height', 'auto');
+ blockContentHeight = $('.block-content').height();
+ }
+ $('.block-content').height(blockContentHeight);
+ });
+ 
+ setInterval(function() {
+ var pageCount = $('.paging ul').children('li').length;
+ $('.paging ul').find('li.active').each(function() {
+ currentPage = $(this).data('index');
+ });
+ if (currentPage < pageCount - 1) {
+ currentPage ++;
+ } else {
+ currentPage = 0;
+ }
+ $('.paging li:eq(' + currentPage + ')').click();
+ }, 5000);
+ 
+ $('.ads').hide();
+ $('.paging li:eq(' + currentPage + ')').click();
+ 
+ $(window).resize(function(){
+ blockContentHeight = 0;
+ currentPage = 0;
+ $('.ads').hide();
+ $('.paging li:eq(' + currentPage + ')').click();
+ });
+ });
+ */
