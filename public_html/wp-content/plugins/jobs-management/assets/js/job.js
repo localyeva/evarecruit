@@ -17,7 +17,6 @@ $().ready(function () {
     $.validator.addMethod("uploadFile", function (val, element) {
 
         var size = element.files[0].size;
-        console.log(size);
 
         if (size > 0)// checks the file more than 1 MB
         {
@@ -33,7 +32,7 @@ $().ready(function () {
     var error_icon_template = '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>';
     // var form_valid = $('#apply-form');
 
-    $('form.apply-form').each(function () {
+    $('form.apply-form-top').each(function () {
         $(this).validate({
             popoverPosition: 'right',
             rules: {
@@ -48,20 +47,26 @@ $().ready(function () {
                     required: true,
                     number: true
                 },
+                're_position': {
+                    required: true
+                },
+                'job_location': {
+                    required: true
+                },
                 're_attach': {
                     required: true,
                     extension: 'pdf|doc|docx|xls|xlsx',
-                    uploadFile: true
                 }
             },
             messages: {
                 're_email': error_icon_template,
                 're_fullname': error_icon_template,
                 're_tel': error_icon_template,
+                're_position': error_icon_template,
+                'job_location': error_icon_template,
                 're_attach': {
                     required: 'Vui lòng Upload CV của bạn',
                     extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx',
-                    uploadFile: 'vui lòng kiểm tra dung lượng'
                 }
             },
             submitHandler: function (form) {
@@ -87,6 +92,72 @@ $().ready(function () {
                     $('#job_position').val(re_position);
                     //
                     $('.apply-overlay').show();
+                    //
+                    $('#apply-rs-popup').hide();
+                    //
+                    form.submit();
+                } else {
+                    alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
+                }
+                return false;
+            }
+        });
+    });
+    
+    $('form.apply-form').each(function () {
+        $(this).validate({
+            popoverPosition: 'right',
+            rules: {
+                're_email': {
+                    required: true,
+                    email: true
+                },
+                're_fullname': {
+                    required: true
+                },
+                're_tel': {
+                    required: true,
+                    number: true
+                },
+                're_attach': {
+                    required: true,
+                    extension: 'pdf|doc|docx|xls|xlsx',
+                }
+            },
+            messages: {
+                're_email': error_icon_template,
+                're_fullname': error_icon_template,
+                're_tel': error_icon_template,
+                're_attach': {
+                    required: 'Vui lòng Upload CV của bạn',
+                    extension: 'Chỉ chấp nhận định dạng .pdf, .doc, .docx, .xls, .xlsx',
+                }
+            },
+            submitHandler: function (form) {
+                //
+                if ($('#re_check').is(':checked')) {
+                    //
+                    var re_position;
+                    var re_position_id = $('#re_position').val();
+                    switch (re_position_id) {
+                        case '1':
+                            re_position = $('#re_position option:selected').text() + ' ' + $('#re_programming_language').val();
+                            break;
+                        case '6':
+                            re_position = $('#re_position option:selected').text() + ' ' + $('#re_other_position').val();
+                            break;
+                        case '':
+                            re_position = '';
+                            break;
+                        default:
+                            re_position = $('#re_position option:selected').text();
+                            break;
+                    }
+                    $('#job_position').val(re_position);
+                    //
+                    $('.apply-overlay').show();
+                    //
+                    $('#apply-rs-popup').hide();
                     //
                     form.submit();
                 } else {
@@ -144,14 +215,16 @@ function get_iframe_result(data) {
     var rs = jQuery.parseJSON(data);
     //
     $('.apply-overlay').hide();
+    //
     if (rs.code == 'ERR') {
         $.each(rs.message, function (key, value) {
+            $('#' + key + '-error').remove();
             $('#' + key).after('<label id="' + key + '-error" class="error" for="' + key + '">' + value + '</label>');
         });
     } else {
         /* alert(rs.message); */
         $('#apply-rs-overlay').show();
-        $('#apply-rs-popup').center(true);
+        $('#apply-rs-popup').show().center(true);
         $('#apply-form')[0].reset();
         $('.fancybox-close').fancybox().trigger('click');
     }

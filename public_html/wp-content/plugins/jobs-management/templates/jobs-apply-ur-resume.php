@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
     </div>
 
     <div class="container">
-        <form id="apply-form" name="apply-form" class="input-form col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
+        <form id="apply-form" name="apply-form" class="input-form apply-form-top col-xs-12 col-md-12" action="<?php echo bloginfo('url') ?>/jobs-apply" target="iapply" enctype="multipart/form-data" method="POST">
             <h2>Apply Your Resume</h2>
             <div class="row-gap-small"></div>
             <fieldset class="form-group has-feedback">
@@ -36,7 +36,7 @@ if (!defined('ABSPATH')) {
             <fieldset class="form-group has-feedback">
                 <input type="text" class="form-control input-lg" id="re_tel" name="re_tel" placeholder="Phone Number">
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="form-group has-feedback">
                 <label class="control-label" for="re_position">Position</label>
                 <select class="form-control input-lg" id="re_position" name="re_position" placeholder="Choose a position">
                     <option value="">-- Select --</option>
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
             <fieldset class="form-group relative-position" rel="6">
                 <input type="text" class="form-control input-lg" id="re_other_position" name="re_other_position" placeholder="Ex: HR, Sales, Accounting, ...">
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="form-group has-feedback">
                 <label class="control-label" for="job_location">Location</label>
                 <?php
                 $args = array(
@@ -86,6 +86,7 @@ if (!defined('ABSPATH')) {
                 <button class="submit" type="submit"><span class="send">Apply</span></button>
             </fieldset>
             <input type="hidden" name="apply" value="job"/>
+            <input type="hidden" name="pg" value="top"/>
         </form>
     </div>
 </div>

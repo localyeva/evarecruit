@@ -33,6 +33,8 @@ if (!function_exists('wp_handle_upload')) {
     require_once( ABSPATH . 'wp-admin/includes/file.php' );
 }
 
+$positions = array('', 'Lập trình (Developer)', 'HTML Coder', 'Xử lý dữ liệu (BPO)', 'Kỹ sư cầu nối (BSE)', 'Thông dịch / Trợ lý (Japanese Communicator/Assistant)', 'Khác (Others)s');
+
 if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
 
     global $wpdb;
@@ -40,24 +42,47 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
     // validate input data
     $gump = new GUMP;
 
+    if (isset($_POST['pg']) && $_POST['pg'] == 'top') {
+        //
+        $_POST = $gump->sanitize($_POST);
 
-    $_POST = $gump->sanitize($_POST);
+        // validate form, top page
+        $validators = array(
+            're_email' => 'required|valid_email',
+            're_fullname' => 'required',
+            're_tel' => 'required',
+            're_position' => 'required',
+            'job_location' => 'required',
+        );
+        $gump->validation_rules($validators);
 
-    $validators = array(
-        're_email' => 'required|valid_email',
-        're_fullname' => 'required',
-        're_tel' => 'required',
-    );
+        $rules = array(
+            're_email' => 'trim|sanitize_email',
+            're_fullname' => 'trim',
+            're_tel' => 'trim',
+            're_position' => 'trim',
+            'job_location' => 'trim',
+        );
+        $gump->filter_rules($rules);
+        //
+    } else {
+        //
+        $validators = array(
+            're_email' => 'required|valid_email',
+            're_fullname' => 'required',
+            're_tel' => 'required',
+        );
+        $gump->validation_rules($validators);
 
-    $gump->validation_rules($validators);
-
-    $rules = array(
-        're_email' => 'trim|sanitize_email',
-        're_fullname' => 'trim',
-        're_tel' => 'trim',
-//        're_gender' => 'trim',
-    );
-    $gump->filter_rules($rules);
+        $rules = array(
+            're_email' => 'trim|sanitize_email',
+            're_fullname' => 'trim',
+            're_tel' => 'trim',
+                //        're_gender' => 'trim',
+        );
+        $gump->filter_rules($rules);
+        //
+    }
 
     $validated_data = $gump->run($_POST);
 
@@ -74,6 +99,15 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
                     break;
                 case 're_tel':
                     $message['re_tel'] = 'Vui long nhập số điện thoại';
+                    break;
+                case 're_position':
+                    $message['re_position'] = 'Vui lòng nhập vị trí';
+                    break;
+                case 'job_location':
+                    $message['job_location'] = 'Vui lòng nhập địa điểm';
+                    break;
+                case 're_attach':
+                    $message['re_attach'] = 'Vui lòng upload CV';
                     break;
             }
         }
@@ -106,6 +140,9 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         );
         exit;
     }
+    
+    $re_position_id = isset($_POST['re_position']) ? $_POST['re_position'] : '';
+    $re_position = $positions[$re_position_id];
 
     $table_name = $wpdb->prefix . 'jobs_management';
 
@@ -120,7 +157,7 @@ if (isset($_POST['apply']) && $_POST['apply'] == 'job') {
         'download_link' => $download_link,
         'job_id' => isset($_POST['job_id']) ? $_POST['job_id'] : '',
         'job_title' => isset($_POST['job_title']) ? $_POST['job_title'] : 'Apply Resumne',
-        'job_position' => isset($_POST['job_position']) ? $_POST['job_position'] : '',
+        'job_position' => (isset($_POST['job_position']) && $_POST['job_position'] != '') ? $_POST['job_position'] : $re_position,
         'job_level' => isset($_POST['job_level']) ? $_POST['job_level'] : '',
         'job_salary' => isset($_POST['job_salary']) ? $_POST['job_salary'] : '',
         'job_location' => isset($_POST['job_location']) ? $_POST['job_location'] : '',
