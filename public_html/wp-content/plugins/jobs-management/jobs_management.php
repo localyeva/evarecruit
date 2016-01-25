@@ -724,39 +724,45 @@ class jobs_management extends PW_Template_Loader {
              * download cv
              */
             if ($wp_query->query['pagename'] == 'api/cv') {
-                if (isset($_GET['attach'])) {
-                    if (is_numeric($_GET['attach'])) {
-                        $id = $_GET['attach'];
-                        //
-                        $table_name = $wpdb->prefix . 'jobs_management';
-                        $list_candidates = $wpdb->get_results(
-                                ""
-                                . " SELECT * "
-                                . " FROM  $table_name "
-                                . " WHERE id =  $id "
-                        );
-                        $post = $list_candidates[0];
-                        //
-                        $attach_file = $post->attach_file;
-                        $ext = substr(strrchr($attach_file, '.'), 1);
-                        $clean_name = sanitize_title($post->fullname . '-cv') . '.' . $ext;
-                        //
-                        $parse = parse_url($attach_file);
-                        $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
-                        //
-                        header('Content-Description: File Transfer');
-                        header('Content-Type: application/force-download');
-                        header("Content-Disposition: attachment; filename=\"" . $clean_name . "\";");
-                        header('Content-Transfer-Encoding: binary');
-                        header('Expires: 0');
-                        header('Cache-Control: must-revalidate');
-                        header('Pragma: public');
-                        header('Content-Length: ' . filesize($attach_file_path));
-                        ob_clean();
-                        flush();
-                        readfile($attach_file_path);
-                        exit();
+                $id = empty($_GET['attach'])?'':$_GET['attach'];
+                if(!is_numeric($id)){
+                    echo json_encode(array('error'=>1, 'message'=>'attach id must be a number.'));
+                    exit;
+                }
+                else {
+                    $table_name = $wpdb->prefix . 'jobs_management';
+                    $list_candidates = $wpdb->get_results(
+                            ""
+                            . " SELECT * "
+                            . " FROM  $table_name "
+                            . " WHERE id =  $id "
+                    );
+
+                    if(count($list_candidates) == 0){
+                        echo json_encode(array('error'=>1, 'message'=>'attach id is not exist.'));
+                        exit;
                     }
+
+                    $post = $list_candidates[0];
+                    $attach_file = $post->attach_file;
+                    $ext = substr(strrchr($attach_file, '.'), 1);
+                    $clean_name = sanitize_title($post->fullname . '-cv') . '.' . $ext;
+                    //
+                    $parse = parse_url($attach_file);
+                    $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
+                    //
+                    header('Content-Description: File Transfer');
+                    header('Content-Type: application/force-download');
+                    header("Content-Disposition: attachment; filename=\"" . $clean_name . "\";");
+                    header('Content-Transfer-Encoding: binary');
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate');
+                    header('Pragma: public');
+                    header('Content-Length: ' . filesize($attach_file_path));
+                    ob_clean();
+                    flush();
+                    readfile($attach_file_path);
+                    exit();
                 }
             }
             //        
