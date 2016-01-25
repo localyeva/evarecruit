@@ -628,58 +628,10 @@ class jobs_management extends PW_Template_Loader {
 
     /**
      * 
-     * @global type $wp_query
-     * @global type $wpdb
+     * @param type $date
+     * @return type
      */
-    public function api_download_cv() {
-        global $wp_query;
-        global $wpdb;
-        //
-        var_dump($wp_query->query['pagename']);
-                exit();
-                
-        if (isset($wp_query->query['pagename'])) {
-            if ($wp_query->query['pagename'] == 'api/cv') {
-                if (isset($_GET['attach'])) {
-                    if (is_numeric($_GET['attach'])) {
-                        $id = $_GET['attach'];
-                        //
-                        $table_name = $wpdb->prefix . 'jobs_management';
-                        $list_candidates = $wpdb->get_results(
-                                ""
-                                . " SELECT * "
-                                . " FROM  $table_name "
-                                . " WHERE id =  $id "
-                        );
-                        $post = $list_candidates[0];
-                        //
-                        $attach_file = $post->attach_file;
-                        $ext = substr(strrchr($attach_file, '.'), 1);
-                        $clean_name = sanitize_title($post->fullname . '-cv') . '.' . $ext;
-                        //
-                        $parse = parse_url($attach_file);
-                        $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
-                        //
-                        header('Content-Description: File Transfer');
-                        header('Content-Type: application/force-download');
-                        header("Content-Disposition: attachment; filename=\"" . $clean_name . "\";");
-                        header('Content-Transfer-Encoding: binary');
-                        header('Expires: 0');
-                        header('Cache-Control: must-revalidate');
-                        header('Pragma: public');
-                        header('Content-Length: ' . filesize($attach_file_path));
-                        ob_clean();
-                        flush();
-                        readfile($attach_file_path);
-                        exit();
-                    }
-                }
-            }
-        }
-    }
-    
-    function validateDate($date)
-    {
+    function validateDate($date) {
         $d = DateTime::createFromFormat('Y-m-d', $date);
         return $d && $d->format('Y-m-d') == $date;
     }
@@ -701,14 +653,14 @@ class jobs_management extends PW_Template_Loader {
                 $table_name = $wpdb->prefix . 'jobs_management';
                 $from = $_GET['from'];
                 $to = empty($_GET['to']) ? null : $_GET['to'];
-                if(!$this->validateDate($from) || (!empty($to) && !$this->validateDate($from))){
-                    echo json_encode(array('error'=>1, 'message'=>'invalid date format. Date format must be YYYY-m-d'));
+                if (!$this->validateDate($from) || (!empty($to) && !$this->validateDate($from))) {
+                    echo json_encode(array('error' => 1, 'message' => 'invalid date format. Date format must be YYYY-m-d'));
                     exit;
                 }
                 if (!empty($to) && !$this->validateDate($from)) {
                     $qstr .= " AND apply_date <=" . '"' . $to . '"';
                 }
-                
+
                 $qstr = ""
                         . " SELECT * "
                         . " FROM  $table_name "
@@ -718,18 +670,17 @@ class jobs_management extends PW_Template_Loader {
                 }
                 $list_jobs = $wpdb->get_results($qstr);
 
-                echo json_encode(array('data'=>$list_jobs));
+                echo json_encode(array('data' => $list_jobs));
             }
             /**
              * download cv
              */
             if ($wp_query->query['pagename'] == 'api/cv') {
-                $id = empty($_GET['attach'])?'':$_GET['attach'];
-                if(!is_numeric($id)){
-                    echo json_encode(array('error'=>1, 'message'=>'attach id must be a number.'));
+                $id = empty($_GET['attach']) ? '' : $_GET['attach'];
+                if (!is_numeric($id)) {
+                    echo json_encode(array('error' => 1, 'message' => 'attach id must be a number.'));
                     exit;
-                }
-                else {
+                } else {
                     $table_name = $wpdb->prefix . 'jobs_management';
                     $list_candidates = $wpdb->get_results(
                             ""
@@ -738,8 +689,8 @@ class jobs_management extends PW_Template_Loader {
                             . " WHERE id =  $id "
                     );
 
-                    if(count($list_candidates) == 0){
-                        echo json_encode(array('error'=>1, 'message'=>'attach id is not exist.'));
+                    if (count($list_candidates) == 0) {
+                        echo json_encode(array('error' => 1, 'message' => 'attach id is not exist.'));
                         exit;
                     }
 
@@ -769,6 +720,7 @@ class jobs_management extends PW_Template_Loader {
             exit();
         }
     }
+
 }
 
 //add_action( 'plugins_loaded', array( 'PageTemplater', 'get_instance' ) );
