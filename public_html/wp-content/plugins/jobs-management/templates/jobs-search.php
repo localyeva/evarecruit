@@ -40,7 +40,7 @@ get_header();
         <?php wp_reset_postdata(); ?>
 
         <!-- Lab Jobs List -->
-        <?php include('feature-labs-jobs-1.php') ?>
+        <?php include('feature-labs-jobs-2.php') ?>
         <!-- Lab Jobs List -->
     </div>
 

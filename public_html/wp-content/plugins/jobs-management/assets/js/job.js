@@ -95,6 +95,8 @@ $().ready(function () {
                     //
                     $('#apply-rs-popup').hide();
                     //
+                    
+                    ga('send', 'event', 'apply', 'apply', 'free_entry');//google analytics event tracking
                     form.submit();
                 } else {
                     alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
@@ -159,6 +161,8 @@ $().ready(function () {
                     //
                     $('#apply-rs-popup').hide();
                     //
+                    
+                    ga('send', 'event', 'apply', 'apply', 'job_entry');//google analytics event tracking
                     form.submit();
                 } else {
                     alert('Bạn có đồng ý ứng tuyển vị trí. Vui lòng check bên dưới');
