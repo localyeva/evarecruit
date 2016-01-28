@@ -701,6 +701,12 @@ class jobs_management extends PW_Template_Loader {
                     //
                     $parse = parse_url($attach_file);
                     $attach_file_path = WP_CONTENT_DIR . str_replace('/wp-content', '', $parse['path']);
+                    //var_dump($attach_file_path);
+                    //exit();
+                    if(!is_file($attach_file_path)){
+                        //echo json_encode(array('error' => 1, 'message' => 'no attach file.'));
+                        exit();
+                    }
                     //
                     header('Content-Description: File Transfer');
                     header('Content-Type: application/force-download');
