@@ -132,7 +132,7 @@ get_header();
             <div class="text-left voffset3">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <p>Cũng ko cần giải thích nhiều thì các bạn cũng biết nhân viên trong công ty chúng tôi chủ yếu là người Việt Nam. Tại Việt Nam, bóng đá được mệnh danh là môn thể thao Vua, những chiến thắng của đội tuyển Việt Nam cũng là niềm tự hào của người Việt. Và chúng tôi trích một phần lợi nhuận của công ty - cũng là thành quả có được từ sự nỗ lực cố gắng của nhân viên để góp phần vào cổ vũ thắng lợi cho đội tuyển Việt Nam. Tức là , chính các bạn đang là một phần sức mạnh của đội tuyển Việt Nam - một trong những niềm tự hào của Quốc Gia. Giống như solgan của công ty chúng tôi "United we play, United we win" - chúng tôi sẽ cùng đồng hành với đội tuyển Việt Nam, đoàn kết và đi đến thắng lợi. </p>
+                        <p>Cũng ko cần giải thích nhiều thì các bạn cũng biết nhân viên trong công ty chúng tôi chủ yếu là người Việt Nam. Tại Việt Nam, bóng đá được mệnh danh là môn thể thao Vua, những chiến thắng của đội tuyển Việt Nam cũng là niềm tự hào của người Việt. Và chúng tôi trích một phần lợi nhuận của công ty - cũng là thành quả có được từ sự nỗ lực cố gắng của nhân viên để góp phần vào cổ vũ thắng lợi cho đội tuyển Việt Nam. Tức là , chính các bạn đang là một phần sức mạnh của đội tuyển Việt Nam - một trong những niềm tự hào của Quốc Gia. Giống như slogan của công ty chúng tôi "United we play, United we win" - chúng tôi sẽ cùng đồng hành với đội tuyển Việt Nam, đoàn kết và đi đến thắng lợi. </p>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@ get_header();
     <div id="container" class="voffset4">
         <div id="content">
             <a href="<?php echo home_url('jobs') ?>">
-                <button class="btn text-color-btn"><i class="fa fa-long-arrow-right fa-3" ></i>Join us our team</button>
+                <button class="btn text-color-btn"><i class="fa fa-long-arrow-right fa-3" ></i>Join Our Team</button>
             </a>
         </div>
     </div>
